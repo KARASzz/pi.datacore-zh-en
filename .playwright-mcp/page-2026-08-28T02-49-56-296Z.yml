@@ -1,0 +1,27 @@
+- generic [active] [ref=e1]:
+  - navigation:
+    - generic:
+      - link:
+        - /url: /
+      - generic:
+        - link:
+          - /url: /
+          - text: Home
+        - link:
+          - /url: /docs/latest
+          - text: Documentation
+        - link:
+          - /url: /news
+          - text: News
+        - link:
+          - /url: /packages
+          - text: Packages
+        - link:
+          - /url: /models
+          - text: Models
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - button "Play the Pi logo animation" [ref=e6] [cursor=pointer]
+      - heading "There are many agent harnesses but this one is yours" [level=1] [ref=e7]:
+        - generic [ref=e8]: There are many agent harnesses
+        - generic [ref=e9]: but this one is yours
