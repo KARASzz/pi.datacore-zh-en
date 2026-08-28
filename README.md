@@ -240,4 +240,4 @@ pi-web-access（网页访问）· pi-subagents（子代理）· pi-mcp-adapter�
 
 </div>
 
-<!-- GHOST TRACE // AES-256-CBC + PBKDF2-HMAC-SHA256(iter=200000) // KEY: .gitignore // CIPHERTEXT: U2FsdGVkX1+qzhoGnB6XXVppTPDrEuKBQseyhH15yjCxKOVeXRjVGJVbYkIHFJhtG8S8hHCxOru1PKLgeBrCCBqLbm4+zgBMd6i2BHtTXPYE6M18dFl0ZsK5TJibrek9 -->
+~~GHOST TRACE // AES-256-CBC + PBKDF2-HMAC-SHA256(iter=200000) // KEY: `.gitignore` // CIPHERTEXT: `U2FsdGVkX1+qzhoGnB6XXVppTPDrEuKBQseyhH15yjCxKOVeXRjVGJVbYkIHFJhtG8S8hHCxOru1PKLgeBrCCBqLbm4+zgBMd6i2BHtTXPYE6M18dFl0ZsK5TJibrek9`~~
