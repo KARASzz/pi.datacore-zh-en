@@ -1,0 +1,249 @@
+Copy SVGDownload SVGPress Kit
+HomeDocumentationNewsPackagesModels
+
+Home→Documentation→News→Packages→Models→
+
+GitHubnpmDiscordX
+
+Earendil Inc.
+
+# pi-fabric
+
+A programmable tool and agent runtime for Pi
+Packages
+## Package details
+extensionskill
+
+Install pi-fabric from npm and Pi will load the resources declared by the package manifest.
+
+ npm repohome report
+
+image
+$ pi install npm:pi-fabricCopy
+Packagepi-fabricVersion0.67.0PublishedAug 27, 2026Downloads25.1K/mo · 4,052/wkAuthormonotykamaryLicenseMITTypesextension, skillSize7.2 MBDependencies11 dependencies · 2 peersPi manifest JSON{
+ "extensions": [
+ "./dist/index.js"
+ ],
+ "skills": [
+ "./skills"
+ ],
+ "image": "https://raw.githubusercontent.com/monotykamary/pi-fabric/main/media/banner.svg"
+}
+
+×
+
+## Security note
+
+Pi packages can execute code and influence agent behavior. Review the source before installing third-party packages.
+
+## README
+
+# 🧵 pi-fabric
+
+A programmable tool and agent runtime for Pi
+
+One type-checked program for tools, MCP, agents, workflows, actors, mesh, councils, and recursion.
+
+Fabric gives Pi one programmable tool called fabric_exec, which composes core tools and MCP servers with captured extension tools in a checked TypeScript program. That program can call agents or actors, use durable coordination, and run inside QuickJS. Trusted workloads that exceed WASM32 memory may use the unsafe Node process. After execution, the conversation receives the result of the program's branches, loops, fan-out, and data flow.
+
+## Why Fabric?
+
+|
+|
+Capability|
+What it unlocks|
+
+|
+⚡|
+Code mode|
+One flat tool schema; branching, loops, fan-out, and data flow live in checked TypeScript.|
+
+|
+🧰|
+Capability routing|
+Call Pi core tools, MCP servers, captured extension tools, or Fabric providers through one runtime.|
+
+|
+🧑‍🤝‍🧑|
+Agent runtime|
+One-shot workers, durable resident agents, persistent event-driven actors, councils, and bounded recursive queries.|
+
+|
+🕸️|
+Workflows + mesh|
+Phased progress plus durable topics, shared tasks, and compare-and-swap state.|
+
+|
+🛡️|
+Guardrails|
+Approvals, isolation, timeouts, concurrency, recursion depth, and shared cost budgets.|
+
+|
+🎛️|
+Native TUI|
+Live activity, an interactive dashboard, and settings without leaving Pi.|
+
+## How it works
+
+- You ask in plain language.
+
+- Pi writes one program that calls the required tools and agents.
+
+- The type checker validates the program before execution.
+
+- The result returns to your conversation. Intermediate work stays in the sandbox and appears in the activity panel and dashboard.
+
+The model can write this program:
+
+const [manifest, sources] = await Promise.all([
+ pi.read({ path: "package.json" }),
+ pi.find({ pattern: "**/*.ts", path: "src" }),
+]);
+return {
+ package: JSON.parse(manifest).name,
+ sourceCount: sources.split("\n").filter(Boolean).length,
+};
+
+Independent calls run in parallel, and the returned object enters the model context. Known providers support concise direct calls such as mcp.fal_ai.get_model_schema(...), memory.recall(...), state.get(), schema.status(), and compact.status(). Refs found or computed at runtime use tools.call({ ref, args }).
+
+## Install
+
+Requires Node.js 24+ and Pi 0.80.6+. Fabric also checks a detectable Pi host version at startup and warns when an older host may ignore continuation APIs such as actor triggerTurn.
+
+pi install npm:pi-fabric
+
+From GitHub:
+
+pi install git:github.com/monotykamary/pi-fabric
+
+From a local checkout:
+
+pnpm install
+pnpm build
+pi install /absolute/path/to/pi-fabric
+
+For one development run:
+
+pi -e /absolute/path/to/pi-fabric
+
+## What you can ask for
+
+Pi loads advanced patterns after direct user invocation. Run /skill:fabric-guide for one recommendation, or invoke the exact /skill:<name> yourself. An ordinary coding task keeps Pi on the core fabric-exec path.
+
+|
+You want|
+Run|
+
+|
+Help choosing the smallest advanced mechanism|
+/skill:fabric-guide Choose a mechanism to audit every auth file and verify the findings.|
+
+|
+Parallel audits, migrations, or research with verification|
+/skill:fabric-workflow Audit every auth file and synthesize verified findings.|
+
+|
+Work too big for one context window|
+/skill:fabric-rlm Produce a compact architecture map of this repo.|
+
+|
+A persistent watcher for one measurable goal|
+/skill:fabric-supervisor Watch this migration until it is complete and tested.|
+
+|
+A strict auditor for one feature design spec|
+/skill:fabric-spec Implement docs/specs/checkout.md to the tee; nothing missing, nothing extra.|
+
+|
+A quiet decision-point reviewer|
+/skill:fabric-advisor Focus on migration correctness.|
+
+|
+Same-model independent reviewers and one decision|
+/skill:fabric-council Review this design for correctness, security, and operability.|
+
+|
+Multi-model compare-not-merge deliberation or act mode|
+/skill:fabric-fusion Deliberate this design across models.|
+
+|
+One command that chooses advisor or supervisor|
+/skill:fabric-ambient advisor Focus on migration correctness.|
+
+|
+A durable team coordinating through versioned tasks|
+/skill:fabric-swarm Coordinate this migration across owned task partitions.|
+
+|
+Evidence-gated edits with postconditions|
+/skill:fabric-schema Make this parser change only if focused tests stay green.|
+
+The foundation is the fabric-exec reference skill: the model loads it before its first fabric_exec call and again when a call errors on argument shape.
+
+## The dashboard
+
+Fabric includes a live activity surface in Pi:
+
+- A compact widget above the chat (like pi-supervisor) whose header follows the current phase while its rows show active/completed agents, active actors, and their recent nested tool or code-change activity.
+
+- /fabric (or /fabric dashboard): opens the Activity and Topology views. The user-facing Pi session appears as Main. You can queue or steer participants and inspect the project topology.
+
+- /fabric settings: mirrors Pi's /settings and writes changes to fabric.json.
+
+- Tool display (compact by default, or full) is configured under /fabric settings → UI; compact elevates the declared display intent, hides the outer TypeScript, and applies to the current transcript immediately. Pi's tool-expand keybinding (ctrl+o by default) expands a compact card to the full transcript.
+
+See the interface & commands reference for every view, keybinding, and slash command.
+
+## Reference
+
+- Configuration: fabric.json, code modes, tool capture, approvals, and budgets.
+
+- Interface & commands: dashboard, settings, keybindings, slash commands, and headless runs.
+
+- Agents, actors & mesh: model handoff, /fabric prewalk, runners, transports, actors, councils, recursive queries, and durable coordination.
+
+- Components & committed capabilities: supervised effects, exact requirements, external per-model guidance and execution-profile replacement, rolling provider generations, actor commitments, and both formal calculi.
+
+- External providers: the versioned provider protocol for extensions.
+
+- Architecture & security: the host bridge, sandboxing, tool-call robustness, and limits.
+
+- Speculative PTC: pre-launching literal read calls while the program streams, with epoch + freshness guarantees.
+
+- Skills: the core-first invocation policy and user-invoked advanced patterns.
+
+## Development
+
+pnpm install
+pnpm typecheck
+pnpm test
+pnpm build
+
+The test suite covers:
+
+- configuration and schema validation
+
+- provider dispatch, registered-tool execution, QuickJS isolation, and Pi built-in calls
+
+- agent fixtures for Claude and Veda
+
+- workflows, durable mesh state, actor mailboxes, subscriptions, and actor restoration
+
+Claude and Veda fixtures use local test processes with zero billable requests.
+
+## Acknowledgments
+
+- Thanks to @hazrid93, whose request for a token-efficient LLM advisor pattern led to Fabric's advisor.
+
+- Thanks to Chad Gibson at Neuralwatt, who supported extended tests of long MCR sessions and the related debugging work.
+
+## License
+
+MIT
+
+Earendil Inc. & Contributors
+Press Kit
+MIT License
+
+AutoLightDark
+pi.dev domain graciously donated by exe.dev

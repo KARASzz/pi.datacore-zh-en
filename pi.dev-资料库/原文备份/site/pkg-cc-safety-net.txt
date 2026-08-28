@@ -1,0 +1,229 @@
+Copy SVGDownload SVGPress Kit
+HomeDocumentationNewsPackagesModels
+
+Home→Documentation→News→Packages→Models→
+
+GitHubnpmDiscordX
+
+Earendil Inc.
+
+# cc-safety-net
+
+A coding agent CLI hook - block destructive commands and secret file access
+Packages
+## Package details
+extension
+
+Install cc-safety-net from npm and Pi will load the resources declared by the package manifest.
+
+ npm repohome report
+
+$ pi install npm:cc-safety-netCopy
+Packagecc-safety-netVersion2.2.2PublishedAug 25, 2026Downloads18.8K/mo · 7,887/wkAuthorkenryuLicenseMITTypesextensionSize1.7 MBDependencies1 dependency · 1 peerPi manifest JSON{
+ "extensions": [
+ "./dist/pi/index.js"
+ ]
+}
+
+## Security note
+
+Pi packages can execute code and influence agent behavior. Review the source before installing third-party packages.
+
+## README
+
+English · 简体中文 · 日本語
+
+CC Safety Net is short for Coding CLI Safety Net. It is a PreToolUse hook that blocks destructive commands and access to secrets such as SSH keys and .env files before the tool call runs. It parses what a command does, so flag reordering, shell wrappers, and interpreter one-liners cannot bypass it.
+
+[!NOTE]
+Full documentation → covers installation, configuration, reference material, guides, and the security model. This README is the short version.
+
+## Why this exists
+
+We built CC Safety Net after an agent wiped hours of work with one rm -rf ~/ or git checkout --. Instructions did not stop it. Rules in CLAUDE.md or AGENTS.md can guide an agent, but they cannot enforce a technical limit. CC Safety Net watches relevant tool calls and blocks destructive commands and secret access before they reach the shell. See What is CC Safety Net for the full background.
+
+## Quick start
+
+You need Node.js 18 or higher.
+
+Run the interactive selector to install CC Safety Net into one or more installed coding CLIs:
+
+npx -y cc-safety-net@latest install
+
+To update every installed integration:
+
+npx -y cc-safety-net@latest update
+
+Keep the @latest qualifier; a bare cc-safety-net spec can run an older cached copy from the npx cache. npx -y cc-safety-net uninstall removes integrations interactively, and npm install -g cc-safety-net gives you ccsn, a shorter alias for the same commands.
+
+## Supported coding CLIs
+
+CC Safety Net supports the coding agent CLIs below on Windows, macOS, and Linux. Automated tests cover the analyzer and some Windows integrations. Other hosts have best-effort Windows support that has not been tested. Amp documents macOS, Linux, and WSL, but not native Windows.
+
+## What it does
+
+|
+Capability|
+What it catches|
+
+|
+Semantic command analysis|
+Detects the intent of rm -rf on destructive targets, git reset --hard, git checkout --, git push --force, git stash clear, git clean -f, unsafe find -delete, dd, mkfs, and shred. It allows git checkout -b feature but blocks git checkout -- file.|
+
+|
+Shell wrapper detection|
+Finds destructive commands inside bash -c, sh -c, and similar wrappers. It analyzes nested wrappers up to 10 levels deep.|
+
+|
+Interpreter one-liners|
+Finds destructive code in python -c, node -e, ruby -e, and perl -e one-liners such as os.system("rm -rf /").|
+
+|
+Fail-closed by default|
+Blocks malformed hook input and, in strict mode, commands it cannot parse. Invalid configuration never blocks. CC Safety Net drops an unverifiable rule source and uses protective defaults when it cannot read policy.json. It reports these states in block messages, doctor, the status line, and the GUI.|
+
+|
+Secret protection|
+Blocks content access to SSH keys, .env files, ~/.aws, Kubernetes, Docker, and gcloud configuration, and coding-CLI credential stores. The rules apply to shell commands and read, edit, write, and search tools.|
+
+|
+Custom rules via rulebooks|
+Lets you add blocking rules at user or project scope. CC Safety Net pins rulebooks fetched from GitHub by SHA-256 digest.|
+
+|
+Audit logging|
+Writes allowed and blocked command decisions to local per-project JSONL, redacts secrets, and keeps records for 30 days by default. Browse them with npx cc-safety-net logs, or review them in the Activity view of npx cc-safety-net gui.|
+
+Full rule catalogs: Blocked Commands · Allowed Commands · Secret Protection.
+
+## Why not just use a sandbox?
+
+A workspace-writable sandbox still permits git reset --hard, git push --force, and rm -rf . inside the project directory. The operating system sees writes to an allowed path. A sandbox limits where a process can write. CC Safety Net blocks destructive operations inside that allowed area. Use both. See vs Sandboxing.
+
+## Safety presets
+
+Set a session safety preset with the GUI npx cc-safety-net gui then navigate to the policy tab:
+
+|
+Preset|
+Effect|
+
+|
+Standard|
+Blocks recognizable destructive Git and filesystem commands. Allows metadata-only checks of built-in sensitive paths while continuing to block content access. Recommended for normal coding.|
+
+|
+Strict|
+Standard, plus blocks dynamic or unparseable commands the analyzer cannot verify safely and metadata-only discovery of built-in sensitive paths. Occasional false positives on advanced shell.|
+
+|
+Paranoid|
+Strict, plus blocks rm -rf inside your project and interpreter one-liners. Expect friction; for untrusted agents or high-stakes repos.|
+
+## Diagnostics and tracing
+
+# Summarize what is being enforced right now
+npx cc-safety-net status
+# Verify your installation and run a self-test
+npx cc-safety-net doctor
+# Trace how a command is analyzed step-by-step
+npx cc-safety-net explain "git reset --hard"
+# Browse recorded denials from the audit trail (add --all to include allowed commands)
+npx cc-safety-net logs
+# Review what was blocked and edit your policy in a local web GUI
+npx cc-safety-net gui
+
+doctor, explain, and logs support --json for machine-readable output. The audit trail stays on your machine. It records command decisions, but it does not record command output or prompts.
+
+Details: CLI Commands · Explain Trace · Audit Log · Dashboard · Configuration Recovery.
+
+## Library API
+
+Node.js hosts that need an in-process allow or deny decision can call the command-check
+function directly instead of installing an agent integration:
+
+npm install cc-safety-net
+
+import { checkCommand } from 'cc-safety-net/api';
+
+function commandIsAllowed(command: string, cwd: string): boolean {
+ try {
+ const result = checkCommand({ command, cwd });
+ if (result.kind === 'allow') return true;
+ console.error(result.reason);
+ return false;
+ } catch (error) {
+ console.error('CC Safety Net could not check the command', error);
+ return false;
+ }
+}
+
+if (commandIsAllowed('git status', process.cwd())) {
+ // The host can now decide how to run the command.
+}
+
+Usage rules:
+
+- cwd is required and must be an absolute directory path. It anchors relative command
+targets and selects the project policy.
+
+- A deny result means the host must not execute the command. If checkCommand throws,
+do not execute the command either.
+
+## Limitations
+
+CC Safety Net denies a tool call before it runs. It does not enforce filesystem permissions, inspect network egress, or contain a process. Two v2 limits matter. First, the policy and sensitive-path command extractors remain mainly POSIX-oriented. Native PowerShell path expressions such as Get-Content $HOME\.ssh\id_rsa can evade static path extraction. Second, policy-file protection is a best-effort exact-path guard. It does not emulate commands. Use operating-system permissions, a sandbox, or equivalent runtime controls when you need complete protection.
+
+Codex has one integration-specific limit. Its unified exec path is the default on macOS and Linux. It sends a hook payload when a command starts a session, but it sends none for write_stdin. CC Safety Net can inspect and audit the command that opens the session. It cannot inspect or audit text that the model types into the running session. Codex emits no event for that call, so an adapter change cannot close this gap.
+
+SECURITY.md contains the full residual-risk registry. Known Limitations explains what those risks mean in practice.
+
+## Upgrading from an older version
+
+Run the update command from Quick start to upgrade every installed integration to the current release.
+
+[!WARNING]
+If you defined custom rules in a legacy inline config such as .safety-net.json or ~/.cc-safety-net/config.json, CC Safety Net no longer loads those files at runtime. Their rules enforce nothing. Normal use does not show this failure because the commands now run. Run npx -y cc-safety-net rule migrate to convert the rules to the rulebook layout. Then run npx -y cc-safety-net doctor and confirm that the runtime is ready. See the migration guide.
+
+## Full documentation
+
+The ccsafetynet.com/docs site contains the full documentation:
+
+|
+Area|
+Pages|
+
+|
+Get started|
+Introduction · Installation · Quickstart · How It Works · Dashboard|
+
+|
+Configuration|
+Modes · Policy · Environment · Custom Rules · Status Line · Configuration Recovery|
+
+|
+Reference|
+Blocked Commands · Allowed Commands · Secret Protection · Audit Log · CLI Commands · Explain Trace · Glossary|
+
+|
+Guides|
+Architecture · Analysis Engine · Design Principles · Security Model · vs Sandboxing · Integration Architecture · Known Limitations · Troubleshooting|
+
+|
+Project|
+Contributing · Security Policy|
+
+## Development
+
+See CONTRIBUTING.md to contribute to the project.
+
+## License
+
+MIT
+
+Earendil Inc. & Contributors
+Press Kit
+MIT License
+
+AutoLightDark
+pi.dev domain graciously donated by exe.dev

@@ -1,0 +1,134 @@
+Copy SVGDownload SVGPress Kit
+HomeDocumentationNewsPackagesModels
+
+Home→Documentation→News→Packages→Models→
+
+GitHubnpmDiscordX
+
+Earendil Inc.
+
+# pi-all-search
+
+All-in-one web search extension for Pi — exa, tavily, anysearch, firecrawl, context7
+Packages
+## Package details
+extension
+
+Install pi-all-search from npm and Pi will load the resources declared by the package manifest.
+
+ npm repohome report
+
+$ pi install npm:pi-all-searchCopy
+Packagepi-all-searchVersion1.1.1PublishedAug 28, 2026Downloads617/mo · 340/wkAuthoralexandre_aiLicenseMITTypesextensionSize53.6 KBDependencies4 dependencies · 0 peersPi manifest JSON{
+ "extensions": [
+ "./extensions"
+ ]
+}
+
+## Security note
+
+Pi packages can execute code and influence agent behavior. Review the source before installing third-party packages.
+
+## README
+
+# pi-all-search
+
+All-in-one web search extension for Pi — exa, tavily, anysearch, firecrawl, context7.
+
+## Install
+
+pi install npm:pi-all-search
+
+## Configure
+
+Set API keys in ~/.pi/agent/extensions/pi-all-search/config.json:
+
+{
+ "apiKeys": {
+ "exa": "exa-...",
+ "tavily": "tvly-...",
+ "anysearch": "as_sk_...",
+ "firecrawl": "fc-...",
+ "context7": "ctx7sk_..."
+ },
+ "provider": "auto",
+ "cacheTtlMs": 300000,
+ "maxResults": 5
+}
+
+Or set environment variables: EXA_API_KEY, TAVILY_API_KEY, ANYSEARCH_API_KEY, FIRECRAWL_API_KEY, CONTEXT7_API_KEY.
+
+Firecrawl works without a key (IP-based free credits). Office NAT / CI sharing an egress IP share the keyless daily credits.
+
+## Usage
+
+web_search({ query: "TypeScript best practices" })
+web_search({ queries: ["React vs Vue", "Angular vs Svelte"] })
+web_search({ query: "AAPL stock price", provider: "anysearch" })
+web_search({ query: "rust async programming", provider: "tavily" })
+web_search({ query: "Next.js caching", provider: "context7" })
+web_search({ query: "library for incremental PDF parsing", provider: "firecrawl-dev" })
+
+## Providers
+
+|
+Provider|
+Best For|
+Env Var|
+
+|
+exa|
+Academic papers, scholarly search|
+EXA_API_KEY|
+
+|
+tavily|
+General web, programming, fast results|
+TAVILY_API_KEY|
+
+|
+anysearch|
+Finance, stocks, structured data|
+ANYSEARCH_API_KEY|
+
+|
+firecrawl|
+Scraping-heavy sites, fallback|
+FIRECRAWL_API_KEY|
+
+|
+firecrawl-dev|
+Firecrawl Developer Index: repo discovery, issues, PRs, OpenAPI specs, skills (semantic artifact index)|
+FIRECRAWL_API_KEY|
+
+|
+context7|
+Library/framework/API documentation|
+CONTEXT7_API_KEY|
+
+## Routing
+
+Automatic intent-based routing:
+
+- Finance queries → anysearch → exa → tavily
+
+- Academic queries → exa → anysearch → tavily
+
+- General queries → tavily → exa → anysearch → firecrawl
+
+- Docs queries → context7 → exa → tavily
+
+- Technical queries (github/repo/issue/PR/commit) → firecrawl-dev → firecrawl → exa → tavily
+
+Override with provider="exa" etc.
+
+## License
+
+MIT
+
+Earendil Inc. & Contributors
+Press Kit
+MIT License
+
+AutoLightDark
+pi.dev domain graciously donated by exe.dev

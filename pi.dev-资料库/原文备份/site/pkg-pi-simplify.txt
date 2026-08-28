@@ -1,0 +1,83 @@
+Copy SVGDownload SVGPress Kit
+HomeDocumentationNewsPackagesModels
+
+Home→Documentation→News→Packages→Models→
+
+GitHubnpmDiscordX
+
+Earendil Inc.
+
+# pi-simplify
+
+A Pi extension that reviews recently changed code for clarity, consistency, and maintainability.
+Packages
+## Package details
+extension
+
+Install pi-simplify from npm and Pi will load the resources declared by the package manifest.
+
+ npm repohome report
+
+$ pi install npm:pi-simplifyCopy
+Packagepi-simplifyVersion0.2.3PublishedJul 17, 2026Downloads41K/mo · 12.8K/wkAuthormdevyLicenseMITTypesextensionSize27.7 KBDependencies0 dependencies · 4 peersPi manifest JSON{
+ "extensions": [
+ "dist/index.js"
+ ]
+}
+
+## Security note
+
+Pi packages can execute code and influence agent behavior. Review the source before installing third-party packages.
+
+## README
+
+# pi-simplify
+
+A Pi extension that reviews recently changed code for clarity, consistency, and maintainability improvements.
+
+## Installation
+
+pi install npm:pi-simplify
+
+## Usage
+
+### Review all uncommitted changes
+
+/simplify
+
+### Review only staged changes
+
+/simplify --staged
+
+### Review specific files
+
+/simplify src/foo.ts src/bar.ts
+
+### Diff against a specific branch
+
+/simplify --ref=main
+
+## What it does
+
+When invoked, /simplify detects changed files and line ranges (via git diff) and instructs the agent to review only those changed lines with these principles:
+
+- Preserve functionality: never change what the code does
+
+- Apply project standards: follow conventions from CLAUDE.md / AGENTS.md
+
+- Enhance clarity: reduce complexity, eliminate redundancy, improve naming
+
+- Maintain balance: avoid over-simplification
+
+The agent may read surrounding code for context, but edits stay within the changed line ranges. Newly added files are reviewed in full. It applies improvements one file at a time, runs tests to verify nothing breaks, and summarises the changes.
+
+## License
+
+MIT
+
+Earendil Inc. & Contributors
+Press Kit
+MIT License
+
+AutoLightDark
+pi.dev domain graciously donated by exe.dev

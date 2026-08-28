@@ -1,0 +1,19 @@
+运行时间: 2026-08-28 12:25:43
+
+【来源 1】GitHub 仓库 earendil-works/pi（文档/说明/更新日志）
+  API 不可用（HTTPError），使用内置清单（不影响更新）
+  + 新增: packages/ai/README.md -> pi.dev-资料库/原文备份/仓库包介绍/ai-README.md
+  + 新增: packages/agent/README.md -> pi.dev-资料库/原文备份/仓库包介绍/agent-README.md
+  + 新增: packages/tui/README.md -> pi.dev-资料库/原文备份/仓库包介绍/tui-README.md
+  仓库资料合计成功 41 个，失败 0 个
+
+【来源 2】pi.dev 网站（页面快照）
+  * 快照有变化: packages-catalog.txt
+  网站快照合计成功 26 个，失败 0 个
+
+【文档对照版状态】
+  官方文档英文原文齐全（30 篇）。
+  提示: 若上方『* 已更新』出现 docs/*.md，说明英文原文有变化，
+  对应的 01-文档/ 中英对照版可能滞后，需要重新翻译该篇。
+
+耗时 14.5 秒。中英对照版与 README 索引不受影响。

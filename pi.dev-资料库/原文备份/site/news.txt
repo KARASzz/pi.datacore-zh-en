@@ -1,0 +1,803 @@
+Copy SVGDownload SVGPress Kit
+HomeDocumentationNewsPackagesModels
+
+Home→Documentation→News→Packages→Models→
+
+GitHubnpmDiscordX
+
+Earendil Inc.
+
+# News
+
+Release notes, project updates, and announcements from the Pi team.
+ChangelogRSS Feed
+Release notesAug 24, 2026
+
+## Pi 0.84.3
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- PowerShell tool — Use optional native PowerShell command execution on Windows. See PowerShell Tool.
+
+- Safer managed updates — Stage, verify, and atomically activate updates for installer-managed installations. See Install and Manage.
+
+- Model and thinking controls — Select thinking levels with /thinking, search defaults, keep selections session-scoped, and persist them explicitly with Ctrl+S. See Models and Thinking.
+
+### Breaking Changes
+
+- Renamed the inherited GoogleThinkingLevel type to GoogleApiThinkingLevel and added ResolvedGoogleThinkingLevel for normalized adapter levels.
+
+### Added
+
+- Added an optional powershell tool for Windows, configurable through defaultTools and the SDK. See PowerShell Tool.
+
+- Added a /thinking selector and searchable default choices to the model and thinking selectors; Ctrl+S saves the selected model as the global default. See Models and Thinking.
+
+- Added optional routing session IDs to exported compaction summary helpers so callers can preserve provider routing without enabling prompt cache writes.
+
+- Added
+
+usage notices for compaction and branch summaries when cache miss notices are enabled.
+
+- Added session_compact_failed extension events so compaction failures and aborts expose their reason, retry state, source, and error message to handlers (#8175).
+
+- Added inherited provider-neutral toolChoice support to simple stream requests.
+
+- Added inherited automatic Anthropic server-side refusal fallback for supported first-party models, including returned-model usage pricing (#8017).
+
+- Added inherited configurable OpenAI-compatible thinking-token budget fields for vLLM, Qwen/SGLang, and llama.cpp servers. See OpenAI Compatibility (#8275 by @bnsd55).
+
+- Added inherited China-specific ZAI Coding Plan models, including GLM-4.6V vision support and API-equivalent usage cost estimates (#8220).
+
+- Added inherited deepseek-v4-pro-0813 support to the Qwen Token Plan Individual catalog (#8194).
+
+### Changed
+
+- Changed experimental installer-managed installations so pi update stages, verifies, and atomically activates the selected release in place. See Install and Manage.
+
+- Changed inherited built-in xAI models to use the Responses API with encrypted reasoning replay and made Grok 4.6 the default xAI model (#8124 by @Jaaneek).
+
+- Changed inherited Anthropic, Azure OpenAI, Google, Mistral, and OpenAI adapters to send Pi's default User-Agent unless overridden (#8305).
+
+- Changed Windows and WSL keybinding defaults to avoid terminal-reserved shortcuts for image paste, model cycling, editor undo, fullscreen transcript navigation and search, and message queueing (#8372).
+
+- Changed Bun release archives to ship the native clipboard binary only inside the wrapper package, removing a duplicate platform package from each archive.
+
+- Changed package resource glob expansion to use Node.js's built-in implementation with deterministic visible-path matching, reducing the installed runtime dependency tree.
+
+- Changed the bundled Node.js runtime to load jiti only when importing an extension and Babel only when uncached source needs transformation, reducing CLI startup time and bundle size.
+
+- Changed syntax highlighting to initialize only twenty common languages eagerly and defer the remaining grammars until after the initial TUI render, reducing CLI startup time.
+
+- Changed the Node.js CLI and RPC entrypoints to load a bundled runtime, reducing startup filesystem reads while keeping the public library and legacy module paths on the modular runtime for normal dependency identity.
+
+- Changed session sharing to render clickable terminal links, display only the canonical Radius artifact URL, and include the current system prompt and active tool definitions in Radius session shares.
+
+Read more
+
+Release notesAug 14, 2026
+
+## Pi 0.84.2
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Fullscreen transcript search — Search and navigate matches in fullscreen mode. See TUI Fullscreen Viewport.
+
+- Configurable default tools — Choose startup built-in tools globally or per project. See Tools.
+
+- Configurable fullscreen exit output — Print the transcript or only a resume hint on exit. See Interactive Mode.
+
+### Added
+
+- Added fullscreen transcript search with Ctrl+Shift+F, incremental match highlighting, configurable search match theme colors, and next/previous navigation with Enter/Ctrl+G and Shift+Enter/Ctrl+Shift+G.
+
+- Added experimental strict JSON-schema constrained sampling for the default read, bash, edit, and write tools under PI_EXPERIMENTAL=1.
+
+- Added a fullscreen exit output setting to choose between printing the final transcript and only a session resume hint.
+
+- Added the defaultTools setting for configuring the initial built-in tool selection globally or per project.
+
+- Added --use-theme <name[/name]> to choose an initial per-run interactive theme without changing saved settings (#7722 by @rwachtler).
+
+- Added expandPromptTemplates to extension pi.sendUserMessage() options for explicitly dispatching commands and expanding skills and prompt templates. See pi.sendUserMessage() (#7857 by @mrexodia).
+
+- Added inherited createGatewayBindingFetch() for routing Cloudflare AI Gateway requests through a Workers AI binding without an API token (#7901 by @Maximo-Guk).
+
+- Added inherited AssistantMessage.endTurn to preserve OpenAI Codex's terminal end_turn signal for diagnostics (#7766).
+
+- Added inherited unbound single-line transcript scrolling actions for fullscreen mode. See TUI Fullscreen Viewport (#7903 by @midastruth).
+
+### Changed
+
+- Changed inherited Kimi Coding requests to use pi's runtime User-Agent header.
+
+- Replaced the inherited Mistral SDK transport with a native Chat Completions HTTP stream, eliminating its generated client and schema runtime overhead.
+
+- Documented the generic AI_AGENT=pi process marker and how it differs from PI_CODING_AGENT=true (#7747).
+
+- Changed inherited OpenAI Responses deferred tool loading to prefer message-anchored additional_tools where supported while retaining tool-search and top-level fallbacks (#7709).
+
+- Reduced inherited fullscreen rendering allocation churn by painting full-width layout rows directly instead of recompositing them on every frame.
+
+Read more
+
+Release notesAug 7, 2026
+
+## Pi 0.84.1
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Qwen Token Plan Individual — Use the built-in provider for models documented for Individual subscriptions. See API Keys.
+
+- Authentication readiness checks — Use pi auth check to verify provider or model credentials, optionally emitting the resolved credential.
+
+- Improved fullscreen interaction — Select words and paragraphs with multiple clicks and configure half-page transcript scrolling. See TUI Fullscreen Viewport.
+
+- Terminating blocked tool calls — Extension tool_call handlers can stop all-terminating batches without another model call. See Tool Events.
+
+### Added
+
+- Added Qwen Token Plan Individual as a built-in provider with its documented subscription model catalog and the shared international QWEN_TOKEN_PLAN_API_KEY. See API Keys (#7659 by @arasovic).
+
+- Added pi auth check provider/model auth preflight with optional credential output (#7152).
+
+- Added terminate support to blocked extension tool_call events so all-terminating batches can skip the automatic follow-up model call. See Tool Events (#7715 by @muyiyr).
+
+- Added inherited double-click word and whitespace selection, granularity-aware drag selection, and triple-click paragraph selection in fullscreen mode (#7725, #7733 by @volsa).
+
+- Added inherited unbound half-page transcript scrolling actions for fullscreen mode. See TUI Fullscreen Viewport (#7735).
+
+### Changed
+
+- Softened the bash tool's PI_* environment guideline in an attempt to reduce unnecessary inspection commands (#7128).
+
+- Reduced worst-case automatic terminal theme detection delay from 200 ms to 100 ms by probing color-scheme and background support concurrently.
+
+Read more
+
+Release notesAug 6, 2026
+
+## Pi 0.84.0
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Fullscreen TUI mode — Switch between regular and fullscreen modes at runtime, with a sticky editor and footer, independently scrollable transcript, and draggable scrollbars. See UI & Display.
+
+- Mermaid and LaTeX rendering — Render Mermaid diagrams and terminal-friendly Unicode math in interactive transcripts. See Markdown settings and TUI Markdown.
+
+- Per-directory context overrides — Use AGENTS.override.md to replace context files for a specific directory. See Context Files.
+
+- Advanced custom model sampling — Configure arbitrary OpenAI-compatible samplingParams and opt-in vLLM thinking_token_budget values. See Sampling Parameters.
+
+- Baseten provider — Use built-in Baseten authentication and model support. See API Keys.
+
+### Breaking Changes
+
+- 
+Renamed the inherited pi-ai ModelsStreamTransforms interface to ModelsRequestTransforms because its header transformation now applies to all authenticated provider requests.
+
+- 
+Changed JSON and RPC message_update events to emit only assistantMessageEvent deltas, removing the cumulative message and assistantMessageEvent.partial fields that caused quadratic output growth. Clients that need partial messages must assemble deltas between message_start and message_end; the latter remains authoritative (#7290).
+
+- 
+ModelRegistry.getApiKeyAndHeaders() now returns ProviderHeaders with string | null values and preserves null header-deletion markers. Extensions that inspect returned headers must handle null; extensions forwarding them to pi-ai streams should pass them through unchanged. This prevents placeholder OpenAI credentials from being sent through Cloudflare AI Gateway (#7030).
+
+- 
+Changed ModelRegistry.refresh() to accept ModelsRefreshOptions and return ModelsRefreshResult instead of discarding cancellation and provider errors.
+
+- 
+Changed ModelRuntime.setRuntimeApiKey() to accept auth cancellation options rather than catalog refresh options. Call refresh({ providers: [providerId], signal }) separately when remote freshness is required.
+
+- 
+Required config-form extension OAuth refreshToken(credentials, signal) callbacks to accept and honor a concrete abort signal.
+
+- 
+Replaced dynamic provider refresh context store access with the read-only context.stored snapshot and generation-checked context.publish() transaction.
+
+Providers built with createProvider({ fetchModels }): no catalog-publication migration is required. Before and after, return the fetched models and register the resulting provider; createProvider() owns restoration, persistence, and in-memory publication.
+
+// Before
+const beforeProvider = createProvider({
+ // ...
+ fetchModels: async ({ signal }) => {
+ const response = await fetch(catalogUrl, { signal });
+ return parseModels(await response.json());
+ },
+});
+pi.registerProvider(beforeProvider);
+
+// After: unchanged
+const afterProvider = createProvider({
+ // ...
+ fetchModels: async ({ signal }) => {
+ const response = await fetch(catalogUrl, { signal });
+ return parseModels(await response.json());
+ },
+});
+pi.registerProvider(afterProvider);
+
+Handwritten native Provider.refreshModels(): replace direct store access and pre-publication mutation with generation-guarded publications.
+
+// Before
+refreshModels: async (context) => {
+ const stored = await context.store.read();
+ if (stored) currentModels = stored.models;
+ if (!context.allowNetwork) return;
+
+ const refreshed = await fetchModels(context.signal);
+ currentModels = refreshed;
+ await context.store.write({ models: refreshed, checkedAt: Date.now() });
+},
+
+// After
+refreshModels: async (context) => {
+ if (context.stored) {
+ const restored = context.stored.models;
+ if (!(await context.publish({
+ update: () => { currentModels = restored; },
+ }))) return;
+ }
+ if (!context.allowNetwork) return;
+
+ const refreshed = await fetchModels(context.signal);
+ if (context.signal.aborted) return;
+ await context.publish({
+ persist: { models: refreshed, checkedAt: Date.now() },
+ update: () => { currentModels = refreshed; },
+ });
+},
+
+For the config-form pi.registerProvider(name, { refreshModels }), callbacks that only return models remain unchanged; pi publishes the returned list. If such a callback previously used context.store for custom persistence, read context.stored and call context.publish({ persist: entry }). In publish(), omit persist to leave storage unchanged, pass a ModelsStoreEntry to write it, or pass persist: null to delete it.
+
+- 
+Replaced the inherited pi-agent-core harness session model with the v4 lane-based Session, SessionStorage, and SessionRepo APIs, including durable operation records, global facts, shared sequence numbers, and tree-scoped lane views.
+
+- 
+Promoted the inherited v2 session and AgentHarness API from pi-agent-core's experimental entrypoint to its default export and removed the experimental subpaths.
+
+- 
+Removed the inherited legacy JSONL and in-memory repository APIs. Use pi-agent-core's v4 JsonlSessionRepo or InMemorySessionRepo, both implementing the new SessionRepo contract.
+
+- 
+Added the inherited required pi-agent-core FileSystem.renameFile() operation for atomic JSONL publication; custom harness file-system implementations must provide same-filesystem replacement semantics (#7707 by @davidbrai).
+
+- 
+Replaced experimental remote-session list summaries with durable SessionMetadata; RemoteSession.sessions no longer exposes runtime phase, model, thinking, attachment, or lock state, which remains available from acquired SessionSnapshot values (#7708).
+
+### Added
+
+- Added built-in Baseten provider support with BASETEN_API_KEY authentication and zai-org/GLM-5.2 as the default model.
+
+- Added experimental remote-session client APIs: the transport-neutral PiClient, CBOR protocol, Unix-socket transport, and @earendil-works/pi-coding-agent/client RemoteSession controller with transcript reducers. See Pi Client and Remote Protocol (#7344, #7348, #7371, #7409).
+
+- Added CredentialSynchronizationError for credential changes that commit successfully but fail to synchronize local model state.
+
+- Added chainable pi.registerMarkdownTransformer() hooks for display-only transformation of user and assistant Markdown. See pi.registerMarkdownTransformer() (#7231 by @xl0).
+
+- Added an experimental fullscreen TUI mode, selectable through --tui-mode fullscreen or /settings (#7304).
+
+- Added runtime switching between regular and fullscreen TUI modes through /settings.
+
+- Added a sticky editor, status, widget, and footer dock to fullscreen mode while keeping the transcript independently scrollable.
+
+- Added a draggable transcript scrollbar to fullscreen mode with configurable auto, always, and hidden modes through /settings; always reserves the rightmost column.
+
+- Added page scrolling and marked-message navigation shortcuts to fullscreen mode.
+
+- Added an optional scrollbarThumb theme color for fullscreen scrollbar thumbs, falling back to selectedBg.
+
+- Added configurable themed Unicode rendering for supported Mermaid diagrams in interactive messages, including optional rendering while streaming. See Markdown settings (#7624 by @xl0).
+
+- Added opt-in Ctrl+P/Ctrl+N prompt history navigation, with explicit history bindings taking precedence over application shortcuts while the editor is focused.
+
+- Added per-directory AGENTS.override.md context files, which replace AGENTS.md or CLAUDE.md in the same directory while preserving context from other directories. See Context Files (#7681 by @Marvae).
+
+- Added AI_AGENT=pi to CLI and RPC child-process environments for generic agent attribution. See Environment Variables (#7493 by @renaudhartert-db).
+
+- Added inherited terminal-friendly Unicode rendering for LaTeX expressions in Markdown. See TUI Markdown.
+
+- Added stacked transient notifications in fullscreen mode.
+
+- Added arbitrary OpenAI-compatible model sampling parameters through samplingParams in models.json, model overrides, extension providers, and stream options. See Sampling Parameters (#7568 by @mrexodia).
+
+- Added inherited opt-in vLLM thinking_token_budget support for OpenAI-compatible models, reserving output tokens for the final answer (#7638 by @bnsd55).
+
+- Added inherited support for OpenAI-compatible streams that omit finish_reason, using compat.supportsFinishReason to infer normal and tool-use stops when the stream ends. See OpenAI Compatibility.
+
+- Added inherited deferred provider request contracts, durable response handles, authenticated fetch/cancel dispatch, and faux-provider support for pending, ready, failed, and cancelled responses (#7339 by @davidbrai).
+
+- Added inherited vendor-neutral telemetry contracts plus agent-owned typed AI-request and harness schemas, composed span starters, and callback helpers. See the agent telemetry schema reference.
+
+- Added inherited structured Amazon Bedrock failure diagnostics with HTTP status, modeled error code, and AWS request id when available (#7286 by @brianstanley).
+
+- Added inherited AgentOptions.shouldStopAfterTurn for gracefully stopping after a completed turn before queued messages or another model call are processed. See Agent Options (#7367 by @acmerfight).
+
+- Added inherited v4 JsonlSessionRepo support for append-only JSONL harness sessions (#7611 by @davidbrai).
+
+- Added inherited bounded branch-entry and indexed open-operation recovery queries to the v4 session API (#7448, #7646).
+
+- Added the inherited compile-complete AgentHarness v2 scaffold; unfinished operation paths reject with HarnessNotImplemented while durable execution is implemented.
+
+### Changed
+
+- Added inherited optional cancellation to pi-ai ModelsStore reads, writes, and deletions; catalog orchestration binds these waits to the provider refresh signal.
+
+- Reduced the inherited default fullscreen mouse wheel step from three lines to one for finer scrolling.
+
+Read more
+
+Release notesJul 29, 2026
+
+## Pi 0.83.0
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Credential export for external clients — pi auth print-api-key and pi auth print-bearer-token export configured credentials with automatic OAuth refresh and minimum-validity enforcement.
+
+- Headless OpenRouter sign-in — Complete /login over SSH by pasting the redirect URL or authorization code when the loopback callback is unavailable. See OpenRouter.
+
+- Claude Opus 5 on GitHub Copilot — Use Claude Opus 5 through GitHub Copilot with adaptive thinking and a 1M context window. See GitHub Copilot.
+
+### Breaking Changes
+
+- Upgraded bundled TypeBox aliases to 1.3.7, removing deprecated APIs including Type.Base, Type.Awaited, Type.Promise, Type.AsyncIterator, Type.Iterator, Type.Options, and Value.Mutate, while fixing compiled validation of nullable array tool arguments. Extensions using removed APIs must migrate to supported TypeBox APIs. See Package Dependencies (#7243 by @petrroll).
+
+### Added
+
+- Added pi auth print-api-key and pi auth print-bearer-token commands for exporting configured credentials to external clients, including automatic OAuth refresh and configurable minimum token validity (#7168).
+
+- Exposed the session's resolved model scope as ctx.scopedModels to extensions. See Extension Context (#7191 by @pungggi, #7215).
+
+- Added inherited per-request fetch injection for supported text and image provider transports.
+
+- Added the inherited "pending" stop reason for partial streaming messages. See Custom Provider Stream Pattern (#7151 by @lucasmeijer).
+
+- Added inherited raw provider stop reasons across Google, Anthropic, Amazon Bedrock, Mistral, and OpenAI streams; unmapped terminal reasons now surface as provider errors instead of successful stops (#7272).
+
+- Added manual redirect URL and authorization-code entry to OpenRouter login for remote and headless environments. See OpenRouter (#7114 by @rgarcia).
+
+- Added inherited Claude Opus 5 support for GitHub Copilot with adaptive thinking and a 1M context window. See GitHub Copilot (#7158 by @jay-aye-see-kay).
+
+### Changed
+
+- Changed inherited OAuth credential resolution to refresh tokens with less than five minutes of validity remaining instead of waiting until expiration (#7168).
+
+Read more
+
+Release notesJul 25, 2026
+
+## Pi 0.82.1
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Claude Opus 5 — Available on Anthropic and Amazon Bedrock with adaptive thinking (including xhigh), inference profiles, and prompt caching. See Providers.
+
+- Anthropic gateway bearer auth — ANTHROPIC_AUTH_TOKEN authenticates against Anthropic-compatible gateways that require Authorization: Bearer, including compaction and branch summaries. See Environment Variables or Auth File.
+
+- Faster, more resilient model catalogs — pi.dev catalogs revalidate with If-None-Match so unchanged providers answer with an empty 304, and llama.cpp models stay listed across restarts. See llama.cpp.
+
+### Added
+
+- Exposed the outputPad setting to custom message renderers. See Extensions (#7045 by @xl0).
+
+- Added inherited ANTHROPIC_AUTH_TOKEN bearer authentication for Anthropic-compatible gateways. See Providers (#5871).
+
+- Added inherited Claude Opus 5 support for Anthropic and Amazon Bedrock with adaptive thinking, inference profiles, prompt caching, and preserved AWS validation messages (#7081 by @unexge, #7083 by @davidbrai).
+
+### Changed
+
+- Changed pi.dev model catalog refreshes to revalidate with If-None-Match, so unchanged provider catalogs answer with an empty 304 instead of a full download.
+
+- Changed inherited Radius OAuth device authorization, token exchange, and refresh requests to use the configured gateway directly.
+
+- Changed inherited model loading errors to append the underlying cause, so auth failures such as OAuth refresh failed for openai-codex report the provider response instead of a bare wrapper message.
+
+Read more
+
+Release notesJul 24, 2026
+
+## Pi 0.82.0
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Constrained tool sampling — Tools can prefer or require strict JSON Schema sampling or use OpenAI Lark/regex grammars, with model capability metadata preventing unsupported requests. See Constrained Sampling for Tools.
+
+- OpenRouter and Kimi Code sign-in — Use /login to authorize OpenRouter or a Kimi Code subscription without manually configuring API keys. See OpenRouter.
+
+- Session-aware, streaming bash integrations — Bash tools receive current session/model metadata, while direct RPC bash commands stream correlated output. See Bash Tool Session Environment and RPC bash events.
+
+### Added
+
+- Added inherited Tool.constrainedSampling with strict JSON Schema (prefer/require) and OpenAI Lark/regex grammar variants across OpenAI, Anthropic, Amazon Bedrock, Google Gemini, and Mistral. See Constrained Sampling for Tools.
+
+- Added inherited supportsGrammarTools and supportsStrictTools compatibility flags, expanded supportsStrictMode coverage, and generated model capability metadata to gate constrained sampling.
+
+- Added inherited Kimi Code subscription OAuth login for the Kimi For Coding provider, including device authorization and automatic token refresh (#6935 by @zaycruz).
+
+- Added inherited OpenRouter OAuth PKCE login through /login, minting a user-controlled API key. See OpenRouter (#6927 by @rsaryev).
+
+- Exposed PI_SESSION_ID, PI_SESSION_FILE, PI_PROVIDER, PI_MODEL, and PI_REASONING_LEVEL to commands run by built-in and factory-created bash tools. See Bash Tool Session Environment.
+
+- Added streaming bash_execution_update events for direct RPC bash commands, correlated with request IDs. See RPC bash events (#6971 by @ananthakumaran).
+
+### Changed
+
+- Changed inherited generated model catalogs to expose only provider-verified reasoning effort levels from models.dev (#6928 by @davidbrai).
+
+Read more
+
+Release notesJul 21, 2026
+
+## Pi 0.81.1
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Verifiable release source archives — GitHub releases now include deterministic, checksummed source archives with instructions for rebuilding standalone binaries. See Building standalone binaries from release source.
+
+- Resilient compaction and branch summaries — Transient provider failures now follow the configured retry policy, with retry lifecycle events available to interactive, JSON, RPC, and SDK consumers. See Compaction & Branch Summarization and RPC retry events.
+
+### Added
+
+- Added deterministic, checksummed source archives to GitHub releases with documented standalone binary rebuild instructions (#6913 by @christianklotz).
+
+Read more
+
+Release notesJul 21, 2026
+
+## Pi 0.81.0
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Local llama.cpp model management — Connect to a llama.cpp router, search and download Hugging Face models, and explicitly load or unload models with live progress. See llama.cpp.
+
+- Full provider extensions — Extensions can register complete pi-ai providers with authentication, model refresh, filtering, and custom streaming. See Register New Provider.
+
+- Qwen Token Plan providers — Use the built-in international and China subscription providers with regional endpoints and API-key authentication. See API Keys.
+
+- Expanded usage accounting — Tool, compaction, and branch-summary usage is persisted and included in session totals. See Compaction & Branch Summarization.
+
+### Added
+
+- Added Qwen Token Plan and Qwen Token Plan China to built-in provider setup, default model resolution, and provider documentation (#6858 by @QuintinShaw).
+
+- Added the get_available_thinking_levels RPC command and RpcClient.getAvailableThinkingLevels() method (#6865 by @cristinaponcela).
+
+- Exported message and tool execution lifecycle event types from the package root (#6772 by @davidbrai).
+
+- Added built-in llama.cpp router support with /login connection setup and /llama Hugging Face model search and downloads, explicit loading, unloading, and live progress. See llama.cpp.
+
+- Added extension registration for complete pi-ai providers, including native authentication, model refresh, filtering, and streaming behavior.
+
+- Added usage accounting for tools, compaction, and branch summaries in persisted sessions, footer totals, and session statistics (#6671 by @davidbrai).
+
+Read more
+
+Release notesJul 16, 2026
+
+## Pi 0.80.10
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Kimi Coding thinking compatibility — Kimi Coding models now use adaptive thinking correctly; K3 exposes its supported max level and supports replaying empty-signature thinking blocks. See Kimi For Coding setup and Model Options.
+
+Read more
+
+Release notesJul 16, 2026
+
+## Pi 0.80.9
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Kimi K3 and deferred tool loading — Use Kimi K3 across built-in providers, including progressive extension tool activation through Kimi’s native protocol. See Dynamic Tool Loading, OpenAI Compatibility, and the kimi-deferred-tools.ts example.
+
+### Added
+
+- Added inherited Kimi K3 support for Kimi Coding, Moonshot AI, Moonshot AI China, OpenRouter, and Vercel AI Gateway.
+
+- Added Kimi deferred tool loading for extension-driven tool activation. See Dynamic Tool Loading, OpenAI Compatibility, and the kimi-deferred-tools.ts example.
+
+### Changed
+
+- Changed xAI login to use a prefilled device-authorization link labeled “Sign in with SuperGrok or X Premium,” and changed the default xAI model to Grok 4.5 (#6734 by @Jaaneek).
+
+### Removed
+
+- Removed Grok 3, Grok 3 Fast, Grok 4.20 variants, and Grok Code Fast 1 from the built-in xAI model catalog (#6734 by @Jaaneek).
+
+Read more
+
+Release notesJul 16, 2026
+
+## Pi 0.80.8
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Unified model runtime and provider authentication — ModelRuntime centralizes model configuration, provider-owned /login, and dynamic provider catalogs. See Providers.
+
+- Live model catalog refresh — /model refreshes configured providers in the background, and pi update --models forces an immediate refresh. See Install and Manage.
+
+- xAI device-code OAuth and Grok 4.5 Responses support — Sign in to xAI with a device code and use Grok 4.5 with low, medium, or high thinking. See xAI.
+
+### Breaking Changes
+
+- Replaced the SDK's CreateAgentSessionOptions.authStorage and modelRegistry options with the async modelRuntime option. AuthStorage and its storage backends are no longer exported; use ModelRuntime (or a custom pi-ai CredentialStore), or readStoredCredential() for one-off reads of auth.json.
+
+- Removed redundant ModelRuntime.getAll(), find(), getSnapshot(), and getAuthOptions() projections. Use the pi-ai Models methods getModels(), getModel(), getProviders(), and checkAuth() directly.
+
+- Replaced SDK request-auth assembly through ModelRegistry.getApiKeyAndHeaders() with ModelRuntime.getAuth(). Passing a provider ID returns provider-scoped auth; passing a model also resolves built-in, models.json, and extension model headers.
+
+- Changed extension-facing ModelRegistry.refresh() from synchronous void to Promise<void> because models.json loading is asynchronous. Extensions must await it before making synchronous registry reads.
+
+- Moved canonical dynamic catalog refresh to async ModelRuntime.refresh()/pi-ai Models.refresh(). Legacy extension OAuth modifyModels remains supported as a synchronous compatibility projection after credential initialization.
+
+### Added
+
+- Added ModelRuntime as the canonical async SDK and internal model/auth facade while preserving the synchronous extension-facing ModelRegistry API. ModelRuntime.create() accepts any pi-ai CredentialStore through its credentials option.
+
+- Added provider-owned /login discovery directly from registered pi-ai providers, including ambient auth status and informational links.
+
+- Added file-backed dynamic catalogs in models-store.json, per-provider pi.dev catalog overlays, and Radius gateway support including offline migration from legacy credential-cached catalogs.
+
+- Added extension provider refreshModels(context) support for dynamic model discovery with optional provider-controlled persistence.
+
+- Added pi update --models to force an immediate model catalog refresh without updating pi or extensions.
+
+- Added inherited xAI device-code OAuth login and Grok 4.5 OpenAI Responses support, with low, medium, and high thinking levels (#6651 by @Jaaneek).
+
+### Changed
+
+- Changed ModelRuntime to compose built-in providers, immutable models.json configuration, and extension overlays through ad-hoc pi-ai provider methods.
+
+- Changed ModelRuntime to own final request assembly: getAuth(model) includes configured model headers, stream methods resolve auth once, and before_provider_headers runs as the Models-only header transform before provider dispatch.
+
+- Changed /model to render the current model snapshot immediately, refresh configured providers in the background, and update the open selector with partial results or timeout errors.
+
+Read more
+
+Release notesJul 14, 2026
+
+## Pi 0.80.7
+
+New version of pi. Download from npm or view release on GitHub.
+
+### Breaking Changes
+
+- Removed the openai-responses compat.sendSessionIdHeader flag from models.json. Session-affinity behavior is now controlled by compat.sessionAffinityFormat ("openai", "openai-nosession", or "openrouter"). Replace sendSessionIdHeader: false with sessionAffinityFormat: "openai-nosession" (#6496 by @petrroll).
+
+### New Features
+
+- Cache-friendly dynamic tool loading - Extensions can add tools during execution while supported Anthropic and OpenAI Responses models preserve prompt-cache prefixes. See Dynamic Tool Loading.
+
+- Message copy shortcut - Ctrl+X copies the last assistant message in the transcript or the selected message in /tree, making older and branched messages directly copyable. See Display and Message Queue.
+
+- Fable 5 xhigh and max thinking - Native xhigh and max thinking levels are available across generated provider catalogs. See Model Options.
+
+### Added
+
+- Added cache-friendly dynamic tool loading for extension tools activated by tool results. Supported Anthropic and OpenAI Responses models load definitions where they become available, preserving the cached prompt prefix. See Dynamic Tool Loading (#6474).
+
+- Added inherited native xhigh and max thinking levels for Claude Fable 5 across all generated provider catalogs (#6490 by @davidbrai).
+
+- Added Ctrl+X to copy the last assistant message, or the selected message in /tree.
+
+- Added inherited toolChoice support for OpenAI and Codex Responses, including required and named tool selection (#6588 by @xl0).
+
+Read more
+
+Release notesJul 9, 2026
+
+## Pi 0.80.6
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- max thinking level - New opt-in thinking level above xhigh, natively supported on GPT-5.6 and adaptive Claude models, available across CLI (--thinking max), SDK, RPC, and model selection. Custom themes can define thinkingMax. See CLI Reference.
+
+- Input-based pricing tiers - Request-wide input-token pricing tiers for accurate long-context cost accounting (e.g. GPT-5.4/5.5/5.6 long-context rates), also configurable for custom models in models.json and modelOverrides. See Model Configuration.
+
+### Added
+
+- Added the opt-in max thinking level across CLI, SDK, RPC, model selection, and themes. Custom themes can define thinkingMax; existing themes fall back to thinkingXhigh.
+
+- Added request-wide input-token pricing tiers to custom model costs in models.json, modelOverrides, and extension-registered providers.
+
+- Added ~ (home directory) expansion for the shellPath setting (#6470 by @aaronkyriesenbach).
+
+Read more
+
+Release notesJul 9, 2026
+
+## Pi 0.80.4
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Prompt cache miss visibility - Significant cache misses can be shown in transcripts via showCacheMissNotices. See Model & Thinking.
+
+- Project-local resource configuration - pi config -l and Tab switching manage global vs project-local package resources. See Enable and Disable Resources.
+
+- Extension lifecycle and provider hooks - Extensions get agent_settled, before_provider_headers, entry renderers, and InlineExtension. See agent_start / agent_end / agent_settled, before_provider_headers, and InlineExtension.
+
+- New inherited model and transport support - GPT-5.6 metadata, Copilot Claude Sonnet 5, and zstd Codex SSE transport are available through inherited provider support. See Providers and Model Options.
+
+### Added
+
+- Added inherited OpenAI GPT-5.6 model metadata for gpt-5.6, gpt-5.6-sol, gpt-5.6-terra, and gpt-5.6-luna, plus verified openai-codex support for gpt-5.6-sol, gpt-5.6-terra, and gpt-5.6-luna.
+
+- Added inherited Claude Sonnet 5 to the GitHub Copilot model catalog (#6200).
+
+- Added inherited zstd request-body compression for the OpenAI Codex Responses SSE transport.
+
+- Added /login <provider> support with provider autocomplete.
+
+- Added public SDK exports for CLI-equivalent model and scoped-model resolution (#6201).
+
+- Added extension and RPC agent_settled events plus session-level idle waiting for fully settled agent runs (#6363).
+
+- Added before_provider_headers extension hook support for injecting provider request headers (#6350 by @pmateusz).
+
+- Added an InlineExtension type for named inline extension factories (#6267 by @any-victor).
+
+- Added extension entry renderers for persisted display-only session entries that are rendered in interactive mode without being sent to the model context.
+
+- Added project-local resource override management to pi config, including project mode startup with pi config -l and Tab switching between global and project scopes (#6309).
+
+- Added inherited InMemorySessionStorage and JsonlSessionStorage exports from the agent harness (#6435).
+
+- Added inherited custom metadata support in JSONL session headers (#6417 by @ArcadiaLin).
+
+- Added a showCacheMissNotices setting and /settings toggle for significant prompt-cache miss transcript notices.
+
+### Removed
+
+- Removed default attribution headers from Vercel AI Gateway requests.
+
+Read more
+
+Release notesJun 30, 2026
+
+## Pi 0.80.3
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Anthropic Claude Sonnet 5 support - Claude Sonnet 5 is available through inherited Anthropic-compatible and Bedrock provider catalogs with adaptive thinking enabled. See Providers and Model Options.
+
+- Configurable output spacing - outputPad controls horizontal padding for user messages, assistant messages, and thinking blocks. See Settings.
+
+- External editor configuration - externalEditor lets Ctrl+G use a configured editor before $VISUAL/$EDITOR fallbacks. See Settings and Keybindings.
+
+- Richer RPC session tree access - RPC clients can inspect session entries and tree snapshots with get_entries and get_tree. See get_entries and get_tree.
+
+- Extension session metadata updates - Extensions can observe session name changes through session_info_changed. See session_info_changed.
+
+- Modern Azure Foundry endpoint support - Azure OpenAI Responses provider setup supports current Microsoft Foundry endpoint URLs. See Azure OpenAI.
+
+### Added
+
+- Added inherited Anthropic Claude Sonnet 5 model support.
+
+- Added get_entries and get_tree RPC commands for reading session entries and tree snapshots over RPC (#6078 by @geraschenko).
+
+- Added a package ./rpc-entry export for launching Pi directly in RPC mode.
+
+- Added session-name change events for extensions (#6175 by @xl0).
+
+- Added inherited Azure OpenAI Responses support for modern Microsoft Foundry endpoint URLs (#6004 by @gukoff).
+
+- Added inherited Usage.reasoning token counts for providers that report reasoning/thinking token usage (#6057).
+
+- Added an externalEditor settings.json override for Ctrl+G external editor commands, with default fallbacks to Notepad on Windows and nano elsewhere (#6122).
+
+- Added an outputPad setting for user message, assistant message, and thinking horizontal padding (#6168).
+
+### Changed
+
+- Changed the default OpenAI model to gpt-5.5.
+
+- Changed inherited OpenAI Codex Responses SSE response-header waits to use the configured HTTP timeout instead of the previous fixed 20 second timeout, reducing false timeouts on slow connections (#4945).
+
+Read more
+
+Release notesJun 23, 2026
+
+## Pi 0.80.2
+
+New version of pi. Download from npm or view release on GitHub.
+
+### Changed
+
+- Changed inherited pi-ai ApiKeyCredential to use the auth.json-compatible discriminator type: "api_key" and provider-scoped env values instead of type: "api-key" and metadata.
+
+- Renamed the inherited agent-core public harness shell execution options type from ExecutionEnvExecOptions to ShellExecOptions.
+
+Read more
+
+Release notesJun 23, 2026
+
+## Pi 0.80.1
+
+New version of pi. Download from npm or view release on GitHub.
+
+### Fixed
+
+- Fixed inherited Amazon Bedrock scoped AWS_PROFILE endpoint resolution for built-in inference profile endpoints.
+
+- Fixed inherited Fireworks Anthropic-compatible requests to apply session-affinity and unsupported tool-field defaults for custom Fireworks models.
+
+- Fixed inherited Together MiniMax M2.7 metadata to avoid unsupported Together reasoning toggles.
+
+Read more
+
+Release notesJun 23, 2026
+
+## Pi 0.80.0
+
+New version of pi. Download from npm or view release on GitHub.
+
+### Changed
+
+- Added Ctrl+J as a default newline keybinding alongside Shift+Enter.
+
+- Renamed the displayed zai provider label to ZAI Coding Plan (Global) for clarity (#5965).
+
+- pi-ai's old global API (stream/complete/completeSimple, getModel/getModels/getProviders, registerApiProvider, getEnvApiKey, ...) moved off the @earendil-works/pi-ai root entrypoint to @earendil-works/pi-ai/compat. Extensions are not affected at runtime: the extension loader resolves the pi-ai root to the compat entrypoint (a strict superset), so existing extensions keep working unchanged. Extension sources that typecheck against pi-ai's published types should switch those imports to @earendil-works/pi-ai/compat (or migrate to the new createModels()/provider-factory API). The compat entrypoint and the loader alias will be removed in a future release with a migration guide.
+
+### Removed
+
+- Removed inherited selective-provider @earendil-works/pi-ai/base and @earendil-works/pi-agent-core/base entrypoints; use the root packages with explicit Models provider factories instead.
+
+Read more
+
+Release notesJun 22, 2026
+
+## Pi 0.79.10
+
+New version of pi. Download from npm or view release on GitHub.
+
+### New Features
+
+- Extension compaction event context - Extension session_before_compact and session_compact events now include reason and willRetry, so extensions can distinguish manual /compact, threshold auto-compaction, and overflow retry flows. See session_before_compact / session_compact and Custom Summarization via Extensions.
+
+- Safer update flow - pi update installs the exact checked Pi version, and update notices show the changelog URL, making upgrades more predictable. See Install and Manage.
+
+### Added
+
+- Added reason and willRetry metadata to extension session_before_compact and session_compact events so extensions can distinguish manual, threshold, and overflow compaction flows (#5962 by @PizzaMarinara).
+
+Read more
+
+← Previous123…14
+Next →Earendil Inc. & Contributors
+Press Kit
+MIT License
+
+AutoLightDark
+pi.dev domain graciously donated by exe.dev

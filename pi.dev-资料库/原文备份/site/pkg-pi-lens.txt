@@ -1,0 +1,263 @@
+Copy SVGDownload SVGPress Kit
+HomeDocumentationNewsPackagesModels
+
+Home→Documentation→News→Packages→Models→
+
+GitHubnpmDiscordX
+
+Earendil Inc.
+
+# pi-lens
+
+Real-time code feedback for pi — LSP, linters, formatters, type-checking, structural analysis & booboo
+Packages
+## Package details
+extensionskill
+
+Install pi-lens from npm and Pi will load the resources declared by the package manifest.
+
+ npm repohome report
+
+$ pi install npm:pi-lensCopy
+Packagepi-lensVersion4.1.2PublishedAug 24, 2026Downloads58K/mo · 25K/wkAuthorapmantzaLicenseMITTypesextension, skillSize22.7 MBDependencies6 dependencies · 3 peersPi manifest JSON{
+ "extensions": [
+ "./dist/index.js"
+ ],
+ "skills": [
+ "../../skills"
+ ]
+}
+
+## Security note
+
+Pi packages can execute code and influence agent behavior. Review the source before installing third-party packages.
+
+## README
+
+# pi-lens
+
+pi-lens gives AI coding agents fast, language-aware feedback while they write/edit.
+
+Working in this project as an AI agent? Read the agent guide
+for how pi-lens surfaces diagnostics (honesty labels, blockers, read-before-edit)
+and how to respond.
+
+## What It Does
+
+- LSP diagnostics and navigation across supported languages
+
+- Impact cascade diagnostics that show which related files were affected and run LSP diagnostics on them
+
+- Language-specific linters, type-checkers, and scanners on every write/edit
+
+- Safe formatting/autofix where tools are configured or confidently detected
+
+- ast-grep and tree-sitter structural rules for correctness/security smells
+
+- Agent-facing tools for LSP navigation/diagnostics, AST search/replace,
+diagnostics state, and project intelligence
+
+- Review-graph intelligence for supported languages via bundled tree-sitter WASMs
+
+- Ranked identifier search (symbol_search) over an always-warm word index,
+feeding the discovery funnel (symbol_search → module_report → read_symbol)
+
+- Diagnostic triage (lens_diagnostic_mark): findings can be marked
+false-positive, suppressed in source, deferred, or flagged-to-fix — honored
+across all surfaces
+
+- /lens-map — interactive HTML dependency map of the project
+
+- Read-guard and edit-autopatch support to reduce bad edits
+
+- Background security/dependency scans for opted-in projects
+
+- Runtime health telemetry (/lens-health) including a bounded degradation
+ledger for silently-degraded behavior (LSP breakers, formatter
+skips/failures, idle evictions, timeouts)
+
+- MCP server (experimental) so Claude Code or any MCP client can drive the
+same diagnostics/read-substitute tools pi-lens exposes to pi
+
+## Architecture
+
+Most lifecycle events enter through one wrapper, which drops and counts events
+that arrive on a replaced session. tool_call registers raw: it delegates
+straight to a handler that owns its own total guard. Events fan out into the
+edit-time lane and the LSP lane. Both lanes write into the findings stores.
+Nothing reaches the agent from those stores until a freshness gate or an
+explicit age label clears it.
+
+flowchart TD
+ subgraph host["pi host"]
+ HOST["Host events<br/>tool_call, tool_result, turn_start/end,<br/>session_start/shutdown, agent_end, context"]
+ WRAP["Stale-ctx wrapper<br/>skips and counts events on a replaced session<br/>tool_result, turn_start, turn_end, agent_end,<br/>agent_settled, session_start, context"]
+ end
+
+ subgraph guards["Guards"]
+ RG["Read-guard<br/>blocks edits that lack prior reading"]
+ GG["Git-guard<br/>holds commit/push while findings stay unresolved"]
+ end
+
+ subgraph edit["Edit-time lane"]
+ PIPE["Post-write pipeline<br/>secrets, format, autofix, sync, lint, tests"]
+ PLAN["Dispatch plan<br/>per file kind, per capability group"]
+ RUN["Runners<br/>format, lint, types, security, smells, docs"]
+ STRUCT["Structural rules<br/>tree-sitter queries and ast-grep"]
+ BUS["files-touched bus<br/>tells extensions which paths moved"]
+ end
+
+ subgraph lsp["LSP lane"]
+ POOL["Client pool<br/>warm reuse, idle eviction"]
+ DIAGS["File and workspace diagnostics"]
+ CASC["Impact cascade<br/>tiered wait policy"]
+ end
+
+ STORES["Findings stores<br/>widget state, warning caches, project snapshot"]
+
+ subgraph gate["Freshness gating"]
+ FRESH["Path freshness<br/>mtime vs scan time, past-EOF, dependency drift"]
+ DISPO["Dispositions<br/>false-positive, suppress, defer, flagged"]
+ LABEL["Explicit age label<br/>for findings no path gate can check"]
+ end
+
+ subgraph deliver["Delivery surfaces"]
+ TURN["Turn-end findings injection"]
+ WIDGET["Widget and footer tally"]
+ TOOLS["lens_diagnostics tool"]
+ NUDGE["Agent nudges"]
+ end
+
+ SESSION["Session lifecycle<br/>primary, sequential replacement, concurrent secondary"]
+ SINKS["Observability sinks<br/>latency.log, degradation ledger, bounded telemetry,<br/>cache observability, cascade and tree-sitter logs"]
+
+ HOST --> WRAP
+ HOST -->|tool_call, raw| RG
+ HOST -->|tool_call, raw| GG
+ WRAP -->|session_start| SESSION
+ WRAP -->|tool_result| PIPE
+ WRAP -->|tool_result, records reads and writes| RG
+ SESSION --> POOL
+ SESSION --> STORES
+ PIPE --> PLAN
+ PLAN --> RUN
+ PLAN --> STRUCT
+ PIPE --> POOL
+ PIPE --> BUS
+ POOL --> DIAGS
+ DIAGS --> CASC
+ RUN --> STORES
+ STRUCT --> STORES
+ DIAGS --> STORES
+ CASC --> STORES
+ BUS --> NUDGE
+ RG -->|read and edit history filter| NUDGE
+ STORES --> FRESH
+ STORES --> LABEL
+ FRESH --> DISPO
+ DISPO --> TURN
+ DISPO --> WIDGET
+ DISPO --> TOOLS
+ LABEL --> TURN
+ TURN --> GG
+ WRAP --> SINKS
+ PIPE --> SINKS
+ RUN --> SINKS
+ STRUCT --> SINKS
+ POOL --> SINKS
+ CASC --> SINKS
+ RG --> SINKS
+ GG --> SINKS
+ FRESH --> SINKS
+
+Architecture-level view, updated when a lane changes. Per-tool inventories live
+in features and
+language coverage. Today the edit-time lane carries
+45+ runner modules over 35+ file kinds, and the LSP lane speaks to a dozen-plus
+language servers.
+
+The gating box is an abstraction, not a call order. Freshness covers several
+independent mechanisms: path freshness against scan time, past-EOF line checks,
+and forward-import dependency drift. Dispositions are one more filter alongside
+them, not a second stage every finding walks through. Read the box as "a finding
+passes the gates that apply to it", and see clients/finding-delivery-gate.ts
+for the per-surface contract.
+
+## Install
+
+pi install npm:pi-lens
+
+Or from git:
+
+pi install git:github.com/apmantza/pi-lens
+
+npm v12 users: dependency lifecycle scripts (e.g. @ast-grep/cli's
+postinstall) now require explicit approval — if npm install warns about
+unreviewed install scripts, review and allow them with
+npm approve-scripts, or trust the allowScripts entries already declared
+in this package's package.json. Installing from a git source (pi install git:... / pi update --extension git:...) may similarly prompt for
+git-dependency approval; accept it to let the prepare build step run.
+
+## Documentation
+
+- Agent guide — how an AI agent should consume and respond to pi-lens
+
+- Agent tools — pi tool names, scopes, and arguments
+
+- Usage guide — lifecycle, tool behavior, MCP notes, and
+troubleshooting
+
+- Features — detailed feature reference
+
+- Word index — identifier search (symbol_search) and
+the discovery funnel
+
+- Tools and commands — runtime flags and slash commands
+
+- Diagnostic dispositions — triage: false-positive,
+suppress, defer, flagged-to-fix
+
+- Settings — the configuration hub: defaults, env vars, CLI
+flags, and global vs project config at a glance
+
+- Configuration — global and project config files
+
+- Environment variables — common env vars and
+full reference
+
+- Language coverage — supported languages, runners,
+and formatters
+
+- Dependencies — auto-install policy and external tools
+
+- Custom rules — project ast-grep and tree-sitter rules
+
+- MCP server — experimental MCP server for Claude Code and
+other MCP clients
+
+## Contributing
+
+See CONTRIBUTING.md for the development workflow, runner,
+LSP, formatter, and rule checklists, and issue/PR conventions.
+
+Security issues should be reported privately; see SECURITY.md.
+pi-lens is released under the MIT License.
+
+## Contributors
+
+Thanks goes to these wonderful people:
+
+The following commit identities also appear in git shortlog -sne HEAD but are
+not represented in the generated table above: Anas Alsbei, Claude,
+Christopher Patti,
+dependabot[bot], Fabio-D, github-actions[bot], JSup, Kenny McCormick,
+Max Lupus, Moritz Hofmann, ricardo, and root.
+
+If you land a pull request or report an issue that gets fixed, we'll add you here.
+
+Earendil Inc. & Contributors
+Press Kit
+MIT License
+
+AutoLightDark
+pi.dev domain graciously donated by exe.dev

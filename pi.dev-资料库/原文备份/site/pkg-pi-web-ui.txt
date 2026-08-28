@@ -1,0 +1,452 @@
+Copy SVGDownload SVGPress Kit
+HomeDocumentationNewsPackagesModels
+
+Home→Documentation→News→Packages→Models→
+
+GitHubnpmDiscordX
+
+Earendil Inc.
+
+# pi-web-ui
+
+Web chat interface for the pi coding agent, powered by the pi SDK (@earendil-works/pi-coding-agent) — one-command run, Docker/systemd/launchd deployable
+Packages
+## Package details
+extension
+
+Install pi-web-ui from npm and Pi will load the resources declared by the package manifest.
+
+ npm repohome report
+
+$ pi install npm:pi-web-uiCopy
+Packagepi-web-uiVersion0.44.2PublishedAug 28, 2026Downloads19.1K/mo · 4,988/wkAuthorxingshuyinLicenseMITTypesextensionSize2.5 MBDependencies15 dependencies · 0 peersPi manifest JSON{
+ "extensions": [
+ "./extensions"
+ ]
+}
+
+## Security note
+
+Pi packages can execute code and influence agent behavior. Review the source before installing third-party packages.
+
+## README
+
+# pi-web-ui
+
+English | 简体中文
+
+A polished browser interface for pi: stream conversations, inspect tools, manage files,
+and run your workspace from one place.
+
+A web chat interface for the pi coding agent — the agent runs
+in-process via the pi SDK and streams events to the browser over WebSocket. Chat
+with thinking blocks and tool calls, attach files, ask about images, use a
+built-in terminal, manage models, tweak the system prompt, toggle skills and
+extensions on/off, and save/apply settings presets — all from a settings panel.
+Requires Node.js ≥ 22.19 and a configured pi install.
+
+## More from the author
+
+Building with DSH?
+
+dsh-ui-tools is the author's companion project for building and extending UI tools in the DSH ecosystem.
+
+## Features
+
+Chat
+
+- Streaming agent chat over WebSocket — the pi SDK runs in-process; events are pushed as snapshots (60 ms throttled) and the browser renders them.
+
+- Thinking blocks, tool-call cards and bash outputs with live status (running → finished · waiting for the model · duration).
+
+- 补充 (steer) — send a follow-up while the agent is replying; it is queued and injected as soon as the current turn's tool calls settle (the "Interrupt" equivalent of the pi CLI).
+
+- Slash commands — / opens a command picker (built-in / extension / template / skill); built-ins include /new /model /compact /cwd /thinking /resume, plus /help (command list) and /copy (copy last reply).
+
+- Multiple conversations per project — each conversation gets its own agent runtime and keeps running in the background after you switch away; the "Running conversations" list shows stream progress and lets you switch back.
+
+- Edit & re-ask — fork any past question into a new branch and re-prompt; the original conversation stays untouched.
+
+- Long threads auto-collapse messages older than 30 into lazy summary rows (click to expand).
+
+- Question navigation — a floating rail plus per-question tags to jump between questions.
+
+Files, images & attachments
+
+- Three attachment modes: inline (≤12 KB), reference (path only), lines (selected ranges) — over-limit ones degrade automatically.
+
+- Paste / drag-drop / upload images — resized client-side and sent as image content when the model supports vision (warning otherwise).
+
+- Vision bridge — when the current model is text-only, images are transcribed into text evidence by an auto-discovered vision model (cached per batch; model & on/off configurable in Settings).
+
+- Attach arbitrary files without a workspace path — stored in a global uploads dir, inlined when small, referenced by absolute path otherwise.
+
+- File preview — line numbers, click/drag/Shift selection (add to chat as lines), GBK fallback decoding, binary hex view, media preview over HTTP with Range support, and a download button.
+
+- Live file tree — the server watches the listed directory (fs.watch) and re-lists on change; oversized directories show a truncation warning.
+
+Terminal & Git
+
+- Built-in terminal (xterm.js + node-pty) with per-client PTY management; Windows auto-selects Git Bash (busybox fallback).
+
+- Source control (Git) panel — status / branch / diff / untracked files via a hidden query terminal; commit, switch branch, push and pull run in the visible terminal and auto-switch to the terminal view.
+
+Models & settings
+
+- Theme switching — pick a theme in the top bar; each theme is a full standalone stylesheet (default dark + a bundled light). See Themes for how to add your own or contribute one.
+
+- Model management — edit models.json in the UI and set per-provider API keys (keys/headers never leave the server).
+
+- Thinking level per model (only the levels the model actually supports are shown).
+
+- First-run setup wizard.
+
+- Settings panel — system prompt (append or replace), toggle skills/extensions on/off with immediate effect, save/apply/delete settings presets, and vision-bridge model & switch.
+
+Goal mode
+
+- Goal bar — set a target with a review model, max rounds and a lock switch.
+
+- Goal wizard ("AI 提炼") — turns a raw request into a concrete goal through a guided questionnaire.
+
+- Automatic review loop — after each turn an independent review session checks the goal against the final text and git diff HEAD; on fail the feedback is injected as steer until it passes (or the round cap is hit).
+
+Background tasks
+
+- Background-task panel — servers launched by the agent are detected via port snapshots and listed (port/pid/name); stop one or kill all.
+
+- Tool watchdog — a tool call running over 20 minutes is aborted automatically.
+
+- Stop bash command only — abort a running bash tool without killing the conversation.
+
+Safety & operations
+
+- Loopback-only by default; set PI_WEB_HOST=0.0.0.0 for LAN / containers.
+
+- WebSocket Origin/Host same-authority check — cross-origin pages are rejected (403); PI_WEB_ALLOW_ORIGINS whitelist for reverse proxies.
+
+- Quiesce drain mode via a local control socket (server status|quiesce|unquiesce).
+
+- Credentials stay server-side — provider headers are never sent to the browser.
+
+- Sound alerts, Chinese/English UI, and a recent-projects list (click to switch workspace).
+
+Deploy & update
+
+- Foreground, global npm install, Docker (docker-compose), macOS launchd, Linux systemd, Windows Task Scheduler, and a desktop shortcut (server shortcut).
+
+- In-app self-update — checks the npm registry, installs and auto-restarts the service.
+
+## Screenshots
+
+## Install
+
+npm i -g pi-web-ui # global install (recommended)
+npx pi-web-ui # or run without installing (latest, starts on :8787)
+npm i -g . # or install the local checkout
+
+npm ≥ 12? npm 12+ blocks dependency install scripts by default (you'll see
+npm warn install-scripts … blocked). node-pty is a native module, so allow its
+script (the other two packages it lists are harmless no-ops — allowing them just
+silences the warning):
+
+npm i -g --allow-scripts=node-pty,@google/genai,protobufjs pi-web-ui@latest
+
+## Start
+
+pi-web-ui # foreground, http://localhost:8787
+PORT=9000 PI_WEB_CWD=/path/to/project pi-web-ui # custom port / workspace
+
+## Stop
+
+- Foreground: press Ctrl+C in the terminal running it.
+
+- As a service: pi-web-ui server stop (stops the instance; auto-start stays until server uninstall).
+
+## Update
+
+npm i -g pi-web-ui@latest # upgrade to the latest published version
+pi-web-ui server restart # restart the service to apply it (foreground: restart manually)
+
+## Uninstall
+
+npm uninstall -g pi-web-ui
+
+Uninstalling does not delete your chats — session data lives in
+<cwd>/.pi-web (or PI_WEB_DATA_DIR) and survives uninstall/upgrade.
+
+## Run as a system service (auto-start on boot)
+
+pi-web-ui server install --port 9000 --cwd /path/to/project # install + start
+pi-web-ui server status # running? auto-start?
+pi-web-ui server restart # restart (applies config/version changes)
+pi-web-ui server stop # stop (auto-start stays)
+pi-web-ui server start # start again
+pi-web-ui server uninstall # remove the service entirely
+pi-web-ui server shortcut # desktop one-click launch icon
+pi-web-ui server quiesce # drain: refuse NEW chats/messages, let running ones finish
+pi-web-ui server unquiesce # reopen admission
+
+server status also shows live stats via a local control socket (version,
+PID, quiesce state, connected browsers, running conversations) — the same
+socket drives quiesce/unquiesce.
+
+- macOS → launchd agent (no sudo), logs to /tmp/pi-web-ui.log / .err
+
+- Linux → systemd unit (systemctl enable --now), logs via journalctl -u pi-web-ui -f
+
+- Windows → Task Scheduler logon task (hidden PowerShell window, no black console)
+
+Options: --port (default 8787), --cwd (workspace), --data-dir (sessions),
+--name (custom service name). Rerunning server install with new options
+regenerates the config and restarts the service — that's how you change its
+port/cwd.
+
+## Plugins (UI extensions)
+
+Plugins are optional UI components (extra top-bar tabs backed by their own
+client view, optionally with a server-side entry and agent tools). They live in
+your data-dir plugins folder (<dataDir>/plugins/<id>/, default
+~/.pi-web/plugins/) — a plugin is simply a directory containing
+manifest.json, an optional server entry (index.mjs) and an optional view
+entry (client/entry.mjs). No plugin directories = no plugins, nothing shows
+up in the UI.
+
+### Plugin catalog
+
+These plugins ship in this repository (dev/plugins/<id>/) and can be installed
+straight from GitHub:
+
+|
+Plugin|
+What it does|
+
+|
+📬 webmail|
+IMAP inbox browsing / search / read / mark / delete + SMTP sending, new-mail notifications, and an optional "allow AI to manage my mailbox" switch (six mail_* agent tools). Auto-installs its npm deps on first activation.|
+
+|
+🗄️ db-client|
+Database workbench: connection manager + schema tree for MySQL / PostgreSQL / SQLite / SQL Server / MongoDB / Redis — table structure, paginated data with sorting, SQL editor, and row editing. Drivers auto-install on first use.|
+
+|
+📝 vscode-editor|
+VS Code-like workbench: multi-root file tree (local + SSH hosts), CodeMirror multi-tab editor, Remote-SSH remote file browsing/editing, draggable multi-terminal panel (xterm.js), SFTP sync & upload/download to your computer. Auto-installs ssh2.|
+
+|
+📬 demo-mailbox|
+Minimal example plugin demonstrating the server entry + client view + two-way message protocol. Doubles as the plugin test fixture — start here if you want to write your own.|
+
+Example — install the webmail plugin:
+
+pi-web-ui install https://github.com/xing-shuyin/pi-web-ui/tree/main/dev/plugins/webmail
+
+Each plugin's directory in the repo has its own README.md with full feature
+lists, configuration and per-plugin caveats.
+
+### Installing
+
+From GitHub (any of these source forms):
+
+pi-web-ui install owner/repo # shorthand
+pi-web-ui install https://github.com/owner/repo # full URL (.git optional)
+pi-web-ui install https://github.com/o/r/tree/dev/sub/dir # branch + subdirectory inside the repo
+pi-web-ui install owner/repo#v1.2 # pin a branch/tag (#suffix works on any form above)
+pi-web-ui install /path/to/plugin-dir # local directory (for development)
+
+Useful options:
+
+- --name <id> — custom plugin id / directory name (defaults to the repo or
+subdirectory name; letters/digits/-/_ only).
+
+- --force — overwrite an existing installation. Your plugin's local
+config.json (credentials etc.) is preserved across upgrades.
+
+- --data-dir <dir> — override the data dir (default ~/.pi-web).
+
+The CLI clones the repo (shallow; falls back to a tarball download without
+git), locates the manifest.json (including inside subdirectories) and copies
+the plugin into <dataDir>/plugins/<id>/.
+
+No git? No network? You can also just copy a plugin directory into
+~/.pi-web/plugins/ by hand — same result.
+
+### Updating
+
+Re-run install against the same source with --force:
+
+# example: update the webmail plugin to the latest version in the repo
+pi-web-ui install https://github.com/xing-shuyin/pi-web-ui/tree/main/dev/plugins/webmail --force
+
+- The upgrade preserves the plugin's local config.json automatically.
+
+- Plugins that store other local state inside their directory (e.g. db-client's
+db-connections.json, vscode-editor's ssh-hosts.json) are not covered
+by that preservation — back those up before a forced reinstall.
+
+- Refresh the browser afterwards; no server restart needed.
+
+### Activating
+
+If the server is running, just refresh the browser — new plugins are picked
+up on attach without a restart. If it isn't, they load on next start. Each
+plugin appears as a tab (🧩 or its own icon) in the top bar.
+
+### Listing / disabling / uninstalling
+
+pi-web-ui plugins # list installed plugins (id / name / version / description)
+pi-web-ui uninstall <id> # remove a plugin
+
+- To temporarily hide a plugin without uninstalling, use the Settings panel
+(⚙) → UI plugins switches — stored per client, purely visual, no restart
+needed. Re-enable any time.
+
+- uninstall deletes the plugin directory; refresh the browser and its tab
+disappears. Plugin configuration written inside the plugin dir is removed
+too — back up <dataDir>/plugins/<id>/config.json first if you need it.
+
+## Themes
+
+Each theme is a complete standalone stylesheet — a full copy of the bundled dark web/src/styles.css with a different palette (no CSS-variable extraction, no base file to include). Picking a theme swaps the whole file, so any theme works with every build.
+
+Built-in themes ship in the npm package (themes/, e.g. the bundled light theme). The theme picker lives in the top bar (🌞 icon); the current choice is stored per browser in localStorage.
+
+### Using a theme
+
+Just pick it in the top bar — built-in and user themes are merged in the same menu. User themes win over built-ins on the same id.
+
+### Providing a theme locally (no GitHub needed)
+
+Any CSS file dropped into your data-dir themes folder shows up in the theme menu automatically — no restart, no rebuild:
+
+- Find your data dir (default ~/.pi-web, override with PI_WEB_DATA_DIR).
+
+- Create <dataDir>/themes/ and drop your stylesheet in: e.g. ~/.pi-web/themes/my-theme.css.
+
+- Reload the page and pick it in the top bar. The file name (without .css) is the theme id shown in the menu.
+
+~/.pi-web/
+└── themes/
+ └── my-theme.css # appears in the menu as "my-theme"
+
+Easiest way to write one: copy themes/light.css (or the bundled dark web/src/styles.css from the source repo) and change the :root colors plus any hardcoded values — the file must be self-contained. Notes:
+
+- The terminal follows the theme — set the --term-* variables (terminal ANSI palette + --term-bg) in your :root and both the xterm canvas and its padded container adapt automatically (see the defaults in styles.css and the light values in themes/light.css).
+
+- Syntax-highlight colors (highlight.js's github-dark.css is bundled) must be overridden in your theme file or code will be unreadable — see the .hljs overrides at the bottom of themes/light.css for the pattern.
+
+- Theme ids must match ^[A-Za-z0-9_-]+$ (no dots/slashes — path-traversal guard on the server).
+
+### Contributing a theme to the repository (GitHub)
+
+Want your theme shipped to everyone? Open a pull request at github.com/xing-shuyin/pi-web-ui:
+
+- Fork the repo and clone it.
+
+- Create your theme as themes/<id>.css — a self-contained stylesheet. Copy themes/light.css as the starting template (it's the generator output for a full standalone theme).
+
+- Verify locally: run npm run dev, then use the top bar theme picker — your theme must be listed and render correctly (chat cards, code blocks, tool-call cards, git/terminal panels).
+
+- If you only changed colors in styles.css and want the bundled light theme updated too, regenerate it with node make-light-theme.mjs.
+
+- Commit (git add themes/<id>.css) and open the PR. The themes/ folder is already in the npm package files whitelist, so once merged and released, npm i -g pi-web-ui will ship your theme to everyone.
+
+Rules for merged themes: the file must be a single self-contained CSS file, be a full standalone theme (no imports of the base styles.css), set the --term-* variables for a readable terminal, and override .hljs syntax colors for readable code.
+
+## Security
+
+- Loopback-only by default — the server binds 127.0.0.1 and is not
+reachable from the network unless you explicitly set PI_WEB_HOST=0.0.0.0
+(e.g. LAN access, Docker port mapping — the compose file sets it for you).
+
+- WebSocket origin check — browser pages connecting to /ws must present
+an Origin whose hostname and port match the request Host;
+cross-origin pages are rejected with 403. Non-browser clients (no Origin)
+are unaffected. Add PI_WEB_ALLOW_ORIGINS=http://your-host:port for
+reverse-proxy setups.
+
+- Quiesce — server quiesce refuses new prompts/forks/session resumes
+until you server unquiesce; in-flight runs finish cleanly (useful before
+upgrades/backups).
+
+- Credentials stay server-side — provider headers (which may carry
+Authorization / API keys) are never sent to the browser; the model
+management UI edits everything else and the server preserves the headers.
+
+## Reverse proxy (nginx)
+
+Serve pi-web-ui behind nginx on the same host (it binds loopback only, so a
+same-machine reverse proxy is the supported remote-access path — no
+PI_WEB_HOST=0.0.0.0 needed):
+
+# pi-web-ui on 127.0.0.1:8787, exposed as https://your-host/pi/
+server {
+ listen 443 ssl;
+ server_name your-host;
+ # ssl_certificate ... / ssl_certificate_key ...
+
+ # App entry at a sub-path (strips the /pi/ prefix)
+ location /pi/ {
+ proxy_pass http://127.0.0.1:8787/;
+ proxy_http_version 1.1;
+ # $http_host keeps the port — the server's origin check compares the
+ # full authority (hostname AND port). $host would drop it and get 403.
+ proxy_set_header Host $http_host;
+ proxy_set_header X-Real-IP $remote_addr;
+ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+ proxy_set_header X-Forwarded-Proto $scheme;
+ }
+
+ # WebSocket — MUST forward Host identically or the upgrade is 403'd
+ # (page loads, but chat/terminal keep reconnecting)
+ location /ws {
+ proxy_pass http://127.0.0.1:8787;
+ proxy_http_version 1.1;
+ proxy_set_header Host $http_host;
+ proxy_set_header Upgrade $http_upgrade;
+ proxy_set_header Connection "upgrade";
+ proxy_read_timeout 3600s;
+ proxy_send_timeout 3600s;
+ }
+
+ # Absolute-path assets/API the built frontend requests (root, not /pi/)
+ location /assets/ { proxy_pass http://127.0.0.1:8787; }
+ location = /favicon.svg { proxy_pass http://127.0.0.1:8787; }
+ location = /favicon-streaming.svg { proxy_pass http://127.0.0.1:8787; }
+ location = /api/file { proxy_pass http://127.0.0.1:8787; }
+ location = /api/health { proxy_pass http://127.0.0.1:8787; }
+}
+
+Key points:
+
+- Host must be $http_host (keeps the port) on both /pi/ and /ws —
+the origin check compares hostname and port. proxy_set_header Host $host
+or leaving it unset (defaults to the upstream 127.0.0.1:8787) both fail with 403.
+
+- Same-origin works automatically: as long as the browser's Origin equals
+the forwarded Host (it does through a plain proxy), no
+PI_WEB_ALLOW_ORIGINS is needed. Only set it when the browser origin differs
+from the Host the server sees (e.g. a TLS-terminating proxy that changes the
+port).
+
+- No proxy_protocol unless you really need real client IPs: it makes
+nginx reject every connection that does not send a PROXY header, which
+breaks direct LAN access and any non-frp clients. With frp, drop
+transport.proxyProtocolVersion from the proxy config unless nginx listens
+with proxy_protocol too.
+
+- LAN access without a proxy: just set PI_WEB_HOST=0.0.0.0 (and a
+firewall rule) — or put the whole server block above on port 80/443.
+
+Full working example (with an frp tunnel): deploy/nginx-subpath.conf.
+
+## License
+
+MIT
+
+Earendil Inc. & Contributors
+Press Kit
+MIT License
+
+AutoLightDark
+pi.dev domain graciously donated by exe.dev

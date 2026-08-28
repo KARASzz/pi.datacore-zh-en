@@ -1,0 +1,429 @@
+Copy SVGDownload SVGPress Kit
+HomeDocumentationNewsPackagesModels
+
+Home→Documentation→News→Packages→Models→
+
+GitHubnpmDiscordX
+
+Earendil Inc.
+
+# Package Catalog
+
+Extensions, skills, prompt templates, and themes published to npm. Install with pi install npm:<package>. See the package docs for details.
+
+## Recently published
+@picassio/pi-agent-browser-nativepi extension that exposes agent-browser as a native tool for browser automation21m ago@ganziliang/zhizh-pi-plugin-setupInteractive installer for the team's Pi Agent extensions and MCP packages30m ago@zeldrisho/pi-git-workflowPi extension that prunes refs, safely cleans merged local branches, and gates force deletion35m ago@zeldrisho/pi-web-fetchPi extension for secure, bounded public web page fetching and Markdown extraction36m ago@groeponline/pi-missionsPersistent mission orchestration for Pi: durable plans, task queues, evidence trails, SQLite state, resumable execution, and handoffs across agent sessions.52m agopi-web-uiWeb chat interface for the pi coding agent, powered by the pi SDK (@earendil-works/pi-coding-agent) — one-command run, Docker/systemd/launchd deployable54m ago@saccolabs/pi-claude-cliPi coding agent extension that routes LLM calls through the Claude Code CLI1h ago@qcts33/pi-herdr-subagentsSubagents for pi running in herdr1h ago
+
+## All packages
+1-50 / 5397
+Filter packages by name, description, or authorFilter by package typeAll typesextensionskillthemepromptSort packagesMost downloadsRecently publishedA-ZSearchReset
+
+### pi-mcp-adapter
+
+MCP (Model Context Protocol) adapter extension for Pi coding agent
+nicopreme628.2K/mo1d ago
+extension
+ npm repo report
+$ pi install npm:pi-mcp-adapterCopy
+
+### pi-web-access
+
+Web search, URL fetching, GitHub repo cloning, PDF extraction, YouTube video understanding, and local video analysis for Pi coding agent. Supports OpenAI, Brave, Parallel, TinyFish, Search1API, Searchinfinity, Querit, Tavily, Firecrawl, Jina, SERPdive, Ka
+nicopreme384K/mo2d ago
+extension
+ npm repo report
+$ pi install npm:pi-web-accessCopy
+
+### pi-subagents
+
+Pi extension for single-agent delegation and scripted multi-agent workflows
+nicopreme340.9K/mo23h ago
+package
+ npm repo report
+$ pi install npm:pi-subagentsCopy
+
+### @companion-ai/feynman
+
+Research-first CLI agent built on Pi and alphaXiv
+advaitpaliwal252.8K/mo1d ago
+package
+ npm repo report
+$ pi install npm:@companion-ai/feynmanCopy
+
+### @juicesharp/rpiv-ask-user-question
+
+Pi extension. A structured questionnaire the model can put to you when it would otherwise guess, with typed options instead of free-form replies.
+juicesharp109.8K/mo3d ago
+extension
+ npm repo report
+$ pi install npm:@juicesharp/rpiv-ask-user-questionCopy
+
+### pi-background-tasks
+
+Pi extension for durable background shell tasks, read-only delegated agents, local attested Pi runs, and fixed-purpose Fusion workflows through child Pi processes.
+ismailsaleekh107.1K/mo14d ago
+extension
+ npm repo report
+$ pi install npm:pi-background-tasksCopy
+
+### @juicesharp/rpiv-todo
+
+Pi extension. A todo list for the model, rendered as a live overlay that survives /reload and conversation compaction.
+juicesharp92.9K/mo3d ago
+extension
+ npm repo report
+$ pi install npm:@juicesharp/rpiv-todoCopy
+
+### context-mode
+
+MCP plugin that saves 98% of your context window. Works with Claude Code, Gemini CLI, VS Code Copilot, OpenCode, and Codex CLI. Sandboxed code execution, FTS5 knowledge base, and intent-driven search.
+mksglu81.7K/mo1mo ago
+package
+ npm repo report
+$ pi install npm:context-modeCopy
+
+### pi-lens
+
+Real-time code feedback for pi — LSP, linters, formatters, type-checking, structural analysis & booboo
+apmantza58K/mo3d ago
+extension
+ npm repo report
+$ pi install npm:pi-lensCopy
+
+### @plannotator/pi-extension
+
+Plannotator Pi extension - interactive plan review with annotations, annotate agent messages, and review code/PRs
+backnotprop50.9K/mo5h ago
+package
+ npm repo report
+$ pi install npm:@plannotator/pi-extensionCopy
+
+### @dietrichgebert/ponytail
+
+Lazy senior dev mode for AI agents. The best code is the code you never wrote.
+dietrichgebert49.2K/mo20d ago
+skill
+ npm repo report
+$ pi install npm:@dietrichgebert/ponytailCopy
+
+### @narumitw/pi-goal
+
+Pi extension for autonomous single-objective /goal completion.
+narumitw49K/mo1d ago
+extension
+ npm repo report
+$ pi install npm:@narumitw/pi-goalCopy
+
+### @tintinweb/pi-subagents
+
+A pi extension that brings Claude Code-like sub-agents and workflow orchestration to pi — parallel execution, live widget, fleet view, custom agent types, mid-run steering, dynamic workflows, Claude Code compatibility, look and feel.
+tintinweb46.8K/mo16h ago
+extension
+ npm repo report
+$ pi install npm:@tintinweb/pi-subagentsCopy
+
+### pi-simplify
+
+A Pi extension that reviews recently changed code for clarity, consistency, and maintainability.
+mdevy41K/mo1mo ago
+extension
+ npm repo report
+$ pi install npm:pi-simplifyCopy
+
+### @remnic/plugin-pi
+
+Remnic memory extension for Pi Coding Agent
+joshuaswarren38.6K/mo1d ago
+package
+ npm repo report
+$ pi install npm:@remnic/plugin-piCopy
+
+### pi-memory
+
+Pi coding agent extension for memory with qmd-powered semantic search across daily logs, long-term memory, and scratchpad
+jayzeng35.7K/mo16d ago
+package
+ npm repo report
+$ pi install npm:pi-memoryCopy
+
+### @ff-labs/pi-fff
+
+pi extension: FFF-powered fuzzy file and content search
+dmtr.kovalenko33.6K/mo11d ago
+extension
+ npm repo report
+$ pi install npm:@ff-labs/pi-fffCopy
+
+### @trim21/personal-pi-extensions
+
+Custom pi coding-agent extensions: bwrap sandbox, workspace guard, opencode edit, and more
+trim2132.7K/mo9h ago
+package
+ npm repo report
+$ pi install npm:@trim21/personal-pi-extensionsCopy
+
+### pi-hermes-memory
+
+🧠 Persistent memory + 🔍 session search + 🛡️ secret scanning for Pi. Token-aware policy-only memory by default, SQLite FTS5 search, auto-consolidation, procedural skills. 732 tests. Ported from Hermes agent.
+chandra44732.4K/mo10d ago
+extensionskill
+ npm repo report
+$ pi install npm:pi-hermes-memoryCopy
+
+### @quintinshaw/pi-dynamic-workflows
+
+Claude-Code-style dynamic workflows for Pi — fan a task out across 100s of subagents with real model routing, token/cost accounting, resume, git-worktree isolation, an interactive /workflows TUI, and a real /deep-research.
+quintinshaw32.3K/mo21h ago
+package
+ npm repo report
+$ pi install npm:@quintinshaw/pi-dynamic-workflowsCopy
+
+### confluence-cli
+
+A command-line interface for Atlassian Confluence with page creation and editing capabilities
+pchuri31.5K/mo5h ago
+package
+ npm repo report
+$ pi install npm:confluence-cliCopy
+
+### @tangle-network/tcloud-agent
+
+Agent run-loop primitive over Tangle sandbox transports — runs an AgentProfile against a brief with criterion gates, budget caps, and streaming events. Includes TangleToolProvider for Pi tool integration.
+vutuanlinh2k231.2K/mo1mo ago
+package
+ npm repo report
+$ pi install npm:@tangle-network/tcloud-agentCopy
+
+### pi-goal-x
+
+Goal mode extension for pi: durable long-running objectives, five model tools, structured tasks, independent completion audit, Sisyphus mode, auto-continue, and a status overlay.
+tmonk31K/mo2d ago
+extension
+ npm repo report
+$ pi install npm:pi-goal-xCopy
+
+### @raindrop-ai/pi-agent
+
+Raindrop observability for Pi Agent — automatic tracing via subscriber or pi-coding-agent extension
+rsd-raindrop30.3K/mo27d ago
+package
+ npm repo report
+$ pi install npm:@raindrop-ai/pi-agentCopy
+
+### pi-intercom
+
+<p> <img src="banner.png" alt="pi-intercom" width="1100"> </p>
+nicopreme29.3K/mo5d ago
+package
+ npm report
+$ pi install npm:pi-intercomCopy
+
+### pi-powerline-footer
+
+Powerline-style status bar extension for pi coding agent
+nicopreme28.8K/mo2d ago
+extension
+ npm repo report
+$ pi install npm:pi-powerline-footerCopy
+
+### bigpowers
+
+73 agent skills synthesizing 17 years of software engineering discipline into a prescriptive methodology for solo developers
+danielvm28.6K/mo20d ago
+skill
+ npm repo report
+$ pi install npm:bigpowersCopy
+
+### @gotgenes/pi-permission-system
+
+Permission enforcement extension for the Pi coding agent.
+gotgenes28.4K/mo11h ago
+extension
+ npm repo report
+$ pi install npm:@gotgenes/pi-permission-systemCopy
+
+### @narumitw/pi-plan-mode
+
+Pi extension that adds a Codex-like read-only /plan collaboration mode.
+narumitw28.4K/mo23h ago
+extension
+ npm repo report
+$ pi install npm:@narumitw/pi-plan-modeCopy
+
+### @braintrust/pi-extension
+
+Braintrust extension for pi. Includes automatic tracing for pi sessions, turns, LLM calls, and tool executions to Braintrust.
+braintrust28K/mo15d ago
+package
+ npm repo report
+$ pi install npm:@braintrust/pi-extensionCopy
+
+### pi-goal-list-loop-audit
+
+Mission control for autonomous pi: interview-drafted goals, an audited task queue, and forever-loops (metric, spec, project-audit) that run for hours. A detached extension-less auditor process re-verifies every completion with raw evidence without holding
+dracond26K/mo1d ago
+extension
+ npm repo report
+$ pi install npm:pi-goal-list-loop-auditCopy
+
+### @reddb-io/red-skills-dev
+
+reddb.io dev plugin - engineering skills for code agents (autonomous /afk loop, /go dispatch, triage, tdd, diagnose, graph-aware codebase understanding, ...)
+fforattini26K/mo2d ago
+package
+ npm repo report
+$ pi install npm:@reddb-io/red-skills-devCopy
+
+### @reddb-io/red-skills-memory
+
+reddb.io memory plugin - governed operational memory for code agents that lives on top of dev. Supports markdown notes, RedDB graph memory, zero-token governed recall, context packs, claim checks, readiness, optional lifecycle hooks, MCP/HTTP read surface
+fforattini25.6K/mo2d ago
+package
+ npm repo report
+$ pi install npm:@reddb-io/red-skills-memoryCopy
+
+### @reddb-io/red-skills-internal
+
+reddb.io internal plugin - maintainer-only skills for operating the red-skills repository.
+fforattini25.1K/mo2d ago
+package
+ npm repo report
+$ pi install npm:@reddb-io/red-skills-internalCopy
+
+### pi-fabric
+
+A programmable tool and agent runtime for Pi
+monotykamary25.1K/mo10h ago
+extension
+ npm repo report
+$ pi install npm:pi-fabricCopy
+
+### @reddb-io/red-skills-brain
+
+reddb.io brain plugin - project-local RedDB knowledge repository for freeform captures and graph connections.
+fforattini25K/mo2d ago
+package
+ npm repo report
+$ pi install npm:@reddb-io/red-skills-brainCopy
+
+### @7n/rules
+
+CLI еталонних правил і skills (префікс n-): синк у репозиторій, дельта-lint, конформність
+vitaliytv24.2K/mo14h ago
+package
+ npm repo report
+$ pi install npm:@7n/rulesCopy
+
+### @nitra/cursor
+
+CLI для завантаження cursor-правил (префікс n-) у локальний репозиторій
+vitaliytv23K/mo1mo ago
+package
+ npm repo report
+$ pi install npm:@nitra/cursorCopy
+
+### @narumitw/pi-btw
+
+Pi extension that adds a /btw side-question command.
+narumitw20.5K/mo1d ago
+extension
+ npm repo report
+$ pi install npm:@narumitw/pi-btwCopy
+
+### @agimon-ai/log-sink-mcp
+
+Log sink MCP server with HTTP ingestion and AI analysis
+agiflow-ai19.6K/mo2d ago
+package
+ npm report
+$ pi install npm:@agimon-ai/log-sink-mcpCopy
+
+### @llblab/pi-telegram
+
+Telegram runtime adapter for Pi
+llblab19.5K/mo1d ago
+extension
+ npm repo report
+$ pi install npm:@llblab/pi-telegramCopy
+
+### pi-hashline-edit-pro
+
+Hash-anchored read/replace/insert/grep tools for pi-coding-agent. Every line gets a unique 3-char hash (A-Za-z0-9) that stays stable across edits; stale or ambiguous anchors are rejected, never fuzzy-matched. Undo persists across restarts.
+yugimob19.4K/mo19h ago
+extension
+ npm repo report
+$ pi install npm:pi-hashline-edit-proCopy
+
+### pi-web-ui
+
+Web chat interface for the pi coding agent, powered by the pi SDK (@earendil-works/pi-coding-agent) — one-command run, Docker/systemd/launchd deployable
+xingshuyin19.1K/mo54m ago
+package
+ npm repo report
+$ pi install npm:pi-web-uiCopy
+
+### cc-safety-net
+
+A coding agent CLI hook - block destructive commands and secret file access
+kenryu18.8K/mo2d ago
+package
+ npm repo report
+$ pi install npm:cc-safety-netCopy
+
+### @juicesharp/rpiv-voice
+
+Pi extension. Voice dictation via /voice — local on-device STT with sherpa-onnx Whisper (base multilingual int8), microphone capture via decibri.
+juicesharp18.5K/mo3d ago
+extension
+ npm repo report
+$ pi install npm:@juicesharp/rpiv-voiceCopy
+
+### @mjasnikovs/pi-task
+
+Deterministic task planning and spec-orchestration for local models — crash-safe /task pipelines with verify/enforce gates, a real-time remote web view, and web/docs/fetch/worker subagent tools.
+mjasnikovs17.5K/mo10h ago
+extension
+ npm repo report
+$ pi install npm:@mjasnikovs/pi-taskCopy
+
+### @howaboua/pi-codex-conversion
+
+Codex-oriented tool and prompt adapter for pi coding agent
+howaboua17.5K/mo2d ago
+extension
+ npm repo report
+$ pi install npm:@howaboua/pi-codex-conversionCopy
+
+### @narumitw/pi-usage
+
+Pi extension that shows current-account usage for Codex, Kimi For Coding, GitHub Copilot, OpenRouter, OpenCode Zen, Z.AI, and xAI OAuth subscriptions.
+narumitw17.2K/mo13h ago
+extension
+ npm repo report
+$ pi install npm:@narumitw/pi-usageCopy
+
+### pi-prompt-template-model
+
+Prompt template model selector extension for pi coding agent
+nicopreme17.1K/mo4d ago
+extensionprompt
+ npm repo report
+$ pi install npm:pi-prompt-template-modelCopy
+
+### @akagilnc/pi-workflow-roles
+
+Soul-bound workflow roles for Pi
+akagilnc16.9K/mo1h ago
+package
+ npm repo report
+$ pi install npm:@akagilnc/pi-workflow-rolesCopy
+
+← Previous123…108
+Next →
+
+Earendil Inc. & Contributors
+Press Kit
+MIT License
+
+AutoLightDark
+pi.dev domain graciously donated by exe.dev
