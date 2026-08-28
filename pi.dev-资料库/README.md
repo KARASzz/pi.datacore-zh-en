@@ -70,7 +70,13 @@ python3 更新资料.py
 
 - **来源 1 · GitHub 仓库** `earendil-works/pi`：刷新 `原文备份/docs/`（30 篇文档 + docs.json）、`原文备份/README.md`、`原文备份/CHANGELOG.md`、`原文备份/仓库补充/`（根目录 README/AGENTS/SECURITY/CONTRIBUTING）、`原文备份/仓库包介绍/`（ai / agent / tui / coding-agent 各包 README）；并尝试通过 GitHub API 自动发现清单外新增的 .md 资料（API 限流时自动退回内置清单）。
 - **来源 2 · pi.dev 网站**：刷新 `原文备份/site/` 全部页面快照（首页 / news / press-kit / 包目录 / 模型目录 / 21 个精选包页）。
-- **变更检测**：基于根目录 `资料清单.json` 的 SHA-256 清单；输出根目录《更新报告.txt》。若报告提示某 `docs/*.md` 已变化，说明 `01-文档/` 对应中英对照版可能滞后，需要重新翻译该篇。
+- **变更检测**：基于根目录 `资料清单.json` 的 SHA-256 清单；输出根目录《更新报告.txt》。`../翻译状态.json` 绑定每篇原文哈希与译文基线，明确标记 `CURRENT`、`STALE`、`UNTRANSLATED` 或 `SOURCE_MISSING`。
+- **首次建基线**：第一次生成 `翻译状态.json` 时，仓库里已有的 26 篇译文会记录为当前基线；之后上游哈希变化会标记为 `STALE`，人工复核后再显式更新基线。
+- **安全策略**：默认严格校验 TLS；证书校验失败会停止对应请求。只有确认环境可信时才使用 `python3 更新资料.py --allow-insecure`，且报告会记录 `SECURITY WARNING`。
+- **译文基线**：人工复核译文后使用 `python3 更新资料.py --mark-translations-current`，不要让自动同步覆盖人工翻译。
+- **自动同步**：GitHub Actions 按周运行 `更新资料.py`，发现变化后创建待审核 PR；workflow 不自动合并，也不覆盖 `01-文档/` 中的人工译文。
+
+首次启用自动 PR 前，请在仓库设置中允许 Actions 使用读写权限并创建 Pull Request。
 
 ## 官方链接 / Official Links
 

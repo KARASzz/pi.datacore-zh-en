@@ -18,12 +18,16 @@ pi 资料一键更新脚本（全自动 / 纯标准库 / 不下载源码）
   - 21 个精选包页面                              → 原文备份/site/pkg-*.txt
 
 运行:  python3 更新资料.py
-输出:  控制台摘要 + 根目录《更新报告.txt》；变更检测基于《资料清单.json》哈希清单。
+选项:  --allow-insecure（证书失败时显式降级）或 --mark-translations-current（人工复核后更新译文基线）
+输出:  控制台摘要 + 根目录《更新报告.txt》；变更检测基于《资料清单.json》哈希清单，
+       中英对照绑定状态写入《翻译状态.json》。
 说明:  01-文档/ 下的中英对照版由 AI 生成；若报告提示某文档英文原文已变化，
        说明对照版可能滞后，需要重新翻译该篇。
 """
 
+import argparse
 import concurrent.futures as cf
+from datetime import datetime, timezone
 import hashlib
 import json
 import os
@@ -47,6 +51,8 @@ RAW_EXTRA = KB / "原文备份" / "仓库补充"           # 仓库根目录补�
 RAW_PKGINFO = KB / "原文备份" / "仓库包介绍"        # 仓库内各包的 README 介绍
 MANIFEST = ROOT / "资料清单.json"                 # 哈希清单（变更检测）
 REPORT = ROOT / "更新报告.txt"                    # 本次运行报告
+TRANSLATION_ROOT = KB / "01-文档"                 # 中英对照版
+TRANSLATION_STATUS = ROOT / "翻译状态.json"       # 原文与译文绑定状态
 
 REPO = "earendil-works/pi"
 BRANCH = "main"
@@ -98,8 +104,40 @@ FEATURED_PACKAGES = [
 for _n in FEATURED_PACKAGES:
     SITE_PAGES.append((f"pkg-{_n}.txt", f"{SITE_BASE}/packages/{_n}"))
 
+# 已存在的中英对照版；未列出的文档暂时只有英文原文。
+TRANSLATION_FILES = {
+    "compaction": "11-压缩-Compaction.md",
+    "containerization": "07-容器化-Containerization.md",
+    "custom-provider": "18-自定义提供商-Custom-Provider.md",
+    "development": "30-开发-Development.md",
+    "environment-variables": "19-环境变量-Environment-Variables.md",
+    "index": "01-总览-Overview.md",
+    "json": "23-JSON事件流-JSON.md",
+    "keybindings": "09-快捷键-Keybindings.md",
+    "llama-cpp": "05-llama-cpp.md",
+    "models": "17-自定义模型-Custom-Models.md",
+    "packages": "16-Pi包-Packages.md",
+    "prompt-templates": "14-提示词模板-Prompt-Templates.md",
+    "providers": "04-提供商-Providers.md",
+    "quickstart": "02-快速开始-Quickstart.md",
+    "security": "06-安全-Security.md",
+    "session-format": "20-会话格式-Session-Format.md",
+    "sessions": "10-会话-Sessions.md",
+    "settings": "08-设置-Settings.md",
+    "shell-aliases": "29-Shell别名-Shell-Aliases.md",
+    "skills": "13-技能-Skills.md",
+    "terminal-setup": "28-终端设置-Terminal-Setup.md",
+    "termux": "26-Termux.md",
+    "themes": "15-主题-Themes.md",
+    "tmux": "27-tmux.md",
+    "usage": "03-使用-Pi-Usage.md",
+    "windows": "25-Windows.md",
+}
+
 SRC_HINTS = ("/src/", "/test/", "/tests/", "/scripts/", "/examples/",
              "install-lock/", "/images/", ".github/", "node_modules/")
+
+_ALLOW_INSECURE = False
 
 
 # ----------------------------------------------------------------------------
@@ -133,8 +171,11 @@ _CTX = None
 _CTX_INSECURE = None
 
 
-def http_get(url, timeout=40):
-    """GET 一个 URL，返回字节内容；证书失败时自动降级重试一次。"""
+def http_get(url, timeout=40, *, allow_insecure=None):
+    """GET 一个 URL；默认严格校验 TLS，显式允许时才会降级。"""
+    global _CTX_INSECURE
+    if allow_insecure is None:
+        allow_insecure = _ALLOW_INSECURE
     req = urllib.request.Request(url, headers=UA)
     try:
         with urllib.request.urlopen(req, timeout=timeout,
@@ -143,10 +184,13 @@ def http_get(url, timeout=40):
     except urllib.error.URLError as e:
         reason = str(getattr(e, "reason", e))
         if "CERTIFICATE_VERIFY_FAILED" in reason:
-            global _CTX_INSECURE
+            if not allow_insecure:
+                raise RuntimeError(
+                    "SSL 证书校验失败；默认拒绝连接。确认网络环境后，"
+                    "如仍要继续请显式使用 --allow-insecure"
+                ) from e
             if _CTX_INSECURE is None:
                 _CTX_INSECURE = ssl._create_unverified_context()
-                print("  [警告] SSL 证书校验不可用，本次以不验证模式继续（仅抓取公开资料）")
             req2 = urllib.request.Request(url, headers=UA)
             with urllib.request.urlopen(req2, timeout=timeout,
                                         context=_CTX_INSECURE) as resp:
@@ -293,6 +337,7 @@ def update_repo(manifest, report):
             return (src, target, None, f"{e.__class__.__name__}: {e}")
 
     ok = fail = 0
+    changed_any = False
     with cf.ThreadPoolExecutor(max_workers=8) as pool:
         for src, target, data, err in pool.map(work, todo):
             key = f"repo:{src}"
@@ -310,6 +355,7 @@ def update_repo(manifest, report):
             if (not existed) or changed or (old_hash is None):
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes(data)
+                changed_any = True
             manifest[key] = new_hash
             ok += 1
             if not existed:
@@ -317,6 +363,7 @@ def update_repo(manifest, report):
             elif changed:
                 report.append(f"  * 已更新: {src}")
     report.append(f"  仓库资料合计成功 {ok} 个，失败 {fail} 个")
+    return changed_any, fail
 
 # ----------------------------------------------------------------------------
 # 来源 2：pi.dev 网站快照
@@ -331,6 +378,7 @@ def update_site(manifest, report):
             return (name, url, None, f"{e.__class__.__name__}: {e}")
 
     ok = fail = 0
+    changed_any = False
     with cf.ThreadPoolExecutor(max_workers=8) as pool:
         for name, url, data, err in pool.map(work, SITE_PAGES):
             key = f"site:{name}"
@@ -349,6 +397,7 @@ def update_site(manifest, report):
             changed = (old_hash is not None and old_hash != new_hash)
             if (not existed) or changed or (old_hash is None):
                 target.write_bytes(data)
+                changed_any = True
             manifest[key] = new_hash
             ok += 1
             if not existed:
@@ -356,66 +405,225 @@ def update_site(manifest, report):
             elif changed:
                 report.append(f"  * 快照有变化: {name}")
     report.append(f"  网站快照合计成功 {ok} 个，失败 {fail} 个")
+    return changed_any, fail
 
 
 # ----------------------------------------------------------------------------
 # 对照版状态小结
 # ----------------------------------------------------------------------------
-def translation_status(manifest, report):
-    translated = sorted(p.stem for p in RAW_DOCS.glob("*.md"))
-    known_docs = set(DOC_NAMES)
-    missing = sorted(known_docs - set(translated))
-    if missing:
-        report.append(f"  缺少英文原文的文档: {', '.join(missing)}")
-    else:
-        report.append(f"  官方文档英文原文齐全（{len(translated)} 篇）。")
+def load_translation_status():
+    if TRANSLATION_STATUS.exists():
+        try:
+            data = json.loads(TRANSLATION_STATUS.read_text(encoding="utf-8"))
+            if isinstance(data, dict):
+                return data
+        except Exception:
+            pass
+    return {}
+
+
+def save_translation_status(data):
+    TRANSLATION_STATUS.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+
+def _source_hash(name, manifest):
+    key = f"repo:packages/coding-agent/docs/{name}.md"
+    if manifest.get(key):
+        return manifest[key]
+    source = RAW_DOCS / f"{name}.md"
+    if source.exists():
+        return sha256(source.read_bytes())
+    return None
+
+
+def _utc_now():
+    return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def translation_status(manifest, report, *, mark_current=False):
+    """比较英文原文哈希与译文基线，返回状态文件是否发生变化。"""
+    old_state = load_translation_status()
+    old_documents = old_state.get("documents", {})
+    state_exists = TRANSLATION_STATUS.exists()
+    documents = {}
+    by_status = {"CURRENT": [], "STALE": [], "UNTRANSLATED": [],
+                 "SOURCE_MISSING": []}
+
+    for name in DOC_NAMES:
+        raw_hash = _source_hash(name, manifest)
+        filename = TRANSLATION_FILES.get(name)
+        translation_path = TRANSLATION_ROOT / filename if filename else None
+        old_entry = old_documents.get(name, {})
+        old_translation_hash = old_entry.get("translation_source_hash")
+        updated_at = old_entry.get("translation_updated_at")
+
+        if translation_path is None or not translation_path.exists():
+            status = "UNTRANSLATED"
+            translation_hash = None
+            updated_at = None
+        elif raw_hash is None:
+            status = "SOURCE_MISSING"
+            translation_hash = old_translation_hash
+        elif mark_current:
+            status = "CURRENT"
+            translation_hash = raw_hash
+            updated_at = _utc_now()
+        elif name in old_documents:
+            translation_hash = old_translation_hash
+            status = "CURRENT" if translation_hash == raw_hash else "STALE"
+        elif not state_exists:
+            # 首次建立状态文件时，把仓库中已有译文作为当前基线；之后必须显式标记。
+            status = "CURRENT"
+            translation_hash = raw_hash
+        else:
+            status = "STALE"
+            translation_hash = None
+
+        relative_path = (translation_path.relative_to(ROOT).as_posix()
+                         if translation_path else None)
+        documents[name] = {
+            "raw_source_hash": raw_hash,
+            "translation_source_hash": translation_hash,
+            "translation_updated_at": updated_at,
+            "status": status,
+            "translation_file": relative_path,
+        }
+        by_status.setdefault(status, []).append(name)
+
+    new_state = {"version": 1, "documents": documents}
+    changed = new_state != old_state
+    if changed:
+        save_translation_status(new_state)
+
+    report.append(
+        "  翻译状态："
+        + " / ".join(f"{status} {len(names)}"
+                     for status, names in by_status.items())
+    )
+    for status in ("STALE", "UNTRANSLATED", "SOURCE_MISSING"):
+        if by_status[status]:
+            report.append(f"  {status}: {', '.join(by_status[status])}")
+    report.append(f"  详细状态已写入: {TRANSLATION_STATUS.relative_to(ROOT)}")
+    if mark_current:
+        report.append("  已按 --mark-translations-current 更新现有译文基线。")
+    return changed
 
 
 # ----------------------------------------------------------------------------
 # 主流程
 # ----------------------------------------------------------------------------
-def main():
+def parse_args(argv=None):
+    parser = argparse.ArgumentParser(
+        description="同步 pi.dev 与 earendil-works/pi 的公开资料快照"
+    )
+    parser.add_argument(
+        "--allow-insecure",
+        action="store_true",
+        help="证书校验失败时允许降级为不验证模式，并在报告中告警",
+    )
+    parser.add_argument(
+        "--mark-translations-current",
+        action="store_true",
+        help="将现有中英对照版绑定到当前英文原文哈希（人工复核后使用）",
+    )
+    return parser.parse_args(argv)
+
+
+def _report_signature(text):
+    """忽略易变的时间字段，避免定时任务制造无意义的 PR。"""
+    return "\n".join(
+        line for line in text.splitlines()
+        if not line.startswith("运行时间:") and not line.startswith("耗时 ")
+    )
+
+
+def main(argv=None):
+    args = parse_args(argv)
+    global _ALLOW_INSECURE
+    _ALLOW_INSECURE = args.allow_insecure
     t0 = time.time()
     print("=" * 62)
     print("pi 资料一键更新（来源: GitHub 仓库 + pi.dev 网站）")
     print("=" * 62)
     manifest = load_manifest()
     report = [f"运行时间: {time.strftime('%Y-%m-%d %H:%M:%S')}", ""]
+    if args.allow_insecure:
+        report.append(
+            "[SECURITY WARNING] 已启用 --allow-insecure；仅在证书校验失败时"
+            "使用不验证 TLS 的重试。"
+        )
+        report.append("")
+
+    data_changed = False
+    failures = 0
 
     report.append("【来源 1】GitHub 仓库 earendil-works/pi（文档/说明/更新日志）")
     print("\n[1/2] 检查 GitHub 仓库资料 ...")
     try:
-        update_repo(manifest, report)
+        changed, failed = update_repo(manifest, report)
+        data_changed = data_changed or changed
+        failures += failed
     except Exception as e:
         report.append(f"  [异常] {e.__class__.__name__}: {e}")
         print(f"  仓库更新出错: {e}")
+        failures += 1
 
     report.append("")
     report.append("【来源 2】pi.dev 网站（页面快照）")
     print("\n[2/2] 抓取 pi.dev 网站快照 ...")
     try:
-        update_site(manifest, report)
+        changed, failed = update_site(manifest, report)
+        data_changed = data_changed or changed
+        failures += failed
     except Exception as e:
         report.append(f"  [异常] {e.__class__.__name__}: {e}")
         print(f"  网站更新出错: {e}")
+        failures += 1
 
     report.append("")
     report.append("【文档对照版状态】")
+    translation_changed = False
     try:
-        translation_status(manifest, report)
-    except Exception:
-        pass
-    report.append("  提示: 若上方『* 已更新』出现 docs/*.md，说明英文原文有变化，")
-    report.append("  对应的 01-文档/ 中英对照版可能滞后，需要重新翻译该篇。")
+        translation_changed = translation_status(
+            manifest,
+            report,
+            mark_current=args.mark_translations_current,
+        )
+    except Exception as e:
+        report.append(f"  [异常] {e.__class__.__name__}: {e}")
+        failures += 1
 
     report.append("")
     report.append(f"耗时 {time.time() - t0:.1f} 秒。中英对照版与 README 索引不受影响。")
 
     save_manifest(manifest)
     text = "\n".join(report) + "\n"
-    REPORT.write_text(text, encoding="utf-8")
+    try:
+        previous_report = REPORT.read_text(encoding="utf-8")
+    except Exception:
+        previous_report = ""
+    report_content_changed = (
+        _report_signature(previous_report) != _report_signature(text)
+    )
+    should_write_report = (
+        data_changed
+        or translation_changed
+        or failures
+        or args.allow_insecure
+        or args.mark_translations_current
+        or not REPORT.exists()
+        or report_content_changed
+    )
+    if should_write_report:
+        REPORT.write_text(text, encoding="utf-8")
+    else:
+        print("\n本次无资料或状态变化，保留上一份《更新报告.txt》。")
     print("\n" + text)
-    print(f"报告已写入: {REPORT}")
+    if should_write_report:
+        print(f"报告已写入: {REPORT}")
     print(f"清单已写入: {MANIFEST}")
     return 0
 

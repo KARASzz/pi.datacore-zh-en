@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/motoko-kusanagi-ghost-in-the-shell.png" alt="Motoko Kusanagi — GHOST IN THE SHELL" width="640">
+<img src="assets/ghost-data-core-original.png" alt="Original cyberpunk data archivist — GHOST IN THE DATA" width="640">
 
-`░ MAJOR MOTOKO KUSANAGI — THERMO-OPTIC: ON ░`
+`░ DATA WARDEN — THERMO-OPTIC: ON ░`
 
 </div>
 
@@ -75,6 +75,12 @@ Pi/
 ├── ⚡ 更新资料.py               ← 一键同步脚本（双源 · 全自动）
 ├── 📋 更新报告.txt               ← 每次同步的变更日志
 ├── 🔑 资料清单.json              ← SHA-256 指纹库（变更检测）
+├── 🧾 翻译状态.json              ← 原文/译文哈希绑定与 STALE 状态
+├── 🛡️ LICENSE                   ← 本项目原创内容的 MIT 许可证
+├── 📜 THIRD_PARTY_NOTICES.md    ← 上游资料与素材边界
+├── ⚙️ .github/workflows/        ← 定期同步并创建待审核 PR
+├── 🧪 tests/                    ← 不联网的安全与状态单元测试
+├── 🖼️ assets/                   ← 原创项目视觉素材
 │
 └── 🗄️ pi.dev-资料库/             ◁◈▷ 知识核心 ◁◈▷
     ├── README.md                 本资料库索引与说明
@@ -108,6 +114,8 @@ Pi/
 python3 更新资料.py
 ```
 
+证书异常时默认停止连接；只有确认本地 CA 环境可信后，才使用 `python3 更新资料.py --allow-insecure` 临时降级，并检查《更新报告.txt》中的 `SECURITY WARNING`。人工复核完译文后，可用 `python3 更新资料.py --mark-translations-current` 更新译文基线。
+
 **⌁ 双源接入**
 
 | 上行链路 | 抓取内容 | 落点 |
@@ -119,9 +127,12 @@ python3 更新资料.py
 
 - 🔒 **零污染** —— 不下载源码，只抓 `.md` / `.json` 资料与页面文本（跳过 src/test/scripts/examples）
 - 🧠 **指纹去重** —— SHA-256 清单比对，内容未变不落盘；有变化才写入并在报告中标记 `*`
-- 🩺 **自愈容错** —— macOS 证书自动降级（certifi → 系统 CA → 安全重试）；单点失败不影响全局；任意目录可运行
-- 📡 **滞后告警** —— 若某篇 `docs/*.md` 英文原文变化，报告会提示 `01-文档/` 对应中英对照需重译
+- 🛡️ **供应链安全** —— 默认严格校验 TLS；只有明确使用 `--allow-insecure` 才允许不验证重试，并写入 `SECURITY WARNING`
+- 📡 **翻译绑定** —— `翻译状态.json` 保存 `raw_source_hash`、`translation_source_hash`、`translation_updated_at` 与 `status`
+- 🤖 **自动同步** —— GitHub Actions 定期运行并创建待审核 PR；不会自动覆盖人工翻译，也不会自动合并
 - 📄 **同步回执** —— 结果写入根目录《更新报告.txt》
+
+> 首次启用自动 PR 前，请在仓库 `Settings → Actions → General → Workflow permissions` 中允许 Actions 使用读写权限，并允许创建 Pull Request。
 
 > ｼﾝｸﾛ失敗 / でも大丈夫 / ﾀﾞｲｼﾞｮｳﾌﾞじゃない ▓▒░ (╥﹏╥) ░▒▓
 
@@ -200,12 +211,12 @@ pi-web-access（网页访问）· pi-subagents（子代理）· pi-mcp-adapter�
 **PI IS A MINIMAL TERMINAL CODING HARNESS.**
 **让 Pi 适应你的工作流，而不是反过来。**
 
-`▲ EXFILTRATED BY PI.DATA·CORE · MIT LICENSED CONTENT · 2026-08-28 ▲`
+`▲ EXFILTRATED BY PI.DATA·CORE · LICENSES: SEE LICENSE + THIRD_PARTY_NOTICES · 2026-08-28 ▲`
 
 *数据来自公开网络，版权归原作者 Earendil Inc. & Contributors 所有。*
 
 *本 README 为《攻壳机动队》GHOST IN THE SHELL 风格的粉丝二创致敬，*
-*与 Production I.G / 讲谈社 / 士郎正宗 无任何隶属关系。*
+*当前顶部视觉为原创 GHOST IN THE DATA 角色，与 Production I.G / 讲谈社 / 士郎正宗 无任何隶属关系。*
 
 </div>
 

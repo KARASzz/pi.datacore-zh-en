@@ -1,0 +1,62 @@
+name: Update pi.dev knowledge base
+
+on:
+  schedule:
+    - cron: "17 2 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pi-data-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    name: Fetch upstream snapshots
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      - name: Validate updater syntax
+        run: python3 -m py_compile 更新资料.py
+
+      - name: Run offline updater tests
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Sync GitHub and pi.dev snapshots
+        run: python3 更新资料.py
+
+      - name: Create or update review pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: sync pi.dev knowledge base"
+          branch: automation/pi-data-sync
+          delete-branch: true
+          title: "chore: sync pi.dev knowledge base"
+          body: |
+            ## Automated snapshot update
+
+            This PR was created by the scheduled knowledge-base sync.
+
+            - Refreshes GitHub and pi.dev raw snapshots when their hashes change.
+            - Updates `翻译状态.json` without overwriting human translations.
+            - Review `更新报告.txt` for source failures and `STALE` translations.
+
+            This workflow creates a PR for human review; it does not merge automatically.
+          add-paths: |
+            资料清单.json
+            翻译状态.json
+            更新报告.txt
+            pi.dev-资料库/

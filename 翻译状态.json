@@ -1,0 +1,215 @@
+{
+  "documents": {
+    "compaction": {
+      "raw_source_hash": "43166749858e6292c85905df4f0f9f189c487a384ae17ddcbbd99053943d62ef",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/11-压缩-Compaction.md",
+      "translation_source_hash": "43166749858e6292c85905df4f0f9f189c487a384ae17ddcbbd99053943d62ef",
+      "translation_updated_at": null
+    },
+    "containerization": {
+      "raw_source_hash": "29ac379f744052adf301e744559cb43d0e6e84d1b04f4757f1710680991be10b",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/07-容器化-Containerization.md",
+      "translation_source_hash": "29ac379f744052adf301e744559cb43d0e6e84d1b04f4757f1710680991be10b",
+      "translation_updated_at": null
+    },
+    "custom-provider": {
+      "raw_source_hash": "b029e062363856ffe62f67861a89415c2f1d5fd2a9d3da858e0a5c4c4cfa293a",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/18-自定义提供商-Custom-Provider.md",
+      "translation_source_hash": "b029e062363856ffe62f67861a89415c2f1d5fd2a9d3da858e0a5c4c4cfa293a",
+      "translation_updated_at": null
+    },
+    "development": {
+      "raw_source_hash": "c8f216425e1fb084fb4323c2d9c68b60e0f1111e37575922a139c64158cc0e5d",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/30-开发-Development.md",
+      "translation_source_hash": "c8f216425e1fb084fb4323c2d9c68b60e0f1111e37575922a139c64158cc0e5d",
+      "translation_updated_at": null
+    },
+    "environment-variables": {
+      "raw_source_hash": "41e0519101118095bafd7a0355f7c16fd6d0685dcf33c4640fa44403fabd0999",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/19-环境变量-Environment-Variables.md",
+      "translation_source_hash": "41e0519101118095bafd7a0355f7c16fd6d0685dcf33c4640fa44403fabd0999",
+      "translation_updated_at": null
+    },
+    "extensions": {
+      "raw_source_hash": "e1e776e9b91355b6d4e5627f4a474de231fd213e0df2ab79957195f560cdd43e",
+      "status": "UNTRANSLATED",
+      "translation_file": null,
+      "translation_source_hash": null,
+      "translation_updated_at": null
+    },
+    "index": {
+      "raw_source_hash": "107d95d5dfba1da71ebd3c0b390199463261f78fe9f438c506a205f33b69f7fe",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/01-总览-Overview.md",
+      "translation_source_hash": "107d95d5dfba1da71ebd3c0b390199463261f78fe9f438c506a205f33b69f7fe",
+      "translation_updated_at": null
+    },
+    "json": {
+      "raw_source_hash": "094b8d1b25aebd949334b695b18e8e7e73d934b82337439af12f6936d73aca84",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/23-JSON事件流-JSON.md",
+      "translation_source_hash": "094b8d1b25aebd949334b695b18e8e7e73d934b82337439af12f6936d73aca84",
+      "translation_updated_at": null
+    },
+    "keybindings": {
+      "raw_source_hash": "8c7cefd4f46aa8a3337a13516bf4804b5515b33f5816ebd19629711c86587495",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/09-快捷键-Keybindings.md",
+      "translation_source_hash": "8c7cefd4f46aa8a3337a13516bf4804b5515b33f5816ebd19629711c86587495",
+      "translation_updated_at": null
+    },
+    "llama-cpp": {
+      "raw_source_hash": "28160e03d1a8ccf823c2b2adecde4c1f4f0c72e9b14d710184114df73498ca01",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/05-llama-cpp.md",
+      "translation_source_hash": "28160e03d1a8ccf823c2b2adecde4c1f4f0c72e9b14d710184114df73498ca01",
+      "translation_updated_at": null
+    },
+    "models": {
+      "raw_source_hash": "f8eece61429d713403d04d5f025d46da5a43c39213a6676f41ba0fb8eb862c07",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/17-自定义模型-Custom-Models.md",
+      "translation_source_hash": "f8eece61429d713403d04d5f025d46da5a43c39213a6676f41ba0fb8eb862c07",
+      "translation_updated_at": null
+    },
+    "packages": {
+      "raw_source_hash": "1067eae058c5ce980a21b04c51ce6d38e201e51197807037d0a063ac3c769b46",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/16-Pi包-Packages.md",
+      "translation_source_hash": "1067eae058c5ce980a21b04c51ce6d38e201e51197807037d0a063ac3c769b46",
+      "translation_updated_at": null
+    },
+    "prompt-templates": {
+      "raw_source_hash": "972bc0b5461d9140fd543b837abb9b4984e59be66182cbb4f72de894d916dbcb",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/14-提示词模板-Prompt-Templates.md",
+      "translation_source_hash": "972bc0b5461d9140fd543b837abb9b4984e59be66182cbb4f72de894d916dbcb",
+      "translation_updated_at": null
+    },
+    "providers": {
+      "raw_source_hash": "3644ff28ca832b5575595e26120b07c2843a32ca0cee4c66e541b490c2ff3a38",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/04-提供商-Providers.md",
+      "translation_source_hash": "3644ff28ca832b5575595e26120b07c2843a32ca0cee4c66e541b490c2ff3a38",
+      "translation_updated_at": null
+    },
+    "quickstart": {
+      "raw_source_hash": "487cb6d2a4e47d616c3e6319b6ef4ccccd7382c77adf002f84419f950035ce8d",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/02-快速开始-Quickstart.md",
+      "translation_source_hash": "487cb6d2a4e47d616c3e6319b6ef4ccccd7382c77adf002f84419f950035ce8d",
+      "translation_updated_at": null
+    },
+    "rpc": {
+      "raw_source_hash": "010811d3526435b4fff5b03ee3a40f5bcb47fa17d5034fbd6b598955f56020d7",
+      "status": "UNTRANSLATED",
+      "translation_file": null,
+      "translation_source_hash": null,
+      "translation_updated_at": null
+    },
+    "sdk": {
+      "raw_source_hash": "084dfecd086b9759b9e7d2aba79bff4dd31cb2bc044ff0379eb457f624ce0c3c",
+      "status": "UNTRANSLATED",
+      "translation_file": null,
+      "translation_source_hash": null,
+      "translation_updated_at": null
+    },
+    "security": {
+      "raw_source_hash": "5df4b27e7b0db49f50807f0e5d8a77e6dc099c76adab6edf21c5b705ede6efab",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/06-安全-Security.md",
+      "translation_source_hash": "5df4b27e7b0db49f50807f0e5d8a77e6dc099c76adab6edf21c5b705ede6efab",
+      "translation_updated_at": null
+    },
+    "session-format": {
+      "raw_source_hash": "c0f25475ab08fb96e244e6bf433aeaa41b69bfb5a52de5c7b01b81c900a84a54",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/20-会话格式-Session-Format.md",
+      "translation_source_hash": "c0f25475ab08fb96e244e6bf433aeaa41b69bfb5a52de5c7b01b81c900a84a54",
+      "translation_updated_at": null
+    },
+    "sessions": {
+      "raw_source_hash": "b4ed96521936b5b4ba464496d096bd6c345803f3fa63b5a647674af068cd83b2",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/10-会话-Sessions.md",
+      "translation_source_hash": "b4ed96521936b5b4ba464496d096bd6c345803f3fa63b5a647674af068cd83b2",
+      "translation_updated_at": null
+    },
+    "settings": {
+      "raw_source_hash": "663389f072d37334cbe74fd72d246651c4118f4b835b07a0129372c74dbeb2e2",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/08-设置-Settings.md",
+      "translation_source_hash": "663389f072d37334cbe74fd72d246651c4118f4b835b07a0129372c74dbeb2e2",
+      "translation_updated_at": null
+    },
+    "shell-aliases": {
+      "raw_source_hash": "adead5083689ca9d14fa32f2a3db0bd4d6963a91a1a00d060d5b49c420f257ae",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/29-Shell别名-Shell-Aliases.md",
+      "translation_source_hash": "adead5083689ca9d14fa32f2a3db0bd4d6963a91a1a00d060d5b49c420f257ae",
+      "translation_updated_at": null
+    },
+    "skills": {
+      "raw_source_hash": "4d663d3791e82dc86cd832a9881247d0b1edd23bd33913a4a8322321906073a5",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/13-技能-Skills.md",
+      "translation_source_hash": "4d663d3791e82dc86cd832a9881247d0b1edd23bd33913a4a8322321906073a5",
+      "translation_updated_at": null
+    },
+    "terminal-setup": {
+      "raw_source_hash": "b7e548ff235d07ca9bc741841ad3255c1dce52f754674b21a368f3a660835084",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/28-终端设置-Terminal-Setup.md",
+      "translation_source_hash": "b7e548ff235d07ca9bc741841ad3255c1dce52f754674b21a368f3a660835084",
+      "translation_updated_at": null
+    },
+    "termux": {
+      "raw_source_hash": "471c4aff3e2004e7de5387737f728ede4c4c6ac1ccf51575ff4ef2fdbd52c3ce",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/26-Termux.md",
+      "translation_source_hash": "471c4aff3e2004e7de5387737f728ede4c4c6ac1ccf51575ff4ef2fdbd52c3ce",
+      "translation_updated_at": null
+    },
+    "themes": {
+      "raw_source_hash": "ea022e8251007d368f3b3ec36391bdc447cdaf7a7cb6f92ff54aac56205519ad",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/15-主题-Themes.md",
+      "translation_source_hash": "ea022e8251007d368f3b3ec36391bdc447cdaf7a7cb6f92ff54aac56205519ad",
+      "translation_updated_at": null
+    },
+    "tmux": {
+      "raw_source_hash": "1fa5373d65c3fac2e2afe5ba3174d4c265076a6832e2f42a79ac033a42a57030",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/27-tmux.md",
+      "translation_source_hash": "1fa5373d65c3fac2e2afe5ba3174d4c265076a6832e2f42a79ac033a42a57030",
+      "translation_updated_at": null
+    },
+    "tui": {
+      "raw_source_hash": "a3d3f576f0fb9e6127709d62717ed9c522aac5e6db5b991c533e46e97942974c",
+      "status": "UNTRANSLATED",
+      "translation_file": null,
+      "translation_source_hash": null,
+      "translation_updated_at": null
+    },
+    "usage": {
+      "raw_source_hash": "588896ba21944ff002d637444edc22698fd24959c59fe25f95010b9707b47d92",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/03-使用-Pi-Usage.md",
+      "translation_source_hash": "588896ba21944ff002d637444edc22698fd24959c59fe25f95010b9707b47d92",
+      "translation_updated_at": null
+    },
+    "windows": {
+      "raw_source_hash": "0b35e25f3c137afdb67cc05d4aaf0cf60ff63a1dd41015de2d1a40a3115e2ba6",
+      "status": "CURRENT",
+      "translation_file": "pi.dev-资料库/01-文档/25-Windows.md",
+      "translation_source_hash": "0b35e25f3c137afdb67cc05d4aaf0cf60ff63a1dd41015de2d1a40a3115e2ba6",
+      "translation_updated_at": null
+    }
+  },
+  "version": 1
+}
