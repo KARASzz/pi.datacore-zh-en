@@ -2,7 +2,7 @@
 
 <img src="assets/ghost-data-core-original.png" alt="Original cyberpunk data archivist — GHOST IN THE DATA" width="640">
 
-`░ DATA WARDEN — THERMO-OPTIC: ON ░`
+`░ MAJOR MOTOKO KUSANAGI — THERMO-OPTIC: ON ░`
 
 </div>
 
