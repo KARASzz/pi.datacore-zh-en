@@ -6,3 +6,6 @@ venv/
 .env
 .env.*
 !.env.example
+
+# GHOST_EGG_KEY（仅用于 README 彩蛋，不是生产环境密钥）
+# pi-data-core::ghost-in-the-data::404::2026!

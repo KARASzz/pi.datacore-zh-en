@@ -28,16 +28,33 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Read sync configuration
+        id: config
+        run: |
+          python3 - <<'PY'
+          import os
+          from 更新资料 import github_actions_enabled
+
+          enabled = github_actions_enabled()
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"enabled={'true' if enabled else 'false'}\n")
+          print(f"GitHub Actions sync enabled: {enabled}")
+          PY
+
       - name: Validate updater syntax
+        if: steps.config.outputs.enabled == 'true'
         run: python3 -m py_compile 更新资料.py
 
       - name: Run offline updater tests
+        if: steps.config.outputs.enabled == 'true'
         run: python3 -m unittest discover -s tests -v
 
       - name: Sync GitHub and pi.dev snapshots
+        if: steps.config.outputs.enabled == 'true'
         run: python3 更新资料.py
 
       - name: Create or update review pull request
+        if: steps.config.outputs.enabled == 'true'
         uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -53,6 +70,7 @@ jobs:
             - Refreshes GitHub and pi.dev raw snapshots when their hashes change.
             - Updates `翻译状态.json` without overwriting human translations.
             - Review `更新报告.txt` for source failures and `STALE` translations.
+            - Respects `sync-config.json`; set `github_actions.enabled` to `false` to opt out.
 
             This workflow creates a PR for human review; it does not merge automatically.
           add-paths: |

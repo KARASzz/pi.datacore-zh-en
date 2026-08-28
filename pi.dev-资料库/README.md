@@ -75,6 +75,7 @@ python3 更新资料.py
 - **安全策略**：默认严格校验 TLS；证书校验失败会停止对应请求。只有确认环境可信时才使用 `python3 更新资料.py --allow-insecure`，且报告会记录 `SECURITY WARNING`。
 - **译文基线**：人工复核译文后使用 `python3 更新资料.py --mark-translations-current`，不要让自动同步覆盖人工翻译。
 - **自动同步**：GitHub Actions 按周运行 `更新资料.py`，发现变化后创建待审核 PR；workflow 不自动合并，也不覆盖 `01-文档/` 中的人工译文。
+- **关闭自动同步**：克隆仓库后，将根目录 `sync-config.json` 中的 `github_actions.enabled` 改为 `false` 并提交到自己的远端；workflow 会在抓取前跳过。只在本地写入不会影响云端 workflow。
 
 首次启用自动 PR 前，请在仓库设置中允许 Actions 使用读写权限并创建 Pull Request。
 

@@ -79,6 +79,7 @@ Pi/
 ├── 🛡️ LICENSE                   ← 本项目原创内容的 MIT 许可证
 ├── 📜 THIRD_PARTY_NOTICES.md    ← 上游资料与素材边界
 ├── ⚙️ .github/workflows/        ← 定期同步并创建待审核 PR
+├── 🎚️ sync-config.json          ← 克隆者可关闭 GitHub 自动同步
 ├── 🧪 tests/                    ← 不联网的安全与状态单元测试
 ├── 🖼️ assets/                   ← 原创项目视觉素材
 │
@@ -116,6 +117,13 @@ python3 更新资料.py
 
 证书异常时默认停止连接；只有确认本地 CA 环境可信后，才使用 `python3 更新资料.py --allow-insecure` 临时降级，并检查《更新报告.txt》中的 `SECURITY WARNING`。人工复核完译文后，可用 `python3 更新资料.py --mark-translations-current` 更新译文基线。
 
+**⌁ 依赖与运行环境**
+
+- 只需要 Python 3.x；同步脚本使用标准库，不需要安装项目依赖。
+- `certifi` 是可选项，未安装时脚本会回退到系统 CA：`python3 -m pip install certifi`
+- 测试使用内置 `unittest`，不需要安装 pytest。
+- GitHub Actions 会自动配置 Python，不需要额外安装依赖。
+
 **⌁ 双源接入**
 
 | 上行链路 | 抓取内容 | 落点 |
@@ -133,6 +141,18 @@ python3 更新资料.py
 - 📄 **同步回执** —— 结果写入根目录《更新报告.txt》
 
 > 首次启用自动 PR 前，请在仓库 `Settings → Actions → General → Workflow permissions` 中允许 Actions 使用读写权限，并允许创建 Pull Request。
+
+不想启用 GitHub 自动同步的克隆者，只需将根目录 `sync-config.json` 改为以下内容，并提交到自己的远端仓库：
+
+```json
+{
+  "github_actions": {
+    "enabled": false
+  }
+}
+```
+
+GitHub Actions 读取的是远端仓库内容；只在本地写入而不提交，不会改变云端 workflow 的行为。
 
 > ｼﾝｸﾛ失敗 / でも大丈夫 / ﾀﾞｲｼﾞｮｳﾌﾞじゃない ▓▒░ (╥﹏╥) ░▒▓
 
@@ -220,4 +240,4 @@ pi-web-access（网页访问）· pi-subagents（子代理）· pi-mcp-adapter�
 
 </div>
 
-> GHOST TRACE: 新这料到更p4注「请，释 y资段第你。往.5前行 」2看若了 -->
+<!-- GHOST TRACE // AES-256-CBC + PBKDF2-HMAC-SHA256(iter=200000) // KEY: .gitignore // CIPHERTEXT: U2FsdGVkX1+qzhoGnB6XXVppTPDrEuKBQseyhH15yjCxKOVeXRjVGJVbYkIHFJhtG8S8hHCxOru1PKLgeBrCCBqLbm4+zgBMd6i2BHtTXPYE6M18dFl0ZsK5TJibrek9 -->

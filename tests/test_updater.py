@@ -33,6 +33,22 @@ class UpdaterTests(unittest.TestCase):
                 updater.http_get("https://example.invalid")
         urlopen.assert_called_once()
 
+    def test_github_actions_can_be_disabled_from_root_config(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            config_path = Path(temp_dir) / "sync-config.json"
+            config_path.write_text(
+                '{"github_actions": {"enabled": false}}', encoding="utf-8"
+            )
+            with mock.patch.object(updater, "SYNC_CONFIG", config_path):
+                self.assertFalse(updater.github_actions_enabled())
+
+                config_path.write_text(
+                    '{"github_actions": {"enabled": "false"}}',
+                    encoding="utf-8",
+                )
+                with self.assertRaisesRegex(ValueError, "布尔值"):
+                    updater.github_actions_enabled()
+
     def test_insecure_retry_requires_explicit_opt_in(self):
         calls = []
 

@@ -53,6 +53,7 @@ MANIFEST = ROOT / "资料清单.json"                 # 哈希清单（变更检
 REPORT = ROOT / "更新报告.txt"                    # 本次运行报告
 TRANSLATION_ROOT = KB / "01-文档"                 # 中英对照版
 TRANSLATION_STATUS = ROOT / "翻译状态.json"       # 原文与译文绑定状态
+SYNC_CONFIG = ROOT / "sync-config.json"           # GitHub Actions 开关
 
 REPO = "earendil-works/pi"
 BRANCH = "main"
@@ -209,6 +210,29 @@ def load_manifest():
         except Exception:
             return {}
     return {}
+
+
+def load_sync_config():
+    """读取同步配置；配置无效时拒绝运行，避免意外开启自动同步。"""
+    if not SYNC_CONFIG.exists():
+        return {"github_actions": {"enabled": True}}
+    try:
+        data = json.loads(SYNC_CONFIG.read_text(encoding="utf-8"))
+    except Exception as e:
+        raise ValueError(f"无法读取 {SYNC_CONFIG.name}: {e}") from e
+    if not isinstance(data, dict):
+        raise ValueError(f"{SYNC_CONFIG.name} 顶层必须是 JSON 对象")
+    actions = data.get("github_actions", {})
+    if not isinstance(actions, dict):
+        raise ValueError("sync-config.json 的 github_actions 必须是对象")
+    enabled = actions.get("enabled", True)
+    if not isinstance(enabled, bool):
+        raise ValueError("sync-config.json 的 github_actions.enabled 必须是布尔值")
+    return data
+
+
+def github_actions_enabled():
+    return load_sync_config().get("github_actions", {}).get("enabled", True)
 
 
 def save_manifest(m):
