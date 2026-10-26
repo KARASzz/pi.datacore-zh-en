@@ -1,7 +1,8 @@
+People of Pi: We've shipped Pi 1.0 with Pi Durable. Go make them yours.
 Copy SVGDownload SVGPress Kit
-HomeDocumentationNewsPackagesModels
+DocumentationChangelogModelsPackagesRadius
 
-Home→Documentation→News→Packages→Models→
+Documentation→Changelog→Models→Packages→Radius→
 
 GitHubnpmDiscordX
 
@@ -19,12 +20,12 @@ Install pi-lens from npm and Pi will load the resources declared by the package 
  npm repohome report
 
 $ pi install npm:pi-lensCopy
-Packagepi-lensVersion4.1.2PublishedAug 24, 2026Downloads58K/mo · 25K/wkAuthorapmantzaLicenseMITTypesextension, skillSize22.7 MBDependencies6 dependencies · 3 peersPi manifest JSON{
+Packagepi-lensVersion4.4.5PublishedOct 25, 2026Downloads76.8K/mo · 10.2K/wkAuthorapmantzaLicenseMITTypesextension, skillSize24.3 MBDependencies6 dependencies · 3 peersPi manifest JSON{
+ "skills": [
+ "./skills"
+ ],
  "extensions": [
  "./dist/index.js"
- ],
- "skills": [
- "../../skills"
  ]
 }
 
@@ -88,7 +89,11 @@ edit-time lane and the LSP lane. Both lanes write into the findings stores.
 Nothing reaches the agent from those stores until a freshness gate or an
 explicit age label clears it.
 
-flowchart TD
+ 
+ 
+ 
+ 
+ flowchart TD
  subgraph host["pi host"]
  HOST["Host events<br/>tool_call, tool_result, turn_start/end,<br/>session_start/shutdown, agent_end, context"]
  WRAP["Stale-ctx wrapper<br/>skips and counts events on a replaced session<br/>tool_result, turn_start, turn_end, agent_end,<br/>agent_settled, session_start, context"]
@@ -130,6 +135,8 @@ flowchart TD
 
  SESSION["Session lifecycle<br/>primary, sequential replacement, concurrent secondary"]
  SINKS["Observability sinks<br/>latency.log, degradation ledger, bounded telemetry,<br/>cache observability, cascade and tree-sitter logs"]
+ CONFIG["Config-core<br/>resolve, merge, deny"]
+ REVIEWGRAPH["Review-graph intelligence<br/>call graph, reverse deps, import resolution"]
 
  HOST --> WRAP
  HOST -->|tool_call, raw| RG
@@ -144,6 +151,10 @@ flowchart TD
  PLAN --> STRUCT
  PIPE --> POOL
  PIPE --> BUS
+ CONFIG --> PIPE
+ CONFIG --> PLAN
+ STRUCT --> REVIEWGRAPH
+ REVIEWGRAPH --> CASC
  POOL --> DIAGS
  DIAGS --> CASC
  RUN --> STORES
@@ -170,11 +181,13 @@ flowchart TD
  GG --> SINKS
  FRESH --> SINKS
 
+ 
+
 Architecture-level view, updated when a lane changes. Per-tool inventories live
 in features and
 language coverage. Today the edit-time lane carries
-45+ runner modules over 35+ file kinds, and the LSP lane speaks to a dozen-plus
-language servers.
+45+ runner modules over 35+ file kinds, and the LSP lane speaks to 47
+language server definitions.
 
 The gating box is an abstraction, not a call order. Freshness covers several
 independent mechanisms: path freshness against scan time, past-EOF line checks,
@@ -185,17 +198,54 @@ for the per-surface contract.
 
 ## Install
 
-pi install npm:pi-lens
+ 
+ 
+ 
+ 
+ pi install npm:pi-lens
+
+ 
 
 Or from git:
 
-pi install git:github.com/apmantza/pi-lens
+ 
+ 
+ 
+ 
+ pi install git:github.com/apmantza/pi-lens
+
+ 
+
+pi-lens delivers its four skills through the pi.skills package manifest, so
+install it as a package (npm:, git:, or a local path); a package install
+honours the host's packages[].skills filters (for example [],
+!skills/<name>/SKILL.md, or -skills/<name>/SKILL.md). Loading the extension
+file directly (pi --extension ./index.js) does not read that manifest and
+loads no pi-lens skills.
+
+Requires Node.js >=22.19.0 (matches the pi host's own floor — see engines
+in package.json), and a pi host of 0.86.1 or newer. pi 0.80–0.85 keep the
+prompt outside the request the extension can write to, so pi-lens delivers no
+findings there; docs/release-qa-baseline.md lists the certified hosts.
+
+Letting a coding agent do it: paste this into its prompt.
+
+ 
+ 
+ 
+ 
+ Install pi-lens (npm:pi-lens) into pi, then read AGENTS.md in
+https://github.com/apmantza/pi-lens for how the extension works and how it
+expects to be operated.
+
+ 
 
 npm v12 users: dependency lifecycle scripts (e.g. @ast-grep/cli's
 postinstall) now require explicit approval — if npm install warns about
 unreviewed install scripts, review and allow them with
 npm approve-scripts, or trust the allowScripts entries already declared
-in this package's package.json. Installing from a git source (pi install git:... / pi update --extension git:...) may similarly prompt for
+in this package's package.json (maintainers: see CONTRIBUTING.md
+"Lifecycle-script approvals"). Installing from a git source (pi install git:... / pi update --extension git:...) may similarly prompt for
 git-dependency approval; accept it to let the prepare build step run.
 
 ## Documentation
@@ -235,6 +285,9 @@ and formatters
 - MCP server — experimental MCP server for Claude Code and
 other MCP clients
 
+- Architecture decision records — settled design
+decisions, linked from the engineering-defect catalog
+
 ## Contributing
 
 See CONTRIBUTING.md for the development workflow, runner,
@@ -246,14 +299,6 @@ pi-lens is released under the MIT License.
 ## Contributors
 
 Thanks goes to these wonderful people:
-
-The following commit identities also appear in git shortlog -sne HEAD but are
-not represented in the generated table above: Anas Alsbei, Claude,
-Christopher Patti,
-dependabot[bot], Fabio-D, github-actions[bot], JSup, Kenny McCormick,
-Max Lupus, Moritz Hofmann, ricardo, and root.
-
-If you land a pull request or report an issue that gets fixed, we'll add you here.
 
 Earendil Inc. & Contributors
 Press Kit

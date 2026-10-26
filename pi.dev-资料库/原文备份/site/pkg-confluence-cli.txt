@@ -1,7 +1,8 @@
+People of Pi: We've shipped Pi 1.0 with Pi Durable. Go make them yours.
 Copy SVGDownload SVGPress Kit
-HomeDocumentationNewsPackagesModels
+DocumentationChangelogModelsPackagesRadius
 
-Home→Documentation→News→Packages→Models→
+Documentation→Changelog→Models→Packages→Radius→
 
 GitHubnpmDiscordX
 
@@ -19,7 +20,7 @@ Install confluence-cli from npm and Pi will load the resources declared by the p
  npm repohome report
 
 $ pi install npm:confluence-cliCopy
-Packageconfluence-cliVersion2.21.0PublishedAug 27, 2026Downloads31.5K/mo · 8,215/wkAuthorpchuriLicenseMITTypesextension, skillSize521.8 KBDependencies9 dependencies · 1 peerPi manifest JSON{
+Packageconfluence-cliVersion2.30.4PublishedOct 21, 2026Downloads42.1K/mo · 5,495/wkAuthorpchuriLicenseMITTypesextension, skillSize647.1 KBDependencies10 dependencies · 1 peerPi manifest JSON{
  "skills": [
  "./plugins/confluence/skills"
  ],
@@ -78,19 +79,43 @@ A powerful command-line interface for Atlassian Confluence that allows you to re
 
 ### Homebrew (macOS/Linux)
 
-brew install pchuri/tap/confluence-cli
+ 
+ 
+ 
+ 
+ brew install pchuri/tap/confluence-cli
+
+ 
 
 Homebrew 5.1.15+ warns that third-party taps are "not trusted". To trust the tap and silence the warning (required in a future Homebrew release):
 
-brew trust pchuri/tap
+ 
+ 
+ 
+ 
+ brew trust pchuri/tap
+
+ 
 
 ### npm
 
-npm install -g confluence-cli
+ 
+ 
+ 
+ 
+ npm install -g confluence-cli
+
+ 
 
 Or run directly with npx:
 
-npx confluence-cli
+ 
+ 
+ 
+ 
+ npx confluence-cli
+
+ 
 
 Note: npm does not automatically install the optional typebox dependency. Loading the bundled Pi extension from an npm-installed copy requires installing typebox alongside confluence-cli; the documented local-checkout npm ci already includes it.
 
@@ -98,13 +123,23 @@ Note: npm does not automatically install the optional typebox dependency. Loadin
 
 Install this local checkout into Pi without globally installing confluence. Install the clone's dependencies first because Pi does not install dependencies for local-path packages:
 
-cd /absolute/path/to/confluence-cli
+ 
+ 
+ 
+ 
+ cd /absolute/path/to/confluence-cli
 npm ci
 pi install /absolute/path/to/confluence-cli
 
+ 
+
 For a Server/Data Center instance at confluence.example.com, start Pi from a shell configured like this when protected writes are intended:
 
-export CONFLUENCE_DOMAIN=confluence.example.com
+ 
+ 
+ 
+ 
+ export CONFLUENCE_DOMAIN=confluence.example.com
 export CONFLUENCE_API_PATH=/rest/api
 export CONFLUENCE_AUTH_TYPE=bearer
 export CONFLUENCE_API_TOKEN='<personal-access-token>'
@@ -112,6 +147,8 @@ export CONFLUENCE_READ_ONLY=false
 export CONFLUENCE_PI_WRITES=true
 export CONFLUENCE_PI_WRITE_SPACES='SAFE1,SAFE2'
 pi
+
+ 
 
 The package does not persist these values in Pi settings or session files. Changing registration variables (CONFLUENCE_PI_WRITES or CONFLUENCE_PI_WRITE_SPACES) after Pi starts requires /reload so the extension can re-register the correct tool set. Leaving writes disabled exposes read tools only.
 
@@ -179,14 +216,26 @@ confluence-cli ships as a Claude Code plugin. Once installed, Claude Code unders
 
 Add the marketplace and install the plugin:
 
-/plugin marketplace add pchuri/confluence-cli
+ 
+ 
+ 
+ 
+ /plugin marketplace add pchuri/confluence-cli
 /plugin install confluence@pchuri-confluence-cli
+
+ 
 
 ### Option 2: Install Skill manually
 
 If you prefer not to use the plugin system, copy the skill documentation into your project:
 
-confluence install-skill
+ 
+ 
+ 
+ 
+ confluence install-skill
+
+ 
 
 This creates .claude/skills/confluence/SKILL.md in your current directory. Claude Code picks it up automatically.
 
@@ -195,38 +244,80 @@ This creates .claude/skills/confluence/SKILL.md in your current directory. Claud
 - 
 Initialize configuration:
 
-confluence init
+ 
+ 
+ 
+ 
+ confluence init
+
+ 
 
 - 
 Read a page:
 
-confluence read 123456789
+ 
+ 
+ 
+ 
+ confluence read 123456789
+
+ 
 
 - 
 Search for pages:
 
-confluence search "my search term"
+ 
+ 
+ 
+ 
+ confluence search "my search term"
+
+ 
 
 - 
 List child pages:
 
-confluence children 123456789
+ 
+ 
+ 
+ 
+ confluence children 123456789
+
+ 
 
 - 
 Create a new page:
 
-confluence create "My New Page" SPACEKEY --content "Hello World!"
+ 
+ 
+ 
+ 
+ confluence create "My New Page" SPACEKEY --content "Hello World!"
+
+ 
 
 - 
 Update a page:
 
-confluence update 123456789 --content "Updated content"
+ 
+ 
+ 
+ 
+ confluence update 123456789 --content "Updated content"
+
+ 
 
 ## Configuration
 
 ### Option 1: Interactive Setup
 
-confluence init
+ 
+ 
+ 
+ 
+ confluence init
+
+ 
 
 The wizard helps you choose the right API endpoint and authentication method. It recommends /wiki/rest/api for Atlassian Cloud domains (e.g., *.atlassian.net) and /rest/api for self-hosted/Data Center instances, then prompts for Basic (email/username + token/password), Bearer, or client-certificate (mTLS) authentication.
 
@@ -236,16 +327,26 @@ Provide all required configuration via command-line flags. Perfect for CI/CD pip
 
 Complete non-interactive mode (all required fields provided):
 
-confluence init \
+ 
+ 
+ 
+ 
+ confluence init \
  --domain "company.atlassian.net" \
  --api-path "/wiki/rest/api" \
  --auth-type "basic" \
  --email "user@example.com" \
  --token "your-api-token"
 
+ 
+
 Scoped API token (recommended for agents — least privilege):
 
-# Replace <your-cloud-id> with your actual Cloud ID
+ 
+ 
+ 
+ 
+ # Replace <your-cloud-id> with your actual Cloud ID
 confluence init \
  --domain "api.atlassian.com" \
  --api-path "/ex/confluence/<your-cloud-id>/wiki/rest/api" \
@@ -253,17 +354,29 @@ confluence init \
  --email "user@example.com" \
  --token "your-scoped-token"
 
+ 
+
 Named profile (save to a specific profile):
 
-confluence --profile staging init \
+ 
+ 
+ 
+ 
+ confluence --profile staging init \
  --domain "staging.example.com" \
  --api-path "/rest/api" \
  --auth-type "bearer" \
  --token "your-personal-access-token"
 
+ 
+
 mTLS profile (self-hosted or reverse-proxied Confluence APIs):
 
-confluence --profile corp init \
+ 
+ 
+ 
+ 
+ confluence --profile corp init \
  --domain "docs.example.com" \
  --api-path "/confluence/rest/api" \
  --auth-type "mtls" \
@@ -271,9 +384,15 @@ confluence --profile corp init \
  --tls-client-key "~/.certs/client.key" \
  --tls-ca-cert "~/.certs/ca-chain.pem"
 
+ 
+
 Cookie authentication profile (Enterprise SSO):
 
-confluence --profile sso init \
+ 
+ 
+ 
+ 
+ confluence --profile sso init \
  --domain "confluence.company.com" \
  --api-path "/rest/api" \
  --auth-type "cookie" \
@@ -285,20 +404,34 @@ confluence --profile sso init \
  --auth-type "cookie" \
  --cookie "JSESSIONID=abc123; XSRF-TOKEN=xyz789"
 
+ 
+
 Reverse-proxy / no-auth profile (credentials injected upstream):
 
-confluence --profile proxy init \
+ 
+ 
+ 
+ 
+ confluence --profile proxy init \
  --domain "confluence.internal" \
  --api-path "/rest/api" \
  --auth-type "none"
 
+ 
+
 Hybrid mode (some fields provided, rest via prompts):
 
-# Domain and token provided, will prompt for auth method and email
+ 
+ 
+ 
+ 
+ # Domain and token provided, will prompt for auth method and email
 confluence init --domain "company.atlassian.net" --token "your-api-token"
 
 # Email indicates basic auth, will prompt for domain and token
 confluence init --email "user@example.com" --token "your-api-token"
+
+ 
 
 Available flags:
 
@@ -312,7 +445,7 @@ Available flags:
 
 - -t, --token <token> - API token or password
 
-- -c, --cookie <cookie> - Cookie for Enterprise SSO authentication (e.g., "JSESSIONID=...")
+- -c, --cookie <cookie> - Cookie for Enterprise SSO authentication (e.g., "JSESSIONID=..."). Can also be combined with --auth-type basic/bearer for gateways that require both a session cookie and an application-level credential (see below).
 
 - --tls-client-cert <path> - Client certificate for mTLS authentication
 
@@ -322,11 +455,19 @@ Available flags:
 
 - --read-only - Enable read-only mode (blocks all write operations)
 
-⚠️ Security note: While flags work, storing tokens in shell history is risky. Prefer environment variables (Option 3) for production environments.
+- --keychain - Store the token in the macOS Keychain instead of config.json (macOS only, see Option 5)
+
+- --allow-insecure-http - Allow --protocol http to actually use HTTP for this profile (see HTTP transport below). Without it, http silently falls back to HTTPS.
+
+⚠️ Security note: While flags work, storing tokens in shell history is risky. Prefer environment variables (Option 3) for production environments, or the macOS Keychain (Option 5) for a workstation.
 
 ### Option 3: Environment Variables
 
-export CONFLUENCE_DOMAIN="your-domain.atlassian.net"
+ 
+ 
+ 
+ 
+ export CONFLUENCE_DOMAIN="your-domain.atlassian.net"
 export CONFLUENCE_API_TOKEN="your-api-token" # or password for on-premise (alias: CONFLUENCE_PASSWORD)
 export CONFLUENCE_EMAIL="your.email@example.com" # required for basic auth (alias: CONFLUENCE_USERNAME for on-premise)
 export CONFLUENCE_API_PATH="/wiki/rest/api" # Cloud default; use /rest/api for Server/DC
@@ -335,53 +476,118 @@ export CONFLUENCE_AUTH_TYPE="basic"
 # Optional: select a named profile (overridden by --profile flag)
 export CONFLUENCE_PROFILE="default"
 
+ 
+
 mTLS environment variables:
 
-export CONFLUENCE_DOMAIN="docs.example.com"
+ 
+ 
+ 
+ 
+ export CONFLUENCE_DOMAIN="docs.example.com"
 export CONFLUENCE_API_PATH="/confluence/rest/api"
 export CONFLUENCE_AUTH_TYPE="mtls"
 export CONFLUENCE_TLS_CLIENT_CERT="~/.certs/client.pem"
 export CONFLUENCE_TLS_CLIENT_KEY="~/.certs/client.key"
 export CONFLUENCE_TLS_CA_CERT="~/.certs/ca-chain.pem" # optional
 
+ 
+
 Cookie environment variables (Enterprise SSO):
 
-export CONFLUENCE_DOMAIN="confluence.company.com"
+ 
+ 
+ 
+ 
+ export CONFLUENCE_DOMAIN="confluence.company.com"
 export CONFLUENCE_API_PATH="/rest/api"
 export CONFLUENCE_AUTH_TYPE="cookie"
 export CONFLUENCE_COOKIE="JSESSIONID=abc123xyz..."
 
+ 
+
 Reverse-proxy / no-auth environment variables:
 
-export CONFLUENCE_DOMAIN="confluence.internal"
+ 
+ 
+ 
+ 
+ export CONFLUENCE_DOMAIN="confluence.internal"
 export CONFLUENCE_API_PATH="/rest/api"
 export CONFLUENCE_AUTH_TYPE="none"
 
+ 
+
 Scoped API token (recommended for agents):
 
-export CONFLUENCE_DOMAIN="api.atlassian.com"
+ 
+ 
+ 
+ 
+ export CONFLUENCE_DOMAIN="api.atlassian.com"
 export CONFLUENCE_API_PATH="/ex/confluence/<your-cloud-id>/wiki/rest/api"
 export CONFLUENCE_AUTH_TYPE="basic"
 export CONFLUENCE_EMAIL="user@example.com"
 export CONFLUENCE_API_TOKEN="your-scoped-token"
 
+ 
+
 CONFLUENCE_API_PATH defaults to /wiki/rest/api for Atlassian Cloud domains and /rest/api otherwise. Override it when your site lives under a custom reverse proxy or on-premises path. CONFLUENCE_AUTH_TYPE defaults to basic when an email is present and falls back to bearer otherwise. For mtls, set CONFLUENCE_TLS_CLIENT_CERT and CONFLUENCE_TLS_CLIENT_KEY; CONFLUENCE_TLS_CA_CERT is optional.
 
 ### Option 4: .netrc file
 
-To keep your API token out of config.json, store it in a standard .netrc file (the same mechanism used by curl and Git). Configure a profile as usual but omit the token, then add an entry to your ~/.netrc:
+To keep your API token out of config.json on any platform, store it in a standard .netrc file (the same mechanism used by curl and Git). Configure a profile as usual but omit the token, then add an entry to your ~/.netrc:
 
-machine your-domain.atlassian.net
+ 
+ 
+ 
+ 
+ machine your-domain.atlassian.net
  login your.email@example.com
  password your-api-token
 
+ 
+
 - The machine must match the profile's domain, and login must match the profile's email (basic auth). For bearer auth (no email), only the machine is matched.
 
-- The token is resolved with this precedence: environment variable / --token → profile token in config.json → .netrc. A token from a higher-priority source wins.
+- The token is resolved with this precedence: environment variable / --token → profile token in config.json → macOS Keychain → .netrc. A token from a higher-priority source wins.
 
 - .netrc supplies the token for basic and bearer auth only (not mtls, cookie, or none).
 
 - The file location is ~/.netrc (~/_netrc on Windows), or the path in the NETRC environment variable if set.
+
+- Note that .netrc is still plaintext on disk. On macOS, prefer the Keychain (Option 5).
+
+### Option 5: macOS Keychain
+
+On macOS you can keep the API token in the login Keychain instead of config.json. Pass --keychain to confluence init (or answer yes to the Keychain prompt in interactive mode):
+
+ 
+ 
+ 
+ 
+ confluence init \
+ --domain "your-domain.atlassian.net" \
+ --auth-type basic \
+ --email "your.email@example.com" \
+ --token "your-api-token" \
+ --keychain
+
+ 
+
+The profile is written without a token field, and every command reads the token from the Keychain instead.
+
+- Items are generic passwords named confluence-cli:<host>; the account is your email for basic auth or the literal bearer for bearer auth. You can inspect them in Keychain Access.app or with security find-generic-password -s confluence-cli:<host> -a <account>.
+
+- The CLI talks to the Keychain through the built-in /usr/bin/security tool (the same approach as jira-cli), so there is no native dependency. The token is passed to security -i on stdin, never on the command line.
+
+- Values are stored as b64: + base64 so that non-ASCII tokens round-trip. Entries added by hand with a plain value are read as-is and must be printable ASCII (otherwise security prints them as hex). Profiles on the same host with the same auth type share one item.
+
+- Re-running confluence init --keychain replaces both the profile and the Keychain item. Changing the host or email creates a new item and leaves the old one in place; remove items with security delete-generic-password -s confluence-cli:<host> -a <account>.
+
+- Set CONFLUENCE_KEYCHAIN=off to skip Keychain lookups (for example on a headless Mac where the login Keychain is locked and an access prompt would block). Lookups time out after 30 seconds and fall back to .netrc.
+
+- Not available on Linux or Windows; --keychain is rejected there and lookups are skipped.
 
 Config file location:
 
@@ -395,9 +601,15 @@ confluence-cli supports the XDG Base Directory Specification. The config directo
 
 New installations go to ~/.config/confluence-cli/ by default. Existing users at ~/.confluence-cli/ are unaffected — the CLI continues to use the legacy location until you move it. To migrate, simply move the directory:
 
-mkdir -p ~/.config/confluence-cli
+ 
+ 
+ 
+ 
+ mkdir -p ~/.config/confluence-cli
 mv ~/.confluence-cli/* ~/.config/confluence-cli/
 rmdir ~/.confluence-cli
+
+ 
 
 The stats file (stats.json) follows the same resolution and lives alongside config.json in the same directory.
 
@@ -405,11 +617,21 @@ Custom domains on Confluence Cloud:
 
 If your Confluence Cloud instance uses a custom domain (e.g., wiki.example.org instead of *.atlassian.net), the CLI may identify it as a Server/Data Center instance and use standard links instead of Cloud smart links. Set CONFLUENCE_FORCE_CLOUD=true to override the automatic detection:
 
-export CONFLUENCE_FORCE_CLOUD=true
+ 
+ 
+ 
+ 
+ export CONFLUENCE_FORCE_CLOUD=true
+
+ 
 
 Or add "forceCloud": true to your profile in the config file (see Config file location):
 
-{
+ 
+ 
+ 
+ 
+ {
  "profiles": {
  "default": {
  "domain": "wiki.example.org",
@@ -418,15 +640,63 @@ Or add "forceCloud": true to your profile in the config file (see Config file lo
  }
 }
 
+ 
+
+HTTP transport (allowInsecureHttp):
+
+HTTPS is used by default even if a profile or CONFLUENCE_PROTOCOL requests http — connecting over plain HTTP sends your credentials (basic auth header, bearer token, cookie) in plaintext, including through transparent corporate proxies. Setting protocol: "http" without an explicit opt-in prints a warning and silently falls back to HTTPS.
+
+If you genuinely need HTTP — for example a local reverse-authentication proxy on 127.0.0.1 or an internal network you trust — opt in explicitly via any of:
+
+ 
+ 
+ 
+ 
+ # 1. CLI flag on init / profile add
+confluence init --domain "127.0.0.1:8080" --protocol http --allow-insecure-http ...
+
+# 2. Environment variable (overrides the profile's allowInsecureHttp setting)
+export CONFLUENCE_ALLOW_INSECURE_HTTP=true
+
+ 
+
+Or set "allowInsecureHttp": true directly in the profile:
+
+ 
+ 
+ 
+ 
+ {
+ "profiles": {
+ "local-proxy": {
+ "domain": "127.0.0.1:8080",
+ "protocol": "http",
+ "allowInsecureHttp": true
+ }
+ }
+}
+
+ 
+
 Link rendering (linkStyle):
 
 External links use Cloud smart links (<a data-card-appearance="inline">) on Cloud and standard <a href> tags on Server/Data Center and local conversions. Some Cloud instances — particularly custom-domain Cloud setups — fail to render smart links and show "Cannot handle: DefaultLink" errors instead. If you hit this, set linkStyle to plain:
 
-export CONFLUENCE_LINK_STYLE=plain
+ 
+ 
+ 
+ 
+ export CONFLUENCE_LINK_STYLE=plain
+
+ 
 
 Or per-profile:
 
-{
+ 
+ 
+ 
+ 
+ {
  "profiles": {
  "default": {
  "domain": "wiki.example.org",
@@ -436,11 +706,62 @@ Or per-profile:
  }
 }
 
-Valid values: smart (Cloud smart links), plain (standard <a href>), and wiki (legacy ac:link + ri:url output for explicit backward compatibility). When unset, the CLI picks smart for Cloud and plain for Server/Data Center and local conversions. New configurations should not use wiki for external links.
+ 
+
+Valid values: smart (Cloud smart links), plain (standard <a href>), auto (smart links for links into your own Confluence site, plain links for everything else), and wiki (legacy ac:link + ri:url output for explicit backward compatibility). When unset, the CLI picks smart for Cloud and plain for Server/Data Center and local conversions. New configurations should not use wiki for external links.
+
+A Cloud smart link is rendered from the target page's own title and discards the link text you wrote, which suits links to other Confluence pages but not links to external sites. auto gives each link the right treatment:
+
+ 
+ 
+ 
+ 
+ See [ACME](https://example.atlassian.net/wiki/spaces/DEVOPS/pages/1346144034/acme)
+and [Let's Encrypt FAQ](https://letsencrypt.org/docs/faq/).
+
+ 
+
+becomes a smart link for ACME and a plain <a href> that keeps the text Let's Encrypt FAQ. A link counts as internal when its parsed origin matches siteUrl (or the configured domain when unset) and its path is inside the site's context path (/wiki on Cloud), so look-alike hosts such as example.atlassian.net.evil.test stay plain. Relative links are rendered plain, and so is every link when no site is configured (for example in library use of the converter without buildUrl). Only the written storage differs: read --format markdown returns the same [text](href) under every style.
+
+Smart links are a Cloud feature, so on Server/Data Center auto would emit smart-link markup for internal links that those sites do not render; keep plain there. With a scoped API token the CLI talks to the api.atlassian.com gateway. Set your actual Confluence site URL separately to enable internal link detection:
+
+ 
+ 
+ 
+ 
+ export CONFLUENCE_SITE_URL=https://example.atlassian.net
+export CONFLUENCE_LINK_STYLE=auto
+
+ 
+
+Alternatively, save "siteUrl": "https://example.atlassian.net" in the profile, or pass --site-url https://example.atlassian.net to confluence init or confluence profile add <name>. Use an absolute HTTP(S) URL without credentials, query, or fragment; a /wiki context path and trailing slash are supported. When loading a profile, a nonempty CONFLUENCE_SITE_URL overrides its siteUrl; an empty value uses the saved setting. This setting only supplies the web URL for conversion and internal link detection; API requests and authentication still use domain and apiPath. When unset, detection uses the API domain as before, so scoped gateway profiles render site links plain under auto.
+
+PlantUML macro format (plantumlFormat):
+
+```plantuml fences become the plain plantuml macro by default. Sites running the PlantUML Diagrams for Confluence app need the plantumlcloud macro (URI-encoded, deflated and base64-encoded data parameter) — select it with CONFLUENCE_PLANTUML_FORMAT=plantumlcloud, the profile field "plantumlFormat": "plantumlcloud", or --plantuml-format plantumlcloud on convert, create, create-child and update:
+
+ 
+ 
+ 
+ 
+ export CONFLUENCE_PLANTUML_FORMAT=plantumlcloud
+confluence convert --input-format markdown --output-format storage --plantuml-format plantumlcloud -i page.md
+
+ 
+
+Valid values: plantuml (default — <ac:plain-text-body> CDATA) and plantumlcloud (compressed data parameter). Flag > environment variable > profile; convert runs locally without loading a profile, so the profile field only applies to create, create-child and update. Values are case-insensitive. See Programmatically adding PlantUML diagrams.
+
+Note: plantumlcloud renders from <filename>.svg / .png attachments (plantuml-diagram-1.svg, … in document order) produced by a PlantUML server you operate. This CLI emits the macro only; upload those attachments separately. Both formats read back as the same ```plantuml fence.
 
 Read-only mode (recommended for AI agents):
 
-export CONFLUENCE_READ_ONLY=true
+ 
+ 
+ 
+ 
+ export CONFLUENCE_READ_ONLY=true
+
+ 
 
 When set, all write operations (create, update, delete, etc.) are blocked at the CLI level. The environment variable overrides the profile's readOnly setting.
 
@@ -522,18 +843,41 @@ Enterprise SSO with Cookie Authentication: For Confluence instances behind Enter
 
 Reverse-proxy injected authentication: For deployments where a local reverse proxy injects credentials on the wire (e.g. SPNEGO/Kerberos, mTLS terminated at the proxy edge, or header injection), set authType=none. In this mode the CLI sends no Authorization or Cookie header — authentication is entirely the proxy's responsibility. Point CONFLUENCE_DOMAIN at the proxy and ensure no credentials are configured on the CLI side.
 
+Combining a gateway cookie with Bearer/Basic auth: Some corporate reverse-proxy/SSO gateways (e.g. F5 BIG-IP APM) terminate the connection with their own access-policy session cookie and still forward the request to Confluence, which then requires its own application-level credential (a Personal Access Token or Basic auth) on top. Neither authType=cookie (sends only Cookie) nor a plain authType=bearer/basic (sends only Authorization) covers this by itself. Set --cookie (or CONFLUENCE_COOKIE) alongside --auth-type bearer (or basic) and both headers are sent together:
+
+ 
+ 
+ 
+ 
+ confluence --profile gateway init \
+ --domain "confluence.company.com" \
+ --api-path "/rest/api" \
+ --auth-type "bearer" \
+ --token "your-personal-access-token" \
+ --cookie "MRHSession=abc123..."
+
+ 
+
+The gateway's session cookie is typically short-lived and will need refreshing periodically (re-extract it from your browser's dev tools and update the profile), independently of the token/password, which does not expire the same way.
+
 ## Usage
 
 ### JSON output (for scripting / jq)
 
 Pass the global --json flag to make a command emit raw JSON to stdout, so you can pipe it to tools like jq:
 
-confluence search "release notes" --json | jq '.results[].title'
+ 
+ 
+ 
+ 
+ confluence search "release notes" --json | jq '.results[].title'
 confluence spaces --json | jq -r '.spaces[].key'
 confluence info 123456789 --json | jq '.version'
 confluence create "Notes" ENG --content "hi" --json | jq -r '.id' # capture the new page id
 
---json works on read commands (info, search, spaces, find, children, versions, comments, attachments, property-list/-get/-set) and write commands (create, create-child, update, move, delete, copy-tree, comment, comment-delete, property-delete, attachment-upload/-delete, version-delete, versions-purge). For destructive commands, --json requires --yes — it will not prompt interactively. Passing --json to a command that doesn't support it (e.g. init, convert, export, edit) is rejected with an error rather than silently ignored. Human-readable messages and warnings go to stderr, so stdout stays valid JSON.
+ 
+
+--json works on read commands (info, search, spaces, find, children, versions, comments, attachments, property-list/-get/-set) and write commands (create, create-child, update, move, delete, copy-tree, comment, comment-resolve, comment-delete, property-delete, attachment-upload/-delete, version-delete, versions-purge). For destructive commands, --json requires --yes — it will not prompt interactively. Passing --json to a command that doesn't support it (e.g. init, convert, export, edit) is rejected with an error rather than silently ignored. Human-readable messages and warnings go to stderr, so stdout stays valid JSON.
 
 Deprecation: the per-command --format json form is deprecated in favor of the global --json flag. It still works but prints a warning to stderr and will be removed in a future major version.
 
@@ -541,12 +885,18 @@ Deprecation: the per-command --format json form is deprecated in favor of the gl
 
 When --json is active, command failures are machine-parseable: the command prints exactly one JSON object to stderr (stdout stays empty) and, except as noted below, exits with status 1. This lets scripts and agents branch on failures without scraping prose. The shape is:
 
-{
+ 
+ 
+ 
+ 
+ {
  "error": "Authentication failed (401 Unauthorized).",
  "code": "AUTH_FAILED",
  "status": 401,
  "details": { "message": "...", "status-code": 401 }
 }
+
+ 
 
 - error — the human-readable message.
 
@@ -556,8 +906,14 @@ When --json is active, command failures are machine-parseable: the command print
 
 - details — the raw API response body when present, otherwise null.
 
-# Read errors from stderr and inspect the code
+ 
+ 
+ 
+ 
+ # Read errors from stderr and inspect the code
 confluence info 123 --json 2> >(jq -r '.code') 1>/dev/null
+
+ 
 
 Without --json, error output is unchanged (human-readable prose on stderr).
 
@@ -565,7 +921,11 @@ Exceptions: api failures caused by missing jq or a failing --jq expression still
 
 ### Read a Page
 
-# Read by page ID
+ 
+ 
+ 
+ 
+ # Read by page ID
 confluence read 123456789
 
 # Read native Confluence storage content
@@ -577,6 +937,8 @@ confluence read 123456789 --format markdown
 # Read by URL (must contain pageId parameter)
 confluence read "https://your-domain.atlassian.net/wiki/viewpage.action?pageId=123456789"
 
+ 
+
 Use --format storage when you need Confluence's native storage representation, especially for macros and other Confluence-specific markup.
 
 Markdown reads resolve accessible Confluence page links, including links that omit a space key because they target the same space, to absolute URLs. Custom link text and inline formatting are preserved. Markdown exports use the same link resolution.
@@ -585,16 +947,26 @@ Reading requires content with a storage body. Folders and other bodyless content
 
 ### Get Page Information
 
-confluence info 123456789
+ 
+ 
+ 
+ 
+ confluence info 123456789
 
 # Emit machine-readable metadata
 confluence info 123456789 --json
+
+ 
 
 info can inspect folders and other bodyless content because it only reads metadata.
 
 Example JSON shape:
 
-{
+ 
+ 
+ 
+ 
+ {
  "id": "123456789",
  "title": "Architecture Overview",
  "type": "page",
@@ -605,9 +977,15 @@ Example JSON shape:
  "url": "https://your-domain.atlassian.net/wiki/spaces/ENG/pages/123456789/Architecture+Overview"
 }
 
+ 
+
 ### Search Pages
 
-# Basic search
+ 
+ 
+ 
+ 
+ # Basic search
 confluence search "search term"
 
 # Limit results
@@ -616,9 +994,15 @@ confluence search "search term" --limit 5
 # Paginate results
 confluence search "search term" --limit 5 --start 5
 
+ 
+
 ### List or Download Attachments
 
-# List all attachments on a page
+ 
+ 
+ 
+ 
+ # List all attachments on a page
 confluence attachments 123456789
 
 # Filter by filename and limit the number returned
@@ -627,9 +1011,15 @@ confluence attachments 123456789 --pattern "*.png" --limit 5
 # Download matching attachments to a directory
 confluence attachments 123456789 --pattern "*.png" --download --dest ./downloads
 
+ 
+
 ### Upload Attachments
 
-# Upload a single attachment
+ 
+ 
+ 
+ 
+ # Upload a single attachment
 confluence attachment-upload 123456789 --file ./report.pdf
 
 # Upload multiple files with a comment
@@ -638,17 +1028,31 @@ confluence attachment-upload 123456789 --file ./a.pdf --file ./b.png --comment "
 # Replace an existing attachment by filename
 confluence attachment-upload 123456789 --file ./diagram.png --replace
 
+ 
+
+--replace adds a new version to the attachment with the same filename, and uploads the file as a new attachment when the page has none. It works on Confluence Cloud and on Server/Data Center. Without --replace, Confluence rejects a filename that already exists on the page with HTTP 400.
+
 ### Delete Attachments
 
-# Delete an attachment by ID
+ 
+ 
+ 
+ 
+ # Delete an attachment by ID
 confluence attachment-delete 123456789 998877
 
 # Skip confirmation
 confluence attachment-delete 123456789 998877 --yes
 
+ 
+
 ### Content Properties
 
-# List all properties on a page
+ 
+ 
+ 
+ 
+ # List all properties on a page
 confluence property-list 123456789
 
 # Get a specific property
@@ -666,9 +1070,59 @@ confluence property-delete 123456789 my-key
 # Skip confirmation on delete
 confluence property-delete 123456789 my-key --yes
 
+ 
+
+#### Content properties in Markdown front matter
+
+Markdown files can carry selected content properties (for example page width) in YAML front matter, so property changes can be reviewed in git and applied through the normal upload workflow.
+
+ 
+ 
+ 
+ 
+ ---
+properties:
+ content-appearance-published: full-width
+---
+
+# Page title
+
+ 
+
+ 
+ 
+ 
+ 
+ # Export a page with the listed properties as front matter
+# (keys that do not exist on the page are omitted, in the order given)
+confluence read 123456789 --format markdown --front-matter content-appearance-published > page.md
+
+# Upload the body and apply the front matter properties
+confluence update 123456789 --file ./page.md --format markdown --front-matter
+confluence create "Page title" MYSPACE --file ./page.md --format markdown --front-matter
+confluence create-child "Page title" 123456789 --file ./page.md --format markdown --front-matter
+
+ 
+
+- Front matter is only processed with --front-matter; without it, a leading --- stays part of the Markdown body (a thematic break), as before.
+
+- Only the properties map is used; other top-level keys are ignored (a warning is printed if the block has no properties map). Properties not listed are left untouched, and properties whose value already matches are not rewritten.
+
+- On Confluence Cloud the editor also keeps a content-appearance-draft property; set it alongside content-appearance-published so the width survives the next edit in the browser.
+
+- Front matter is parsed before anything is uploaded, so invalid YAML fails without changing the page.
+
+- The body is saved first, then the properties. If a property fails (for example because the token lacks the needed scope), the command exits non-zero and reports that the body was saved and which keys failed. With --json, the result on stdout includes properties: { applied, unchanged, failed } and stderr carries a PARTIAL_FAILURE error. Re-running update is safe: properties that already match are skipped. For create and create-child, the error names the update command that retries the properties on the new page (re-running create would try to make another page).
+
+- read → edit → update round trips keep the selected properties. Markdown output is stable and normalized, not byte-identical to the original file.
+
 ### Comments
 
-# List all comments (footer + inline)
+ 
+ 
+ 
+ 
+ # List all comments (footer + inline)
 confluence comments 123456789
 
 # List inline comments as markdown
@@ -677,37 +1131,66 @@ confluence comments 123456789 --location inline --format markdown
 # Create a footer comment
 confluence comment 123456789 --content "Looks good to me!"
 
-# Create an inline comment
+# Create an inline comment (Confluence Cloud: no editor metadata needed)
 confluence comment 123456789 \
  --location inline \
  --content "Consider renaming this" \
- --inline-selection "foo" \
- --inline-original-selection "foo"
+ --inline-selection "foo"
 
-# Reply to a comment
+# Highlight the second occurrence of the selected text instead of the first
+confluence comment 123456789 \
+ --location inline \
+ --content "Consider renaming this one too" \
+ --inline-selection "foo" \
+ --match-index 2
+
+# Reply to a comment (inline or footer thread)
 confluence comment 123456789 --parent 998877 --content "Agree with this"
+
+# Resolve or reopen an inline comment thread (Confluence Cloud)
+confluence comment-resolve 998877
+confluence comment-resolve 998877 --reopen
 
 # Delete a comment
 confluence comment-delete 998877
 
-Inline comment creation note (Confluence Cloud): Creating inline comments requires editor-generated highlight metadata (matchIndex, lastFetchTime, serializedHighlights, plus the selection text). The public REST API does not provide these fields, so inline creation and inline replies can fail with a 400 unless you supply the full --inline-properties payload captured from the editor. Footer comments and replies are fully supported.
+ 
+
+Inline comment creation (Confluence Cloud): comment --location inline --inline-selection "<text on the page>" creates a new inline thread through the v2 API, without any editor-generated highlight metadata. The CLI reads the page, counts how many times the selection text occurs, and fails with a clear error if the text is not on the page. When the text occurs more than once, --match-index <n> picks which occurrence to highlight (1-based: 1 is the first, the default). On Server/Data Center — and when --inline-properties, --inline-original-selection, or --inline-marker-ref is supplied — creation still goes through the v1 POST /content API, which does require editor highlight metadata (matchIndex, lastFetchTime, serializedHighlights, plus the selection text); supply the full --inline-properties payload captured from the editor there, or it can fail with a 400. Footer comments are fully supported everywhere.
+
+Replies and resolution (Confluence Cloud): --parent <commentId> posts through the v2 comment API, which needs no highlight metadata, so replies to inline and footer threads both work. The reply goes to the same kind of thread as its parent (any --location or --inline-* option is ignored for replies), and the command fails before posting if the parent belongs to a different page. Replying does not change whether a thread is resolved. comment-resolve <commentId> resolves a top-level inline thread and --reopen reopens it; asking for the state the thread already has changes nothing, and a dangling thread (its highlighted text was removed) cannot be updated. Server/Data Center keeps the v1 reply behavior, and comment-resolve requires Cloud. API tokens with granular scopes need the v2 comment scopes (read:comment:confluence and write:comment:confluence) for replies and comment-resolve; a token with only the classic content scopes gets a 401/403 on a reply that used to work through v1. Comment IDs must be numeric.
 
 ### Export a Page with Attachments
 
-# Export page content (markdown by default) and all attachments
+ 
+ 
+ 
+ 
+ # Export page content (markdown by default) and all attachments
 confluence export 123456789 --dest ./exports
 
 # Custom content format/filename and attachment filtering
 confluence export 123456789 --format html --file content.html --pattern "*.png"
 
+# Exclude matching attachments (comma-separated globs)
+confluence export 123456789 --exclude-attachments "*.mp4,*.mov"
+
+# Exclusions are applied after --pattern or --referenced-only when combined
+
 # Skip attachments if you only need the content file
 confluence export 123456789 --skip-attachments
+
+ 
 
 ### Export a Whole Page Tree (or Space)
 
 Add --recursive to export a page together with all of its descendants. Each page becomes a folder (named after the page title) containing page.md and its attachments/, nested to mirror the page hierarchy. Point it at a space's homepage to export the whole space:
 
-# Export a page and all descendants
+ 
+ 
+ 
+ 
+ # Export a page and all descendants
 confluence export 123456789 -r --dest ./my-space
 
 # Preview which pages would be exported, without writing files
@@ -719,9 +1202,15 @@ confluence export 123456789 -r --max-depth 3 --exclude "Archive*,Draft*" --delay
 # Re-export over a previous run (replaces content, removes stale files)
 confluence export 123456789 -r --overwrite
 
+ 
+
 ### List Spaces
 
-# Default: up to 500 spaces (paginated automatically across requests)
+ 
+ 
+ 
+ 
+ # Default: up to 500 spaces (paginated automatically across requests)
 confluence spaces
 
 # Increase the cap when your tenant has more than 500 spaces
@@ -730,9 +1219,15 @@ confluence spaces --limit 2000
 # Fetch every space, regardless of how many pages it takes
 confluence spaces --all
 
+ 
+
 ### List Children
 
-# List direct child pages
+ 
+ 
+ 
+ 
+ # List direct child pages
 confluence children 123456789
 
 # List descendant pages recursively
@@ -756,13 +1251,19 @@ confluence children 123456789 --recursive --max-depth 3
 # Output as JSON for scripting
 confluence children 123456789 --recursive --json > children.json
 
+ 
+
 children --json returns structured metadata for each child, including id, title, type, status, spaceKey, parentId, version, and url. Recursive page entries also include depth, and when available, ancestors.
 
 Use --type to choose what is listed: pages (default, unchanged behavior), folders, or all. The type field on each item distinguishes page from folder; when folders can appear, the human-readable list marks every item with [page] or [folder], and tree output uses distinct page and folder icons. Folders are a Confluence Cloud concept; on Server/Data Center, --type folders/all prints a warning and skips folders instead of failing, while all still lists pages. When pages are included, --recursive lists their descendants as before, but folders remain limited to direct children of the requested page.
 
 Example recursive JSON item:
 
-{
+ 
+ 
+ 
+ 
+ {
  "pageId": "123456789",
  "childCount": 2,
  "children": [
@@ -787,17 +1288,29 @@ Example recursive JSON item:
  ]
 }
 
+ 
+
 ### Find a Page by Title
 
-# Find page by title
+ 
+ 
+ 
+ 
+ # Find page by title
 confluence find "Project Documentation"
 
 # Find page by title in a specific space
 confluence find "Project Documentation" --space MYTEAM
 
+ 
+
 ### Create a New Page
 
-# Create with inline content and markdown format
+ 
+ 
+ 
+ 
+ # Create with inline content and markdown format
 confluence create "My New Page" SPACEKEY --content "**Hello** World!" --format markdown
 
 # Create from a file
@@ -806,20 +1319,32 @@ confluence create "Documentation" SPACEKEY --file ./content.md --format markdown
 # Auto-detect: keeps storage XHTML as-is, converts plain text/Markdown
 confluence create "My New Page" SPACEKEY --content "**Hello** World!" --format auto
 
+ 
+
 For create, create-child, update, and comment, --format auto detects the content type:
 it preserves content that starts with markup such as <p>...</p> or <ac:structured-macro ...>, and converts plain text or Markdown to Confluence storage XHTML. This is useful for older Confluence Server/Data Center versions that reject bare text in a body.storage.value.
 
 ### Create a Child Page
 
-# Create child page with inline content
+ 
+ 
+ 
+ 
+ # Create child page with inline content
 confluence create-child "Meeting Notes" 123456789 --content "This is a child page"
 
 # Create child page from a file
 confluence create-child "Tech Specs" 123456789 --file ./specs.md --format markdown
 
+ 
+
 ### Copy Page Tree
 
-# Copy a page and all its children to a new location
+ 
+ 
+ 
+ 
+ # Copy a page and all its children to a new location
 confluence copy-tree 123456789 987654321 "Project Docs (Copy)"
 
 # Copy with maximum depth limit (only 3 levels deep)
@@ -837,6 +1362,8 @@ confluence copy-tree 123456789 987654321 --dry-run
 # Quiet mode (suppress progress output)
 confluence copy-tree 123456789 987654321 --quiet
 
+ 
+
 Notes:
 
 - Preserves the original parent-child hierarchy when copying.
@@ -847,13 +1374,19 @@ Notes:
 
 - Large trees may take time; the CLI applies a small delay between sibling page creations to avoid rate limits (configurable via --delay-ms).
 
+- If the server answers 429 (for example a Data Center instance limited to a few requests per second), the CLI paces its requests: a positive Retry-After makes every request wait, and requests are spaced further apart until the server accepts them, then speeded up again. Traversals such as copy-tree, export and children --recursive therefore finish under a low shared limit instead of failing after a few retries, and a server that keeps refusing still fails after about as long as before. Without throttling nothing is slowed down. A 503 on a read is retried per request, as before.
+
 - Root title suffix defaults to (Copy); override with --copy-suffix. Child pages keep their original titles.
 
 - Use --fail-on-error to exit non-zero if any page fails to copy.
 
 ### Update an Existing Page
 
-# Update title only
+ 
+ 
+ 
+ 
+ # Update title only
 confluence update 123456789 --title "A Newer Title for the Page"
 
 # Update content only from a string
@@ -865,11 +1398,17 @@ confluence update 123456789 --file ./updated-content.md --format markdown
 # Update both title and content
 confluence update 123456789 --title "New Title" --content "And new content"
 
+ 
+
 Title-only updates reuse the target's existing storage body. Folders and other bodyless content cannot be updated this way and return Page <id> has no readable body (it may be a folder or an unsupported content type)..
 
 ### Move a Page to New Parent
 
-# Move page by ID
+ 
+ 
+ 
+ 
+ # Move page by ID
 confluence move 123456789 987654321
 
 # Move page and rename it
@@ -879,11 +1418,17 @@ confluence move 123456789 987654321 --title "Relocated Page"
 confluence move "https://domain.atlassian.net/wiki/viewpage.action?pageId=123456789" \
  "https://domain.atlassian.net/wiki/viewpage.action?pageId=987654321"
 
+ 
+
 Note: Pages can only be moved within the same Confluence space. Cross-space moves are not supported.
 
 ### Delete a Page
 
-# Delete by page ID (prompts for confirmation)
+ 
+ 
+ 
+ 
+ # Delete by page ID (prompts for confirmation)
 confluence delete 123456789
 
 # Delete by URL
@@ -892,11 +1437,17 @@ confluence delete "https://your-domain.atlassian.net/wiki/viewpage.action?pageId
 # Skip confirmation (useful for scripts)
 confluence delete 123456789 --yes
 
+ 
+
 ### Edit Workflow
 
 The edit and update commands work together to create a seamless editing workflow.
 
-# 1. Export page content to a file (in Confluence storage format)
+ 
+ 
+ 
+ 
+ # 1. Export page content to a file (in Confluence storage format)
 confluence edit 123456789 --output ./page-to-edit.xml
 
 # 2. Edit the file with your preferred editor
@@ -905,11 +1456,17 @@ vim ./page-to-edit.xml
 # 3. Update the page with your changes
 confluence update 123456789 --file ./page-to-edit.xml --format storage
 
+ 
+
 Only content with a storage body can be exported for editing. Folders and other bodyless content return Page <id> has no readable body (it may be a folder or an unsupported content type)..
 
 ### Profile Management
 
-# List all profiles and see which is active
+ 
+ 
+ 
+ 
+ # List all profiles and see which is active
 confluence profile list
 
 # Switch the active profile
@@ -930,23 +1487,37 @@ confluence profile remove staging
 # Use a specific profile for a single command
 confluence --profile staging spaces
 
+ 
+
 ### Read-Only Mode
 
 Read-only mode blocks all write operations at the CLI level, making it safe to hand the tool to AI agents (Claude Code, Copilot, etc.) without risking accidental edits.
 
 Enable via profile:
 
-# During init
+ 
+ 
+ 
+ 
+ # During init
 confluence init --read-only
 
 # When adding a profile
 confluence profile add agent --domain "company.atlassian.net" --token "xyz" --read-only
 
+ 
+
 Enable via environment variable:
 
-export CONFLUENCE_READ_ONLY=true # overrides profile setting
+ 
+ 
+ 
+ 
+ export CONFLUENCE_READ_ONLY=true # overrides profile setting
 
-When read-only mode is active, any write command (create, create-child, update, delete, move, edit, comment, attachment-upload, attachment-delete, property-set, property-delete, comment-delete, copy-tree) exits with code 1 and prints an error message.
+ 
+
+When read-only mode is active, any write command (create, create-child, update, delete, move, edit, comment, comment-resolve, attachment-upload, attachment-delete, property-set, property-delete, comment-delete, copy-tree) exits with code 1 and prints an error message.
 
 confluence profile list shows a [read-only] badge next to protected profiles.
 
@@ -962,7 +1533,11 @@ Endpoint resolution:
 
 - Full URL (https://…) → used as-is, but only when it is same-origin with the configured host. A full URL pointing at a different origin (or an http:// downgrade of an https host) is refused, so your credentials are never sent to an unexpected server.
 
-# List labels on a page (relative — uses apiPath)
+ 
+ 
+ 
+ 
+ # List labels on a page (relative — uses apiPath)
 confluence api content/123456789/label
 
 # Same call written as an absolute path on Confluence Cloud
@@ -998,11 +1573,19 @@ confluence api content/123456789/restriction --input ./restrictions.json
 # Suppress success output (useful in scripts that only care about exit code)
 confluence api content/123456789/label --input - --silent <<< '[{"name":"approved"}]'
 
+ 
+
 Read-only profiles block write methods (POST, PUT, PATCH, DELETE) while allowing GET and HEAD. --jq requires jq to be installed and available in PATH.
 
 ### View Usage Statistics
 
-confluence stats
+ 
+ 
+ 
+ 
+ confluence stats
+
+ 
 
 ## Commands
 
@@ -1014,12 +1597,12 @@ Options|
 |
 init|
 Initialize CLI configuration|
---read-only|
+--read-only, --keychain|
 
 |
 read <pageId_or_url>|
 Read page content|
---format <html|text|storage|markdown>|
+--format <html|text|storage|markdown>, --front-matter <keys>|
 
 |
 info <pageId_or_url>|
@@ -1049,12 +1632,12 @@ List child pages and folders of a page|
 |
 create <title> <spaceKey>|
 Create a new page or folder|
---content <string>, --file <path>, --format <auto|storage|html|markdown>, --type <page|folder>, --json|
+--content <string>, --file <path>, --format <auto|storage|html|markdown>, --type <page|folder>, --front-matter, --json|
 
 |
 create-child <title> <parentId>|
 Create a child page or folder|
---content <string>, --file <path>, --format <auto|storage|html|markdown>, --type <page|folder>, --json|
+--content <string>, --file <path>, --format <auto|storage|html|markdown>, --type <page|folder>, --front-matter, --json|
 
 |
 copy-tree <sourcePageId> <targetParentId> [newTitle]|
@@ -1064,7 +1647,7 @@ Copy page tree with all children|
 |
 update <pageId>|
 Update a page's title or content|
---title <string>, --content <string>, --file <path>, --format <auto|storage|html|markdown>, --json|
+--title <string>, --content <string>, --file <path>, --format <auto|storage|html|markdown>, --front-matter, --json|
 
 |
 move <pageId_or_url> <newParentId_or_url>|
@@ -1119,7 +1702,12 @@ List comments for a page|
 |
 comment <pageId_or_url>|
 Create a comment on a page|
---content <string>, --file <path>, --format <auto|storage|html|markdown>, --parent <commentId>, --location <inline|footer>, --inline-selection <text>, --inline-original-selection <text>, --inline-marker-ref <ref>, --inline-properties <json>, --json|
+--content <string>, --file <path>, --format <auto|storage|html|markdown>, --parent <commentId>, --location <inline|footer>, --inline-selection <text>, --inline-original-selection <text>, --inline-marker-ref <ref>, --inline-properties <json>, --match-index <n>, --json|
+
+|
+comment-resolve <commentId>|
+Resolve (or reopen) an inline comment thread (Cloud)|
+--reopen, --json|
 
 |
 comment-delete <commentId>|
@@ -1149,7 +1737,7 @@ Delete a content property by key|
 |
 export <pageId_or_url>|
 Export a page to a directory with its attachments|
---format <html|text|markdown>, --dest <directory>, --file <filename>, --attachments-dir <name>, --pattern <glob>, --referenced-only, --skip-attachments, -r, --recursive, --max-depth <depth>, --exclude <patterns>, --delay-ms <ms>, --dry-run, --overwrite|
+--format <html|text|markdown>, --dest <directory>, --file <filename>, --attachments-dir <name>, --pattern <glob>, --exclude-attachments <patterns>, --referenced-only, --skip-attachments, -r, --recursive, --max-depth <depth>, --exclude <patterns>, --delay-ms <ms>, --dry-run, --overwrite|
 
 |
 profile list|
@@ -1164,7 +1752,7 @@ Set the active configuration profile|
 |
 profile add <name>|
 Add a new configuration profile|
--d, --domain, -p, --api-path, -a, --auth-type, -e, --email, -t, --token, --protocol, --read-only|
+-d, --domain, -p, --api-path, -a, --auth-type, -e, --email, -t, --token, --protocol, --allow-insecure-http, --read-only, --keychain|
 
 |
 profile remove <name>|
@@ -1190,7 +1778,11 @@ Global option: --profile <name> — Use a specific profile for any command (over
 
 ## Examples
 
-# Setup
+ 
+ 
+ 
+ 
+ # Setup
 confluence init
 
 # Read a page as text
@@ -1242,6 +1834,8 @@ echo "# Hello" | confluence convert --input-format markdown --output-format stor
 # Convert storage format back to markdown
 confluence convert -i page.xml -o page.md --input-format storage --output-format markdown
 
+ 
+
 ## Markdown Marker Conventions
 
 When converting markdown to Confluence storage format (via confluence convert, create, or update), the following paragraph-level markers produce native Confluence macros. Each marker round-trips back to its markdown form when going storage → markdown.
@@ -1250,7 +1844,11 @@ When converting markdown to Confluence storage format (via confluence convert, c
 
 A blockquote whose first line is **INFO**, **WARNING**, or **NOTE** becomes the corresponding Confluence macro:
 
-> **INFO**
+ 
+ 
+ 
+ 
+ > **INFO**
 > Heads up — this is an info box.
 
 > **WARNING**
@@ -1258,6 +1856,8 @@ A blockquote whose first line is **INFO**, **WARNING**, or **NOTE** becomes the 
 
 > **NOTE**
 > Side note for the reader.
+
+ 
 
 The reverse direction emits the same > **INFO** / > **WARNING** / > **NOTE** blockquote form, so multi-paragraph bodies round-trip cleanly. The bare [!info] / [!warning] / [!note] shorthand is still accepted on input for backwards compatibility.
 
@@ -1267,31 +1867,53 @@ A blockquote without one of these markers stays a plain blockquote (<blockquote>
 
 A paragraph containing only **TOC**, [[_TOC_]], <!-- _TOC_ -->, or <!-- [[_TOC_]] --> becomes a Confluence Table of Contents macro using the macro's default heading levels:
 
-**TOC**
+ 
+ 
+ 
+ 
+ **TOC**
 
 [[_TOC_]]
 
 <!-- _TOC_ -->
 
+ 
+
 ### [[_LISTING_]] — child page listing
 
 A paragraph containing only [[_LISTING_]], <!-- _LISTING_ -->, or <!-- [[_LISTING_]] --> becomes a Confluence Children Display macro:
 
-[[_LISTING_]]
+ 
+ 
+ 
+ 
+ [[_LISTING_]]
 
 <!-- _LISTING_ -->
+
+ 
 
 ### **ANCHOR: id** — anchor
 
 A paragraph containing only **ANCHOR: my-section** becomes a Confluence anchor macro with the given id:
 
-**ANCHOR: my-section**
+ 
+ 
+ 
+ 
+ **ANCHOR: my-section**
+
+ 
 
 ### **EXPAND: title** … **EXPAND_END** — collapsible expand macro
 
 Wrap a block of content between **EXPAND: title** and **EXPAND_END** markers (each on its own paragraph) to render it as a Confluence expand macro with a collapsible body:
 
-**EXPAND: Show generated code**
+ 
+ 
+ 
+ 
+ **EXPAND: Show generated code**
 
 ```js
 const x = 1;
@@ -1299,21 +1921,49 @@ const x = 1;
 
 **EXPAND_END**
 
+ 
+
 The body may contain any content that is converted earlier in the pipeline (code blocks, tables, callout blockquotes). The reverse direction emits the same **EXPAND: title** / **EXPAND_END** markers so the conversion round-trips.
 
 Inline markdown inside the title (*em*, backtick code, links, ~~strike~~) is stripped at capture time — Confluence's storage normalizer treats macro titles as plain text and will silently truncate or reject HTML in a <ac:parameter>. Title-less expand macros created in the Confluence UI still convert to <details>/<summary> blocks.
+
+### ```plantuml — PlantUML diagram macro
+
+ 
+ 
+ 
+ 
+ ```plantuml
+@startuml
+Alice -> Bob: Authentication Request
+@enduml
+```
+
+ 
+
+Emitted as ac:name="plantuml" (source in CDATA) by default, or as ac:name="plantumlcloud" (compressed data parameter, filename=plantuml-diagram-<n>.svg, compressed=true, revision=1, toolbar=bottom) when plantumlFormat is plantumlcloud — see PlantUML macro format. Both shapes read back as the same fence.
 
 ### [text](#id) — same-page anchor link
 
 A standard markdown link whose href starts with # becomes an ac:link with ac:anchor, rendering as an in-page jump in Confluence:
 
-See [the anchor](#my-section) above.
+ 
+ 
+ 
+ 
+ See [the anchor](#my-section) above.
 
-This works under all three linkStyle modes (smart, wiki, plain) — the anchor-link conversion runs before the general <a href> handling.
+ 
+
+This works under every linkStyle mode (smart, plain, auto, wiki) — the anchor-link conversion runs before the general <a href> handling.
 
 ## Development
 
-# Clone the repository
+ 
+ 
+ 
+ 
+ # Clone the repository
 git clone https://github.com/pchuri/confluence-cli.git
 cd confluence-cli
 
@@ -1328,6 +1978,8 @@ npm test
 
 # Lint code
 npm run lint
+
+ 
 
 ## Contributing
 

@@ -1,7 +1,8 @@
+People of Pi: We've shipped Pi 1.0 with Pi Durable. Go make them yours.
 Copy SVGDownload SVGPress Kit
-HomeDocumentationNewsPackagesModels
+DocumentationChangelogModelsPackagesRadius
 
-Home→Documentation→News→Packages→Models→
+Documentation→Changelog→Models→Packages→Radius→
 
 GitHubnpmDiscordX
 
@@ -20,11 +21,11 @@ Install pi-background-tasks from npm and Pi will load the resources declared by 
 
 image
 $ pi install npm:pi-background-tasksCopy
-Packagepi-background-tasksVersion2.4.2PublishedAug 14, 2026Downloads107.1K/mo · 26.4K/wkAuthorismailsaleekhLicenseISCTypesextensionSize1.6 MBDependencies1 dependency · 3 peersPi manifest JSON{
+Packagepi-background-tasksVersion2.6.10PublishedOct 13, 2026Downloads44.9K/mo · 3,455/wkAuthorismailsaleekhLicenseISCTypesextensionSize5.8 MBDependencies1 dependency · 4 peersPi manifest JSON{
  "image": "https://raw.githubusercontent.com/ismailsaleekh/pi-background-tasks/main/logo.png",
  "extensions": [
- "./extensions/anthropic-attribution.ts",
- "./extensions/background-tasks.ts"
+ "./dist/extensions/anthropic-attribution.js",
+ "./dist/extensions/background-tasks.js"
  ]
 }
 
@@ -48,7 +49,7 @@ pi-background-tasks adds background jobs, delegated agents, and multi-model Fusi
 
 - Combine model perspectives through fixed-purpose Fusion: run three candidate children, blind evaluation, optional bounded evaluator repair, and merger for reasoning, investigation, targeted URL research, or validation review.
 
-- Keep Anthropic subscription traffic attributed and compatible: globally apply the package-owned Claude Code OAuth attribution, cache policy, and exact-match prompt sanitization to Anthropic routes without an external sanitizer dependency.
+- Keep Anthropic subscription traffic attributed and compatible: by default, apply the package-owned Claude Code OAuth attribution, cache policy, and SPS-derived line-start prompt sanitization to parent Anthropic routes without an external sanitizer dependency; isolated package children retain mandatory attribution even when ambient parent attribution is disabled.
 
 |
 Fact|
@@ -60,7 +61,7 @@ pi-background-tasks|
 
 |
 Version|
-2.4.2|
+2.6.10|
 
 |
 Node engine|
@@ -68,7 +69,7 @@ Node engine|
 
 |
 Pi entrypoints|
-./extensions/anthropic-attribution.ts, ./extensions/background-tasks.ts|
+./dist/extensions/anthropic-attribution.js, ./dist/extensions/background-tasks.js|
 
 |
 Package image|
@@ -76,37 +77,138 @@ logo.png|
 
 |
 Surface kind|
-Count|
+Configured variants|
+Available by default|
 
 |
 command|
+11|
 11|
 
 |
 tool|
 11|
+11|
 
 |
 shortcut|
+3|
 2|
 
 |
 renderer|
 2|
+2|
 
 |
 eventbus|
-1|
+2|
+2|
 
 |
 workflow|
+4|
 4|
 
 Public commands: /bg, /bg-clear, /bg-tasks, /bg-update, /claude-cache, /fusion, /fusion-models, /jobs, /kill, /logs, /tasks.
 
 Public tools: bg_delegate, bg_kill, bg_logs, bg_result, bg_run, bg_run_pi_attested, bg_status, fusion_investigate, fusion_reason, fusion_research, fusion_validate.
 
+### Configuration-dependent surfaces
+
+|
+Surface|
+Availability|
+Default|
+
+|
+command:claude-cache|
+feature:attribution|
+yes|
+
+|
+command:fusion|
+feature:fusion|
+yes|
+
+|
+command:fusion-models|
+feature:fusion|
+yes|
+
+|
+tool:bg_delegate|
+feature:delegate|
+yes|
+
+|
+tool:bg_result|
+any(feature:delegate,feature:fusion)|
+yes|
+
+|
+tool:bg_run_pi_attested|
+feature:attested|
+yes|
+
+|
+tool:fusion_investigate|
+feature:fusion|
+yes|
+
+|
+tool:fusion_reason|
+feature:fusion|
+yes|
+
+|
+tool:fusion_research|
+feature:fusion|
+yes|
+
+|
+tool:fusion_validate|
+feature:fusion|
+yes|
+
+|
+shortcut:ctrl+alt+b|
+dock:ctrl+alt+b|
+no|
+
+|
+shortcut:shift+down|
+dock:shift+down|
+yes|
+
+|
+renderer:fusion-result|
+feature:fusion|
+yes|
+
+|
+workflow:investigate|
+feature:fusion|
+yes|
+
+|
+workflow:reason|
+feature:fusion|
+yes|
+
+|
+workflow:research|
+feature:fusion|
+yes|
+
+|
+workflow:validate|
+feature:fusion|
+yes|
+
 Full owner map and generated contracts live in docs/INDEX.md.
+
+“Available by default” means after Pi has initialized extensions. Normal TUI/RPC/print/JSON modes do this; SDK embedders must provide a counted bindExtensions() binding and ensure post-reload binding. Bare createAgentSession() and empty/mode-only reload are blocked by the current public host lifecycle API. See Getting started.
 
 ## Why use it?
 
@@ -116,7 +218,7 @@ Use this package because...|
 
 |
 Start a dev server, watch build, migration dry run, or long check|
-bg_run and /bg return immediately, write durable output files, show a footer dock, and notify on terminal state.|
+bg_run and /bg return immediately, write durable output files, show a footer dock, and notify on terminal state. Ordinary isAgent:false jobs can explicitly keep the same live execution across a real same-process reload.|
 
 |
 Let Pi keep working instead of sleeping or polling|
@@ -136,13 +238,17 @@ bg_run_pi_attested records local same-user-writable artifacts and hashes after a
 
 |
 Use Anthropic subscription OAuth consistently|
-The globally loaded provider applies attribution and exact-match sanitization; /claude-cache shows or changes session cache retention.|
+The default ambient provider applies attribution and SPS-derived line-start sanitization; /claude-cache shows or changes session cache retention. Isolated package-owned Anthropic children always use the mandatory child entrypoint.|
 
 ## Install
 
 Version information comes from package.json. Use npm @latest for normal installs; use git main only when you intentionally want the current repository state.
 
-# Global install from npm
+ 
+ 
+ 
+ 
+ # Global install from npm
 pi install npm:pi-background-tasks@latest
 
 # Project-local install from npm
@@ -158,6 +264,8 @@ pi install git:github.com/ismailsaleekh/pi-background-tasks@main -l
 pi install .
 pi install . -l
 
+ 
+
 Local paths are loaded from disk without copying; use the path to this package from your current directory.
 
 ## Quick start: useful in under five minutes
@@ -168,39 +276,104 @@ Install and start Pi in a project.
 - 
 Launch a background command:
 
-/bg --name "Typecheck watch" npm run typecheck -- --watch
+ 
+ 
+ 
+ 
+ /bg --name "Typecheck watch" npm run typecheck -- --watch
 
-/bg starts a tracked shell task and returns the task id plus output path. User-launched /bg tasks notify in the UI but do not automatically wake a follow-up model turn.
+ 
+
+/bg starts a tracked shell task and returns the task id plus output path. User-launched /bg tasks notify in the UI but do not automatically wake a follow-up model turn. Add one leading --survive-reload only when this ordinary shell process must keep running across a real same-process /reload; default tasks are still killed.
 
 - 
-Open the footer dock with Shift↓ or list tasks:
+Open the footer dock with the default Shift↓ binding or list tasks:
 
-/jobs
+ 
+ 
+ 
+ 
+ /jobs
+
+ 
 
 - 
 Read bounded output only when you need it:
 
-/logs b12ab34c 20000
+ 
+ 
+ 
+ 
+ /logs b12ab34c 20000
+
+ 
 
 - 
 Let a child agent inspect while you continue:
 
-{"name":"Config reader","prompt":"Inspect the repository configuration files and report where background task settings are documented. Include file paths and quote only the relevant lines.","capability":"inspect"}
+ 
+ 
+ 
+ 
+ {"name":"Config reader","prompt":"Inspect the repository configuration files and report where background task settings are documented. Include file paths and quote only the relevant lines.","capability":"inspect"}
+
+ 
 
 Call this with bg_delegate. When its terminal notification arrives, retrieve the answer deliberately:
 
-{"taskId":"<task id from bg_delegate>","delivery":"inline"}
+ 
+ 
+ 
+ 
+ {"taskId":"<task id from bg_delegate>","delivery":"inline"}
+
+ 
 
 Call this with bg_result. Retrieval is hash-verified and never silently truncated.
 
 - 
 For a self-contained synthesis, start Fusion in the background:
 
-{"prompt":"Compare the tradeoffs between a watcher, a one-shot build, and a delegated repo inspection for a large refactor."}
+ 
+ 
+ 
+ 
+ {"prompt":"Compare the tradeoffs between a watcher, a one-shot build, and a delegated repo inspection for a large refactor."}
+
+ 
 
 Call this with fusion_reason, or use /fusion <prompt> interactively. The launch returns after durable preflight; wait for its terminal notification, then retrieve the verified result with bg_result.
 
 More walkthrough detail: Getting started.
+
+## Select capabilities and avoid shortcut conflicts
+
+The default remains the complete historical surface. To run only process tasks, set:
+
+ 
+ 
+ 
+ 
+ PI_BG_FEATURES=process pi
+
+ 
+
+PI_BG_FEATURES accepts a strict unique comma-separated set from process,delegate,fusion,attested,attribution; process is mandatory. bg_result is derived and appears exactly once when delegate or Fusion is enabled. Disabled tools, commands, renderers, and ambient attribution are absent from registration and remain absent after reload.
+
+Choose the dock key independently:
+
+ 
+ 
+ 
+ 
+ PI_BG_DOCK_SHORTCUT=ctrl+alt+b pi # avoid a Shift+Down owner
+PI_BG_DOCK_SHORTCUT=off pi # use /tasks or /bg-tasks
+
+ 
+
+Accepted values are exactly shift+down (default), ctrl+alt+b, and off. Invalid settings fail startup with pi_bg_config_invalid; they do not silently restore defaults. /tasks, /bg-tasks, and the separate Ctrl+Alt+C clear fallback remain available. These flags select functionality; they do not claim a cold-start performance improvement.
+
+Full contract: Configuration and Shortcuts and dock.
 
 ## Pick the right workflow
 
@@ -226,7 +399,7 @@ No|
 No model child unless your command starts one|
 Runs your shell command; not sandboxed|
 User-started local commands, servers, watches|
-UI notification and footer tracking; /bg uses notification-only by default.|
+UI notification and footer tracking; /bg uses notification-only by default. Optional --survive-reload is ordinary-shell-only.|
 
 |
 bg_run|
@@ -234,7 +407,7 @@ No|
 No model child unless command starts one|
 Runs your shell command; not sandboxed|
 Agent-started long commands|
-Returns task id/output path; defaults to notification plus automatic follow-up wake. For an Anthropic child pi, do not pass --no-extensions unless you also explicitly load this package's attribution extension.|
+Returns task id/output path; defaults to notification plus automatic follow-up wake. Optional surviveReload:true requires isAgent:false. For an Anthropic child pi, do not pass --no-extensions unless you also explicitly load this package's attribution extension.|
 
 |
 bg_delegate + bg_result|
@@ -290,20 +463,31 @@ See Choose a workflow for a decision tree and tradeoffs.
 
 ### bg_run: start long shell work
 
-{
+ 
+ 
+ 
+ 
+ {
  "name": "Docs preview",
  "command": "npm run docs:dev",
  "isAgent": false,
- "timeoutSeconds": 3600
+ "timeoutSeconds": 3600,
+ "surviveReload": true
 }
 
-Expected: returns immediately with a task id, PID when available, and .pi/tasks/...output. The command runs as an ordinary local shell command with your user permissions; it can invoke networked tools or paid services if the command itself does so.
+ 
 
-If bg_run starts an Anthropic child pi, keep normal extension discovery enabled. Do not add --no-extensions unless the command also supplies this package's extensions/anthropic-attribution.ts via -e/--extension; bg_run does not rewrite arbitrary shell argv.
+Expected: returns immediately with a task id, PID when available, and .pi/tasks/...output. Here the explicit flag retains that exact child/id/PID/nonce/path, launch policy, absolute timeout, and cumulative cap across a supported real reload. Omit it for compatible kill-on-reload behavior. New/resume/fork/clone/quit, hard crash, process restart, empty/mode-only SDK reload, and direct AgentSession.dispose() are not supported survival paths. The command runs as an ordinary local shell command with your user permissions; it can invoke networked tools or paid services if the command itself does so.
+
+If bg_run starts an Anthropic child pi, keep normal extension discovery enabled when ambient attribution is enabled. Do not add --no-extensions unless the command also supplies this package's always-on extensions/anthropic-attribution-child.ts via -e/--extension; bg_run does not rewrite arbitrary shell argv.
 
 ### bg_delegate: context-seeded read-only investigation
 
-{
+ 
+ 
+ 
+ 
+ {
  "name": "Route audit",
  "prompt": "Inspect the package source and identify where delegate route pinning is enforced. Return file paths, function names, and a short explanation. If a fact exists only in omitted parent tool output, say it is unavailable rather than guessing.",
  "capability": "inspect",
@@ -311,12 +495,20 @@ If bg_run starts an Anthropic child pi, keep normal extension discovery enabled.
  "autoDeliver": "never"
 }
 
+ 
+
 Then retrieve:
 
-{
+ 
+ 
+ 
+ 
+ {
  "taskId": "<delegate task id>",
  "delivery": "inline"
 }
+
+ 
 
 Expected: bg_delegate returns a launch receipt immediately. bg_result returns a typed not-ready result while running; after commit it verifies package identity, seed hash, route, block hashes, and aggregate hash before returning bytes. Oversized answers become explicit artifact references, not truncated inline text.
 
@@ -324,7 +516,11 @@ extensionMode defaults to "isolated", which disables ambient extension discovery
 
 ### bg_run_pi_attested: local evidence for one Pi child
 
-{
+ 
+ 
+ 
+ 
+ {
  "name": "Migration report",
  "provider": "openai-codex",
  "model": "gpt-5.5",
@@ -333,15 +529,27 @@ extensionMode defaults to "isolated", which disables ambient extension discovery
  "timeoutSeconds": 1800
 }
 
+ 
+
 Expected: launches exactly one direct pi --mode json child using structured provider/model fields. It rejects direct API-key/auth-file launch arguments and only writes the attestation sidecar after successful completion and durable hashes. The attestation is local evidence, not cryptographic proof against a compromised machine or provider.
 
 ### Fusion tools
 
-{"prompt":"Design a rollback strategy for a risky database migration. Include assumptions and failure modes."}
+ 
+ 
+ 
+ 
+ {"prompt":"Design a rollback strategy for a risky database migration. Include assumptions and failure modes."}
+
+ 
 
 Use with fusion_reason for self-contained synthesis.
 
-{
+ 
+ 
+ 
+ 
+ {
  "objective": "Find how background task output is capped and surfaced.",
  "background": ["We are evaluating pi-background-tasks behavior for long-running commands."],
  "deliverable": "File paths, constants, defaults, and user-visible behavior.",
@@ -349,9 +557,15 @@ Use with fusion_reason for self-contained synthesis.
  "constraints": ["Read-only inspection only."]
 }
 
+ 
+
 Use with fusion_investigate.
 
-{
+ 
+ 
+ 
+ 
+ {
  "objective": "Summarize the installation syntax Pi documents for packages.",
  "background": ["We need package README install examples to match Pi package docs."],
  "deliverable": "A short summary with caveats.",
@@ -360,9 +574,15 @@ Use with fusion_investigate.
  ]
 }
 
+ 
+
 Use with fusion_research. Only declared public http(s) URLs may be fetched; this is not a search tool.
 
-{
+ 
+ 
+ 
+ 
+ {
  "objective": "Review whether a documentation-only change is ready to ship.",
  "background": ["The change edits README and package-local docs only."],
  "changeSummary": "Replaced monolithic README with landing page and moved operational details into docs.",
@@ -374,18 +594,20 @@ Use with fusion_research. Only declared public http(s) URLs may be fetched; this
  }
 }
 
+ 
+
 Use with fusion_validate for advisory read-only review.
 
 ## Footer dock
 
-When tasks are running or unseen completions exist, the footer shows a compact bg ... segment. Press Shift↓ to open the focused bottom dock. Use /bg-clear to acknowledge finished-task footer notices in any terminal.
+When tasks are running or unseen completions exist, the footer shows a compact bg ... segment. Press the configured Shift↓ (default) or Ctrl+Alt+B binding to open the focused bottom dock, or use /tasks when the key is off. Use /bg-clear to acknowledge finished-task footer notices in any terminal.
 
 |
 Control|
 Action|
 
 |
-Shift↓|
+configured Shift↓ / Ctrl+Alt+B, or /tasks|
 Open the dock|
 
 |
@@ -434,7 +656,7 @@ Agent tasks launched through pi -p ... or pi --mode json ... and marked isAgent:
 
 - Fusion uses direct child pi --mode text processes, not direct completion APIs. Frontier Fusion routes are admitted only through Pi Anthropic or Codex subscription OAuth; metered frontier API credentials are rejected before child creation.
 
-- Normal installations globally load the package-owned Claude Code OAuth attribution/sanitization provider for Anthropic sessions; non-Anthropic sessions are unchanged. Isolated Fusion, delegate, and attested Anthropic children load the same package entrypoint explicitly. It requests ttl: "1h" on system/tool/conversation cache breakpoints before serialization and preserves provider-reported cacheWrite1h evidence. Set PI_CACHE_RETENTION=short|none|long or use /claude-cache to choose explicitly; malformed attribution, policy, cache evidence, or non-OAuth credentials fail before transport. Provider usage is preserved verbatim, but subscription OAuth can report cacheWrite1h = 0 even when a unique cache remains readable beyond five minutes; treat positive cacheWrite1h as definitive and zero as inconclusive on that channel. Anthropic budgeting follows the provider's 200K subscription policy.
+- Normal installations load a feature-aware ambient Claude Code OAuth attribution/sanitization entrypoint for parent Anthropic sessions; non-Anthropic sessions are unchanged. The default enables it, while omitting attribution removes its provider/hooks and /claude-cache. Isolated Fusion, delegate, and attested Anthropic children load the separate always-on child entrypoint explicitly before their guard/governor, regardless of that ambient flag. It requests ttl: "1h" on system/tool/conversation cache breakpoints before serialization and preserves provider-reported cacheWrite1h evidence. Set PI_CACHE_RETENTION=short|none|long or use /claude-cache when ambient attribution is enabled; malformed attribution, policy, cache evidence, or non-OAuth credentials fail before transport. Provider usage is preserved verbatim, but subscription OAuth can report cacheWrite1h = 0 even when a unique cache remains readable beyond five minutes; treat positive cacheWrite1h as definitive and zero as inconclusive on that channel. Anthropic budgeting follows the provider's 200K subscription policy.
 
 - Fusion research fetches only caller-supplied public http(s) URLs with bounded retrieval. It is not web search and not a secret-exfiltration boundary.
 
@@ -465,6 +687,8 @@ Terminal task event|
 pi-background-tasks:terminal:v1|
 
 Operations are capabilities, run, status, logs, and kill. This is the integration point for orchestrators such as Autopilot that need non-blocking package-managed work with bounded logs and correlated terminal events. Consumers must deduplicate terminal frames by task.id: an EventBus listener failure can cause a retried publication.
+
+Native front ends that show a background-jobs panel can use the separate, optional host interface EventBus API v1 (pi-background-tasks:host:request:v1, pi-background-tasks:host:response:v1, pi-background-tasks:host:changed:v1). It adds leased, sequence-fenced, paginated list/detail, bounded UTF-8-safe log windows, exact-id stop/confirmed stop-all, shell-only rerun, read-only verified delegate/Fusion result views that never claim usage, shared seen state, and coalesced change frames over the same registry. It changes nothing in the v1 service, tools, commands, dock, notifications, or wake-up behavior, and does no change-publication work while no client is subscribed.
 
 ## Documentation map
 
@@ -499,6 +723,8 @@ LICENSE and THIRD_PARTY_NOTICES.md|
 ## Contributing
 
 Keep user-facing claims tied to source. If you change public schemas, command behavior, durability, model routing, or environment variables, update these package-local docs in the same change and run focused checks appropriate to the edit.
+
+For startup work, use scripts/benchmark-cold-load.mjs with an owned output/scratch root, explicit --runtime source|compiled, and at least 30 fresh-process samples; the exact command and interpretation rules are in Testing operations. Its “cold” result means an empty JavaScript/Jiti module cache, not a flushed filesystem cache. It is distribution evidence, not a flaky CI threshold. Published Pi entrypoints use precompiled JavaScript; disabled delegate/Fusion/attribution lanes, the dock UI, and attested execution stay outside process-only static startup. Load those entrypoints through Pi; dist/src/** contains private implementation chunks and is not a set of standalone Node entrypoints. Native-Windows and vendor compiled-Bun timing still require their own evidence.
 
 Earendil Inc. & Contributors
 Press Kit

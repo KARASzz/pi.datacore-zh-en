@@ -1,7 +1,8 @@
+People of Pi: We've shipped Pi 1.0 with Pi Durable. Go make them yours.
 Copy SVGDownload SVGPress Kit
-HomeDocumentationNewsPackagesModels
+DocumentationChangelogModelsPackagesRadius
 
-Home→Documentation→News→Packages→Models→
+Documentation→Changelog→Models→Packages→Radius→
 
 GitHubnpmDiscordX
 
@@ -19,7 +20,7 @@ Install pi-simplify from npm and Pi will load the resources declared by the pack
  npm repohome report
 
 $ pi install npm:pi-simplifyCopy
-Packagepi-simplifyVersion0.2.3PublishedJul 17, 2026Downloads41K/mo · 12.8K/wkAuthormdevyLicenseMITTypesextensionSize27.7 KBDependencies0 dependencies · 4 peersPi manifest JSON{
+Packagepi-simplifyVersion0.2.3PublishedJul 17, 2026Downloads37.9K/mo · 5,436/wkAuthormdevyLicenseMITTypesextensionSize27.7 KBDependencies0 dependencies · 4 peersPi manifest JSON{
  "extensions": [
  "dist/index.js"
  ]
@@ -37,25 +38,55 @@ A Pi extension that reviews recently changed code for clarity, consistency, and 
 
 ## Installation
 
-pi install npm:pi-simplify
+ 
+ 
+ 
+ 
+ pi install npm:pi-simplify
+
+ 
 
 ## Usage
 
 ### Review all uncommitted changes
 
-/simplify
+ 
+ 
+ 
+ 
+ /simplify
+
+ 
 
 ### Review only staged changes
 
-/simplify --staged
+ 
+ 
+ 
+ 
+ /simplify --staged
+
+ 
 
 ### Review specific files
 
-/simplify src/foo.ts src/bar.ts
+ 
+ 
+ 
+ 
+ /simplify src/foo.ts src/bar.ts
+
+ 
 
 ### Diff against a specific branch
 
-/simplify --ref=main
+ 
+ 
+ 
+ 
+ /simplify --ref=main
+
+ 
 
 ## What it does
 

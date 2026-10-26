@@ -1,7 +1,8 @@
+People of Pi: We've shipped Pi 1.0 with Pi Durable. Go make them yours.
 Copy SVGDownload SVGPress Kit
-HomeDocumentationNewsPackagesModels
+DocumentationChangelogModelsPackagesRadius
 
-Home→Documentation→News→Packages→Models→
+Documentation→Changelog→Models→Packages→Radius→
 
 GitHubnpmDiscordX
 
@@ -9,7 +10,7 @@ Earendil Inc.
 
 # pi-goal-x
 
-Goal mode extension for pi: durable long-running objectives, five model tools, structured tasks, independent completion audit, Sisyphus mode, auto-continue, and a status overlay.
+Adds /goal to pi: conversational goal planning, flexible or ordered goals, persistent progress, and an independent completion auditor.
 Packages
 ## Package details
 extension
@@ -20,11 +21,11 @@ Install pi-goal-x from npm and Pi will load the resources declared by the packag
 
 image
 $ pi install npm:pi-goal-xCopy
-Packagepi-goal-xVersion0.30.5PublishedAug 25, 2026Downloads31K/mo · 20.6K/wkAuthortmonkLicenseMITTypesextensionSize846.4 KBDependencies0 dependencies · 4 peersPi manifest JSON{
+Packagepi-goal-xVersion0.34.0PublishedOct 24, 2026Downloads88.9K/mo · 3,619/wkAuthortmonkLicenseMITTypesextensionSize1 MBDependencies0 dependencies · 4 peersPi manifest JSON{
+ "image": "https://github.com/tmonk/pi-goal-x/raw/main/pi-goal-x.png",
  "extensions": [
  "extensions/goal.ts"
- ],
- "image": "https://github.com/tmonk/pi-goal-x/raw/main/pi-goal-x.png"
+ ]
 }
 
 ×
@@ -37,388 +38,214 @@ Pi packages can execute code and influence agent behavior. Review the source bef
 
 # pi-goal-x
 
-pi-goal-x is a goal-management extension for pi.
+Adds /goal functionality to pi. The agent helps you define a goal and plan, continues working on it automatically, and submits the result to an optional independent completion auditor.
 
-It gives the agent a persistent objective, a structured plan, visible progress, and an independent completion review. Goals remain available across sessions, so the agent can continue working with the same objective and progress record.
-
-## Features
-
-### Regular goals
-
-Regular goals describe an outcome for the agent to achieve. The agent can investigate the work, choose an appropriate sequence, create tasks, and adapt its plan as it progresses.
-
-Regular goals work well for research, implementation, debugging, documentation, and other work where the desired result is clear and the execution path can be determined during the task.
-
-### Sisyphus goals
-
-Sisyphus goals describe work that should be completed in a specific order. The agent follows the listed sequence one step at a time and preserves dependencies between steps.
-
-Sisyphus goals work well for migrations, staged refactors, release procedures, data-processing workflows, and other tasks where each step prepares the way for the next.
-
-### Guided goal creation
-
-The /goal and /sisyphus commands start a guided drafting process. The agent can ask focused questions, clarify the objective, and propose a task plan for confirmation.
-
-The proposal is written to the conversation as a durable summary (objective, plan, verification, automatic continuation, auditor state); confirming it creates and focuses the goal and starts working automatically.
-
-### Direct goal creation
-
-The /goal-direct and /sisyphus-direct commands create a goal immediately from a complete objective.
-
-### Persistent progress
-
-Open goals are stored in .pi/goals/. Their objectives, tasks, status, and progress remain available across sessions and context changes.
-
-### Multiple open goals
-
-A project can contain several open goals. Each session focuses on one goal at a time, and you can switch between them with /goal-focus.
-
-### Tasks and subtasks
-
-Goals can include structured tasks and subtasks. The agent updates their status and records completion evidence as work progresses.
-
-### Verification contracts
-
-Goals and tasks can include plain-text completion requirements, such as:
-
-Run npm test with zero failures.
-
-The completion auditor checks these requirements against evidence from the workspace.
-
-### Independent completion review
-
-When the agent reports a goal as complete, a separate pi agent reviews the objective, tasks, verification requirements, and workspace.
-
-Approved goals are archived as complete. Goals requiring additional work remain open with review feedback.
-
-### Visible status
-
-An above-editor widget shows the focused goal: its status, focus state, other open goals, time and token usage, task progress, the current task, and the goal file path.
-
-Press Ctrl+Shift+T to expand the widget into the full unified dashboard — the complete task tree with the current task highlighted, the current task's verification contract and evidence, the goal-level verification contract, and a recent-activity feed derived from the durable goal ledger. Press Esc or Ctrl+Shift+T again to collapse it.
-
-During an independent completion audit the widget shows a structured audit dashboard (five review stages and a progress bar); after the audit it shows the approval or changes-required result, then returns to the normal view.
-
-### Goal controls
-
-Slash commands let you pause, resume, revise, select, unfocus, and archive goals.
-
-### Configurable behaviour
-
-The settings menu controls task support, verification contracts, subtask depth, goal selection, and the completion auditor.
+The extension saves goal objectives, tasks, and progress across sessions. You can pause, resume, revise, or switch goals as your work changes.
 
 ## Install
 
-Install from npm:
+ 
+ 
+ 
+ 
+ pi install npm:pi-goal-x
 
-pi install npm:pi-goal-x
+ 
 
-Install from a local checkout:
+## Create a goal
 
-pi install .
+ 
+ 
+ 
+ 
+ /goal Add CSV export to the reports page, with documentation and tests.
 
-Run it once from a local checkout:
+ 
 
-pi -e .
+The agent discusses the goal with you, asks focused questions where needed, and proposes an objective, task plan, and completion requirements. You review the proposal and choose whether to use the completion auditor. Once you confirm, the agent starts working and continues automatically while the goal is active.
 
-## Choose a goal style
+You can specify completion requirements, such as passing the test suite or producing a report with every required section. The agent tracks tasks and subtasks, records evidence, and works toward those requirements. If it gets blocked and needs your input, you can resolve the issue and resume.
 
-Use a regular goal when you have a clear outcome and want the agent to determine how to reach it.
+If you already have a complete objective, use /goal-direct <objective> to create the goal and start immediately without drafting.
 
-For example:
+## Goal types
 
-/goal Add account deletion to the application, including the user interface, data cleanup, documentation, and tests.
+|
+Type|
+Behaviour|
+Example uses|
 
-The agent can decide how to investigate the application, divide the work, and order the implementation.
+|
+Regular — /goal|
+An outcome to achieve, with the agent choosing and adapting the plan.|
+Features, debugging, research, and documentation.|
 
-Use a Sisyphus goal when you already know the required sequence and want the agent to follow it step by step.
+|
+Sisyphus — /sisyphus|
+An ordered plan that the agent follows one step at a time.|
+Migrations, staged refactors, and release procedures.|
 
-For example:
+For an ordered goal, you can provide the steps or define them with the agent:
 
-/sisyphus Migrate authentication in this order:
+ 
+ 
+ 
+ 
+ /sisyphus Migrate authentication in this order:
 1. Add the new token validator.
-2. Update login to use it.
-3. Update session refresh to use it.
-4. Remove the old validator.
-5. Run the authentication test suite.
+2. Update login and session refresh to use it.
+3. Remove the old validator.
+4. Run the authentication tests.
 
-The agent completes the migration in the stated order, preserving the dependency between each stage.
+ 
 
-## Create a guided goal
+Use /sisyphus-direct <objective> to start an ordered goal without drafting.
 
-Start a guided regular goal:
+## Tasks and subtasks
 
-/goal add structured logging to the authentication module
+The agent can divide a goal into tasks and subtasks, each describing part of the work required to complete it. During guided goal creation, you review the proposed plan before work begins.
 
-The agent can ask questions and propose a complete objective and task plan. Confirm the proposal to create the goal and begin work.
+For example, a CSV export goal could have this task plan:
 
-The questionnaire dialog never truncates the question; when it is taller than the terminal it stays within the height and scrolls — PgUp/PgDn page and Ctrl+↑/↓ line-scroll without moving the selection, ↑/↓ selection auto-follows into view, and a ▲/… +N more edge indicator shows what is clipped.
+ 
+ 
+ 
+ 
+ Add CSV export to reports
+├─ Review the report data and active filters
+├─ Implement CSV export
+│ ├─ Generate the CSV from filtered results
+│ └─ Add a download button
+├─ Test the export
+└─ Document how to use it
 
-Start a guided Sisyphus goal:
+ 
 
-/sisyphus prepare and perform the customer-data migration
+As work progresses, the agent marks the current task, records completed work, and explains any skipped tasks. The dashboard shows what is done and what remains, including progress within subtasks. Task progress is saved when you pause and remains available in later sessions.
 
-The agent can help define the ordered steps and present them for confirmation.
+Tasks can also have their own completion requirements—for example, “The download contains only rows matching the active filters.” The agent records evidence against those requirements, and the completion auditor uses that evidence when reviewing the overall result.
 
-## Create a goal directly
+Use /goal-tweak <change> to discuss revisions to the goal and its plan. Task tracking, completion requirements, and subtask depth are configurable in /goal-settings.
 
-Use /goal-direct when the objective already describes a complete outcome:
+## Completion auditor
 
-/goal-direct Add a health-check endpoint that verifies database connectivity, returns the service status as JSON, documents the endpoint, and includes passing tests.
+When enabled, a separate agent reviews the work before the goal is accepted as complete. It checks the objective, tasks, recorded evidence, completion requirements, and workspace.
 
-This creates and focuses the regular goal immediately.
+If the auditor approves, the goal is archived as complete. If it identifies unmet requirements, the goal remains open with feedback describing the work still needed. You can choose the auditor model in /goal-settings and toggle auditing for the focused goal with Ctrl+Shift+A.
 
-Use /sisyphus-direct when the objective already contains the complete ordered process:
+## Progress and goal controls
 
-/sisyphus-direct Upgrade the payment integration in this order:
-1. Add support for the new API version.
-2. Update payment creation.
-3. Update refund handling.
-4. Migrate the test fixtures.
-5. Run the payment test suite.
-6. Remove the old API integration.
+The dashboard above the editor shows the goal's status, task progress, current task, elapsed time, and token usage. Press Ctrl+Shift+T to expand it for the full task tree, completion requirements, evidence, and recent activity. Audit progress and results appear there too.
 
-This creates and focuses the ordered goal immediately.
-
-## Manage goals
-
-List open goals:
-
-/goal-list
-
-Show the focused goal:
-
-/goal-status
-
-Run read-only storage/runtime health checks:
-
-/goal-status health
-
-Re-read goal storage caches (pool, ledger, settings) from disk and report what changed — picks up external edits to .pi files without file watchers:
-
-/goal-refresh
-
-Select an open goal for the current session:
-
-/goal-focus
-
-Remove the current session’s focus while keeping the goal open:
-
-/goal-unfocus
-
-Revise the focused objective and task plan:
-
-/goal-tweak <change>
-
-Pause or resume the focused goal:
-
-/goal-pause
-/goal-resume
-
-Archive the focused goal:
-
-/goal-clear
-
-Cancel an unconfirmed guided draft:
-
-/goal-cancel
-
-Open the settings menu:
-
-/goal-settings
-
-Pressing Esc during active work pauses the goal.
-
-## Tasks and verification
-
-The agent can divide a goal into tasks and subtasks and update them as work progresses. The current task is tracked explicitly (persisted as the goal's execution focus) and highlighted in the dashboard; starting a task with update_goal_task(status="start") sets it, and completing or skipping it clears it.
-
-Verification contracts describe the evidence required for completion. They can apply to the entire goal or to an individual task.
-
-Examples include:
-
-Run npm test with zero failures.
-
-Confirm the new command appears in the help menu.
-
-Verify that the generated report contains every required section.
-
-## Unified dashboard
-
-pi-goal-x renders one dashboard component in two modes; the above-editor widget, /goal-status, and the completion flow all derive from the same presentation model, so they can never disagree about the data.
-
-### Compact mode
-
-Always visible above the editor while a goal is focused:
-
-╭─ pi-goal-x ─ Add CSV export to reports ────────────────────────────╮
-│ goal: running [12m47s 18.2K] (+2 open) │
-├─ Tasks · ✓3 done · 2 open ──────────── [█████░░░] · Sub 2/3 [██░░] ┤
-│ ✓ t1 Review reports page and data source │
-│ ✓ t2 Implement filtered CSV export │
-│ ▸ t3 Add the download button ☑ ▸ 2/3 │
-│ · t4 Add documentation │
-│ … +1 more task │
-│ Current t3 · Add the download button │
-│ Verify Run npm test with zero failures. │
-│ File .pi/goals/active_goal_... │
-╰─ Ctrl+Shift+T: expand tasks─────── Ctrl+Shift+A: toggle auditor ● ─╯
-
-The green/gray ● at the bottom-right of the border is the focused goal's
-independent-auditor status (green = on, gray = off). Wide/medium footers
-right-align the Ctrl+Shift+A: toggle auditor note beside the dot — it
-shows the shortcut that turns the auditor on and off; narrow/minimal keep
-just the dot.
-
-### Expanded mode
-
-Ctrl+Shift+T expands the same component: full task tree (✓ complete, ▸ current, ~ skipped, · pending), the current-task block with its contract and evidence, goal-level verification, and recent activity.
-
-├─ Progress ──────────────────────────────────────────────────────────┤
-│ [██████░░░░] 3/5 tasks · 60% │
-├─ Tasks ─────────────────────────────────────────────────────────────┤
-│ ✓ t1 Review reports page and data source │
-│ ✓ t2 Implement filtered CSV export │
-│ ▸ t3 Add the download button │
-│ ✓ t3.1 Add loading state │
-│ · t3.3 Add error handling │
-│ · t4 Add documentation │
-├─ Current task ──────────────────────────────────────────────────────┤
-│ t3 · Add the download button │
-│ Subtasks [███████░░░] 2/3 · 67% │
-│ Contract: The button downloads a CSV using the active filters. │
-├─ Verification ──────────────────────────────────────────────────────┤
-│ Run npm test with zero failures. │
-└─ Esc/Ctrl+Shift+T: collapse ────────────────────────────────────────┘
-
-Every rendered line is width-aware: the dashboard adapts to wide, medium, narrow, and very-narrow terminals and never overflows the available width. It follows a pastel theme palette with a monochrome fallback: a light steel-gray-blue outer frame (mdLink) with gray interior rules, pastel-amber task rows with colour-coded markers and ids (✓ complete green, ▸ current teal, ~ skipped gray, · pending amber), accent-tinted progress and brand, and status symbols in their state color.
-
-The task list is a scrollable window that by default is anchored to the most recently completed task — recent completions stay visible instead of the earliest tasks. The expanded dashboard is modal and scrolls with the plain ↑/↓, PgUp/PgDn, and Home/End keys; the compact widget keeps the editor's arrows untouched and scrolls with the free Ctrl+Shift+↑/↓ chords (pi leaves those unbound). A new completion re-anchors the window.
-
-See docs/unified-dashboard.md for the full layout specification, status states, scrolling behavior, and migration behavior.
-
-## Completion review
-
-When the agent reports a goal as complete, pi-goal-x starts an independent completion review.
-
-The auditor examines:
-
-- The objective
-
-- The task plan and recorded evidence
-
-- Verification contracts
-
-- The current workspace
-
-An approved goal is archived as complete, and the archive path is reported. Review feedback is added to any goal that requires further work, and the dashboard shows the changes-required result before returning to the normal view.
-
-Press Esc to stop an active audit (completing without audit is recorded explicitly and never presented as independently approved).
-
-## Goal storage
-
-Open goals are stored in:
-
-.pi/goals/
-
-Completed and cleared goals are stored in:
-
-.pi/goals/archived/
-
-Each session can focus on one goal while the project keeps other goals open.
-
-## Session checkpoint recovery
-
-Auto-continue checkpoints are tiny structured markers (≤160 chars) that
-trigger the next turn; the full goal state is injected once per turn by the
-extension and is never persisted into checkpoints. Sessions created by older
-versions may still contain large "legacy" full-prompt checkpoints.
-
-Check /goal-recovery or /goal-status health for a read-only report:
-
-Session checkpoints:
- total: 851
- legacy full checkpoints: 851
- checkpoint content: 5.4 MB
- projected content after recovery: 92 KB
-
-To repair an affected session file, close Pi first (the tool refuses to run
-while a live session could be open), then:
-
-# Report only — writes nothing:
-pi-goal-x-recover --session <session.jsonl>
-
-# Repair (creates a timestamped backup, rewrites only checkpoint entries):
-pi-goal-x-recover --session <session.jsonl> --apply --confirm-pi-closed
-
-Recovery preserves every entry id and parent link, keeps all non-goal lines
-byte-identical (including malformed lines), and is idempotent. Rollback is
-the timestamped .backup-* file created next to the session.
+A project can have several open goals, with one focused goal per session. Switch with /goal-focus, pause with /goal-pause, or use /goal-tweak to discuss changes to the current goal. Pressing Esc during active work also pauses the goal; in the expanded dashboard, it collapses the view.
 
 ## Commands
 
-/goal [seed] Start a guided regular goal
-/sisyphus [seed] Start a guided ordered goal
-/goal-direct <objective> Create a regular goal immediately
-/sisyphus-direct <objective> Create an ordered goal immediately
-/goal-list List open goals
-/goal-status Show the focused goal (unified dashboard)
-/goal-status verbose Show the focused goal with full diagnostic detail
-/goal-status health Check goal storage/runtime health (read-only)
-/goal-refresh Re-read storage caches and report external changes
-/goal-recovery Read-only recovery report; `/goal-recovery repair` fixes stale locks + snapshot after confirmation
-/goal-focus Select an open goal
-/goal-unfocus Remove the session’s focus
-/goal-tweak <change> Revise the focused goal
-/goal-pause Pause the focused goal
-/goal-resume Resume a paused or blocked goal
-/goal-settings Open the settings menu
-/goal-clear Archive the focused goal
-/goal-cancel Cancel the current draft
+|
+Command|
+What it does|
 
-## Configuration
+|
+/goal [idea]|
+Discuss, plan, and confirm a regular goal.|
 
-Settings resolve per setting in this order (highest wins):
+|
+/sisyphus [idea]|
+Discuss, plan, and confirm an ordered goal.|
 
-environment > project layer > global layer > defaults
+|
+/goal-direct <objective>|
+Create and start a regular goal immediately.|
 
-Files:
+|
+/sisyphus-direct <objective>|
+Create and start an ordered goal immediately.|
 
-global: ~/.pi/pi-goal-x-settings.json (or $PI_CODING_AGENT_DIR, or $PI_GOAL_GLOBAL_SETTINGS_FILE)
-project: <cwd>/.pi/pi-goal-x-settings.json (or $PI_GOAL_SETTINGS_FILE)
+|
+/goal-list|
+List open goals.|
 
-Define shared configuration once in the global file and override per project. Explicit false/0 values in a lower layer override inherited values; nested keybindings inherit per key. /goal-settings shows each row's effective value and source, can switch the edited scope, and can remove a local override to return to inheritance.
+|
+/goal-status|
+Show the focused goal and its progress.|
 
-Use /goal-settings to configure task lists, verification contracts, subtask depth, automatic goal selection, and completion auditing. Goal objectives have no hard length limit by default; set objectiveMaxChars (or PI_GOAL_OBJECTIVE_MAX_CHARS, 0 = no limit) to cap objective length across create_goal, propose_goal_draft, and /goal-tweak.
+|
+/goal-focus|
+Choose an open goal to work on.|
 
-Configure the task shortcuts in the same file when the terminal captures the defaults:
+|
+/goal-unfocus|
+Leave the current goal open without focusing on it.|
 
-{
- "keybindings": {
- "dashboard": {
- "toggleExpand": "ctrl+shift+t",
- "scrollUp": "ctrl+shift+up",
- "scrollDown": "ctrl+shift+down"
- }
- }
-}
+|
+/goal-tweak <change>|
+Revise the current goal with the agent.|
 
-The default task bindings are ctrl+shift+t, ctrl+shift+up, and ctrl+shift+down. Use pi key names such as ctrl+shift+up.
+|
+/goal-pause|
+Pause work on the focused goal.|
 
-### Blocker Oracle (opt-in)
+|
+/goal-resume|
+Resume a paused or blocked goal.|
 
-When an active goal reports blocked, a stronger read-only model can be consulted once per distinct blocker before the goal is allowed to stop. Off by default; configure under /goal-settings → Blocker Oracle:
+|
+/goal-clear|
+Archive the focused goal after confirmation.|
 
-{
- "oracle": {
- "enabled": true,
- "provider": "anthropic",
- "model": "<a stronger model>",
- "maxFailedAttemptsPerBlocker": 2
- }
-}
+|
+/goal-cancel|
+Cancel an unconfirmed draft.|
 
-Both provider and model must be set explicitly — the executor model is never used as a silent fallback. The Oracle session can only read files (read, grep, find, ls) and returns structured advice. Actionable advice keeps the goal running until you attempt it; advice that needs human input lets the goal block immediately.
+|
+/goal-settings|
+Configure goal behaviour and the auditor.|
+
+For troubleshooting, use /goal-status verbose for more detail, /goal-status health or /goal-recovery to check for problems, and /goal-refresh to reload saved goals and settings after external changes. /goal-recovery repair offers repairs after confirmation.
+
+## Settings
+
+Open /goal-settings to change these options. You can save defaults for all projects, override them for the current project, or remove an override to use the inherited value.
+
+|
+Setting|
+What it controls|
+
+|
+Explicit execution contracts (strictExecutionContract)|
+Opt-in ready/wait protocol with one missing-decision repair, then pause. Defaults to false: successful executions continue automatically.|
+
+|
+Autonomous run allowance (maxAutonomousRuns)|
+Positive whole number of extension-started runs per creation or /goal-resume period. Unset means unlimited; zero disables automatic continuation. Settings edits change the limit without resetting usage.|
+
+|
+Autonomous runs line (showAutonomousRuns)|
+Controls the Autonomous runs: N/limit line that appears for a finite allowance. Defaults to true.|
+
+|
+Task tracking (disableTasks)|
+Turn task lists on or off. Set to true to disable them.|
+
+|
+Subtask depth (subtaskDepth)|
+Limit how many levels of subtasks the agent can create.|
+
+|
+Completion requirements (disableContracts)|
+Turn explicit goal and task completion requirements on or off. Set to true to disable them.|
+
+|
+Unfocused reminder (hideUnfocusedPrompt)|
+When a session has no focused goal but open goals exist in the selected pool, the agent receives a [PI GOAL UNFOCUSED] reminder on every request. Set to true to stop that reminder. Defaults to false. This is independent of hideUnfocusedBanner, which hides only the unfocused widget and status hint. Neither setting selects or resumes a goal; the separate autoSelectSingleGoal setting still applies.|
+
+|
+Auditor disabled|
+Turn off independent completion review.|
+
+|
+Auditor provider, model, and thinking level|
+Choose which model reviews completed work and its reasoning effort.|
 
 ## License
 

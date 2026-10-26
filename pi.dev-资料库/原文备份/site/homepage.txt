@@ -1,7 +1,8 @@
+People of Pi: We've shipped Pi 1.0 with Pi Durable. Go make them yours.
 Copy SVGDownload SVGPress Kit
-HomeDocumentationNewsPackagesModels
+DocumentationChangelogModelsPackagesRadius
 
-Home→Documentation→News→Packages→Models→
+Documentation→Changelog→Models→Packages→Radius→
 
 GitHubnpmDiscordX
 
@@ -99,7 +100,7 @@ Pi - Install a third-party extension
 
 Features that other agents bake in, you can build yourself. Extensions are TypeScript modules with access to tools, commands, keyboard shortcuts, events, and the full TUI.
 
-Sub-agents, plan mode, permission gates, path protection, SSH execution, sandboxing, MCP integration, custom editors, status bars, overlays.
+Sub-agents, plan mode, permission gates, path protection, SSH execution, sandboxing, MCP integrations (still supported alongside built-in MCP), custom editors, status bars, overlays.
 
 Don't want to build it? Ask Pi to build it for you. Or install a package that does it your way. See the 50+ examples.
 
@@ -122,9 +123,9 @@ Read the blog post
 
 - 
 
-### No MCP
+### No MCP Now with MCP+Codemode
 
-Build CLI tools with READMEs (see Skills), or build an extension that adds MCP support. Why?
+MCP is built in, and Codemode lets agents compose tool calls in a JavaScript sandbox. MCP extensions are still supported too. Why we changed our minds
 
 - 
 

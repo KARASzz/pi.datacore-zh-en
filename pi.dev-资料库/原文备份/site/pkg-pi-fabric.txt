@@ -1,7 +1,8 @@
+People of Pi: We've shipped Pi 1.0 with Pi Durable. Go make them yours.
 Copy SVGDownload SVGPress Kit
-HomeDocumentationNewsPackagesModels
+DocumentationChangelogModelsPackagesRadius
 
-Home→Documentation→News→Packages→Models→
+Documentation→Changelog→Models→Packages→Radius→
 
 GitHubnpmDiscordX
 
@@ -12,7 +13,7 @@ Earendil Inc.
 A programmable tool and agent runtime for Pi
 Packages
 ## Package details
-extensionskill
+extension
 
 Install pi-fabric from npm and Pi will load the resources declared by the package manifest.
 
@@ -20,14 +21,13 @@ Install pi-fabric from npm and Pi will load the resources declared by the packag
 
 image
 $ pi install npm:pi-fabricCopy
-Packagepi-fabricVersion0.67.0PublishedAug 27, 2026Downloads25.1K/mo · 4,052/wkAuthormonotykamaryLicenseMITTypesextension, skillSize7.2 MBDependencies11 dependencies · 2 peersPi manifest JSON{
+Packagepi-fabricVersion0.125.2PublishedOct 25, 2026Downloads31.6K/mo · 4,879/wkAuthormonotykamaryLicenseMITTypesextensionSize15.5 MBDependencies17 dependencies · 5 peersPi manifest JSON{
+ "image": "https://raw.githubusercontent.com/fabric-runtime/pi-fabric/main/media/banner.svg",
+ "skills": [],
  "extensions": [
- "./dist/index.js"
- ],
- "skills": [
- "./skills"
- ],
- "image": "https://raw.githubusercontent.com/monotykamary/pi-fabric/main/media/banner.svg"
+ "./dist/extension-bootstrap.js",
+ "./node_modules/pi-coralbricks-provider/index.ts"
+ ]
 }
 
 ×
@@ -38,13 +38,13 @@ Pi packages can execute code and influence agent behavior. Review the source bef
 
 ## README
 
-# 🧵 pi-fabric
+# pi-fabric
 
 A programmable tool and agent runtime for Pi
 
-One type-checked program for tools, MCP, agents, workflows, actors, mesh, councils, and recursion.
+One program for tools, MCP, agents, workflows, actors, mesh, councils, and recursion.
 
-Fabric gives Pi one programmable tool called fabric_exec, which composes core tools and MCP servers with captured extension tools in a checked TypeScript program. That program can call agents or actors, use durable coordination, and run inside QuickJS. Trusted workloads that exceed WASM32 memory may use the unsafe Node process. After execution, the conversation receives the result of the program's branches, loops, fan-out, and data flow.
+Fabric gives Pi one programmable tool called fabric_exec, which composes core tools and MCP servers with captured extension tools. The default kernel runs checked TypeScript in isolated QuickJS; select sandboxed Python (Monty) with executor.kernel: "python". CPython is an explicit native escape hatch via executor.pythonRuntime: "cpython". The configured kernel is exclusive: there is no per-call language selector. Trusted TypeScript workloads can also use unsafe Node/Bun processes. Programs call host providers for agents, actors, and durable coordination, then return the result of their branches, loops, fan-out, and data flow. See execution kernels for Python usage, security boundaries, and guest-helper limitations.
 
 ## Why Fabric?
 
@@ -56,7 +56,7 @@ What it unlocks|
 |
 ⚡|
 Code mode|
-One flat tool schema; branching, loops, fan-out, and data flow live in checked TypeScript.|
+One flat tool schema; branching, loops, fan-out, and data flow live in TypeScript or configured Python.|
 
 |
 🧰|
@@ -89,13 +89,17 @@ Live activity, an interactive dashboard, and settings without leaving Pi.|
 
 - Pi writes one program that calls the required tools and agents.
 
-- The type checker validates the program before execution.
+- TypeScript is statically checked before execution; both kernels use the same authoritative host-call schema validation.
 
 - The result returns to your conversation. Intermediate work stays in the sandbox and appears in the activity panel and dashboard.
 
-The model can write this program:
+With the default TypeScript kernel, the model can write this program (TypeScript only):
 
-const [manifest, sources] = await Promise.all([
+ 
+ 
+ 
+ 
+ const [manifest, sources] = await Promise.all([
  pi.read({ path: "package.json" }),
  pi.find({ pattern: "**/*.ts", path: "src" }),
 ]);
@@ -104,31 +108,83 @@ return {
  sourceCount: sources.split("\n").filter(Boolean).length,
 };
 
-Independent calls run in parallel, and the returned object enters the model context. Known providers support concise direct calls such as mcp.fal_ai.get_model_schema(...), memory.recall(...), state.get(), schema.status(), and compact.status(). Refs found or computed at runtime use tools.call({ ref, args }).
+ 
+
+Independent calls run in parallel, and the returned object enters the model context. Known providers support concise direct calls such as mcp.fal_ai.get_model_schema(...), memory.recall(...), state.get(), schema.status(), and compact.status(). A provider another extension registers gets a typed global named after it, such as context.task_add(...) (program globals). Refs found or computed at runtime use tools.call({ ref, args }) (TypeScript notation). Python uses await tools.call({"ref": ref, "args": args}), native dictionary results, and asyncio.gather for independent calls.
+
+To select Python, put this in ~/.pi/agent/fabric.json or a trusted project's .pi/fabric.json, or use /fabric settings → Executor → Kernel:
+
+ 
+ 
+ 
+ 
+ { "executor": { "kernel": "python" } }
+
+ 
+
+Python defaults to Monty, a sandboxed Python subset with VM resource limits and no ambient filesystem, network, or process access. It is not CPython: arbitrary imports, third-party packages, and some Python features are unavailable. Full CPython 3.10+ requires explicit executor.pythonRuntime: "cpython" and runs trusted native code with full OS privileges outside schema enforce, like TypeScript's Node/Bun escape hatches. CPython enforcement additionally requires macOS sandbox-exec or Linux bwrap, failing closed without isolation. Missing Monty dependencies never trigger a native fallback. executor.runtime only affects TypeScript. See the kernel guide.
+
+Pi's native MCP can optionally supply selected servers beneath the same Fabric API: set mcp.nativeServers to exact server names already configured in Pi. Other servers stay on mcporter; failed native calls never switch transports. See MCP ownership and compatibility.
 
 ## Install
 
-Requires Node.js 24+ and Pi 0.80.6+. Fabric also checks a detectable Pi host version at startup and warns when an older host may ignore continuation APIs such as actor triggerTurn.
+Requires Node.js 24+ and Pi 1.0.0+. Monty's optional native package installs on supported platforms; only the explicit CPython escape hatch requires CPython 3.10+. Fabric warns when a detectable host is older than the required native loadout and nested-execution contracts.
 
-pi install npm:pi-fabric
+0.125.2: arbitrary-state policy proofs. The dev-only gdp-wired prover is pinned to 0.30.1. Policy proof runs use {from: 'any'} and accept only proven && checked && !assumes, with counterexample-backed refusals for all 50 broken variants. Generated kernel bodies are unchanged, and default certificates need no environment override. Windows offline continuation tests use a platform-sized cold-start budget.
+
+0.103.1: Pi 1.0 compatibility. Full-code and Schema enforce loadouts own declarations through native prepareLoadout, including built-in codemode, tool search, MCP, late activation, and reload. Captured dispatch and core overrides retain native middleware; capture patches restore on the final shutdown lease without recursive wrapping. Run bun run test:pi1 for public-contract, compiled SDK, and bundled-CLI regressions. Optional/audit mode retains the host loadout.
+
+0.103.0: daemon primitives. Headless, restart-safe sessions get small composable building blocks: a runner contract with hosted runs that persist a locator before start and never relaunch (pi-fabric/runners); durable decisions with escalation chains, headless approvals, and routed child dialogs; mesh timers, scoped external grants, and the pi-fabric CLI; saved programs with host-invoked runs; host-issued principal and scope (pi-fabric/scope) that children only narrow; write confinement, context-inheriting spawn, and worktree results; provider participants, a foreground-tool policy, compaction pressure and carry-forward focus, thinking control, heartbeat liveness across PID namespaces, and incarnation-fenced control commands. New behavior is opt-in or additive. A configured agents.runner id that no extension registers is kept and warned about once per session, without falling back to pi.
+
+0.102.0: opt-in Pi-owned MCP. Select native servers with mcp.nativeServers while keeping Fabric's API, policy pipeline, names/descriptions, and result normalization. Existing defaults remain unchanged. Native identities are indexed by registration snapshot, with live exposure and schema checks; SDK reload and settings-save guards are included.
+
+0.101.1: Pi 0.99 compatibility. Full-code and Schema enforce modes declare only fabric_exec, including with native codemode, tool search, MCP, late registrations, and active-tool changes. Captured tools remain available as extensions.<name>(...) inside Fabric, with host middleware applied. Pi packages and TypeBox are host-supplied peers, never bundled. The same compiled package also passes an isolated Pi 0.99.1 SDK/CLI gate; development pins at that release were 0.99.0.
+
+ 
+ 
+ 
+ 
+ pi install npm:pi-fabric
+
+ 
+
+Fabric bundles the Coral Bricks provider: run /login coralbricks to use coralbricks/* models, or opt out with a package filter. Fabric's maintainers work at Coral Bricks.
 
 From GitHub:
 
-pi install git:github.com/monotykamary/pi-fabric
+ 
+ 
+ 
+ 
+ pi install git:github.com/fabric-runtime/pi-fabric
+
+ 
 
 From a local checkout:
 
-pnpm install
-pnpm build
+ 
+ 
+ 
+ 
+ bun install
+bun run build
 pi install /absolute/path/to/pi-fabric
+
+ 
 
 For one development run:
 
-pi -e /absolute/path/to/pi-fabric
+ 
+ 
+ 
+ 
+ pi -e /absolute/path/to/pi-fabric
+
+ 
 
 ## What you can ask for
 
-Pi loads advanced patterns after direct user invocation. Run /skill:fabric-guide for one recommendation, or invoke the exact /skill:<name> yourself. An ordinary coding task keeps Pi on the core fabric-exec path.
+Pi loads advanced patterns after direct user invocation. Run /skill:fabric-guide for one recommendation, or invoke the exact /skill:<name> yourself. The same skill names work in both kernels: Fabric loads one complete TypeScript or Python skill/reference tree. An ordinary coding task uses the core fabric-exec reference.
 
 |
 You want|
@@ -147,6 +203,10 @@ Work too big for one context window|
 /skill:fabric-rlm Produce a compact architecture map of this repo.|
 
 |
+A Jev foreman above coding work, per turn or at settlement|
+/skill:fabric-foreman Watch this migration, request verification, and flag blockers.|
+
+|
 A persistent watcher for one measurable goal|
 /skill:fabric-supervisor Watch this migration until it is complete and tested.|
 
@@ -159,7 +219,7 @@ A quiet decision-point reviewer|
 /skill:fabric-advisor Focus on migration correctness.|
 
 |
-Same-model independent reviewers and one decision|
+Independent reviewers, optionally one model per seat, and one decision|
 /skill:fabric-council Review this design for correctness, security, and operability.|
 
 |
@@ -175,10 +235,22 @@ A durable team coordinating through versioned tasks|
 /skill:fabric-swarm Coordinate this migration across owned task partitions.|
 
 |
+A step graph that survives restarts, with human approval nodes|
+/skill:fabric-graph Run fetch, test, and an approval gate before release as a resumable graph.|
+
+|
 Evidence-gated edits with postconditions|
 /skill:fabric-schema Make this parser change only if focused tests stay green.|
 
-The foundation is the fabric-exec reference skill: the model loads it before its first fabric_exec call and again when a call errors on argument shape.
+|
+Typed semantic judgments or bounded reactive loops|
+/skill:fabric-jev Build a ticket triage loop with an explicit review path and evaluation budget.|
+
+Execution references stay progressive: the model loads the selected kernel's skill after argument-shape errors or when exact advanced contracts are needed. Kernel changes reload Pi so execution and the selected physical skill tree switch together; see kernel-specific skills.
+
+## Agent conversations
+
+Press ↓ in an empty editor and Enter on an agent in the list at the bottom of the screen, or run /fabric chat <agent-id-or-name>, to open a live, full-screen child conversation with a multiline editor. Send steering or follow-ups directly, switch between nested agents, and return to Main without stopping its work. Drafts and scroll positions stay with each conversation. Completed one-shot agents are read-only; persistent actors accept further messages. Drag to select transcript text, use /copy or /copy selection, and type /help for the small set of preview-local commands with slash completion. See focused conversations for controls and current limitations.
 
 ## The dashboard
 
@@ -188,19 +260,45 @@ Fabric includes a live activity surface in Pi:
 
 - /fabric (or /fabric dashboard): opens the Activity and Topology views. The user-facing Pi session appears as Main. You can queue or steer participants and inspect the project topology.
 
-- /fabric settings: mirrors Pi's /settings and writes changes to fabric.json.
+- /fabric settings: mirrors Pi's /settings and writes changes to fabric.json. TUI hosts get the searchable settings component; RPC hosts get the same nested sections, value/input/model pickers, list editors, and project/global save scopes through native dialog primitives.
 
-- Tool display (compact by default, or full) is configured under /fabric settings → UI; compact elevates the declared display intent, hides the outer TypeScript, and applies to the current transcript immediately. Pi's tool-expand keybinding (ctrl+o by default) expands a compact card to the full transcript.
+- Code previews automatically highlight .bend files using Bend 2 syntax, including laws and proof terms. The grammar loads only when needed, with no Bend installation required.
+
+- Tool display (compact by default, or full) is configured under /fabric settings → UI; compact elevates the declared display intent, hides the outer program, and applies to the current transcript immediately. Pi's tool-expand keybinding (ctrl+o by default) expands a compact card to the full transcript.
 
 See the interface & commands reference for every view, keybinding, and slash command.
 
 ## Reference
 
-- Configuration: fabric.json, code modes, tool capture, approvals, and budgets.
+- Configuration: fabric.json, code modes, tool capture, approvals, budgets, and third-party model providers.
+
+- Execution kernels: exclusive TypeScript/Python selection, Monty sandboxing, CPython escape hatch, agent inheritance, and examples.
+
+- Native codemode APIs: additive native tool aliases or opt-in Pi-compatible scripts, collision-safe Fabric discovery, native models/images, branch-local state, and sPTC.
+
+- Prompt cache: honest cache observations and optional, time-bounded native warming leases.
+
+- Thinking control: scoped host-session reasoning effort with configured bounds that children inherit and never widen.
+
+- Durable Pi runner: the default isolated Pi/Fabric host, checkpoint recovery, replay boundaries, and the explicit legacy pi option.
+
+- Durable decisions: pending approvals and questions in the project mesh, headless approvals, routed child dialogs, /fabric decisions, and the pi-fabric decisions CLI.
+
+- Saved programs: content-addressed programs, nested programs.run with the caller's capabilities, /fabric programs, and host runs through /fabric run or an event.
+
+- Memory & recall: compact ranked hits, uniform follow calls, lossless expansion, and guest-local memory.walk computation.
+
+- Extractive history: opt-in native-classifier salience, source-preserving selection, bounded context, and deterministic fallback; configure it through JSON or the TUI.
 
 - Interface & commands: dashboard, settings, keybindings, slash commands, and headless runs.
 
 - Agents, actors & mesh: model handoff, /fabric prewalk, runners, transports, actors, councils, recursive queries, and durable coordination.
+
+- Durable residency through Pi: background host lifecycle and the Pi-runtime launcher boundary.
+
+- Harness CLI composition: use browser/macOS tools through their existing CLIs, without Fabric-specific bridges or component configuration.
+
+- Jev shell orchestration: bounded process supervision, event-driven task wait/watch, optional explicit typed judgments, and foreground/background budgets.
 
 - Components & committed capabilities: supervised effects, exact requirements, external per-model guidance and execution-profile replacement, rolling provider generations, actor commitments, and both formal calculi.
 
@@ -208,16 +306,30 @@ See the interface & commands reference for every view, keybinding, and slash com
 
 - Architecture & security: the host bridge, sandboxing, tool-call robustness, and limits.
 
+- Verified policy kernels: gdp-wired laws over the executed rules, production acceptance gates, regeneration, and the trusted boundary.
+
+- Provider capabilities: proved dispatch, authority attenuation, lifecycle transitions, cancellation/cleanup contracts, and trust boundaries.
+
+- Catalog repairs: unique extra keys and unknown actions promoted into silent schema maps.
+
+- Tool entropy: static capability-preserving normal forms, deterministic invocation-friction metrics, bounded repair witnesses, and offline certify:entropy proof checks.
+
 - Speculative PTC: pre-launching literal read calls while the program streams, with epoch + freshness guarantees.
 
 - Skills: the core-first invocation policy and user-invoked advanced patterns.
 
 ## Development
 
-pnpm install
-pnpm typecheck
-pnpm test
-pnpm build
+ 
+ 
+ 
+ 
+ bun install
+bun run check:fast
+bun run test:smoke
+bun run build
+
+ 
 
 The test suite covers:
 
@@ -230,6 +342,41 @@ The test suite covers:
 - workflows, durable mesh state, actor mailboxes, subscriptions, and actor restoration
 
 Claude and Veda fixtures use local test processes with zero billable requests.
+
+## Support Pi Fabric
+
+If Fabric helps you build or run agent workflows, consider supporting the project on Open Collective. Contributions help fund maintenance, bug fixes, documentation, testing infrastructure, and model/API costs for integration testing and reproducible evaluations.
+
+|
+Contribution|
+Monthly support|
+Helps sustain|
+
+|
+Backer|
+From $5 USD|
+Everyday maintenance and documentation|
+
+|
+Supporter|
+$25 USD|
+Integration tests and reproducible evaluations|
+
+|
+Sponsor|
+From $100 USD|
+Long-term development and project infrastructure|
+
+|
+Custom donation|
+Any amount, one-time or recurring|
+The work that needs it most|
+
+Contribute → · View finances and contributors
+
+Contributions are voluntary support, not a purchase of priority support, feature delivery, or influence over the roadmap. The collective page shows current fiscal-host status, available contribution options, and financial contributors.
+
+Code, documentation, bug reports, and examples are just as welcome. Thank you to everyone helping keep Fabric open and sustainable.
 
 ## Acknowledgments
 

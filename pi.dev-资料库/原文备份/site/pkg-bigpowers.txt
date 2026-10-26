@@ -1,7 +1,8 @@
+People of Pi: We've shipped Pi 1.0 with Pi Durable. Go make them yours.
 Copy SVGDownload SVGPress Kit
-HomeDocumentationNewsPackagesModels
+DocumentationChangelogModelsPackagesRadius
 
-Home→Documentation→News→Packages→Models→
+Documentation→Changelog→Models→Packages→Radius→
 
 GitHubnpmDiscordX
 
@@ -12,19 +13,22 @@ Earendil Inc.
 73 agent skills synthesizing 17 years of software engineering discipline into a prescriptive methodology for solo developers
 Packages
 ## Package details
-skillprompt
+extensionskillprompt
 
 Install bigpowers from npm and Pi will load the resources declared by the package manifest.
 
  npm repohome report
 
 $ pi install npm:bigpowersCopy
-PackagebigpowersVersion2.87.5PublishedAug 7, 2026Downloads28.6K/mo · 17.5K/wkAuthordanielvmLicenseMITTypesskill, promptSize10.6 MBDependencies2 dependencies · 0 peersPi manifest JSON{
+PackagebigpowersVersion2.88.16PublishedOct 25, 2026Downloads77.1K/mo · 852/wkAuthordanielvmLicenseMITTypesextension, skill, promptSize10.6 MBDependencies8 dependencies · 0 peersPi manifest JSON{
  "skills": [
  "./.pi/skills"
  ],
  "prompts": [
  "./.pi/prompts"
+ ],
+ "extensions": [
+ "extensions/omp-hooks.ts"
  ]
 }
 
@@ -88,12 +92,18 @@ After installing, ask your agent to run the using-bigpowers skill — it is the 
 
 ### npm (recommended)
 
-# Global install (no lifecycle scripts — npm v10+ safe)
+ 
+ 
+ 
+ 
+ # Global install (no lifecycle scripts — npm v10+ safe)
 npm install -g bigpowers@latest
 bigpowers setup # runs sync + install, links skills to your tools
 
 # Or one-shot with npx (always fetches the newest release)
 npx bigpowers@latest setup
+
+ 
 
 Both commands sync skill artifacts and link them to Claude Code, Gemini CLI, and Cursor (see Prerequisites).
 
@@ -115,9 +125,15 @@ Use arrow keys to navigate, space to select, and Enter to confirm.
 
 ### From source (contributors)
 
-git clone https://github.com/danielvm-git/bigpowers.git && cd bigpowers
+ 
+ 
+ 
+ 
+ git clone https://github.com/danielvm-git/bigpowers.git && cd bigpowers
 npm install
 bash scripts/install.sh
+
+ 
 
 ## 🛠 Prerequisites
 
@@ -153,7 +169,11 @@ bash scripts/install.sh
 
 Every project follows the orchestrate-project 6-phase model (full SOP: docs/WORKFLOW-SOP-v2.md):
 
-ONE TIME seed-conventions (CLAUDE.md, .claude/, .gemini/, agents/, skill sync)
+ 
+ 
+ 
+ 
+ ONE TIME seed-conventions (CLAUDE.md, .claude/, .gemini/, agents/, skill sync)
  ↓
 ONCE/PROJECT orchestrate-project
  │
@@ -174,6 +194,8 @@ ONCE/PROJECT orchestrate-project
  │
  ├─ Ph5 VERIFY run-evals, verify-work (project-level)
  └─ Ph6 RELEASE semantic-release → v1.0.0 MVP tag
+
+ 
 
 Semver: projects start at 0.0.0-β; each feat: story → minor bump; developer declares MVP → 1.0.0.
 
@@ -344,7 +366,11 @@ bigpowers generates pi Agent Skills and prompt templates alongside Cursor and Ge
 
 ### Install as a pi package
 
-# Clone and sync to generate pi artifacts
+ 
+ 
+ 
+ 
+ # Clone and sync to generate pi artifacts
 cd bigpowers
 bash scripts/sync-skills.sh
 
@@ -353,6 +379,30 @@ pi install .
 
 # Or install as a pi npm package (once published with pi-package keyword)
 pi install npm:bigpowers
+
+ 
+
+### Provision a consumer project (bigpowers init)
+
+pi's package contract registers skills and prompts only — it has no resource
+type for arbitrary project files, and no lifecycle script runs on install. Skills
+reference the package's scripts/*.sh tooling project-relative (e.g.
+bash scripts/run-skill-verify.sh, verify gates like test -f scripts/... && test -d specs/bugs), so after installing the package, run one command per
+consumer project to provision what the skills expect:
+
+ 
+ 
+ 
+ 
+ cd <your-project>
+npx bigpowers init # or: bigpowers init
+
+ 
+
+This symlinks <project>/scripts → the installed package's scripts/ tree and
+scaffolds specs/bugs/ + specs/verifications/. It refuses (never clobbers) a
+scripts/ you already own; bigpowers init --remove undoes it. The same step
+applies to npm i -g bigpowers / npx bigpowers setup consumers.
 
 What you get:
 
@@ -370,15 +420,31 @@ bigpowers includes an MCP server (scripts/mcp-server.js) that exposes the skill 
 
 ### Start the server
 
-node scripts/mcp-server.js
+ 
+ 
+ 
+ 
+ node scripts/mcp-server.js
+
+ 
 
 ### Add to Claude Code
 
-claude mcp add bigpowers node /path/to/bigpowers/scripts/mcp-server.js
+ 
+ 
+ 
+ 
+ claude mcp add bigpowers node /path/to/bigpowers/scripts/mcp-server.js
+
+ 
 
 Or add manually to .claude/settings.json:
 
-{
+ 
+ 
+ 
+ 
+ {
  "mcpServers": {
  "bigpowers": {
  "command": "node",
@@ -386,6 +452,8 @@ Or add manually to .claude/settings.json:
  }
  }
 }
+
+ 
 
 ### Available MCP tools
 
@@ -419,15 +487,27 @@ Get skill instructions with optional context for agent invocation.|
 
 npm install:
 
-bigpowers update # fetches bigpowers@latest (global installs), then re-syncs + refreshes symlinks
+ 
+ 
+ 
+ 
+ bigpowers update # fetches bigpowers@latest (global installs), then re-syncs + refreshes symlinks
+
+ 
 
 bigpowers update now runs npm install -g bigpowers@latest for you when bigpowers is installed globally, so running it alone is enough to reach the newest release. Prefer to do it by hand? npm install -g bigpowers@latest && bigpowers update. (Avoid npm update -g bigpowers — it does not reliably cross to @latest.)
 
 git clone:
 
-git pull
+ 
+ 
+ 
+ 
+ git pull
 npm run sync
 bash scripts/install.sh
+
+ 
 
 Install uses symlinks — re-running setup refreshes links without duplicating files.
 
@@ -435,35 +515,65 @@ Install uses symlinks — re-running setup refreshes links without duplicating f
 
 npm install:
 
-bash "$(npm root -g)/bigpowers/scripts/install.sh" --uninstall
+ 
+ 
+ 
+ 
+ bash "$(npm root -g)/bigpowers/scripts/install.sh" --uninstall
 npm uninstall -g bigpowers
+
+ 
 
 git clone:
 
-bash scripts/install.sh --uninstall
+ 
+ 
+ 
+ 
+ bash scripts/install.sh --uninstall
+
+ 
 
 ### Reinstall
 
-npx bigpowers@latest setup
+ 
+ 
+ 
+ 
+ npx bigpowers@latest setup
 # or, if installed globally:
 bigpowers update
 
+ 
+
 ## 🧪 Development
 
-git clone https://github.com/danielvm-git/bigpowers.git
+ 
+ 
+ 
+ 
+ git clone https://github.com/danielvm-git/bigpowers.git
 cd bigpowers
 npm install
 # Sync artifacts from SKILL.md sources
 npm run sync
 
+ 
+
 ### Tests
 
-# Run compliance verification against Gherkin features
+ 
+ 
+ 
+ 
+ # Run compliance verification against Gherkin features
 npm run compliance
 
 # Validate YAML specifications and doctrine
 npm run doctrine
 npm run validate-specs
+
+ 
 
 ## 🤝 Contributing
 
@@ -504,6 +614,15 @@ This project is a synthesis of decades of software engineering thought. It would
 - Jarek Wasowski for identifying Spec-Driven Development (SDD) as the missing link for AI agents.
 
 - AkitaOnRails for adapting classical clean code principles to the reality of the AI token economy.
+
+### Community Contributors
+
+bigpowers has been shaped by contributors who extended it in their own forks.
+See CONTRIBUTORS.md for the full list.
+
+- Kevin Oberlies (favilo) — Jujutsu VCS support across lifecycle skills + project-runtime.sh configurable settings library.
+
+- XcluEzy7 — OMP plugin extension (extensions/omp-hooks.ts): native skill discovery, unified skill tooling, and git-safety hooks for the oh-my-pi runtime.
 
 ## 📄 License
 

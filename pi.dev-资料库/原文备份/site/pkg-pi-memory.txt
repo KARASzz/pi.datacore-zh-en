@@ -1,7 +1,8 @@
+People of Pi: We've shipped Pi 1.0 with Pi Durable. Go make them yours.
 Copy SVGDownload SVGPress Kit
-HomeDocumentationNewsPackagesModels
+DocumentationChangelogModelsPackagesRadius
 
-Home→Documentation→News→Packages→Models→
+Documentation→Changelog→Models→Packages→Radius→
 
 GitHubnpmDiscordX
 
@@ -19,7 +20,7 @@ Install pi-memory from npm and Pi will load the resources declared by the packag
  npm repohome report
 
 $ pi install npm:pi-memoryCopy
-Packagepi-memoryVersion0.4.2PublishedAug 11, 2026Downloads35.7K/mo · 9,007/wkAuthorjayzengLicenseMITTypesextensionSize104.5 KBDependencies0 dependencies · 2 peersPi manifest JSON{
+Packagepi-memoryVersion0.4.2PublishedAug 11, 2026Downloads42K/mo · 8,775/wkAuthorjayzengLicenseMITTypesextensionSize104.5 KBDependencies0 dependencies · 2 peersPi manifest JSON{
  "extensions": [
  "./index.ts"
  ]
@@ -41,7 +42,11 @@ Your coding agent forgets everything between sessions. pi-memory gives it a memo
 
 ## What it feels like
 
-# Session 1
+ 
+ 
+ 
+ 
+ # Session 1
 you ▸ I always use pnpm in this repo, never npm. Remember that.
 pi ▸ Got it — saved to long-term memory. (writes MEMORY.md)
 
@@ -50,19 +55,33 @@ you ▸ add prettier as a dev dependency
 pi ▸ pnpm add -D prettier
  (recalled your package-manager preference from memory — no reminder needed)
 
+ 
+
 Everything lives in ~/.pi/agent/memory/ as markdown, so you can also just cat it:
 
-$ cat ~/.pi/agent/memory/MEMORY.md
+ 
+ 
+ 
+ 
+ $ cat ~/.pi/agent/memory/MEMORY.md
 <!-- 2026-06-07 10:12:03 [a1b2c3d4] -->
 #preference [[package-manager]] Always use pnpm in this repo, never npm.
 
+ 
+
 ## Installation
 
-# Install from npm (recommended)
+ 
+ 
+ 
+ 
+ # Install from npm (recommended)
 pi install npm:pi-memory
 
 # …or from a local checkout
 pi install ./pi-memory
+
+ 
 
 That's it — the six core tools (memory_write, memory_forget, memory_restore,
 memory_read, scratchpad, memory_status) work immediately with no other setup.
@@ -72,8 +91,14 @@ Search is opt-in below.
 
 memory_search (and selective injection) need qmd. Either install method works:
 
-npm install -g @tobilu/qmd # no Bun required
+ 
+ 
+ 
+ 
+ npm install -g @tobilu/qmd # no Bun required
 bun install -g https://github.com/tobi/qmd # ensure ~/.bun/bin is on PATH
+
+ 
 
 When qmd is present, the extension automatically creates the pi-memory
 collection and path contexts on the next session start — no manual step. Run
@@ -85,10 +110,16 @@ writes). The very first embed downloads the embedding model, so semantic search
 may take a minute to come online on a fresh install. To set the collection up
 by hand:
 
-qmd collection add ~/.pi/agent/memory --name pi-memory
+ 
+ 
+ 
+ 
+ qmd collection add ~/.pi/agent/memory --name pi-memory
 qmd context add /daily "Daily append-only work logs organized by date" -c pi-memory
 qmd context add / "Curated long-term memory: decisions, preferences, facts, lessons" -c pi-memory
 qmd embed
+
+ 
 
 Without qmd, the core tools still work fully — only memory_search and selective injection require it.
 
@@ -156,7 +187,11 @@ If the first search doesn't find what you need, try rephrasing or switching mode
 
 ## File layout
 
-~/.pi/agent/memory/
+ 
+ 
+ 
+ 
+ ~/.pi/agent/memory/
  MEMORY.md # Curated long-term memory
  SCRATCHPAD.md # Checklist of things to fix/remember
  daily/
@@ -165,6 +200,8 @@ If the first search doesn't find what you need, try rephrasing or switching mode
  ...
  recovery/
  <recovery-id>.json # Complete payload and restore state for a memory_forget deletion
+
+ 
 
 ## How it works
 
@@ -210,9 +247,15 @@ The search has a 3-second timeout and fails silently. In the default stable mode
 
 Use #tags and [[wiki-links]] in memory content to improve searchability:
 
-#decision [[database-choice]] Chose PostgreSQL for all backend services.
+ 
+ 
+ 
+ 
+ #decision [[database-choice]] Chose PostgreSQL for all backend services.
 #preference [[editor]] User prefers Neovim with LazyVim config.
 #lesson [[api-versioning]] URL prefix versioning (/v1/) avoids CDN cache issues.
+
+ 
 
 These are content conventions, not enforced metadata. qmd's full-text indexing makes them searchable for free.
 
@@ -220,13 +263,19 @@ These are content conventions, not enforced metadata. qmd's full-text indexing m
 
 When the context window compacts, the extension automatically captures a handoff entry in today's daily log:
 
-<!-- HANDOFF 2026-02-15 14:30:00 [a1b2c3d4] -->
+ 
+ 
+ 
+ 
+ <!-- HANDOFF 2026-02-15 14:30:00 [a1b2c3d4] -->
 ## Session Handoff
 **Open scratchpad items:**
 - [ ] Fix auth bug
 - [ ] Review PR #42
 **Recent daily log context:**
 ...last 15 lines of today's log...
+
+ 
 
 This ensures in-progress context survives compaction and is visible in the next turn (via today's daily log injection).
 
@@ -349,7 +398,11 @@ Long-term writes refresh next turn; for daily/scratchpad use memory_read, or set
 
 ## Running tests
 
-# Unit tests (no LLM, no qmd — fast, deterministic). Requires Bun.
+ 
+ 
+ 
+ 
+ # Unit tests (no LLM, no qmd — fast, deterministic). Requires Bun.
 npm test
 
 # End-to-end tests (requires pi + API key, optionally qmd)
@@ -363,6 +416,8 @@ PI_E2E_PROVIDER=openai PI_E2E_MODEL=gpt-4o-mini npm run test:eval
 
 # Multiple runs for statistical robustness
 EVAL_RUNS=3 npm run test:eval
+
+ 
 
 All tests back up and restore existing memory files.
 
@@ -396,11 +451,17 @@ Recall accuracy with vs without selective injection|
 
 This is a single-file extension (index.ts). No build step required — pi loads TypeScript directly.
 
-# Test with pi directly
+ 
+ 
+ 
+ 
+ # Test with pi directly
 pi -p -e ./index.ts "remember: I prefer dark mode"
 
 # Verify memory was written
 cat ~/.pi/agent/memory/MEMORY.md
+
+ 
 
 ## Publishing (maintainers)
 
@@ -408,7 +469,11 @@ Releases are tag-driven. Pushing a v* tag runs the publish workflow, which
 lints, builds, runs the unit tests, verifies the tag matches package.json,
 and then publishes to npm.
 
-# Bump version + create the matching git tag (updates package.json)
+ 
+ 
+ 
+ 
+ # Bump version + create the matching git tag (updates package.json)
 npm version patch # or minor / major
 
 # Push the commit and tag — this triggers .github/workflows/publish-npm.yml
@@ -416,6 +481,8 @@ git push --follow-tags
 
 # Verify the published install
 pi install npm:pi-memory
+
+ 
 
 ## Changelog
 

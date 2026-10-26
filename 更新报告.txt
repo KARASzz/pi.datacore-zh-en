@@ -1,19 +1,126 @@
-运行时间: 2026-08-28 12:25:43
+运行时间: 2026-10-26 07:45:04
 
 【来源 1】GitHub 仓库 earendil-works/pi（文档/说明/更新日志）
-  API 不可用（HTTPError），使用内置清单（不影响更新）
-  + 新增: packages/ai/README.md -> pi.dev-资料库/原文备份/仓库包介绍/ai-README.md
-  + 新增: packages/agent/README.md -> pi.dev-资料库/原文备份/仓库包介绍/agent-README.md
-  + 新增: packages/tui/README.md -> pi.dev-资料库/原文备份/仓库包介绍/tui-README.md
-  仓库资料合计成功 41 个，失败 0 个
+  API 发现成功：清单外另有 49 个 .md 资料文件
+  * 已更新: packages/coding-agent/docs/compaction.md
+  * 已更新: packages/coding-agent/docs/containerization.md
+  * 已更新: packages/coding-agent/docs/custom-provider.md
+  - 跳过（仓库中不存在）: packages/coding-agent/docs/development.md
+  * 已更新: packages/coding-agent/docs/environment-variables.md
+  * 已更新: packages/coding-agent/docs/extensions.md
+  * 已更新: packages/coding-agent/docs/index.md
+  * 已更新: packages/coding-agent/docs/json.md
+  * 已更新: packages/coding-agent/docs/keybindings.md
+  * 已更新: packages/coding-agent/docs/llama-cpp.md
+  * 已更新: packages/coding-agent/docs/models.md
+  * 已更新: packages/coding-agent/docs/packages.md
+  * 已更新: packages/coding-agent/docs/prompt-templates.md
+  * 已更新: packages/coding-agent/docs/providers.md
+  * 已更新: packages/coding-agent/docs/quickstart.md
+  * 已更新: packages/coding-agent/docs/rpc.md
+  * 已更新: packages/coding-agent/docs/sdk.md
+  * 已更新: packages/coding-agent/docs/security.md
+  * 已更新: packages/coding-agent/docs/session-format.md
+  * 已更新: packages/coding-agent/docs/sessions.md
+  * 已更新: packages/coding-agent/docs/settings.md
+  * 已更新: packages/coding-agent/docs/shell-aliases.md
+  * 已更新: packages/coding-agent/docs/skills.md
+  * 已更新: packages/coding-agent/docs/terminal-setup.md
+  * 已更新: packages/coding-agent/docs/termux.md
+  * 已更新: packages/coding-agent/docs/themes.md
+  * 已更新: packages/coding-agent/docs/tmux.md
+  * 已更新: packages/coding-agent/docs/tui.md
+  * 已更新: packages/coding-agent/docs/usage.md
+  * 已更新: packages/coding-agent/docs/windows.md
+  * 已更新: packages/coding-agent/docs/docs.json
+  * 已更新: packages/coding-agent/README.md
+  * 已更新: packages/coding-agent/CHANGELOG.md
+  * 已更新: README.md
+  * 已更新: AGENTS.md
+  * 已更新: packages/ai/README.md
+  * 已更新: packages/agent/README.md
+  * 已更新: packages/tui/README.md
+  + 新增: .pi/prompts/cl.md -> pi.dev-资料库/原文备份/仓库补充/.pi__prompts__cl.md
+  + 新增: .pi/prompts/deslop.md -> pi.dev-资料库/原文备份/仓库补充/.pi__prompts__deslop.md
+  + 新增: .pi/prompts/dup.md -> pi.dev-资料库/原文备份/仓库补充/.pi__prompts__dup.md
+  + 新增: .pi/prompts/is.md -> pi.dev-资料库/原文备份/仓库补充/.pi__prompts__is.md
+  + 新增: .pi/prompts/pr.md -> pi.dev-资料库/原文备份/仓库补充/.pi__prompts__pr.md
+  + 新增: .pi/prompts/sa.md -> pi.dev-资料库/原文备份/仓库补充/.pi__prompts__sa.md
+  + 新增: .pi/prompts/wr.md -> pi.dev-资料库/原文备份/仓库补充/.pi__prompts__wr.md
+  + 新增: .pi/skills/add-llm-provider.md -> pi.dev-资料库/原文备份/仓库补充/.pi__skills__add-llm-provider.md
+  + 新增: .pi/skills/github-work.md -> pi.dev-资料库/原文备份/仓库补充/.pi__skills__github-work.md
+  + 新增: .pi/skills/interactive-testing.md -> pi.dev-资料库/原文备份/仓库补充/.pi__skills__interactive-testing.md
+  + 新增: .pi/skills/release.md -> pi.dev-资料库/原文备份/仓库补充/.pi__skills__release.md
+  + 新增: packages/agent/CHANGELOG.md -> pi.dev-资料库/原文备份/仓库包介绍/agent-CHANGELOG.md
+  + 新增: packages/ai/CHANGELOG.md -> pi.dev-资料库/原文备份/仓库包介绍/ai-CHANGELOG.md
+  + 新增: packages/chord/CHANGELOG.md -> pi.dev-资料库/原文备份/仓库包介绍/chord-CHANGELOG.md
+  + 新增: packages/chord/README.md -> pi.dev-资料库/原文备份/仓库包介绍/chord-README.md
+  + 新增: packages/chord/docs/guide.md -> pi.dev-资料库/原文备份/仓库补充/packages__chord__docs__guide.md
+  + 新增: packages/chord/docs/spec.md -> pi.dev-资料库/原文备份/仓库补充/packages__chord__docs__spec.md
+  + 新增: packages/chord/docs/tutorial.md -> pi.dev-资料库/原文备份/仓库补充/packages__chord__docs__tutorial.md
+  + 新增: packages/codemode/CHANGELOG.md -> pi.dev-资料库/原文备份/仓库包介绍/codemode-CHANGELOG.md
+  + 新增: packages/codemode/README.md -> pi.dev-资料库/原文备份/仓库包介绍/codemode-README.md
+  + 新增: packages/coding-agent/docs/cli-integration.md -> pi.dev-资料库/原文备份/docs/cli-integration.md
+  + 新增: packages/coding-agent/docs/cli.md -> pi.dev-资料库/原文备份/docs/cli.md
+  + 新增: packages/coding-agent/docs/codemode.md -> pi.dev-资料库/原文备份/docs/codemode.md
+  + 新增: packages/coding-agent/docs/configuration.md -> pi.dev-资料库/原文备份/docs/configuration.md
+  + 新增: packages/coding-agent/docs/how-pi-works.md -> pi.dev-资料库/原文备份/docs/how-pi-works.md
+  + 新增: packages/coding-agent/docs/mcp.md -> pi.dev-资料库/原文备份/docs/mcp.md
+  + 新增: packages/coding-agent/docs/message-types.md -> pi.dev-资料库/原文备份/docs/message-types.md
+  + 新增: packages/coding-agent/docs/models-configuration.md -> pi.dev-资料库/原文备份/docs/models-configuration.md
+  + 新增: packages/coding-agent/docs/nvidia-rtx-llama-cpp.md -> pi.dev-资料库/原文备份/docs/nvidia-rtx-llama-cpp.md
+  + 新增: packages/coding-agent/docs/rpc-commands.md -> pi.dev-资料库/原文备份/docs/rpc-commands.md
+  + 新增: packages/coding-agent/docs/rpc-extension-ui.md -> pi.dev-资料库/原文备份/docs/rpc-extension-ui.md
+  + 新增: packages/coding-agent/docs/slash-commands.md -> pi.dev-资料库/原文备份/docs/slash-commands.md
+  + 新增: packages/coding-agent/docs/virtual-models.md -> pi.dev-资料库/原文备份/docs/virtual-models.md
+  + 新增: packages/durable/CHANGELOG.md -> pi.dev-资料库/原文备份/仓库包介绍/durable-CHANGELOG.md
+  + 新增: packages/durable/README.md -> pi.dev-资料库/原文备份/仓库包介绍/durable-README.md
+  + 新增: packages/durable/docs/spec.md -> pi.dev-资料库/原文备份/仓库补充/packages__durable__docs__spec.md
+  + 新增: packages/env/CHANGELOG.md -> pi.dev-资料库/原文备份/仓库包介绍/env-CHANGELOG.md
+  + 新增: packages/env/README.md -> pi.dev-资料库/原文备份/仓库包介绍/env-README.md
+  + 新增: packages/env/docs/protocol.md -> pi.dev-资料库/原文备份/仓库补充/packages__env__docs__protocol.md
+  + 新增: packages/env/docs/semantics.md -> pi.dev-资料库/原文备份/仓库补充/packages__env__docs__semantics.md
+  + 新增: packages/evals/README.md -> pi.dev-资料库/原文备份/仓库包介绍/evals-README.md
+  + 新增: packages/mcp/CHANGELOG.md -> pi.dev-资料库/原文备份/仓库包介绍/mcp-CHANGELOG.md
+  + 新增: packages/mcp/README.md -> pi.dev-资料库/原文备份/仓库包介绍/mcp-README.md
+  + 新增: packages/telemetry/CHANGELOG.md -> pi.dev-资料库/原文备份/仓库包介绍/telemetry-CHANGELOG.md
+  + 新增: packages/telemetry/README.md -> pi.dev-资料库/原文备份/仓库包介绍/telemetry-README.md
+  + 新增: packages/tui/CHANGELOG.md -> pi.dev-资料库/原文备份/仓库包介绍/tui-CHANGELOG.md
+  仓库资料合计成功 89 个，失败 0 个
 
 【来源 2】pi.dev 网站（页面快照）
+  * 快照有变化: homepage.txt
+  * 快照有变化: news.txt
+  * 快照有变化: press-kit.txt
   * 快照有变化: packages-catalog.txt
+  * 快照有变化: models-page.txt
+  * 快照有变化: pkg-bigpowers.txt
+  * 快照有变化: pkg-cc-safety-net.txt
+  * 快照有变化: pkg-confluence-cli.txt
+  * 快照有变化: pkg-context-mode.txt
+  * 快照有变化: pkg-pi-all-search.txt
+  * 快照有变化: pkg-pi-background-tasks.txt
+  * 快照有变化: pkg-pi-fabric.txt
+  * 快照有变化: pkg-pi-goal-list-loop-audit.txt
+  * 快照有变化: pkg-pi-goal-x.txt
+  * 快照有变化: pkg-pi-hashline-edit-pro.txt
+  * 快照有变化: pkg-pi-hermes-memory.txt
+  * 快照有变化: pkg-pi-intercom.txt
+  * 快照有变化: pkg-pi-lens.txt
+  * 快照有变化: pkg-pi-mcp-adapter.txt
+  * 快照有变化: pkg-pi-memory.txt
+  * 快照有变化: pkg-pi-powerline-footer.txt
+  * 快照有变化: pkg-pi-prompt-template-model.txt
+  * 快照有变化: pkg-pi-simplify.txt
+  * 快照有变化: pkg-pi-subagents.txt
+  * 快照有变化: pkg-pi-web-access.txt
+  * 快照有变化: pkg-pi-web-ui.txt
   网站快照合计成功 26 个，失败 0 个
 
 【文档对照版状态】
-  官方文档英文原文齐全（30 篇）。
-  提示: 若上方『* 已更新』出现 docs/*.md，说明英文原文有变化，
-  对应的 01-文档/ 中英对照版可能滞后，需要重新翻译该篇。
+  翻译状态：CURRENT 1 / STALE 25 / UNTRANSLATED 4 / SOURCE_MISSING 0
+  STALE: compaction, containerization, custom-provider, environment-variables, index, json, keybindings, llama-cpp, models, packages, prompt-templates, providers, quickstart, security, session-format, sessions, settings, shell-aliases, skills, terminal-setup, termux, themes, tmux, usage, windows
+  UNTRANSLATED: extensions, rpc, sdk, tui
+  详细状态已写入: 翻译状态.json
 
-耗时 14.5 秒。中英对照版与 README 索引不受影响。
+耗时 3.8 秒。中英对照版与 README 索引不受影响。

@@ -1,7 +1,8 @@
+People of Pi: We've shipped Pi 1.0 with Pi Durable. Go make them yours.
 Copy SVGDownload SVGPress Kit
-HomeDocumentationNewsPackagesModels
+DocumentationChangelogModelsPackagesRadius
 
-Home→Documentation→News→Packages→Models→
+Documentation→Changelog→Models→Packages→Radius→
 
 GitHubnpmDiscordX
 
@@ -10,14 +11,15 @@ Earendil Inc.
 # Model Catalog
 
 ## All models
-1301 / 1301
-Filter by nameFilter by providerAll providersamazon-bedrockant-linganthropicazure-openai-responsesbasetencerebrascloudflare-ai-gatewaycloudflare-workers-aideepseekfireworksgithub-copilotgooglegoogle-vertexgroqhuggingfacekimi-codingminimaxminimax-cnmistralmoonshotaimoonshotai-cnnvidiaopenaiopenai-codexopencodeopencode-goopenrouterqwen-token-planqwen-token-plan-cnqwen-token-plan-individualtogethervercel-ai-gatewayxaixiaomixiaomi-token-plan-amsxiaomi-token-plan-cnxiaomi-token-plan-sgpzaizai-coding-cnReset
+1598 / 1598
+Filter by nameFilter by providerAll providersamazon-bedrockant-linganthropicazurebasetencerebrascloudflare-ai-gatewaycloudflare-workers-aideepseekfireworksgithub-copilotgooglegoogle-vertexgroqhuggingfacekimi-codingmetaminimaxminimax-cnmistralmoonshotaimoonshotai-cnnvidiaopenaiopenai-codexopencodeopencode-goopenrouterqwen-token-planqwen-token-plan-cnqwen-token-plan-individualradiustogethervercel-ai-gatewayxaixiaomixiaomi-token-plan-amsxiaomi-token-plan-cnxiaomi-token-plan-sgpzaizai-coding-cnReset
+
 All models
 |Model|Context|Input $/M|Output $/M|Cache read $/M|Cache write $/M|
 
-|amazon-bedrock(118 models)|
+|amazon-bedrock(193 models)|
 
-|AU Anthropic Claude Opus 4.6au.anthropic.claude-opus-4-6-v1|1,000,000|$16.5|$82.5|$1.65|$20.625|
+|AU Anthropic Claude Opus 4.6au.anthropic.claude-opus-4-6-v1|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
 |AU Anthropic Claude Sonnet 4.6au.anthropic.claude-sonnet-4-6|1,000,000|$3.3|$16.5|$0.33|$4.125|
 
@@ -27,19 +29,39 @@ All models
 
 |Claude Fable 5 (Global)global.anthropic.claude-fable-5|1,000,000|$10|$50|$1|$12.5|
 
-|Claude Fable 5 (US)us.anthropic.claude-fable-5|1,000,000|$10|$50|$1|$12.5|
+|Claude Fable 5 (US)us.anthropic.claude-fable-5|1,000,000|$11|$55|$1.1|$13.75|
+
+|Claude Fable 5.1anthropic.claude-fable-5-1|1,000,000|$10|$50|$0.25|$12.5|
+
+|Claude Fable 5.1 (Global)global.anthropic.claude-fable-5-1|1,000,000|$10|$50|$0.25|$12.5|
+
+|Claude Fable 5.1 (US)us.anthropic.claude-fable-5-1|1,000,000|$11|$55|$0.275|$13.75|
 
 |Claude Haiku 4.5anthropic.claude-haiku-4-5-20251001-v1:0|200,000|$1|$5|$0.1|$1.25|
 
-|Claude Haiku 4.5 (AU)au.anthropic.claude-haiku-4-5-20251001-v1:0|200,000|$1|$5|$0.1|$1.25|
+|Claude Haiku 4.5 (AU)au.anthropic.claude-haiku-4-5-20251001-v1:0|200,000|$1.1|$5.5|$0.11|$1.375|
 
 |Claude Haiku 4.5 (EU)eu.anthropic.claude-haiku-4-5-20251001-v1:0|200,000|$1.1|$5.5|$0.11|$1.375|
 
 |Claude Haiku 4.5 (Global)global.anthropic.claude-haiku-4-5-20251001-v1:0|200,000|$1|$5|$0.1|$1.25|
 
-|Claude Haiku 4.5 (JP)jp.anthropic.claude-haiku-4-5-20251001-v1:0|200,000|$1|$5|$0.1|$1.25|
+|Claude Haiku 4.5 (India)in.anthropic.claude-haiku-4-5-20251001-v1:0|200,000|$1.1|$5.5|$0.11|$1.375|
 
-|Claude Haiku 4.5 (US)us.anthropic.claude-haiku-4-5-20251001-v1:0|200,000|$1|$5|$0.1|$1.25|
+|Claude Haiku 4.5 (JP)jp.anthropic.claude-haiku-4-5-20251001-v1:0|200,000|$1.1|$5.5|$0.11|$1.375|
+
+|Claude Haiku 4.5 (US)us.anthropic.claude-haiku-4-5-20251001-v1:0|200,000|$1.1|$5.5|$0.11|$1.375|
+
+|Claude Haiku 5.5anthropic.claude-haiku-5-5|1,000,000|$0.1|$0.5|$0.01|$0.125|
+
+|Claude Haiku 5.5 (AU)au.anthropic.claude-haiku-5-5|1,000,000|$0.11|$0.55|$0.011|$0.1375|
+
+|Claude Haiku 5.5 (EU)eu.anthropic.claude-haiku-5-5|1,000,000|$0.11|$0.55|$0.011|$0.1375|
+
+|Claude Haiku 5.5 (Global)global.anthropic.claude-haiku-5-5|1,000,000|$0.1|$0.5|$0.01|$0.125|
+
+|Claude Haiku 5.5 (JP)jp.anthropic.claude-haiku-5-5|1,000,000|$0.11|$0.55|$0.011|$0.1375|
+
+|Claude Haiku 5.5 (US)us.anthropic.claude-haiku-5-5|1,000,000|$0.11|$0.55|$0.011|$0.1375|
 
 |Claude Opus 4.1anthropic.claude-opus-4-1-20250805-v1:0|200,000|$15|$75|$1.5|$18.75|
 
@@ -51,159 +73,251 @@ All models
 
 |Claude Opus 4.5 (Global)global.anthropic.claude-opus-4-5-20251101-v1:0|200,000|$5|$25|$0.5|$6.25|
 
-|Claude Opus 4.5 (US)us.anthropic.claude-opus-4-5-20251101-v1:0|200,000|$5|$25|$0.5|$6.25|
+|Claude Opus 4.5 (US)us.anthropic.claude-opus-4-5-20251101-v1:0|200,000|$5.5|$27.5|$0.55|$6.875|
 
-|Claude Opus 4.6anthropic.claude-opus-4-6-v1|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Opus 4.6anthropic.claude-opus-4-6-v1|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
 |Claude Opus 4.6 (EU)eu.anthropic.claude-opus-4-6-v1|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
 |Claude Opus 4.6 (Global)global.anthropic.claude-opus-4-6-v1|1,000,000|$5|$25|$0.5|$6.25|
 
-|Claude Opus 4.6 (US)us.anthropic.claude-opus-4-6-v1|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Opus 4.6 (US)us.anthropic.claude-opus-4-6-v1|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
 |Claude Opus 4.7anthropic.claude-opus-4-7|1,000,000|$5|$25|$0.5|$6.25|
+
+|Claude Opus 4.7 (AU)au.anthropic.claude-opus-4-7|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
 |Claude Opus 4.7 (EU)eu.anthropic.claude-opus-4-7|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
 |Claude Opus 4.7 (Global)global.anthropic.claude-opus-4-7|1,000,000|$5|$25|$0.5|$6.25|
 
-|Claude Opus 4.7 (JP)jp.anthropic.claude-opus-4-7|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Opus 4.7 (JP)jp.anthropic.claude-opus-4-7|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
-|Claude Opus 4.7 (US)us.anthropic.claude-opus-4-7|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Opus 4.7 (US)us.anthropic.claude-opus-4-7|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
 |Claude Opus 4.8anthropic.claude-opus-4-8|1,000,000|$5|$25|$0.5|$6.25|
 
-|Claude Opus 4.8 (AU)au.anthropic.claude-opus-4-8|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Opus 4.8 (AU)au.anthropic.claude-opus-4-8|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
 |Claude Opus 4.8 (EU)eu.anthropic.claude-opus-4-8|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
 |Claude Opus 4.8 (Global)global.anthropic.claude-opus-4-8|1,000,000|$5|$25|$0.5|$6.25|
 
-|Claude Opus 4.8 (JP)jp.anthropic.claude-opus-4-8|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Opus 4.8 (JP)jp.anthropic.claude-opus-4-8|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
-|Claude Opus 4.8 (US)us.anthropic.claude-opus-4-8|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Opus 4.8 (US)us.anthropic.claude-opus-4-8|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
-|Claude Opus 5 (AU)au.anthropic.claude-opus-5|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Opus 5 (AU)au.anthropic.claude-opus-5|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
 |Claude Opus 5 (EU)eu.anthropic.claude-opus-5|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
 |Claude Opus 5 (Global)global.anthropic.claude-opus-5|1,000,000|$5|$25|$0.5|$6.25|
 
-|Claude Opus 5 (JP)jp.anthropic.claude-opus-5|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Opus 5 (India)in.anthropic.claude-opus-5|1,000,000|$5.5|$27.5|$0.55|$6.875|
 
-|Claude Opus 5 (US)us.anthropic.claude-opus-5|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Opus 5 (JP)jp.anthropic.claude-opus-5|1,000,000|$5.5|$27.5|$0.55|$6.875|
+
+|Claude Opus 5 (US)us.anthropic.claude-opus-5|1,000,000|$5.5|$27.5|$0.55|$6.875|
+
+|Claude Opus 5.5anthropic.claude-opus-5-5|1,000,000|$4|$20|$0.2|$5|
+
+|Claude Opus 5.5 (AU)au.anthropic.claude-opus-5-5|1,000,000|$4.4|$22|$0.22|$5.5|
+
+|Claude Opus 5.5 (EU)eu.anthropic.claude-opus-5-5|1,000,000|$4.4|$22|$0.22|$5.5|
+
+|Claude Opus 5.5 (Global)global.anthropic.claude-opus-5-5|1,000,000|$4|$20|$0.2|$5|
+
+|Claude Opus 5.5 (JP)jp.anthropic.claude-opus-5-5|1,000,000|$4.4|$22|$0.22|$5.5|
+
+|Claude Opus 5.5 (US)us.anthropic.claude-opus-5-5|1,000,000|$4.4|$22|$0.22|$5.5|
+
+|Claude Sonnet 4 (APAC)apac.anthropic.claude-sonnet-4-20250514-v1:0|200,000|$3|$15|$0.3|$3.75|
+
+|Claude Sonnet 4 (EU)eu.anthropic.claude-sonnet-4-20250514-v1:0|200,000|$3|$15|$0.3|$3.75|
+
+|Claude Sonnet 4 (Global)global.anthropic.claude-sonnet-4-20250514-v1:0|200,000|$3|$15|$0.3|$3.75|
+
+|Claude Sonnet 4 (US)us.anthropic.claude-sonnet-4-20250514-v1:0|200,000|$3|$15|$0.3|$3.75|
 
 |Claude Sonnet 4.5anthropic.claude-sonnet-4-5-20250929-v1:0|200,000|$3|$15|$0.3|$3.75|
 
-|Claude Sonnet 4.5 (AU)au.anthropic.claude-sonnet-4-5-20250929-v1:0|200,000|$3|$15|$0.3|$3.75|
+|Claude Sonnet 4.5 (AU)au.anthropic.claude-sonnet-4-5-20250929-v1:0|200,000|$3.3|$16.5|$0.33|$4.125|
 
 |Claude Sonnet 4.5 (EU)eu.anthropic.claude-sonnet-4-5-20250929-v1:0|200,000|$3.3|$16.5|$0.33|$4.125|
 
 |Claude Sonnet 4.5 (Global)global.anthropic.claude-sonnet-4-5-20250929-v1:0|200,000|$3|$15|$0.3|$3.75|
 
-|Claude Sonnet 4.5 (JP)jp.anthropic.claude-sonnet-4-5-20250929-v1:0|200,000|$3|$15|$0.3|$3.75|
+|Claude Sonnet 4.5 (JP)jp.anthropic.claude-sonnet-4-5-20250929-v1:0|200,000|$3.3|$16.5|$0.33|$4.125|
 
-|Claude Sonnet 4.5 (US)us.anthropic.claude-sonnet-4-5-20250929-v1:0|200,000|$3|$15|$0.3|$3.75|
+|Claude Sonnet 4.5 (US)us.anthropic.claude-sonnet-4-5-20250929-v1:0|200,000|$3.3|$16.5|$0.33|$4.125|
 
-|Claude Sonnet 4.6anthropic.claude-sonnet-4-6|1,000,000|$3|$15|$0.3|$3.75|
+|Claude Sonnet 4.6anthropic.claude-sonnet-4-6|1,000,000|$3.3|$16.5|$0.33|$4.125|
 
 |Claude Sonnet 4.6 (EU)eu.anthropic.claude-sonnet-4-6|1,000,000|$3.3|$16.5|$0.33|$4.125|
 
 |Claude Sonnet 4.6 (Global)global.anthropic.claude-sonnet-4-6|1,000,000|$3|$15|$0.3|$3.75|
 
-|Claude Sonnet 4.6 (JP)jp.anthropic.claude-sonnet-4-6|1,000,000|$3|$15|$0.3|$3.75|
+|Claude Sonnet 4.6 (JP)jp.anthropic.claude-sonnet-4-6|1,000,000|$3.3|$16.5|$0.33|$4.125|
 
-|Claude Sonnet 4.6 (US)us.anthropic.claude-sonnet-4-6|1,000,000|$3|$15|$0.3|$3.75|
+|Claude Sonnet 4.6 (US)us.anthropic.claude-sonnet-4-6|1,000,000|$3.3|$16.5|$0.33|$4.125|
 
 |Claude Sonnet 5anthropic.claude-sonnet-5|1,000,000|$2|$10|$0.2|$2.5|
 
-|Claude Sonnet 5 (AU)au.anthropic.claude-sonnet-5|1,000,000|$2|$10|$0.2|$2.5|
+|Claude Sonnet 5 (AU)au.anthropic.claude-sonnet-5|1,000,000|$2.2|$11|$0.22|$2.75|
 
 |Claude Sonnet 5 (EU)eu.anthropic.claude-sonnet-5|1,000,000|$2.2|$11|$0.22|$2.75|
 
 |Claude Sonnet 5 (Global)global.anthropic.claude-sonnet-5|1,000,000|$2|$10|$0.2|$2.5|
 
-|Claude Sonnet 5 (JP)jp.anthropic.claude-sonnet-5|1,000,000|$2|$10|$0.2|$2.5|
+|Claude Sonnet 5 (India)in.anthropic.claude-sonnet-5|1,000,000|$2.2|$11|$0.22|$2.75|
 
-|Claude Sonnet 5 (US)us.anthropic.claude-sonnet-5|1,000,000|$2|$10|$0.2|$2.5|
+|Claude Sonnet 5 (JP)jp.anthropic.claude-sonnet-5|1,000,000|$2.2|$11|$0.22|$2.75|
 
-|DeepSeek-R1deepseek.r1-v1:0|128,000|$1.35|$5.4|$0|$0|
+|Claude Sonnet 5 (US)us.anthropic.claude-sonnet-5|1,000,000|$2.2|$11|$0.22|$2.75|
 
-|DeepSeek-R1 (US)us.deepseek.r1-v1:0|128,000|$1.35|$5.4|$0|$0|
+|Claude Sonnet 5.5anthropic.claude-sonnet-5-5|1,000,000|$2|$10|$0.1|$2.5|
+
+|Claude Sonnet 5.5 (EU)eu.anthropic.claude-sonnet-5-5|1,000,000|$2.2|$11|$0.11|$2.75|
+
+|Claude Sonnet 5.5 (Global)global.anthropic.claude-sonnet-5-5|1,000,000|$2|$10|$0.1|$2.5|
+
+|Claude Sonnet 5.5 (US)us.anthropic.claude-sonnet-5-5|1,000,000|$2.2|$11|$0.11|$2.75|
+
+|DeepSeek V3.2deepseek.v3.2|163,840|$0.62|$1.85|$0|$0|
 
 |DeepSeek-V3.1deepseek.v3-v1:0|163,840|$0.58|$1.68|$0|$0|
 
-|DeepSeek-V3.2deepseek.v3.2|163,840|$0.62|$1.85|$0|$0|
+|Devstral 2 123Bmistral.devstral-2-123b|262,144|$0.4|$2|$0|$0|
 
-|Devstral 2 123Bmistral.devstral-2-123b|256,000|$0.4|$2|$0|$0|
+|Gemma 4 26B A4B ITgoogle.gemma-4-26b-a4b|262,144|$0.13|$0.4|$0|$0|
 
-|Gemma 3 4B ITgoogle.gemma-3-4b-it|128,000|$0.04|$0.08|$0|$0|
+|Gemma 4 31B ITgoogle.gemma-4-31b|262,144|$0.14|$0.4|$0|$0|
 
-|GLM-4.7zai.glm-4.7|204,800|$0.6|$2.2|$0|$0|
+|Gemma 4 E2B ITgoogle.gemma-4-e2b|131,072|$0.04|$0.08|$0|$0|
 
-|GLM-4.7-Flashzai.glm-4.7-flash|200,000|$0.07|$0.4|$0|$0|
+|GLM-4.7zai.glm-4.7|202,752|$0.6|$2.2|$0|$0|
+
+|GLM-4.7-Flashzai.glm-4.7-flash|202,752|$0.07|$0.4|$0|$0|
 
 |GLM-5zai.glm-5|202,752|$1|$3.2|$0|$0|
 
-|Google Gemma 3 27B Instructgoogle.gemma-3-27b-it|202,752|$0.12|$0.2|$0|$0|
+|GLM-5.3 (Global)global.zai.glm-5.3|1,000,000|$1.68|$5.28|$0.312|$2.1|
+
+|GLM-5.3 (US)us.zai.glm-5.3|1,000,000|$1.848|$5.808|$0.3432|$2.31|
 
 |GPT OSS Safeguard 120Bopenai.gpt-oss-safeguard-120b|128,000|$0.15|$0.6|$0|$0|
 
 |GPT OSS Safeguard 20Bopenai.gpt-oss-safeguard-20b|128,000|$0.07|$0.2|$0|$0|
 
-|GPT-5.4openai.gpt-5.4|272,000|$2.75|$16.5|$0.275|$0|
+|GPT-5.4openai.gpt-5.4|1,000,000|$2.75|$16.5|$0.275|$0|
 
-|GPT-5.5openai.gpt-5.5|272,000|$5.5|$33|$0.55|$0|
+|GPT-5.5openai.gpt-5.5|1,000,000|$5.5|$33|$0.55|$0|
 
 |GPT-5.6 Lunaopenai.gpt-5.6-luna|1,050,000|$0.22|$1.32|$0.022|$0.275|
 
 |GPT-5.6 Luna (Global)global.openai.gpt-5.6-luna|1,050,000|$0.2|$1.2|$0.02|$0.25|
 
+|GPT-5.6 Luna (India)in.openai.gpt-5.6-luna|1,050,000|$0.22|$1.32|$0.022|$0.275|
+
+|GPT-5.6 Luna (US)us.openai.gpt-5.6-luna|1,050,000|$0.22|$1.32|$0.022|$0.275|
+
 |GPT-5.6 Solopenai.gpt-5.6-sol|1,050,000|$4.4|$22|$0.44|$5.5|
 
 |GPT-5.6 Sol (Global)global.openai.gpt-5.6-sol|1,050,000|$4|$20|$0.4|$5|
+
+|GPT-5.6 Sol (US)us.openai.gpt-5.6-sol|1,050,000|$4.4|$22|$0.44|$5.5|
 
 |GPT-5.6 Terraopenai.gpt-5.6-terra|1,050,000|$2.2|$13.2|$0.22|$2.75|
 
 |GPT-5.6 Terra (Global)global.openai.gpt-5.6-terra|1,050,000|$2|$12|$0.2|$2.5|
 
-|gpt-oss-120bopenai.gpt-oss-120b|128,000|$0.15|$0.6|$0|$0|
+|GPT-5.6 Terra (India)in.openai.gpt-5.6-terra|1,050,000|$2.2|$13.2|$0.22|$2.75|
 
-|gpt-oss-120bopenai.gpt-oss-120b-1:0|128,000|$0.15|$0.6|$0|$0|
+|GPT-5.6 Terra (US)us.openai.gpt-5.6-terra|1,050,000|$2.2|$13.2|$0.22|$2.75|
 
-|gpt-oss-20bopenai.gpt-oss-20b|128,000|$0.07|$0.3|$0|$0|
+|GPT-6 Astraopenai.gpt-6-astra|1,050,000|$11|$55|$1.1|$13.75|
 
-|gpt-oss-20bopenai.gpt-oss-20b-1:0|128,000|$0.07|$0.3|$0|$0|
+|GPT-6 Astra (Global)global.openai.gpt-6-astra|1,050,000|$10|$50|$1|$12.5|
+
+|GPT-6 Astra (US)us.openai.gpt-6-astra|1,050,000|$11|$55|$1.1|$13.75|
+
+|GPT-6 Lunaopenai.gpt-6-luna|1,050,000|$0.11|$0.55|$0.011|$0.1375|
+
+|GPT-6 Luna (Global)global.openai.gpt-6-luna|1,050,000|$0.1|$0.5|$0.01|$0.125|
+
+|GPT-6 Luna (US)us.openai.gpt-6-luna|1,050,000|$0.11|$0.55|$0.011|$0.1375|
+
+|GPT-6 Solopenai.gpt-6-sol|1,050,000|$2.2|$11|$0.22|$2.75|
+
+|GPT-6 Sol (Global)global.openai.gpt-6-sol|1,050,000|$2|$10|$0.2|$2.5|
+
+|GPT-6 Sol (US)us.openai.gpt-6-sol|1,050,000|$2.2|$11|$0.22|$2.75|
+
+|GPT-6.1 Solopenai.gpt-6.1-sol|1,050,000|$2.2|$11|$0.11|$2.75|
+
+|GPT-6.1 Sol (Global)global.openai.gpt-6.1-sol|1,050,000|$2|$10|$0.1|$2.5|
+
+|GPT-6.1 Sol (US)us.openai.gpt-6.1-sol|1,050,000|$2.2|$11|$0.11|$2.75|
+
+|gpt-oss-120bopenai.gpt-oss-120b|131,072|$0.15|$0.6|$0|$0|
+
+|gpt-oss-120bopenai.gpt-oss-120b-1:0|131,072|$0.15|$0.6|$0|$0|
+
+|gpt-oss-120b (GovCloud)us-gov.openai.gpt-oss-120b-1:0|128,000|$0.18|$0.72|$0|$0|
+
+|gpt-oss-20bopenai.gpt-oss-20b|131,072|$0.07|$0.3|$0|$0|
+
+|gpt-oss-20bopenai.gpt-oss-20b-1:0|131,072|$0.07|$0.3|$0|$0|
+
+|gpt-oss-20b (GovCloud)us-gov.openai.gpt-oss-20b-1:0|128,000|$0.084|$0.36|$0|$0|
 
 |Grok 4.3xai.grok-4.3|1,000,000|$1.25|$2.5|$0.2|$0|
 
 |Grok 4.6xai.grok-4.6|500,000|$2.2|$6.6|$0.55|$0|
 
-|Kimi K2 Thinkingmoonshot.kimi-k2-thinking|262,143|$0.6|$2.5|$0|$0|
+|Grok 4.6 (Global)global.xai.grok-4.6|500,000|$2|$6|$0.5|$0|
 
-|Kimi K2.5moonshotai.kimi-k2.5|262,143|$0.6|$3|$0|$0|
+|Grok 4.6 (US)us.xai.grok-4.6|500,000|$2.2|$6.6|$0.55|$0|
+
+|Grok 4.7 (Global)global.xai.grok-4.7|500,000|$2|$6|$0.5|$0|
+
+|Grok 4.7 (US)us.xai.grok-4.7|500,000|$2.2|$6.6|$0.55|$0|
+
+|Kimi K2 Thinkingmoonshot.kimi-k2-thinking|262,144|$0.6|$2.5|$0|$0|
+
+|Kimi K2.5moonshotai.kimi-k2.5|262,144|$0.6|$3|$0|$0|
+
+|Kimi K3 (Global)global.moonshotai.kimi-k3|1,048,576|$3|$15|$0.3|$3.75|
+
+|Kimi K3 (US)us.moonshotai.kimi-k3|1,048,576|$3.3|$16.5|$0.33|$4.125|
 
 |Llama 3.1 70B Instructmeta.llama3-1-70b-instruct-v1:0|128,000|$0.72|$0.72|$0|$0|
 
+|Llama 3.1 70B Instruct (US)us.meta.llama3-1-70b-instruct-v1:0|128,000|$0.72|$0.72|$0|$0|
+
 |Llama 3.1 8B Instructmeta.llama3-1-8b-instruct-v1:0|128,000|$0.22|$0.22|$0|$0|
 
+|Llama 3.1 8B Instruct (US)us.meta.llama3-1-8b-instruct-v1:0|128,000|$0.22|$0.22|$0|$0|
+
 |Llama 3.3 70B Instructmeta.llama3-3-70b-instruct-v1:0|128,000|$0.72|$0.72|$0|$0|
+
+|Llama 3.3 70B Instruct (US)us.meta.llama3-3-70b-instruct-v1:0|128,000|$0.72|$0.72|$0|$0|
 
 |Llama 4 Maverick 17B Instructmeta.llama4-maverick-17b-instruct-v1:0|1,000,000|$0.24|$0.97|$0|$0|
 
 |Llama 4 Maverick 17B Instruct (US)us.meta.llama4-maverick-17b-instruct-v1:0|1,000,000|$0.24|$0.97|$0|$0|
 
-|Llama 4 Scout 17B Instructmeta.llama4-scout-17b-instruct-v1:0|3,500,000|$0.17|$0.66|$0|$0|
+|Llama 4 Scout 17B Instructmeta.llama4-scout-17b-instruct-v1:0|10,000,000|$0.17|$0.66|$0|$0|
 
-|Llama 4 Scout 17B Instruct (US)us.meta.llama4-scout-17b-instruct-v1:0|3,500,000|$0.17|$0.66|$0|$0|
+|Llama 4 Scout 17B Instruct (US)us.meta.llama4-scout-17b-instruct-v1:0|10,000,000|$0.17|$0.66|$0|$0|
 
 |Magistral Small 1.2mistral.magistral-small-2509|128,000|$0.5|$1.5|$0|$0|
 
-|MiniMax M2minimax.minimax-m2|204,608|$0.3|$1.2|$0|$0|
+|MiniMax-M2minimax.minimax-m2|204,608|$0.3|$1.2|$0|$0|
 
-|MiniMax M2.1minimax.minimax-m2.1|204,800|$0.3|$1.2|$0|$0|
+|MiniMax-M2.1minimax.minimax-m2.1|196,608|$0.3|$1.2|$0|$0|
 
-|MiniMax M2.5minimax.minimax-m2.5|196,608|$0.3|$1.2|$0|$0|
+|MiniMax-M2.5minimax.minimax-m2.5|196,608|$0.3|$1.2|$0|$0|
 
 |Ministral 14B 3.0mistral.ministral-3-14b-instruct|128,000|$0.2|$0.2|$0|$0|
 
@@ -211,47 +325,85 @@ All models
 
 |Ministral 3 8Bmistral.ministral-3-8b-instruct|128,000|$0.15|$0.15|$0|$0|
 
-|Mistral Large 3mistral.mistral-large-3-675b-instruct|256,000|$0.5|$1.5|$0|$0|
+|Mistral Large 3mistral.mistral-large-3-675b-instruct|262,144|$0.5|$1.5|$0|$0|
 
-|Nova 2 Liteamazon.nova-2-lite-v1:0|128,000|$0.33|$2.75|$0|$0|
+|Nova 2 Liteamazon.nova-2-lite-v1:0|1,000,000|$0.33|$2.75|$0.0825|$0.33|
 
-|Nova Liteamazon.nova-lite-v1:0|300,000|$0.06|$0.24|$0.015|$0|
+|Nova 2 Lite (EU)eu.amazon.nova-2-lite-v1:0|1,000,000|$0.374|$3.157|$0.0935|$0.374|
 
-|Nova Microamazon.nova-micro-v1:0|128,000|$0.035|$0.14|$0.00875|$0|
+|Nova 2 Lite (Global)global.amazon.nova-2-lite-v1:0|1,000,000|$0.3|$2.5|$0.075|$0.3|
 
-|Nova Proamazon.nova-pro-v1:0|300,000|$0.8|$3.2|$0.2|$0|
+|Nova 2 Lite (JP)jp.amazon.nova-2-lite-v1:0|1,000,000|$0.396|$3.311|$0.099|$0.396|
+
+|Nova 2 Lite (US)us.amazon.nova-2-lite-v1:0|1,000,000|$0.33|$2.75|$0.0825|$0.33|
+
+|Nova Liteamazon.nova-lite-v1:0|300,000|$0.06|$0.24|$0.015|$0.06|
+
+|Nova Lite (APAC)apac.amazon.nova-lite-v1:0|300,000|$0.063|$0.252|$0.01575|$0.063|
+
+|Nova Lite (CA)ca.amazon.nova-lite-v1:0|300,000|$0.064|$0.256|$0.016|$0.064|
+
+|Nova Lite (EU)eu.amazon.nova-lite-v1:0|300,000|$0.069|$0.276|$0.01725|$0.069|
+
+|Nova Lite (US)us.amazon.nova-lite-v1:0|300,000|$0.06|$0.24|$0.015|$0.06|
+
+|Nova Microamazon.nova-micro-v1:0|128,000|$0.035|$0.14|$0.00875|$0.035|
+
+|Nova Micro (APAC)apac.amazon.nova-micro-v1:0|128,000|$0.037|$0.148|$0.00925|$0.037|
+
+|Nova Micro (EU)eu.amazon.nova-micro-v1:0|128,000|$0.04|$0.16|$0.01|$0.04|
+
+|Nova Micro (US)us.amazon.nova-micro-v1:0|128,000|$0.035|$0.14|$0.00875|$0.035|
+
+|Nova Premier (US)us.amazon.nova-premier-v1:0|1,000,000|$2.5|$12.5|$0.625|$2.5|
+
+|Nova Proamazon.nova-pro-v1:0|300,000|$0.8|$3.2|$0.2|$0.8|
+
+|Nova Pro (APAC)apac.amazon.nova-pro-v1:0|300,000|$0.84|$3.36|$0.21|$0.84|
+
+|Nova Pro (EU)eu.amazon.nova-pro-v1:0|300,000|$0.92|$3.68|$0.23|$0.92|
+
+|Nova Pro (US)us.amazon.nova-pro-v1:0|300,000|$0.8|$3.2|$0.2|$0.8|
 
 |NVIDIA Nemotron 3 Super 120B A12Bnvidia.nemotron-super-3-120b|262,144|$0.15|$0.65|$0|$0|
 
-|NVIDIA Nemotron Nano 12B v2 VL BF16nvidia.nemotron-nano-12b-v2|128,000|$0.2|$0.6|$0|$0|
+|NVIDIA Nemotron Nano 12B v2 VL BF16nvidia.nemotron-nano-12b-v2|131,072|$0.2|$0.6|$0|$0|
 
-|NVIDIA Nemotron Nano 3 30Bnvidia.nemotron-nano-3-30b|128,000|$0.06|$0.24|$0|$0|
+|NVIDIA Nemotron Nano 3 30Bnvidia.nemotron-nano-3-30b|262,144|$0.06|$0.24|$0|$0|
 
-|NVIDIA Nemotron Nano 9B v2nvidia.nemotron-nano-9b-v2|128,000|$0.06|$0.23|$0|$0|
+|NVIDIA Nemotron Nano 9B v2nvidia.nemotron-nano-9b-v2|131,072|$0.06|$0.23|$0|$0|
 
 |Palmyra X4writer.palmyra-x4-v1:0|122,880|$2.5|$10|$0|$0|
 
+|Palmyra X4 (US)us.writer.palmyra-x4-v1:0|122,880|$2.5|$10|$0|$0|
+
 |Palmyra X5writer.palmyra-x5-v1:0|1,040,000|$0.6|$6|$0|$0|
+
+|Palmyra X5 (US)us.writer.palmyra-x5-v1:0|1,040,000|$0.6|$6|$0|$0|
 
 |Pixtral Large (25.02)mistral.pixtral-large-2502-v1:0|128,000|$2|$6|$0|$0|
 
-|Qwen/Qwen3-Next-80B-A3B-Instructqwen.qwen3-next-80b-a3b|262,000|$0.14|$1.4|$0|$0|
+|Pixtral Large (25.02) (EU)eu.mistral.pixtral-large-2502-v1:0|128,000|$2|$6|$0|$0|
 
-|Qwen/Qwen3-VL-235B-A22B-Instructqwen.qwen3-vl-235b-a22b|262,000|$0.3|$1.5|$0|$0|
+|Pixtral Large (25.02) (US)us.mistral.pixtral-large-2502-v1:0|128,000|$2|$6|$0|$0|
 
-|Qwen3 235B A22B 2507qwen.qwen3-235b-a22b-2507-v1:0|262,144|$0.22|$0.88|$0|$0|
+|Qwen3 235B-A22B Instruct 2507qwen.qwen3-235b-a22b-2507-v1:0|262,144|$0.22|$0.88|$0|$0|
 
-|Qwen3 32B (dense)qwen.qwen3-32b-v1:0|16,384|$0.15|$0.6|$0|$0|
+|Qwen3 32Bqwen.qwen3-32b-v1:0|32,768|$0.15|$0.6|$0|$0|
 
-|Qwen3 Coder 30B A3B Instructqwen.qwen3-coder-30b-a3b-v1:0|262,144|$0.15|$0.6|$0|$0|
+|Qwen3 Coder Nextqwen.qwen3-coder-next|262,144|$0.5|$1.2|$0|$0|
 
-|Qwen3 Coder 480B A35B Instructqwen.qwen3-coder-480b-a35b-v1:0|131,072|$0.22|$1.8|$0|$0|
+|Qwen3 VL 235B A22B Instructqwen.qwen3-vl-235b-a22b|262,144|$0.53|$2.66|$0|$0|
 
-|Qwen3 Coder Nextqwen.qwen3-coder-next|131,072|$0.22|$1.8|$0|$0|
+|Qwen3-Coder 30B-A3B Instructqwen.qwen3-coder-30b-a3b-v1:0|262,144|$0.15|$0.6|$0|$0|
 
-|Voxtral Mini 3B 2507mistral.voxtral-mini-3b-2507|128,000|$0.04|$0.04|$0|$0|
+|Qwen3-Coder 480B-A35B Instructqwen.qwen3-coder-480b-a35b-v1:0|131,072|$0.45|$1.8|$0|$0|
 
-|Voxtral Small 24B 2507mistral.voxtral-small-24b-2507|32,000|$0.15|$0.35|$0|$0|
+|Qwen3-Next 80B-A3B Instructqwen.qwen3-next-80b-a3b|262,144|$0.15|$1.2|$0|$0|
+
+|Voxtral Mini 3B 2507mistral.voxtral-mini-3b-2507|32,768|$0.04|$0.04|$0|$0|
+
+|Voxtral Small 24B 2507mistral.voxtral-small-24b-2507|32,768|$0.1|$0.3|$0|$0|
 
 |ant-ling(3 models)|
 
@@ -261,13 +413,17 @@ All models
 
 |Ring 2.6 1TRing-2.6-1T|262,144|$0.06|$0.25|$0|$0|
 
-|anthropic(13 models)|
+|anthropic(17 models)|
 
 |Claude Fable 5claude-fable-5|1,000,000|$10|$50|$1|$12.5|
+
+|Claude Fable 5.1claude-fable-5-1|1,000,000|$10|$50|$0.25|$12.5|
 
 |Claude Haiku 4.5claude-haiku-4-5-20251001|200,000|$1|$5|$0.1|$1.25|
 
 |Claude Haiku 4.5 (latest)claude-haiku-4-5|200,000|$1|$5|$0.1|$1.25|
+
+|Claude Haiku 5.5claude-haiku-5-5|1,000,000|$0.1|$0.5|$0.01|$0.125|
 
 |Claude Opus 4.5claude-opus-4-5-20251101|200,000|$5|$25|$0.5|$6.25|
 
@@ -281,15 +437,25 @@ All models
 
 |Claude Opus 5claude-opus-5|1,000,000|$5|$25|$0.5|$6.25|
 
-|Claude Sonnet 4.5claude-sonnet-4-5-20250929|1,000,000|$3|$15|$0.3|$3.75|
+|Claude Opus 5.5claude-opus-5-5|1,000,000|$4|$20|$0.2|$5|
 
-|Claude Sonnet 4.5 (latest)claude-sonnet-4-5|1,000,000|$3|$15|$0.3|$3.75|
+|Claude Sonnet 4.5claude-sonnet-4-5-20250929|200,000|$3|$15|$0.3|$3.75|
+
+|Claude Sonnet 4.5 (latest)claude-sonnet-4-5|200,000|$3|$15|$0.3|$3.75|
 
 |Claude Sonnet 4.6claude-sonnet-4-6|1,000,000|$3|$15|$0.3|$3.75|
 
 |Claude Sonnet 5claude-sonnet-5|1,000,000|$2|$10|$0.2|$2.5|
 
-|azure-openai-responses(38 models)|
+|Claude Sonnet 5.5claude-sonnet-5-5|1,000,000|$2|$10|$0.1|$2.5|
+
+|azure(43 models)|
+
+|Daybreak Bluegpt-daybreak-blue-latest|1,050,000|$4|$20|$0.4|$5|
+
+|Daybreak Redgpt-daybreak-red-latest|400,000|$12.5|$75|$1.25|$15.625|
+
+|DeepSeek V4 Prodeepseek-v4-pro|1,000,000|$1.925|$3.828|$0.165|$0|
 
 |GPT-4gpt-4|8,192|$30|$60|$0|$0|
 
@@ -325,11 +491,7 @@ All models
 
 |GPT-5.2gpt-5.2|400,000|$1.75|$14|$0.175|$0|
 
-|GPT-5.2 Chatgpt-5.2-chat-latest|128,000|$1.75|$14|$0.175|$0|
-
 |GPT-5.2 Progpt-5.2-pro|400,000|$21|$168|$0|$0|
-
-|GPT-5.3 Chat (latest)gpt-5.3-chat-latest|128,000|$1.75|$14|$0.175|$0|
 
 |GPT-5.3 Codexgpt-5.3-codex|400,000|$1.75|$14|$0.175|$0|
 
@@ -353,6 +515,14 @@ All models
 
 |GPT-5.6 Terragpt-5.6-terra|1,050,000|$2|$12|$0.2|$2.5|
 
+|GPT-6 Astragpt-6-astra|272,000|$10|$50|$1|$12.5|
+
+|GPT-6 Lunagpt-6-luna|272,000|$0.1|$0.5|$0.01|$0.125|
+
+|GPT-6 Solgpt-6-sol|272,000|$2|$10|$0.2|$2.5|
+
+|GPT-6.1 Solgpt-6.1-sol|272,000|$2|$10|$0.1|$2.5|
+
 |GPT-Realtime-2.1gpt-realtime-2.1|128,000|$4|$24|$0.4|$0|
 
 |o1o1|200,000|$15|$60|$7.5|$0|
@@ -367,81 +537,85 @@ All models
 
 |o4-minio4-mini|200,000|$1.1|$4.4|$0.275|$0|
 
-|baseten(18 models)|
+|baseten(14 models)|
 
 |DeepSeek V4 Flash 0731deepseek-ai/DeepSeek-V4-Flash-0731|1,048,576|$0.13|$0.26|$0.028|$0|
 
-|DeepSeek V4 Prodeepseek-ai/DeepSeek-V4-Pro|1,048,576|$1.74|$3.48|$0.145|$0|
+|DeepSeek V4 Pro 0813deepseek-ai/DeepSeek-V4-Pro-0813|1,048,576|$1.32|$3.96|$0.132|$0|
 
-|DeepSeek V4 Pro 0813deepseek-ai/DeepSeek-V4-Pro-0813|1,048,576|$1.32|$3.96|$0|$0|
+|DeepSeek V4.1 Flashdeepseek-ai/DeepSeek-V4.1-Flash|1,048,576|$0.3|$1.2|$0.007|$0|
 
-|GLM 4.7zai-org/GLM-4.7|200,000|$0.6|$2.2|$0.12|$0|
+|DeepSeek V4.1 Flash 1017deepseek-ai/DeepSeek-V4.1-Flash-1017|1,048,576|$0.3|$1.2|$0.007|$0|
 
-|GLM 5zai-org/GLM-5|202,800|$0.95|$3.15|$0.2|$0|
+|DeepSeek V4.1 Flash 1017 Fastdeepseek-ai/DeepSeek-V4.1-Flash-1017-Fast|1,048,576|$0.6|$2.4|$0.014|$0|
 
-|GLM 5.1zai-org/GLM-5.1|202,800|$1.3|$4.3|$0.26|$0|
+|DeepSeek V4.1 Flash Fastdeepseek-ai/DeepSeek-V4.1-Flash-Fast|1,048,576|$0.6|$2.4|$0.014|$0|
 
-|GLM 5.2zai-org/GLM-5.2|1,048,576|$1.4|$4.4|$0.3|$0|
+|GLM 5.2zai-org/GLM-5.2|1,048,576|$1.4|$4.4|$0.14|$0|
 
 |GLM 5.2 Fastzai-org/GLM-5.2-Fast|1,048,576|$2.1|$6.6|$0.21|$0|
 
-|GLM 5.3 Flashzai-org/GLM-5.3-Flash|1,048,576|$0.15|$0.5|$0|$0|
+|GLM 5.3zai-org/GLM-5.3|1,048,576|$1.4|$4.4|$0.14|$0|
 
-|Inklingthinkingmachines/inkling|1,048,576|$1|$4.05|$0|$0|
+|GLM 5.3 Fastzai-org/GLM-5.3-Fast|1,048,576|$2.1|$6.6|$0.21|$0|
 
-|Inkling Smallthinkingmachines/inkling-small|1,048,576|$0.5|$1.2|$0.1|$0|
+|GLM 5.3 Flashzai-org/GLM-5.3-Flash|1,048,576|$0.15|$0.5|$0.03|$0|
 
-|Kimi K2.5moonshotai/Kimi-K2.5|262,000|$0.6|$3|$0.12|$0|
-
-|Kimi K2.6moonshotai/Kimi-K2.6|262,000|$0.95|$4|$0.16|$0|
-
-|Kimi K2.7 Codemoonshotai/Kimi-K2.7-Code|262,000|$0.95|$4|$0.16|$0|
-
-|Kimi K3moonshotai/Kimi-K3|1,048,576|$3|$15|$0|$0|
-
-|Nemotron Supernvidia/Nemotron-120B-A12B|202,800|$0.3|$0.75|$0.06|$0|
+|Kimi K3moonshotai/Kimi-K3|1,048,576|$3|$15|$0.3|$0|
 
 |Nemotron Ultranvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B|202,800|$0.6|$2.4|$0.12|$0|
 
-|OpenAI GPT 120Bopenai/gpt-oss-120b|128,072|$0.1|$0.5|$0|$0|
+|OpenAI GPT 120Bopenai/gpt-oss-120b|128,072|$0.1|$0.5|$0.1|$0|
 
 |cerebras(2 models)|
 
-|Gemma 4 31B ITgemma-4-31b|131,072|$0.99|$1.49|$0|$0|
+|GPT OSS 120Bgpt-oss-120b|131,072|$0.35|$0.75|$0.35|$0|
 
-|GPT OSS 120Bgpt-oss-120b|131,072|$0.35|$0.75|$0|$0|
+|Qwen3.8 27Bqwen-3.8-27b|131,072|$0.99|$1.49|$0.99|$0|
 
-|cloudflare-ai-gateway(48 models)|
+|cloudflare-ai-gateway(58 models)|
 
 |Claude Fable 5claude-fable-5|1,000,000|$10|$50|$1|$12.5|
 
-|Claude Haiku 4.5 (latest)claude-haiku-4.5|200,000|$1|$5|$0.1|$1.25|
+|Claude Fable 5.1claude-fable-5-1|1,000,000|$10|$50|$0.25|$12.5|
 
-|Claude Opus 4.5 (latest)claude-opus-4.5|200,000|$5|$25|$0.5|$6.25|
+|Claude Haiku 4.5 (latest)claude-haiku-4-5|200,000|$1|$5|$0.1|$1.25|
 
-|Claude Opus 4.6claude-opus-4.6|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Haiku 5.5claude-haiku-5-5|1,000,000|$0.1|$0.5|$0.01|$0.125|
 
-|Claude Opus 4.7claude-opus-4.7|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Opus 4.5 (latest)claude-opus-4-5|200,000|$5|$25|$0.5|$6.25|
 
-|Claude Opus 4.8claude-opus-4.8|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Opus 4.6claude-opus-4-6|1,000,000|$5|$25|$0.5|$6.25|
+
+|Claude Opus 4.7claude-opus-4-7|1,000,000|$5|$25|$0.5|$6.25|
+
+|Claude Opus 4.8claude-opus-4-8|1,000,000|$5|$25|$0.5|$6.25|
 
 |Claude Opus 5claude-opus-5|1,000,000|$5|$25|$0.5|$6.25|
 
-|Claude Sonnet 4.5 (latest)claude-sonnet-4.5|1,000,000|$3|$15|$0.3|$3.75|
+|Claude Opus 5.5claude-opus-5-5|1,000,000|$4|$20|$0.2|$5|
 
-|Claude Sonnet 4.6claude-sonnet-4.6|1,000,000|$3|$15|$0.3|$3.75|
+|Claude Sonnet 4.5 (latest)claude-sonnet-4-5|200,000|$3|$15|$0.3|$3.75|
+
+|Claude Sonnet 4.6claude-sonnet-4-6|1,000,000|$3|$15|$0.3|$3.75|
 
 |Claude Sonnet 5claude-sonnet-5|1,000,000|$2|$10|$0.2|$2.5|
 
-|DeepSeek V4 Flash 0731workers-ai/@cf/deepseek-ai/deepseek-v4-flash-0731|1,310,720|$0.44|$1.32|$0.014|$0|
+|Claude Sonnet 5.5claude-sonnet-5-5|1,000,000|$2|$10|$0.2|$2.5|
+
+|DeepSeek V4 Flash 0731workers-ai/@cf/deepseek-ai/deepseek-v4-flash-0731|1,048,576|$0.44|$1.32|$0.014|$0|
 
 |DeepSeek V4 Pro 0813workers-ai/@cf/deepseek-ai/deepseek-v4-pro-0813|1,048,576|$1.32|$3.96|$0.044|$0|
 
-|Gemma 4 26B A4B ITworkers-ai/@cf/google/gemma-4-26b-a4b-it|256,000|$0.1|$0.3|$0|$0|
+|Deepseek V4.1 Flash 1017workers-ai/@cf/deepseek-ai/deepseek-v4.1-flash-1017|1,048,576|$0.3|$1.2|$0.006|$0|
+
+|Gemma 4 26B A4B ITworkers-ai/@cf/google/gemma-4-26b-a4b-it|256,000|$0.1|$0.3|$0.05|$0|
 
 |Glm 5.2workers-ai/@cf/zai-org/glm-5.2|262,144|$1.4|$4.4|$0.26|$0|
 
-|Glm 5.3 Flashworkers-ai/@cf/zai-org/glm-5.3-flash|1,310,720|$0.15|$0.5|$0.03|$0|
+|Glm 5.3workers-ai/@cf/zai-org/glm-5.3|1,048,576|$1.4|$4.4|$0.26|$0|
+
+|Glm 5.3 Flashworkers-ai/@cf/zai-org/glm-5.3-flash|1,048,576|$0.15|$0.5|$0.03|$0|
 
 |GLM-4.7-Flashworkers-ai/@cf/zai-org/glm-4.7-flash|131,072|$0.0605|$0.4|$0|$0|
 
@@ -481,9 +655,17 @@ All models
 
 |GPT-5.6 Lunagpt-5.6-luna|1,050,000|$0.2|$1.2|$0.02|$0.25|
 
-|GPT-5.6 Solgpt-5.6-sol|1,050,000|$2|$10|$0.25|$3.125|
+|GPT-5.6 Solgpt-5.6-sol|1,050,000|$4|$20|$0.4|$5|
 
 |GPT-5.6 Terragpt-5.6-terra|1,050,000|$2|$12|$0.2|$2.5|
+
+|GPT-6 Astragpt-6-astra|1,050,000|$10|$50|$1|$12.5|
+
+|GPT-6 Lunagpt-6-luna|1,050,000|$0.1|$0.5|$0.01|$0.125|
+
+|GPT-6 Solgpt-6-sol|1,050,000|$2|$10|$0.2|$2.5|
+
+|GPT-6.1 Solgpt-6.1-sol|1,050,000|$2|$10|$0.1|$2.5|
 
 |Granite 4.0 H Microworkers-ai/@cf/ibm-granite/granite-4.0-h-micro|131,000|$0.017|$0.112|$0|$0|
 
@@ -509,17 +691,21 @@ All models
 
 |Qwen3.8 27Bworkers-ai/@cf/qwen/qwen3.8-27b|262,144|$0.45|$3.2|$0.05|$0|
 
-|cloudflare-workers-ai(17 models)|
+|cloudflare-workers-ai(19 models)|
 
-|DeepSeek V4 Flash 0731@cf/deepseek-ai/deepseek-v4-flash-0731|1,310,720|$0.44|$1.32|$0.014|$0|
+|DeepSeek V4 Flash 0731@cf/deepseek-ai/deepseek-v4-flash-0731|1,048,576|$0.44|$1.32|$0.014|$0|
 
 |DeepSeek V4 Pro 0813@cf/deepseek-ai/deepseek-v4-pro-0813|1,048,576|$1.32|$3.96|$0.044|$0|
 
-|Gemma 4 26B A4B IT@cf/google/gemma-4-26b-a4b-it|256,000|$0.1|$0.3|$0|$0|
+|Deepseek V4.1 Flash 1017@cf/deepseek-ai/deepseek-v4.1-flash-1017|1,048,576|$0.3|$1.2|$0.006|$0|
+
+|Gemma 4 26B A4B IT@cf/google/gemma-4-26b-a4b-it|256,000|$0.1|$0.3|$0.05|$0|
 
 |Glm 5.2@cf/zai-org/glm-5.2|262,144|$1.4|$4.4|$0.26|$0|
 
-|Glm 5.3 Flash@cf/zai-org/glm-5.3-flash|1,310,720|$0.15|$0.5|$0.03|$0|
+|Glm 5.3@cf/zai-org/glm-5.3|1,048,576|$1.4|$4.4|$0.26|$0|
+
+|Glm 5.3 Flash@cf/zai-org/glm-5.3-flash|1,048,576|$0.15|$0.5|$0.03|$0|
 
 |GLM-4.7-Flash@cf/zai-org/glm-4.7-flash|131,072|$0.0605|$0.4|$0|$0|
 
@@ -545,137 +731,133 @@ All models
 
 |Qwen3.8 27B@cf/qwen/qwen3.8-27b|262,144|$0.45|$3.2|$0.05|$0|
 
-|deepseek(3 models)|
+|deepseek(2 models)|
 
-|DeepSeek V4 Flashdeepseek-v4-flash|1,000,000|$0.14|$0.28|$0.0028|$0|
+|DeepSeek V4 Prodeepseek-v4-pro|1,000,000|$1.32|$3.96|$0.044|$0|
 
-|DeepSeek V4 Flash Vision Expdeepseek-v4-flash-vision-exp|1,000,000|$0.14|$0.28|$0.0028|$0|
+|DeepSeek V4.1 Flashdeepseek-flash|1,000,000|$0.3|$1.2|$0.006|$0|
 
-|DeepSeek V4 Prodeepseek-v4-pro|1,000,000|$0.435|$0.87|$0.003625|$0|
+|fireworks(29 models)|
 
-|fireworks(23 models)|
+|DeepSeek Flash Latestaccounts/fireworks/routers/deepseek-flash-latest|1,000,000|$0.3|$1.2|$0.006|$0|
 
-|DeepSeek V4 Flashaccounts/fireworks/models/deepseek-v4-flash|1,000,000|$0.14|$0.28|$0.028|$0|
+|DeepSeek V4.1 Flashaccounts/fireworks/models/deepseek-v4p1-flash|1,000,000|$0.3|$1.2|$0.006|$0|
 
-|DeepSeek V4 Flash 0731accounts/fireworks/models/deepseek-v4-flash-0731|1,000,000|$0.14|$0.28|$0.028|$0|
+|DeepSeek V4.1 Flash 1017accounts/fireworks/models/deepseek-v4p1-flash-1017|1,000,000|$0.3|$1.2|$0.006|$0|
 
-|DeepSeek V4 Proaccounts/fireworks/models/deepseek-v4-pro|1,000,000|$1.74|$3.48|$0.145|$0|
+|DeepSeek V4.1 Flash 1017 Spotaccounts/fireworks/routers/deepseek-v4p1-flash-1017-spot|1,000,000|$0.21|$0.84|$0.0042|$0|
 
-|DeepSeek V4 Pro 0813accounts/fireworks/models/deepseek-v4-pro-0813|1,000,000|$1.32|$3.96|$0.044|$0|
+|DeepSeek V4.1 Flash Spotaccounts/fireworks/routers/deepseek-v4p1-flash-spot|1,000,000|$0.21|$0.84|$0.0042|$0|
 
-|GLM 5.2accounts/fireworks/models/glm-5p2|1,048,575|$1.4|$4.4|$0.14|$0|
+|Ember-1accounts/fireworks/models/ember-1|1,048,576|$3|$15|$0.3|$0|
 
-|GLM 5.2 Fastaccounts/fireworks/routers/glm-5p2-fast|1,048,575|$2.1|$6.6|$0.21|$0|
+|GLM 5.3accounts/fireworks/models/glm-5p3|1,048,573|$1.4|$4.4|$0.26|$0|
+
+|GLM 5.3 Fastaccounts/fireworks/routers/glm-5p3-fast|1,048,572|$2.1|$6.6|$0.39|$0|
+
+|GLM 5.3 Fast (Latest)accounts/fireworks/routers/glm-fast-latest|1,048,572|$2.1|$6.6|$0.39|$0|
+
+|GLM 5.3 Flashaccounts/fireworks/models/glm-5p3-flash|1,048,573|$0.15|$0.5|$0.03|$0|
+
+|GLM 5.3 Spotaccounts/fireworks/routers/glm-5p3-spot|1,048,573|$0.98|$3.08|$0.182|$0|
+
+|GLM Flash Latest (GLM 5.3 Flash)accounts/fireworks/routers/glm-flash-latest|1,048,573|$0.15|$0.5|$0.03|$0|
+
+|GLM Latestaccounts/fireworks/routers/glm-latest|1,048,573|$1.4|$4.4|$0.26|$0|
 
 |GPT OSS 120Baccounts/fireworks/models/gpt-oss-120b|131,072|$0.15|$0.6|$0.015|$0|
 
-|GPT OSS 20Baccounts/fireworks/models/gpt-oss-20b|131,072|$0.07|$0.3|$0.035|$0|
-
 |Inklingaccounts/fireworks/models/inkling|1,048,576|$1|$4.05|$0.17|$0|
 
-|Kimi K2.6accounts/fireworks/models/kimi-k2p6|262,000|$0.95|$4|$0.16|$0|
-
-|Kimi K2.6 Fastaccounts/fireworks/routers/kimi-k2p6-fast|262,000|$2|$8|$0.3|$0|
-
-|Kimi K2.6 Turboaccounts/fireworks/routers/kimi-k2p6-turbo|262,000|$2|$8|$0.3|$0|
-
-|Kimi K2.7 Codeaccounts/fireworks/models/kimi-k2p7-code|262,000|$0.95|$4|$0.19|$0|
-
-|Kimi K2.7 Code Fastaccounts/fireworks/routers/kimi-k2p7-code-fast|262,000|$1.9|$8|$0.38|$0|
+|Kimi Fast Latestaccounts/fireworks/routers/kimi-fast-latest|1,048,576|$4.5|$22.5|$0.45|$0|
 
 |Kimi K3accounts/fireworks/models/kimi-k3|1,048,576|$3|$15|$0.3|$0|
 
 |Kimi K3 Fastaccounts/fireworks/routers/kimi-k3-fast|1,048,576|$4.5|$22.5|$0.45|$0|
 
-|MiniMax-M2.7accounts/fireworks/models/minimax-m2p7|196,608|$0.3|$1.2|$0.06|$0|
+|Kimi K3 Spotaccounts/fireworks/routers/kimi-k3-spot|1,048,576|$2.1|$10.5|$0.21|$0|
+
+|Kimi Latestaccounts/fireworks/routers/kimi-latest|1,048,576|$3|$15|$0.3|$0|
+
+|MiniMax Latestaccounts/fireworks/routers/minimax-latest|512,000|$0.3|$1.2|$0.06|$0|
 
 |MiniMax-M3accounts/fireworks/models/minimax-m3|512,000|$0.3|$1.2|$0.06|$0|
 
-|Muse Glimmer 30Baccounts/fireworks/models/muse-glimmer-30b|131,072|$0.35|$1.5|$0.04|$0|
+|MiniMax-M3.1-Flashaccounts/fireworks/models/minimax-m3p1-flash|1,000,000|$0.15|$0.6|$0.015|$0|
 
-|Nemotron 3 Ultra 550B A55Baccounts/fireworks/models/nemotron-3-ultra-nvfp4|262,144|$0.6|$2.4|$0.119|$0|
+|Muse Spark Openaccounts/fireworks/models/muse-spark-open|1,048,576|$1.25|$4.25|$0.15|$0|
+
+|Nemotron 3 Ultra 550B A55Baccounts/fireworks/models/nemotron-3-ultra-nvfp4|262,144|$0.6|$2.4|$0.12|$0|
 
 |Nemotron 3.5 Lightning 30B A3Baccounts/fireworks/models/nemotron-lightning-3p5-30b-a3b|262,144|$0.05|$0.2|$0.01|$0|
 
-|Qwen 3.7 Plusaccounts/fireworks/models/qwen3p7-plus|262,144|$0.4|$1.6|$0.08|$0|
+|Qwen Max Latest (Qwen3.8 Max)accounts/fireworks/routers/qwen-max-latest|262,144|$2|$6|$0.25|$0|
+
+|Qwen3.8 2.4T A95Baccounts/fireworks/models/qwen3p8-2p4t-a95b|262,144|$2|$6|$0.25|$0|
 
 |Qwen3.8 Maxaccounts/fireworks/models/qwen3p8-max|262,144|$2|$6|$0.25|$0|
 
-|github-copilot(33 models)|
+|github-copilot(26 models)|
 
 |Claude Fable 5claude-fable-5|1,000,000|$10|$50|$1|$12.5|
 
+|Claude Fable 5.1claude-fable-5.1|1,000,000|$10|$50|$0.25|$12.5|
+
 |Claude Haiku 4.5 (latest)claude-haiku-4.5|200,000|$1|$5|$0.1|$1.25|
 
-|Claude Opus 4.5 (latest)claude-opus-4.5|200,000|$5|$25|$0.5|$6.25|
-
-|Claude Opus 4.6claude-opus-4.6|1,000,000|$5|$25|$0.5|$6.25|
-
-|Claude Opus 4.7claude-opus-4.7|1,000,000|$5|$25|$0.5|$6.25|
+|Claude Haiku 5.5claude-haiku-5.5|1,000,000|$0.1|$0.5|$0.01|$0.125|
 
 |Claude Opus 4.8claude-opus-4.8|1,000,000|$5|$25|$0.5|$6.25|
 
 |Claude Opus 5claude-opus-5|1,000,000|$5|$25|$0.5|$6.25|
 
-|Claude Sonnet 4 (latest)claude-sonnet-4|216,000|$3|$15|$0.3|$3.75|
-
-|Claude Sonnet 4.5 (latest)claude-sonnet-4.5|200,000|$3|$15|$0.3|$3.75|
+|Claude Opus 5.5claude-opus-5.5|1,000,000|$4|$20|$0.2|$5|
 
 |Claude Sonnet 4.6claude-sonnet-4.6|1,000,000|$3|$15|$0.3|$3.75|
 
 |Claude Sonnet 5claude-sonnet-5|1,000,000|$2|$10|$0.2|$2.5|
 
-|Gemini 3.1 Pro Previewgemini-3.1-pro-preview|1,000,000|$2|$12|$0.2|$0|
+|Claude Sonnet 5.5claude-sonnet-5.5|1,000,000|$2|$10|$0.1|$2.5|
 
-|Gemini 3.5 Flashgemini-3.5-flash|200,000|$1.5|$9|$0.15|$0|
+|Gemini 3.8 Flashgemini-3.8-flash|1,000,000|$0.75|$3.75|$0.075|$0|
 
-|Gemini 3.6 Flashgemini-3.6-flash|1,000,000|$1.5|$7.5|$0.15|$0|
-
-|Gemini 3.7 Flashgemini-3.7-flash|1,000,000|$0.75|$3.75|$0.075|$0|
-
-|GPT-4.1gpt-4.1|128,000|$2|$8|$0.5|$0|
-
-|GPT-5 Minigpt-5-mini|264,000|$0.25|$2|$0.025|$0|
-
-|GPT-5.2gpt-5.2|400,000|$1.75|$14|$0.175|$0|
-
-|GPT-5.2 Codexgpt-5.2-codex|400,000|$1.75|$14|$0.175|$0|
+|Gemini 4 Argongemini-4-argon|1,048,576|$2|$10|$0.1|$0|
 
 |GPT-5.3 Codexgpt-5.3-codex|1,000,000|$1.75|$14|$0.175|$0|
 
-|GPT-5.4gpt-5.4|1,000,000|$2.5|$15|$0.25|$0|
-
-|GPT-5.4 minigpt-5.4-mini|400,000|$0.75|$4.5|$0.075|$0|
-
 |GPT-5.4 nanogpt-5.4-nano|400,000|$0.2|$1.25|$0.02|$0|
 
-|GPT-5.5gpt-5.5|1,000,000|$5|$30|$0.5|$0|
+|GPT-5.6 Lunagpt-5.6-luna|1,050,000|$0.2|$1.2|$0.02|$0.25|
 
-|GPT-5.6 Lunagpt-5.6-luna|1,050,000|$0.2|$1.2|$0.02|$0|
+|GPT-5.6 Solgpt-5.6-sol|1,050,000|$4|$20|$0.4|$5|
 
-|GPT-5.6 Solgpt-5.6-sol|1,050,000|$2.5|$15|$0.25|$3.125|
+|GPT-5.6 Terragpt-5.6-terra|1,050,000|$2|$12|$0.2|$2.5|
 
-|GPT-5.6 Terragpt-5.6-terra|1,050,000|$2|$12|$0.2|$0|
+|GPT-6 Astragpt-6-astra|1,000,000|$10|$50|$1|$12.5|
+
+|GPT-6 Lunagpt-6-luna|1,000,000|$0.1|$0.5|$0.01|$0.125|
+
+|GPT-6 Solgpt-6-sol|1,000,000|$2|$10|$0.2|$2.5|
+
+|GPT-6.1 Solgpt-6.1-sol|1,050,000|$2|$10|$0.1|$2.5|
 
 |Grok 4.5grok-4.5|500,000|$2|$6|$0.5|$0|
 
 |Grok 4.6grok-4.6|500,000|$2|$6|$0.5|$0|
 
-|Kimi K2.7 Codekimi-k2.7-code|256,000|$0.95|$4|$0.19|$0|
+|Grok 4.7grok-4.7|500,000|$2|$6|$0.5|$0|
 
 |Kimi K3kimi-k3|1,048,576|$3|$15|$0.3|$0|
 
-|MAI-Code-1-Flashmai-code-1-flash-picker|256,000|$0.75|$4.5|$0.075|$0|
-
 |MAI-Code-1.1-Flashmai-code-1.1-flash|256,000|$0.2|$1.2|$0.02|$0|
 
-|google(22 models)|
+|google(24 models)|
 
 |Deep Research Max Preview (Apr-21-2026)deep-research-max-preview-04-2026|131,072|$2|$12|$0.2|$0|
 
 |Deep Research Preview (Apr-21-2026)deep-research-preview-04-2026|131,072|$2|$12|$0.2|$0|
 
-|Gemini 2.5 Computer Use Preview 10-2025gemini-2.5-computer-use-preview-10-2025|131,072|$1.25|$10|$0|$0|
+|Gemini 2.5 Computer Use Preview 10-2025gemini-2.5-computer-use-preview-10-2025|128,000|$1.25|$10|$0|$0|
 
 |Gemini 2.5 Flashgemini-2.5-flash|1,048,576|$0.3|$2.5|$0.03|$0|
 
@@ -703,11 +885,15 @@ All models
 
 |Gemini 3.7 Flashgemini-3.7-flash|1,048,576|$0.75|$3.75|$0.075|$0|
 
+|Gemini 3.8 Flashgemini-3.8-flash|1,048,576|$0.75|$3.75|$0.075|$0|
+
+|Gemini 4 Argongemini-4-argon|1,048,576|$2|$10|$0.1|$0|
+
 |Gemini Flash Latestgemini-flash-latest|1,048,576|$1.5|$9|$0.15|$0|
 
 |Gemini Flash-Lite Latestgemini-flash-lite-latest|1,048,576|$0.25|$1.5|$0.025|$0|
 
-|Gemini Robotics-ER 1.6 Previewgemini-robotics-er-1.6-preview|131,072|$1|$5|$0|$0|
+|Gemini Pro Latestgemini-pro-latest|1,048,576|$2|$12|$0.2|$0|
 
 |Gemma 4 26B A4B ITgemma-4-26b-a4b-it|262,144|$0|$0|$0|$0|
 
@@ -715,7 +901,7 @@ All models
 
 |Nano Banana 2 Litegemini-3.1-flash-lite-image|65,536|$0.25|$30|$0|$0|
 
-|google-vertex(13 models)|
+|google-vertex(14 models)|
 
 |Gemini 2.5 Flashgemini-2.5-flash|1,048,576|$0.3|$2.5|$0.03|$0|
 
@@ -739,11 +925,13 @@ All models
 
 |Gemini 3.7 Flashgemini-3.7-flash|1,048,576|$0.75|$3.75|$0.075|$0|
 
-|Gemini Flash Latestgemini-flash-latest|1,048,576|$1.5|$9|$0.15|$0|
+|Gemini 3.8 Flashgemini-3.8-flash|1,048,576|$0.75|$3.75|$0.075|$0|
 
-|Gemini Flash-Lite Latestgemini-flash-lite-latest|1,048,576|$0.25|$1.5|$0.025|$0|
+|Gemini 4 Argongemini-4-argon|1,048,576|$2|$10|$0.1|$0|
 
-|groq(6 models)|
+|Nano Banana 2 Litegemini-3.1-flash-lite-image|65,536|$0.25|$30|$0.025|$0|
+
+|groq(7 models)|
 
 |GPT OSS 120Bopenai/gpt-oss-120b|131,072|$0.15|$0.6|$0.075|$0|
 
@@ -755,9 +943,11 @@ All models
 
 |Qwen3.6 27Bqwen/qwen3.6-27b|131,072|$0.6|$3|$0.3|$0|
 
-|Safety GPT OSS 20Bopenai/gpt-oss-safeguard-20b|131,072|$0.075|$0.3|$0|$0|
+|Qwen3.8 27Bqwen/qwen3.8-27b|131,072|$0.8|$4|$0|$0|
 
-|huggingface(69 models)|
+|Safety GPT OSS 20Bopenai/gpt-oss-safeguard-20b|131,072|$0.075|$0.3|$0.0375|$0|
+
+|huggingface(77 models)|
 
 |DeepSeek V3 0324deepseek-ai/DeepSeek-V3-0324|163,840|$0.27|$1.12|$0|$0|
 
@@ -765,9 +955,15 @@ All models
 
 |DeepSeek V4 Flash 0731deepseek-ai/DeepSeek-V4-Flash-0731|1,048,576|$0.14|$0.28|$0|$0|
 
+|DeepSeek V4 Flash Vision Expdeepseek-ai/DeepSeek-V4-Flash-Vision-Exp|1,048,576|$0.44|$1.32|$0|$0|
+
 |DeepSeek V4 Prodeepseek-ai/DeepSeek-V4-Pro|1,048,576|$0.435|$0.87|$0.003625|$0|
 
 |DeepSeek V4 Pro 0813deepseek-ai/DeepSeek-V4-Pro-0813|1,000,000|$1.32|$3.96|$0|$0|
+
+|DeepSeek V4.1 Flashdeepseek-ai/DeepSeek-V4.1-Flash|1,048,576|$0.3|$1.2|$0|$0|
+
+|DeepSeek V4.1 Flash 1017deepseek-ai/DeepSeek-V4.1-Flash-1017|1,048,576|$0.3|$1.2|$0|$0|
 
 |DeepSeek-R1deepseek-ai/DeepSeek-R1|64,000|$0.7|$2.5|$0|$0|
 
@@ -779,11 +975,15 @@ All models
 
 |DeepSeek-V3.2deepseek-ai/DeepSeek-V3.2|163,840|$0.28|$0.4|$0|$0|
 
+|Gemma 3 12B ITgoogle/gemma-3-12b-it|131,072|$0.05|$0.15|$0|$0|
+
+|Gemma 3 27B ITgoogle/gemma-3-27b-it|131,072|$0.08|$0.16|$0|$0|
+
+|Gemma 3 4B ITgoogle/gemma-3-4b-it|131,072|$0.05|$0.1|$0|$0|
+
 |Gemma 4 26B A4B ITgoogle/gemma-4-26B-A4B-it|262,144|$0.13|$0.4|$0|$0|
 
 |Gemma 4 31B ITgoogle/gemma-4-31B-it|262,144|$0.14|$0.4|$0|$0|
-
-|GLM-4.5zai-org/GLM-4.5|131,072|$0.6|$2.2|$0|$0|
 
 |GLM-4.5-Airzai-org/GLM-4.5-Air|131,072|$0.13|$0.85|$0|$0|
 
@@ -803,6 +1003,8 @@ All models
 
 |GLM-5.2zai-org/GLM-5.2|262,144|$1.4|$4.4|$0|$0|
 
+|GLM-5.3zai-org/GLM-5.3|1,048,576|$1.4|$4.4|$0|$0|
+
 |GLM-5.3-Flashzai-org/GLM-5.3-Flash|1,048,576|$0.15|$0.5|$0|$0|
 
 |GPT OSS 120Bopenai/gpt-oss-120b|131,072|$0.25|$0.69|$0|$0|
@@ -810,6 +1012,8 @@ All models
 |GPT OSS 20Bopenai/gpt-oss-20b|131,072|$0.1|$0.5|$0|$0|
 
 |Hy3tencent/Hy3|262,144|$0.14|$0.58|$0|$0|
+
+|Hy4 previewtencent/Hy4-preview|1,000,000|$0.834|$2.501|$0|$0|
 
 |Inklingthinkingmachines/Inkling|1,048,576|$1|$4.05|$0|$0|
 
@@ -833,11 +1037,11 @@ All models
 
 |Llama-3.3-70B-Instructmeta-llama/Llama-3.3-70B-Instruct|131,072|$0.59|$0.79|$0|$0|
 
-|MiMo-V2-FlashXiaomiMiMo/MiMo-V2-Flash|262,144|$0.1|$0.3|$0|$0|
-
 |MiMo-V2.5XiaomiMiMo/MiMo-V2.5|262,144|$0.4|$2|$0|$0|
 
 |MiMo-V2.5-ProXiaomiMiMo/MiMo-V2.5-Pro|1,048,576|$1|$3|$0|$0|
+
+|MiniMax M1 80KMiniMaxAI/MiniMax-M1-80k|1,000,000|$0.55|$2.2|$0|$0|
 
 |MiniMax-M2MiniMaxAI/MiniMax-M2|204,800|$0.3|$1.2|$0|$0|
 
@@ -859,9 +1063,13 @@ All models
 
 |Qwen3 32BQwen/Qwen3-32B|131,072|$0.29|$0.59|$0|$0|
 
+|Qwen3 8BQwen/Qwen3-8B|40,960|$0.07|$0.18|$0|$0|
+
 |Qwen3 VL 235B A22B InstructQwen/Qwen3-VL-235B-A22B-Instruct|131,072|$0.3|$1.5|$0|$0|
 
 |Qwen3 VL 235B A22B ThinkingQwen/Qwen3-VL-235B-A22B-Thinking|131,072|$0.98|$3.95|$0|$0|
+
+|Qwen3 VL 30B A3B InstructQwen/Qwen3-VL-30B-A3B-Instruct|131,072|$0.2|$0.7|$0|$0|
 
 |Qwen3-235B-A22B-Thinking-2507Qwen/Qwen3-235B-A22B-Thinking-2507|262,144|$0.3|$3|$0|$0|
 
@@ -872,8 +1080,6 @@ All models
 |Qwen3-Coder-NextQwen/Qwen3-Coder-Next|262,144|$0.2|$1.5|$0|$0|
 
 |Qwen3-Next-80B-A3B-InstructQwen/Qwen3-Next-80B-A3B-Instruct|262,144|$0.25|$1|$0|$0|
-
-|Qwen3-Next-80B-A3B-ThinkingQwen/Qwen3-Next-80B-A3B-Thinking|262,144|$0.3|$2|$0|$0|
 
 |Qwen3.5 122B-A10BQwen/Qwen3.5-122B-A10B|262,144|$0.4|$3.2|$0|$0|
 
@@ -897,35 +1103,59 @@ All models
 
 |Step 3.7 Flashstepfun-ai/Step-3.7-Flash|262,144|$0.2|$1.15|$0|$0|
 
-|kimi-coding(4 models)|
+|kimi-coding(6 models)|
 
 |Kimi For Coding HighSpeedkimi-for-coding-highspeed|262,144|$1.9|$8|$0.38|$0|
 
-|Kimi K2.7 Codekimi-for-coding|262,144|$0.95|$4|$0.19|$0|
-
 |Kimi K3k3|1,048,576|$3|$15|$0.3|$0|
 
-|Kimi K3-256Kk3-256k|262,144|$0|$0|$0|$0|
+|Kimi K3-256Kk3-256k|262,144|$3|$15|$0.3|$0|
 
-|minimax(3 models)|
+|Kimi K3.1 Prok3.1-pro|1,048,576|$2|$10|$0.2|$0|
+
+|Kimi K3.1 Pro Highspeedk3.1-pro-highspeed|1,048,576|$4|$20|$0.2|$0|
+
+|kimi-for-codingkimi-for-coding|1,048,576|$0.95|$4|$0.19|$0|
+
+|meta(6 models)|
+
+|Muse Spark 1.1muse-spark-1.1|1,048,576|$1.25|$4.25|$0.15|$0|
+
+|Muse Spark 1.2muse-spark-1.2|1,048,576|$1.25|$4.25|$0.15|$0|
+
+|Muse Spark 1.2 Contributormuse-spark-1.2-contributor|1,048,576|$0.1|$0.2|$0.002|$0|
+
+|Muse Spark 1.3muse-spark-1.3|1,048,576|$1.25|$4.25|$0.15|$0|
+
+|Muse Spark 1.3 Contributormuse-spark-1.3-contributor|1,048,576|$0.1|$0.2|$0.002|$0|
+
+|Muse Wondermuse-wonder-1.0|1,048,576|$4|$20|$0.2|$0|
+
+|minimax(4 models)|
 
 |MiniMax-M2.7MiniMax-M2.7|204,800|$0.3|$1.2|$0.06|$0.375|
 
 |MiniMax-M2.7-highspeedMiniMax-M2.7-highspeed|204,800|$0.6|$2.4|$0.06|$0.375|
 
-|MiniMax-M3MiniMax-M3|1,048,576|$0.3|$1.2|$0.06|$0|
+|MiniMax-M3MiniMax-M3|1,000,000|$0.3|$1.2|$0.06|$0|
 
-|minimax-cn(3 models)|
+|MiniMax-M3.1-FlashMiniMax-M3.1-Flash|1,000,000|$0.15|$0.6|$0.015|$0|
 
-|MiniMax-M2.7MiniMax-M2.7|204,800|$0.3|$1.2|$0.06|$0.375|
+|minimax-cn(4 models)|
 
-|MiniMax-M2.7-highspeedMiniMax-M2.7-highspeed|204,800|$0.6|$2.4|$0.06|$0.375|
+|MiniMax-M2.7MiniMax-M2.7|204,800|$0.3137|$1.2549|$0.0627|$0.3922|
 
-|MiniMax-M3MiniMax-M3|1,048,576|$0.3|$1.2|$0.06|$0|
+|MiniMax-M2.7-highspeedMiniMax-M2.7-highspeed|204,800|$0.6275|$2.5098|$0.0627|$0.3922|
+
+|MiniMax-M3MiniMax-M3|1,000,000|$0.3137|$1.2549|$0.0627|$0|
+
+|MiniMax-M3.1-FlashMiniMax-M3.1-Flash|1,000,000|$0.1494|$0.5976|$0.0149|$0|
 
 |mistral(32 models)|
 
 |Codestral (latest)codestral-latest|256,000|$0.3|$0.9|$0.03|$0|
+
+|Codestral 25.08codestral-2508|256,000|$0.3|$0.9|$0.03|$0|
 
 |Devstral 2devstral-2512|262,144|$0.4|$2|$0.04|$0|
 
@@ -933,31 +1163,35 @@ All models
 
 |Devstral 2 (latest)devstral-medium-latest|262,144|$0.4|$2|$0.04|$0|
 
-|Devstral Mediumdevstral-medium-2507|128,000|$0.4|$2|$0.04|$0|
-
-|Devstral Smalldevstral-small-2507|128,000|$0.1|$0.3|$0.01|$0|
-
 |Devstral Small 2labs-devstral-small-2512|256,000|$0|$0|$0|$0|
 
-|Devstral Small 2505devstral-small-2505|128,000|$0.1|$0.3|$0.01|$0|
+|GLM-5.2glm-5-2|1,048,576|$1.4|$4.4|$0.14|$0|
 
-|GLM-5.2zai-glm-5-2|1,000,000|$1.4|$4.4|$0.14|$0|
+|GLM-5.2zai-glm-5-2|1,048,576|$1.4|$4.4|$0.14|$0|
 
-|Magistral Medium (latest)magistral-medium-latest|128,000|$2|$5|$0.2|$0|
+|GLM-5.3zai-glm-5-3|1,048,576|$1.4|$4.4|$0.14|$0|
 
-|Magistral Smallmagistral-small|128,000|$0.5|$1.5|$0.05|$0|
+|GLM-5.3-Flashzai-glm-5-3-flash|1,048,576|$0.15|$0.5|$0.03|$0|
 
-|Ministral 3B (latest)ministral-3b-latest|128,000|$0.04|$0.04|$0.004|$0|
+|Leanstral 1.5labs-leanstral-1-5-1|262,144|$0|$0|$0|$0|
 
-|Ministral 8B (latest)ministral-8b-latest|128,000|$0.1|$0.1|$0.01|$0|
+|Magistral Medium (latest)magistral-medium-latest|262,144|$2|$5|$0.2|$0|
 
-|Mistral 7Bopen-mistral-7b|8,000|$0.25|$0.25|$0.025|$0|
+|Ministral 3 14Bministral-14b-2512|262,144|$0.2|$0.2|$0.02|$0|
+
+|Ministral 3 3Bministral-3b-2512|131,072|$0.1|$0.1|$0.01|$0|
+
+|Ministral 3 8Bministral-8b-2512|262,144|$0.15|$0.15|$0.015|$0|
+
+|Ministral 3B (latest)ministral-3b-latest|131,072|$0.1|$0.1|$0.01|$0|
+
+|Ministral 8B (latest)ministral-8b-latest|262,144|$0.15|$0.15|$0.015|$0|
 
 |Mistral Large (latest)mistral-large-latest|262,144|$0.5|$1.5|$0.05|$0|
 
-|Mistral Large 2.1mistral-large-2411|131,072|$2|$6|$0.2|$0|
-
 |Mistral Large 3mistral-large-2512|262,144|$0.5|$1.5|$0.05|$0|
+
+|Mistral Large 4mistral-large-4|1,048,576|$1.36|$4.18|$0.14|$0|
 
 |Mistral Medium (latest)mistral-medium-latest|262,144|$1.5|$7.5|$0.15|$0|
 
@@ -969,39 +1203,21 @@ All models
 
 |Mistral Medium 3.5mistral-medium-3.5|262,144|$1.5|$7.5|$0|$0|
 
-|Mistral Nemomistral-nemo|128,000|$0.15|$0.15|$0.015|$0|
-
-|Mistral Small (latest)mistral-small-latest|256,000|$0.15|$0.6|$0.015|$0|
+|Mistral Small (latest)mistral-small-latest|262,144|$0.15|$0.6|$0.015|$0|
 
 |Mistral Small 3.2mistral-small-2506|128,000|$0.1|$0.3|$0.01|$0|
 
-|Mistral Small 4mistral-small-2603|256,000|$0.15|$0.6|$0.015|$0|
-
-|Mixtral 8x22Bopen-mixtral-8x22b|64,000|$2|$6|$0.2|$0|
-
-|Mixtral 8x7Bopen-mixtral-8x7b|32,000|$0.7|$0.7|$0.07|$0|
+|Mistral Small 4mistral-small-2603|262,144|$0.15|$0.6|$0.015|$0|
 
 |Open Mistral Nemoopen-mistral-nemo|128,000|$0.15|$0.15|$0.015|$0|
 
 |Pixtral 12Bpixtral-12b|128,000|$0.15|$0.15|$0.015|$0|
 
-|Pixtral Large (latest)pixtral-large-latest|128,000|$2|$6|$0.2|$0|
+|Voxtral Smallvoxtral-small-2507|32,768|$0.1|$0.4|$0.01|$0|
 
-|Voxtral Small (latest)voxtral-small-latest|32,000|$0.1|$0.3|$0.01|$0|
+|Voxtral Small (latest)voxtral-small-latest|32,768|$0.1|$0.4|$0.01|$0|
 
-|moonshotai(10 models)|
-
-|Kimi K2 0711kimi-k2-0711-preview|131,072|$0.6|$2.5|$0.15|$0|
-
-|Kimi K2 0905kimi-k2-0905-preview|262,144|$0.6|$2.5|$0.15|$0|
-
-|Kimi K2 Thinkingkimi-k2-thinking|262,144|$0.6|$2.5|$0.15|$0|
-
-|Kimi K2 Thinking Turbokimi-k2-thinking-turbo|262,144|$1.15|$8|$0.15|$0|
-
-|Kimi K2 Turbokimi-k2-turbo-preview|262,144|$2.4|$10|$0.6|$0|
-
-|Kimi K2.5kimi-k2.5|262,144|$0.6|$3|$0.1|$0|
+|moonshotai(6 models)|
 
 |Kimi K2.6kimi-k2.6|262,144|$0.95|$4|$0.16|$0|
 
@@ -1011,45 +1227,43 @@ All models
 
 |Kimi K3kimi-k3|1,048,576|$3|$15|$0.3|$0|
 
-|moonshotai-cn(10 models)|
+|Kimi K3.1 Prokimi-k3.1-pro|1,048,576|$2|$10|$0.2|$0|
 
-|Kimi K2 0711kimi-k2-0711-preview|131,072|$0.6|$2.5|$0.15|$0|
+|Kimi K3.1 Pro Highspeedkimi-k3.1-pro-highspeed|1,048,576|$4|$20|$0.2|$0|
 
-|Kimi K2 0905kimi-k2-0905-preview|262,144|$0.6|$2.5|$0.15|$0|
+|moonshotai-cn(6 models)|
 
-|Kimi K2 Thinkingkimi-k2-thinking|262,144|$0.6|$2.5|$0.15|$0|
+|Kimi K2.6kimi-k2.6|262,144|$0.9711|$4.0337|$0.1643|$0|
 
-|Kimi K2 Thinking Turbokimi-k2-thinking-turbo|262,144|$1.15|$8|$0.15|$0|
+|Kimi K2.7 Codekimi-k2.7-code|262,144|$0.9711|$4.0337|$0.1942|$0|
 
-|Kimi K2 Turbokimi-k2-turbo-preview|262,144|$2.4|$10|$0.6|$0|
-
-|Kimi K2.5kimi-k2.5|262,144|$0.6|$3|$0.1|$0|
-
-|Kimi K2.6kimi-k2.6|262,144|$0.95|$4|$0.16|$0|
-
-|Kimi K2.7 Codekimi-k2.7-code|262,144|$0.95|$4|$0.19|$0|
-
-|Kimi K2.7 Code HighSpeedkimi-k2.7-code-highspeed|262,144|$1.9|$8|$0.38|$0|
+|Kimi K2.7 Code HighSpeedkimi-k2.7-code-highspeed|262,144|$1.9421|$8.0673|$0.3884|$0|
 
 |Kimi K3kimi-k3|1,048,576|$3|$15|$0.3|$0|
+
+|Kimi K3.1 Prokimi-k3.1-pro|1,048,576|$1.9437|$10.1671|$0.1944|$0|
+
+|Kimi K3.1 Pro Highspeedkimi-k3.1-pro-highspeed|1,048,576|$3.8874|$20.3342|$0.1944|$0|
 
 |nvidia(22 models)|
 
 |Cosmos Reason2 8Bnvidia/cosmos-reason2-8b|131,072|$0|$0|$0|$0|
 
-|DeepSeek V4 Flash 0731deepseek-ai/deepseek-v4-flash-0731|1,000,000|$0|$0|$0|$0|
+|DeepSeek V4.1 Flashdeepseek-ai/deepseek-v4.1-flash|1,000,000|$0|$0|$0|$0|
+
+|DiffusionGemma 26B A4B ITgoogle/diffusiongemma-26b-a4b-it|250,000|$0|$0|$0|$0|
 
 |Gemma 3 12B ITgoogle/gemma-3-12b-it|131,072|$0|$0|$0|$0|
 
 |Gemma 3 4B ITgoogle/gemma-3-4b-it|131,072|$0|$0|$0|$0|
 
+|GLM-5.3z-ai/glm-5.3|1,000,000|$0|$0|$0|$0|
+
+|GLM-5.3-Flashz-ai/glm-5.3-flash|1,000,000|$0|$0|$0|$0|
+
 |GPT OSS 20Bopenai/gpt-oss-20b|131,072|$0|$0|$0|$0|
 
-|GPT-OSS-120Bopenai/gpt-oss-120b|128,000|$0|$0|$0|$0|
-
 |Kimi K2.6moonshotai/kimi-k2.6|262,144|$0|$0|$0|$0|
-
-|Kimi K3moonshotai/kimi-k3|1,048,576|$0|$0|$0|$0|
 
 |Laguna XS 2.1poolside/laguna-xs-2.1|262,144|$0|$0|$0|$0|
 
@@ -1061,7 +1275,7 @@ All models
 
 |Llama-3.2-90B-Vision-Instructmeta/llama-3.2-90b-vision-instruct|128,000|$0|$0|$0|$0|
 
-|MiniMax-M3minimaxai/minimax-m3|1,000,000|$0|$0|$0|$0|
+|MiniMax-M3.1-Flashminimaxai/minimax-m3.1-flash|262,144|$0|$0|$0|$0|
 
 |Mistral-7B-Instruct-v0.3mistralai/mistral-7b-instruct-v0.3|65,536|$0|$0|$0|$0|
 
@@ -1069,17 +1283,19 @@ All models
 
 |Nemotron 3 Nano Omninvidia/nemotron-3-nano-omni-30b-a3b-reasoning|256,000|$0|$0|$0|$0|
 
-|Nemotron 3 Supernvidia/nemotron-3-super-120b-a12b|262,144|$0.2|$0.8|$0|$0|
-
-|Nemotron 3 Ultra 550B A55Bnvidia/nemotron-3-ultra-550b-a55b|1,000,000|$0.5|$2.5|$0.15|$0|
+|Nemotron 3 Ultra 550B A55Bnvidia/nemotron-3-ultra-550b-a55b|1,000,000|$0|$0|$0|$0|
 
 |Nemotron 3.5 Lightning 30B A3Bnvidia/nemotron-3.5-lightning-30b-a3b|262,144|$0|$0|$0|$0|
 
-|nemotron-3-nano-30b-a3bnvidia/nemotron-3-nano-30b-a3b|131,072|$0|$0|$0|$0|
+|Nemotron 3.5 Super VL 120B A12Bnvidia/nemotron-3.5-super-vl-120b-a12b|1,048,576|$0|$0|$0|$0|
 
-|Step 3.7 Flashstepfun-ai/step-3.7-flash|256,000|$0|$0|$0|$0|
+|Step 5 Previewstepfun-ai/step-5-preview|1,048,576|$0|$0|$0|$0|
 
-|openai(38 models)|
+|openai(42 models)|
+
+|Daybreak Bluegpt-daybreak-blue-latest|1,050,000|$4|$20|$0.4|$5|
+
+|Daybreak Redgpt-daybreak-red-latest|400,000|$12.5|$75|$1.25|$15.625|
 
 |GPT-4gpt-4|8,192|$30|$60|$0|$0|
 
@@ -1115,11 +1331,7 @@ All models
 
 |GPT-5.2gpt-5.2|400,000|$1.75|$14|$0.175|$0|
 
-|GPT-5.2 Chatgpt-5.2-chat-latest|128,000|$1.75|$14|$0.175|$0|
-
 |GPT-5.2 Progpt-5.2-pro|400,000|$21|$168|$0|$0|
-
-|GPT-5.3 Chat (latest)gpt-5.3-chat-latest|128,000|$1.75|$14|$0.175|$0|
 
 |GPT-5.3 Codexgpt-5.3-codex|400,000|$1.75|$14|$0.175|$0|
 
@@ -1143,6 +1355,14 @@ All models
 
 |GPT-5.6 Terragpt-5.6-terra|272,000|$2|$12|$0.2|$2.5|
 
+|GPT-6 Astragpt-6-astra|272,000|$10|$50|$1|$12.5|
+
+|GPT-6 Lunagpt-6-luna|272,000|$0.1|$0.5|$0.01|$0.125|
+
+|GPT-6 Solgpt-6-sol|272,000|$2|$10|$0.2|$2.5|
+
+|GPT-6.1 Solgpt-6.1-sol|272,000|$2|$10|$0.1|$2.5|
+
 |GPT-Realtime-2.1gpt-realtime-2.1|128,000|$4|$24|$0.4|$0|
 
 |o1o1|200,000|$15|$60|$7.5|$0|
@@ -1159,27 +1379,33 @@ All models
 
 |openai-codex(7 models)|
 
-|GPT-5.3 Codex Sparkgpt-5.3-codex-spark|128,000|$1.75|$14|$0.175|$0|
-
-|GPT-5.4gpt-5.4|272,000|$2.5|$15|$0.25|$0|
-
-|GPT-5.4 minigpt-5.4-mini|272,000|$0.75|$4.5|$0.075|$0|
-
-|GPT-5.5gpt-5.5|272,000|$5|$30|$0.5|$0|
-
 |GPT-5.6 Lunagpt-5.6-luna|272,000|$0.2|$1.2|$0.02|$0.25|
 
-|GPT-5.6 Solgpt-5.6-sol|272,000|$5|$30|$0.5|$6.25|
+|GPT-5.6 Solgpt-5.6-sol|272,000|$4|$20|$0.4|$5|
 
 |GPT-5.6 Terragpt-5.6-terra|272,000|$2|$12|$0.2|$2.5|
 
-|opencode(60 models)|
+|GPT-6 Astragpt-6-astra|272,000|$10|$50|$1|$12.5|
+
+|GPT-6 Lunagpt-6-luna|272,000|$0.1|$0.5|$0.01|$0.125|
+
+|GPT-6 Solgpt-6-sol|272,000|$2|$10|$0.2|$2.5|
+
+|GPT-6.1 Solgpt-6.1-sol|500,000|$2|$10|$0.1|$2.5|
+
+|opencode(81 models)|
+
+|Beam Freebeam-free|1,048,576|$0|$0|$0|$0|
 
 |Big Picklebig-pickle|200,000|$0|$0|$0|$0|
 
 |Claude Fable 5claude-fable-5|1,000,000|$10|$50|$1|$12.5|
 
+|Claude Fable 5.1claude-fable-5-1|1,000,000|$10|$50|$0.25|$12.5|
+
 |Claude Haiku 4.5claude-haiku-4-5|200,000|$1|$5|$0.1|$1.25|
+
+|Claude Haiku 5.5claude-haiku-5-5|1,000,000|$0.1|$0.5|$0.01|$0.125|
 
 |Claude Opus 4.5claude-opus-4-5|200,000|$5|$25|$0.5|$6.25|
 
@@ -1191,7 +1417,7 @@ All models
 
 |Claude Opus 5claude-opus-5|1,000,000|$5|$25|$0.5|$6.25|
 
-|Claude Sonnet 4claude-sonnet-4|200,000|$3|$15|$0.3|$3.75|
+|Claude Opus 5.5claude-opus-5-5|1,000,000|$4|$20|$0.2|$5|
 
 |Claude Sonnet 4.5claude-sonnet-4-5|200,000|$3|$15|$0.3|$3.75|
 
@@ -1199,9 +1425,17 @@ All models
 
 |Claude Sonnet 5claude-sonnet-5|1,000,000|$2|$10|$0.2|$2.5|
 
+|Claude Sonnet 5.5claude-sonnet-5-5|1,000,000|$2|$10|$0.2|$2.5|
+
 |DeepSeek V4 Flashdeepseek-v4-flash|1,000,000|$0.14|$0.28|$0.028|$0|
 
-|DeepSeek V4 Prodeepseek-v4-pro|1,000,000|$1.74|$3.84|$0.145|$0|
+|DeepSeek V4 Prodeepseek-v4-pro|1,000,000|$1.74|$3.48|$0.145|$0|
+
+|DeepSeek V4.1 Flashdeepseek-v4.1-flash|1,000,000|$0.3|$1.2|$0.006|$0|
+
+|DeepSeek V4.1 Flash Freedeepseek-v4.1-flash-free|200,000|$0|$0|$0|$0|
+
+|Flint 40B Freeflint-40b-free|262,144|$0|$0|$0|$0|
 
 |Gemini 3 Flashgemini-3-flash|1,048,576|$0.5|$3|$0.05|$0|
 
@@ -1215,11 +1449,21 @@ All models
 
 |Gemini 3.7 Flashgemini-3.7-flash|1,048,576|$1.5|$7.5|$0.15|$0|
 
+|Gemini 3.8 Flashgemini-3.8-flash|1,048,576|$1.5|$7.5|$0.15|$0|
+
+|Gemini 4 Argongemini-4-argon|1,048,576|$2|$10|$0.1|$0|
+
 |GLM-5glm-5|204,800|$1|$3.2|$0.2|$0|
 
 |GLM-5.1glm-5.1|204,800|$1.4|$4.4|$0.26|$0|
 
 |GLM-5.2glm-5.2|1,000,000|$1.4|$4.4|$0.26|$0|
+
+|GLM-5.3glm-5.3|1,000,000|$1.4|$4.4|$0.26|$0|
+
+|GLM-5.3-Flashglm-5.3-flash|1,000,000|$0.15|$0.5|$0.03|$0|
+
+|GLM-5.3-Flash Freeglm-5.3-flash-free|200,000|$0|$0|$0|$0|
 
 |GPT-5gpt-5|400,000|$1.07|$8.5|$0.107|$0|
 
@@ -1255,27 +1499,35 @@ All models
 
 |GPT-5.6 Lunagpt-5.6-luna|1,050,000|$0.2|$1.2|$0.02|$0.25|
 
-|GPT-5.6 Sol (50% Off)gpt-5.6-sol|1,050,000|$2|$10|$0.2|$2.5|
+|GPT-5.6 Solgpt-5.6-sol|1,050,000|$4|$20|$0.4|$5|
 
-|GPT-5.6 Terragpt-5.6-terra|1,050,000|$2.5|$15|$0.25|$3.125|
+|GPT-5.6 Terragpt-5.6-terra|1,050,000|$2|$12|$0.2|$2.5|
+
+|GPT-6 Astragpt-6-astra|1,050,000|$10|$50|$1|$12.5|
+
+|GPT-6 Lunagpt-6-luna|1,050,000|$0.1|$0.5|$0.01|$0.125|
+
+|GPT-6 Solgpt-6-sol|1,050,000|$2|$10|$0.2|$2.5|
+
+|GPT-6.1 Solgpt-6.1-sol|1,050,000|$2|$10|$0.1|$2.5|
 
 |Grok 4.5grok-4.5|500,000|$2|$6|$0.3|$0|
 
 |Grok 4.6grok-4.6|500,000|$2|$6|$0.5|$0|
 
+|Grok 4.7grok-4.7|500,000|$2|$6|$0.5|$0|
+
 |Grok Build 0.1grok-build-0.1|256,000|$1|$2|$0.2|$0|
 
-|Hy3 Freehy3-free|190,000|$0|$0|$0|$0|
-
-|Kimi K2.5kimi-k2.5|262,144|$0.6|$3|$0.08|$0|
+|Kimi K2.5kimi-k2.5|262,144|$0.6|$3|$0.1|$0|
 
 |Kimi K2.6kimi-k2.6|262,144|$0.95|$4|$0.16|$0|
 
 |Kimi K2.7 Codekimi-k2.7-code|262,144|$0.95|$4|$0.19|$0|
 
-|Kimi K3kimi-k3|1,048,576|$3|$15|$0.3|$0|
+|Kimi K3kimi-k3|1,048,576|$3|$15|$0.3|$3|
 
-|MiMo V2.5 Freemimo-v2.5-free|200,000|$0|$0|$0|$0|
+|MiMo-V2.6-Flash Freemimo-v2.6-flash-free|200,000|$0|$0|$0|$0|
 
 |MiniMax-M2.5minimax-m2.5|204,800|$0.3|$1.2|$0.06|$0|
 
@@ -1283,45 +1535,61 @@ All models
 
 |MiniMax-M3minimax-m3|512,000|$0.3|$1.2|$0.06|$0|
 
+|Mistral Large 4mistral-large-4|524,288|$0.68|$2.09|$0.07|$0|
+
 |Muse Spark 1.2muse-spark-1.2|1,048,576|$1.25|$4.25|$0.15|$0|
 
-|Muse Spark 1.2 Freemuse-spark-1.2-contributor-free|1,048,576|$0|$0|$0|$0|
+|Muse Spark 1.3muse-spark-1.3|1,048,576|$1.25|$4.25|$0.15|$0|
+
+|Muse Wondermuse-wonder-1.0|1,048,576|$4|$20|$0.2|$0|
 
 |Nemotron 3 Ultra Freenemotron-3-ultra-free|1,000,000|$0|$0|$0|$0|
 
 |Nemotron 3.5 Lightning Freenemotron-3.5-lightning-free|262,144|$0|$0|$0|$0|
 
+|Nemotron 3.5 Super VL Freenemotron-3.5-super-vl-free|1,048,576|$0|$0|$0|$0|
+
 |Qwen3.5 Plusqwen3.5-plus|262,144|$0.2|$1.2|$0.02|$0.25|
 
 |Qwen3.6 Plusqwen3.6-plus|262,144|$0.5|$3|$0.05|$0.625|
 
-|opencode-go(23 models)|
+|Qwen3.8 Flashqwen3.8-flash|1,000,000|$0.15|$0.47|$0.016|$0.2|
 
-|DeepSeek V4 Flashdeepseek-v4-flash|1,000,000|$0.22|$0.66|$0.007|$0|
+|Qwen3.8 Maxqwen3.8-max|262,144|$2|$6|$0.25|$2.5|
 
-|DeepSeek V4 Flash Vision Expdeepseek-v4-flash-vision-exp|1,000,000|$0.22|$0.66|$0.007|$0|
+|opencode-go(29 models)|
+
+|Beam Freebeam-free|1,048,576|$0|$0|$0|$0|
+
+|Claude Haiku 5.5claude-haiku-5-5|1,000,000|$0.1|$0.5|$0.01|$0.125|
 
 |DeepSeek V4 Pro (New)deepseek-v4-pro|1,000,000|$0.66|$1.98|$0.022|$0|
 
-|GLM-5.1glm-5.1|202,752|$1.4|$4.4|$0.26|$0|
+|DeepSeek V4.1 Flashdeepseek-v4.1-flash|1,000,000|$0.15|$0.6|$0.003|$0|
+
+|Gemini 4 Argon Contributorgemini-4-argon-contributor|1,048,576|$4|$20|$0.2|$0|
 
 |GLM-5.2glm-5.2|1,000,000|$1.4|$4.4|$0.26|$0|
 
 |GLM-5.3glm-5.3|1,000,000|$1.4|$4.4|$0.26|$0|
 
-|GLM-5.3-Flash (2x usage)glm-5.3-flash|1,000,000|$0.075|$0.25|$0.015|$0|
+|GLM-5.3-Flashglm-5.3-flash|1,000,000|$0.15|$0.5|$0.03|$0|
 
 |GPT-5.6 Lunagpt-5.6-luna|1,050,000|$0.2|$1.2|$0.02|$0.25|
 
-|Grok 4.6grok-4.6|500,000|$2|$6|$0.5|$0|
+|GPT-6 Lunagpt-6-luna|1,050,000|$0.1|$0.5|$0.01|$0.125|
 
-|Hy3 (8x usage)hy3|256,000|$0.0175|$0.0725|$0.004375|$0|
+|Grok 4.7grok-4.7|500,000|$2|$6|$0.5|$0|
 
-|Kimi K2.6kimi-k2.6|262,144|$0.95|$4|$0.16|$0|
+|Hy3hy3|256,000|$0.14|$0.58|$0.035|$0|
+
+|Hy4 previewhy4-preview|1,024,000|$0.834|$2.501|$0.042|$0|
 
 |Kimi K2.7 Codekimi-k2.7-code|262,144|$0.95|$4|$0.19|$0|
 
-|Kimi K3kimi-k3|1,048,576|$3|$15|$0.3|$0|
+|Kimi K3kimi-k3|1,048,576|$3|$15|$0.3|$3|
+
+|Kimi K3.1 Prokimi-k3.1-pro|1,048,576|$2|$10|$0.2|$2|
 
 |LongCat-2.0longcat-2.0|1,000,000|$0.3|$1.2|$0.006|$0|
 
@@ -1329,21 +1597,31 @@ All models
 
 |MiMo V2.5 Promimo-v2.5-pro|1,048,576|$0.435|$0.87|$0.003625|$0|
 
-|MiniMax-M2.7minimax-m2.7|204,800|$0.3|$1.2|$0.06|$0|
+|MiMo-V2.6-Flashmimo-v2.6-flash|1,048,576|$0.14|$0.28|$0.0028|$0|
+
+|MiMo-V2.6-Promimo-v2.6-pro|1,048,576|$0.435|$0.87|$0.003625|$0|
+
+|MiniMax M3.1 Flashminimax-m3.1-flash|1,000,000|$0.15|$0.6|$0.015|$0|
 
 |MiniMax-M3minimax-m3|1,000,000|$0.3|$1.2|$0.06|$0|
 
 |Muse Spark 1.2 Contributormuse-spark-1.2-contributor|1,048,576|$0.1|$0.2|$0.002|$0|
 
-|Qwen3.6 Plusqwen3.6-plus|1,000,000|$0.5|$3|$0.05|$0.625|
-
-|Qwen3.7 Maxqwen3.7-max|1,000,000|$2.5|$7.5|$0.5|$3.125|
+|Muse Spark 1.3 Contributormuse-spark-1.3-contributor|1,048,576|$0.1|$0.2|$0.002|$0|
 
 |Qwen3.7 Plusqwen3.7-plus|1,000,000|$0.4|$1.6|$0.04|$0.5|
 
+|Qwen3.8 Flashqwen3.8-flash|1,000,000|$0.15|$0.47|$0.016|$0.2|
+
 |Qwen3.8 Maxqwen3.8-max|1,000,000|$2|$6|$0.25|$2.5|
 
-|openrouter(350 models)|
+|Step 5 Previewstep-5-preview|1,000,000|$1|$2.7|$0.1|$0|
+
+|openrouter(402 models)|
+
+|AionLabs: Aion 3.5aion-labs/aion-3.5|262,144|$3|$6|$0.75|$0|
+
+|AionLabs: Aion 3.5 Miniaion-labs/aion-3.5-mini|262,144|$0.7|$1.4|$0.18|$0|
 
 |AionLabs: Aion-2.0aion-labs/aion-2.0|131,072|$0.8|$1.6|$0.2|$0|
 
@@ -1361,23 +1639,25 @@ All models
 
 |Amazon: Nova Pro 1.0amazon/nova-pro-v1|300,000|$0.8|$3.2|$0|$0|
 
-|Anthropic Claude Haiku Latest~anthropic/claude-haiku-latest|200,000|$1|$5|$0.1|$1.25|
-
-|Anthropic Claude Sonnet Latest~anthropic/claude-sonnet-latest|1,000,000|$2|$10|$0.2|$2.5|
-
-|Anthropic: Claude 3 Haikuanthropic/claude-3-haiku|200,000|$0.25|$1.25|$0.03|$0.3|
-
 |Anthropic: Claude Fable 5anthropic/claude-fable-5|1,000,000|$10|$50|$1|$12.5|
 
 |Anthropic: Claude Fable 5 (batch)anthropic/claude-fable-5:batch|1,000,000|$5|$25|$0.5|$6.25|
 
-|Anthropic: Claude Fable Latest~anthropic/claude-fable-latest|1,000,000|$10|$50|$1|$12.5|
+|Anthropic: Claude Fable 5.1anthropic/claude-fable-5.1|1,000,000|$10|$50|$0.25|$12.5|
+
+|Anthropic: Claude Fable 5.1 (batch)anthropic/claude-fable-5.1:batch|1,000,000|$5|$25|$0.125|$6.25|
+
+|Anthropic: Claude Fable Latest~anthropic/claude-fable-latest|1,000,000|$10|$50|$0.25|$12.5|
 
 |Anthropic: Claude Haiku 4.5anthropic/claude-haiku-4.5|200,000|$1|$5|$0.1|$1.25|
 
 |Anthropic: Claude Haiku 4.5 (batch)anthropic/claude-haiku-4.5:batch|200,000|$0.5|$2.5|$0.05|$0.625|
 
-|Anthropic: Claude Opus 4anthropic/claude-opus-4|200,000|$15|$75|$1.5|$18.75|
+|Anthropic: Claude Haiku 5.5anthropic/claude-haiku-5.5|1,000,000|$0.1|$0.5|$0.01|$0.125|
+
+|Anthropic: Claude Haiku 5.5 (batch)anthropic/claude-haiku-5.5:batch|1,000,000|$0.05|$0.25|$0.005|$0.0625|
+
+|Anthropic: Claude Haiku Latest~anthropic/claude-haiku-latest|1,000,000|$0.1|$0.5|$0.01|$0.125|
 
 |Anthropic: Claude Opus 4.1anthropic/claude-opus-4.1|200,000|$15|$75|$1.5|$18.75|
 
@@ -1395,17 +1675,19 @@ All models
 
 |Anthropic: Claude Opus 4.7 (batch)anthropic/claude-opus-4.7:batch|1,000,000|$2.5|$12.5|$0.25|$3.125|
 
-|Anthropic: Claude Opus 4.7 (Fast)anthropic/claude-opus-4.7-fast|1,000,000|$30|$150|$3|$37.5|
-
 |Anthropic: Claude Opus 4.8anthropic/claude-opus-4.8|1,000,000|$5|$25|$0.5|$6.25|
 
 |Anthropic: Claude Opus 4.8 (batch)anthropic/claude-opus-4.8:batch|1,000,000|$2.5|$12.5|$0.25|$3.125|
 
-|Anthropic: Claude Opus 4.8 (Fast)anthropic/claude-opus-4.8-fast|1,000,000|$10|$50|$1|$12.5|
+|Anthropic: Claude Opus 5anthropic/claude-opus-5|1,000,000|$5|$25|$0.5|$6.25|
 
-|Anthropic: Claude Opus Latest~anthropic/claude-opus-latest|1,000,000|$5|$25|$0.5|$6.25|
+|Anthropic: Claude Opus 5 (batch)anthropic/claude-opus-5:batch|1,000,000|$2.5|$12.5|$0.25|$3.125|
 
-|Anthropic: Claude Sonnet 4anthropic/claude-sonnet-4|200,000|$3|$15|$0.3|$3.75|
+|Anthropic: Claude Opus 5.5anthropic/claude-opus-5.5|1,000,000|$4|$20|$0.2|$5|
+
+|Anthropic: Claude Opus 5.5 (batch)anthropic/claude-opus-5.5:batch|1,000,000|$2|$10|$0.1|$2.5|
+
+|Anthropic: Claude Opus Latest~anthropic/claude-opus-latest|1,000,000|$4|$20|$0.2|$5|
 
 |Anthropic: Claude Sonnet 4.5anthropic/claude-sonnet-4.5|1,000,000|$3|$15|$0.3|$3.75|
 
@@ -1419,15 +1701,19 @@ All models
 
 |Anthropic: Claude Sonnet 5 (batch)anthropic/claude-sonnet-5:batch|1,000,000|$1|$5|$0.1|$1.25|
 
-|Arcee AI: Trinity Large Thinkingarcee-ai/trinity-large-thinking|262,144|$0.22|$0.85|$0.06|$0|
+|Anthropic: Claude Sonnet 5.5anthropic/claude-sonnet-5.5|1,000,000|$2|$10|$0.1|$2.5|
 
-|Arcee AI: Virtuoso Largearcee-ai/virtuoso-large|131,072|$0.75|$1.2|$0|$0|
+|Anthropic: Claude Sonnet 5.5 (batch)anthropic/claude-sonnet-5.5:batch|1,000,000|$1|$5|$0.05|$1.25|
+
+|Anthropic: Claude Sonnet Latest~anthropic/claude-sonnet-latest|1,000,000|$2|$10|$0.1|$2.5|
+
+|Arcee AI: Trinity Large Thinkingarcee-ai/trinity-large-thinking|262,144|$0.25|$0.8|$0.06|$0|
 
 |Autoauto|2,000,000|Varies|Varies|Varies|Varies|
 
 |Auto Routeropenrouter/auto|2,000,000|Varies|Varies|Varies|Varies|
 
-|Auto Router (Beta)openrouter/auto-beta|2,000,000|-|-|$0|$0|
+|Auto Router (Beta)openrouter/auto-beta|2,000,000|$0|$0|$0|$0|
 
 |ByteDance Seed: Seed 1.6bytedance-seed/seed-1.6|262,144|$0.25|$2|$0|$0|
 
@@ -1441,11 +1727,7 @@ All models
 
 |ByteDance Seed: Seed-2.0-Minibytedance-seed/seed-2.0-mini|262,144|$0.1|$0.4|$0|$0|
 
-|Claude Opus 5anthropic/claude-opus-5|1,000,000|$5|$25|$0.5|$6.25|
-
-|Claude Opus 5 (batch)anthropic/claude-opus-5:batch|1,000,000|$2.5|$12.5|$0.25|$3.125|
-
-|Claude Opus 5 (Fast)anthropic/claude-opus-5-fast|1,000,000|$10|$50|$1|$12.5|
+|Cohere: Command A+cohere/command-a-plus|192,000|$0.3|$1.5|$0.15|$0|
 
 |Cohere: Command R (08-2024)cohere/command-r-08-2024|128,000|$0.15|$0.6|$0|$0|
 
@@ -1453,55 +1735,55 @@ All models
 
 |Cohere: North Mini Code (free)cohere/north-mini-code:free|256,000|$0|$0|$0|$0|
 
-|DeepSeek V4 Flash Latest~deepseek/deepseek-v4-flash-latest|1,048,576|$0.03|$0.1|$0.007|$0|
+|DeepSeek: DeepSeek Flash Latest~deepseek/deepseek-flash-latest|1,048,576|$0.02|$1|$0.015|$0|
+
+|DeepSeek: DeepSeek Pro Latest~deepseek/deepseek-pro-latest|1,048,576|$0.1188|$8|$0.12|$0|
 
 |DeepSeek: DeepSeek V3deepseek/deepseek-chat|128,000|$0.2574|$1.0287|$0|$0|
 
-|DeepSeek: DeepSeek V3 0324deepseek/deepseek-chat-v3-0324|163,840|$0.25|$1|$0|$0|
+|DeepSeek: DeepSeek V3 0324deepseek/deepseek-chat-v3-0324|128,000|$0.29|$1.14|$0.11|$0|
 
-|DeepSeek: DeepSeek V3.1deepseek/deepseek-chat-v3.1|161,000|$0.55|$1.65|$0.55|$0|
+|DeepSeek: DeepSeek V3.1deepseek/deepseek-chat-v3.1|163,840|$0.25|$0.95|$0.13|$0|
 
-|DeepSeek: DeepSeek V3.1 Terminusdeepseek/deepseek-v3.1-terminus|131,072|$0.27|$1|$0.135|$0|
+|DeepSeek: DeepSeek V3.1 Terminusdeepseek/deepseek-v3.1-terminus|163,840|$0.27|$1|$0|$0|
 
-|DeepSeek: DeepSeek V3.2deepseek/deepseek-v3.2|163,840|$0.26|$0.38|$0.13|$0|
+|DeepSeek: DeepSeek V3.2deepseek/deepseek-v3.2|131,072|$0.28|$0.42|$0.028|$0|
 
 |DeepSeek: DeepSeek V3.2 Expdeepseek/deepseek-v3.2-exp|163,840|$0.27|$0.41|$0|$0|
 
-|DeepSeek: DeepSeek V4 Flash 0423deepseek/deepseek-v4-flash|1,024,000|$0.07952|$0.15904|$0.015904|$0|
+|DeepSeek: DeepSeek V4 Flash 0423deepseek/deepseek-v4-flash|1,048,575|$0.091|$0.182|$0.0182|$0|
 
-|DeepSeek: DeepSeek V4 Flash 0731deepseek/deepseek-v4-flash-0731|1,048,576|$0.06|$0.12|$0.012|$0|
+|DeepSeek: DeepSeek V4 Flash 0731deepseek/deepseek-v4-flash-0731|1,048,576|$0.04444|$0.13332|$0.001414|$0|
 
-|DeepSeek: DeepSeek V4 Flash Vision Expdeepseek/deepseek-v4-flash-vision-exp|1,048,576|$0.44|$1.32|$0.014|$0|
+|DeepSeek: DeepSeek V4 Flash Latest~deepseek/deepseek-v4-flash-latest|1,048,576|$0.0422|$0.1694|$0.028|$0|
 
-|DeepSeek: DeepSeek V4 Pro 0423deepseek/deepseek-v4-pro|1,024,000|$0.87|$1.74|$0.0725|$0|
+|DeepSeek: DeepSeek V4 Flash Vision Expdeepseek/deepseek-v4-flash-vision-exp|1,048,576|$0.2156|$0.6468|$0.00686|$0|
 
-|DeepSeek: DeepSeek V4 Pro 0813deepseek/deepseek-v4-pro-0813|1,048,575|$1.122|$3.366|$0.0374|$0|
+|DeepSeek: DeepSeek V4 Pro 0423deepseek/deepseek-v4-pro|1,024,000|$0.297192|$0.594384|$0.024766|$0|
 
-|DeepSeek: R1deepseek/deepseek-r1|64,000|$0.7|$2.5|$0|$0|
+|DeepSeek: DeepSeek V4 Pro 0813deepseek/deepseek-v4-pro-0813|1,048,576|$0.66|$1.98|$0.022|$0|
+
+|DeepSeek: DeepSeek V4.1 Flashdeepseek/deepseek-v4.1-flash|1,048,576|$0.02|$1|$0.015|$0|
+
+|DeepSeek: DeepSeek V4.1 Flash (batch)deepseek/deepseek-v4.1-flash:batch|1,048,576|$0.05|$0.15|$0.004|$0|
+
+|DeepSeek: DeepSeek V4.1 Flash 1017deepseek/deepseek-v4.1-flash-1017|1,048,576|$0.15|$0.6|$0.003|$0|
 
 |DeepSeek: R1 0528deepseek/deepseek-r1-0528|163,840|$0.5|$2.15|$0.35|$0|
 
 |Dots Studio: Dots3-Note Preview (free)dots-studio/dots-3-note-preview:free|512,000|$0|$0|$0|$0|
 
+|Elorian: Glimpseelorian/glimpse|262,144|$0.6|$3|$0.06|$0|
+
+|Fireworks: Ember-1fireworks/ember-1|1,048,576|$3|$15|$0.3|$0|
+
 |Free Models Routeropenrouter/free|200,000|$0|$0|$0|$0|
-
-|Google Gemini Flash Latest~google/gemini-flash-latest|1,048,576|$0.375|$1.875|$0.0375|$0.020833|
-
-|Google Gemini Pro Latest~google/gemini-pro-latest|1,048,576|$2|$12|$0.2|$0.375|
 
 |Google: Gemini 2.5 Flashgoogle/gemini-2.5-flash|1,048,576|$0.3|$2.5|$0.03|$0.083333|
 
-|Google: Gemini 2.5 Flash (batch)google/gemini-2.5-flash:batch|1,048,576|$0.15|$1.25|$0.03|$0|
-
 |Google: Gemini 2.5 Flash Litegoogle/gemini-2.5-flash-lite|1,048,576|$0.1|$0.4|$0.01|$0.083333|
 
-|Google: Gemini 2.5 Flash Lite (batch)google/gemini-2.5-flash-lite:batch|1,048,576|$0.05|$0.2|$0.01|$0|
-
 |Google: Gemini 2.5 Progoogle/gemini-2.5-pro|1,048,576|$1.25|$10|$0.125|$0.375|
-
-|Google: Gemini 2.5 Pro (batch)google/gemini-2.5-pro:batch|1,048,576|$0.625|$5|$0.125|$0|
-
-|Google: Gemini 2.5 Pro Preview 05-06google/gemini-2.5-pro-preview-05-06|1,048,576|$1.25|$10|$0.125|$0.375|
 
 |Google: Gemini 2.5 Pro Preview 06-05google/gemini-2.5-pro-preview|1,048,576|$1.25|$10|$0.125|$0.375|
 
@@ -1533,37 +1815,55 @@ All models
 
 |Google: Gemini 3.6 Flash (batch)google/gemini-3.6-flash:batch|1,048,576|$0.375|$1.875|$0.0375|$0.041667|
 
-|Google: Gemini 3.7 Flashgoogle/gemini-3.7-flash|1,048,576|$0.375|$1.875|$0.0375|$0.020833|
+|Google: Gemini 3.7 Flashgoogle/gemini-3.7-flash|1,048,576|$0.75|$3.75|$0.075|$0.041667|
 
-|Google: Gemini 3.7 Flash (batch)google/gemini-3.7-flash:batch|1,048,576|$0.1875|$0.9375|$0.01875|$0.020833|
+|Google: Gemini 3.7 Flash (batch)google/gemini-3.7-flash:batch|1,048,576|$0.375|$1.875|$0.0375|$0.041667|
+
+|Google: Gemini 3.8 Flashgoogle/gemini-3.8-flash|1,048,576|$0.825|$4.125|$0.0825|$0.041667|
+
+|Google: Gemini 3.8 Flash (batch)google/gemini-3.8-flash:batch|1,048,576|$0.375|$1.875|$0.0375|$0.041667|
+
+|Google: Gemini 4 Argongoogle/gemini-4-argon|1,048,576|$2|$10|$0.1|$0.1875|
+
+|Google: Gemini 4 Argon (batch)google/gemini-4-argon:batch|1,048,576|$1|$5|$0.05|$0.1875|
+
+|Google: Gemini Flash Latest~google/gemini-flash-latest|1,048,576|$0.75|$3.75|$0.075|$0.041667|
+
+|Google: Gemini Pro Latest~google/gemini-pro-latest|1,048,576|$2|$10|$0.1|$0.1875|
 
 |Google: Gemma 3 12Bgoogle/gemma-3-12b-it|131,072|$0.05|$0.15|$0|$0|
 
-|Google: Gemma 3 27Bgoogle/gemma-3-27b-it|131,072|$0.08|$0.45|$0.04|$0|
+|Google: Gemma 3 27Bgoogle/gemma-3-27b-it|131,072|$0.08|$0.35|$0.04|$0|
 
-|Google: Gemma 4 26B A4B google/gemma-4-26b-a4b-it|262,144|$0.07|$0.34|$0|$0|
+|Google: Gemma 4 26B A4B google/gemma-4-26b-a4b-it|262,144|$0.0675|$0.225|$0.0375|$0|
 
 |Google: Gemma 4 26B A4B (free)google/gemma-4-26b-a4b-it:free|262,144|$0|$0|$0|$0|
 
-|Google: Gemma 4 31Bgoogle/gemma-4-31b-it|262,144|$0.09|$0.34|$0.05|$0|
+|Google: Gemma 4 31Bgoogle/gemma-4-31b-it|262,144|$0.2|$0.4|$0|$0|
 
 |Google: Gemma 4 31B (free)google/gemma-4-31b-it:free|262,144|$0|$0|$0|$0|
 
-|Google: Nano Banana Pro (Gemini 3 Pro Image)google/gemini-3-pro-image|131,072|$2|$12|$0.2|$0.375|
+|Google: Nano Banana 2.1google/gemini-nano-banana-2.1|65,536|$1.5|$7.5|$0|$0|
 
-|IBM: Granite 4.1 8Bibm-granite/granite-4.1-8b|131,072|$0.05|$0.1|$0.05|$0|
+|Google: Nano Banana Pro (Gemini 3 Pro Image)google/gemini-3-pro-image|65,536|$2|$12|$0.2|$0.375|
+
+|IBM: Granite 4.2 8Bibm-granite/granite-4.2-8b|131,072|$0.06|$0.25|$0.015|$0|
 
 |Inception: Mercury 2inception/mercury-2|128,000|$0.25|$0.75|$0.025|$0|
 
-|Kwaipilot: KAT-Coder-Air V2.5kwaipilot/kat-coder-air-v2.5|256,000|$0.15|$0.6|$0.03|$0|
+|Inception: Mercury 2.5inception/mercury-2.5|260,000|$0.04|$0.15|$0.004|$0|
 
-|Kwaipilot: KAT-Coder-Pro V2kwaipilot/kat-coder-pro-v2|256,000|$0.3|$1.2|$0.06|$0|
+|Inception: Mercury 3inception/mercury-3|1,000,000|$0.1|$0.35|$0.01|$0|
 
-|Kwaipilot: KAT-Coder-Pro V2.5kwaipilot/kat-coder-pro-v2.5|256,000|$0.74|$2.96|$0.15|$0|
+|inclusionAI: Ling 3.0 Flashinclusionai/ling-3.0-flash|262,144|$0.021|$0.063|$0.0042|$0|
 
-|Ling-3.0-flashinclusionai/ling-3.0-flash|262,144|$0.021|$0.063|$0.0042|$0|
+|inclusionAI: Ling 3.0 Flash VLinclusionai/ling-3.0-flash-vl|131,072|$0.06|$0.18|$0.012|$0|
+
+|inclusionAI: Ling 3.1 Flashinclusionai/ling-3.1-flash|262,144|$0.075|$0.225|$0.015|$0|
 
 |LiquidAI: LFM2.5-2.6B (free)liquid/lfm-2.5-2.6b:free|65,536|$0|$0|$0|$0|
+
+|LiquidAI: LFM2.5-24B-A2Bliquid/lfm-2.5-24b-a2b|128,000|$0.05|$0.7|$0.025|$0|
 
 |Meituan: LongCat 2.0meituan/longcat-2.0|1,048,756|$0.3|$1.2|$0.006|$0|
 
@@ -1571,13 +1871,13 @@ All models
 
 |Meta: Llama 3.1 8B Instructmeta-llama/llama-3.1-8b-instruct|131,072|$0.05|$0.08|$0.025|$0|
 
-|Meta: Llama 3.3 70B Instructmeta-llama/llama-3.3-70b-instruct|128,000|$0.71|$0.71|$0.71|$0|
+|Meta: Llama 3.3 70B Instructmeta-llama/llama-3.3-70b-instruct|131,072|$0.1|$0.32|$0|$0|
 
-|Meta: Llama 4 Maverickmeta-llama/llama-4-maverick|1,048,576|$0.2|$0.8|$0|$0|
+|Meta: Llama 4 Maverickmeta-llama/llama-4-maverick|128,000|$0.1875|$0.6525|$0.05|$0|
 
-|Meta: Llama 4 Scoutmeta-llama/llama-4-scout|131,072|$0.11|$0.34|$0.055|$0|
+|Meta: Llama 4 Scoutmeta-llama/llama-4-scout|327,680|$0.1|$0.3|$0|$0|
 
-|Meta: Muse Glimmer 30Bmeta/muse-glimmer-30b|131,072|$0.35|$1.5|$0.04|$0|
+|Meta: Muse Glimmer 30Bmeta/muse-glimmer-30b|131,072|$0.3|$1.2|$0.04|$0|
 
 |Meta: Muse Spark 1.1meta/muse-spark-1.1|1,048,576|$1.25|$4.25|$0.15|$0|
 
@@ -1585,23 +1885,27 @@ All models
 
 |Meta: Muse Spark 1.2 Contributormeta/muse-spark-1.2-contributor|1,048,576|$0.1|$0.2|$0.002|$0|
 
+|Meta: Muse Spark 1.3meta/muse-spark-1.3|1,048,576|$1.25|$4.25|$0.15|$0|
+
+|Meta: Muse Spark 1.3 Contributormeta/muse-spark-1.3-contributor|1,048,576|$0.1|$0.2|$0.002|$0|
+
+|Meta: Muse Spark Openmeta/muse-spark-open|1,048,576|$1.25|$4.25|$0.15|$0|
+
+|Meta: Muse Wondermeta/muse-wonder|1,048,576|$4|$20|$0.2|$0|
+
 |MiniMax: MiniMax M1minimax/minimax-m1|1,000,000|$0.55|$2.2|$0|$0|
 
 |MiniMax: MiniMax M2minimax/minimax-m2|204,800|$0.255|$1.02|$0|$0|
 
 |MiniMax: MiniMax M2.1minimax/minimax-m2.1|204,800|$0.3|$1.2|$0.03|$0|
 
-|MiniMax: MiniMax M2.5minimax/minimax-m2.5|200,000|$0.27|$1.08|$0.027|$0|
+|MiniMax: MiniMax M2.5minimax/minimax-m2.5|204,800|$0.3|$1.2|$0.03|$0|
 
 |MiniMax: MiniMax M2.7minimax/minimax-m2.7|204,800|$0.3|$1.2|$0.06|$0|
 
-|MiniMax: MiniMax M2.7 (free)minimax/minimax-m2.7:free|196,608|$0|$0|$0|$0|
-
 |MiniMax: MiniMax M3minimax/minimax-m3|524,288|$0.3|$1.2|$0.06|$0|
 
-|MiniMax: MiniMax M3 (batch)minimax/minimax-m3:batch|524,288|$0.3|$1.2|$0.06|$0|
-
-|MiniMax: MiniMax M3 (free)minimax/minimax-m3:free|1,048,576|$0|$0|$0|$0|
+|MiniMax: MiniMax M3.1 Flashminimax/minimax-m3.1-flash|1,048,576|$0.15|$0.6|$0.015|$0|
 
 |Mistral Largemistralai/mistral-large|128,000|$2|$6|$0.2|$0|
 
@@ -1609,7 +1913,9 @@ All models
 
 |Mistral: Codestral 2508mistralai/codestral-2508|256,000|$0.3|$0.9|$0.03|$0|
 
-|Mistral: Devstral 2 2512mistralai/devstral-2512|262,144|$0.44|$2.2|$0.044|$0|
+|Mistral: Codestral 2508 (batch)mistralai/codestral-2508:batch|256,000|$0.15|$0.45|$0.015|$0|
+
+|Mistral: Devstral 2 2512mistralai/devstral-2512|262,144|$0.4|$2|$0.04|$0|
 
 |Mistral: Ministral 3 14B 2512mistralai/ministral-14b-2512|262,144|$0.2|$0.2|$0.02|$0|
 
@@ -1617,27 +1923,39 @@ All models
 
 |Mistral: Ministral 3 8B 2512mistralai/ministral-8b-2512|262,144|$0.15|$0.15|$0.015|$0|
 
+|Mistral: Ministral 3 8B 2512 (batch)mistralai/ministral-8b-2512:batch|262,144|$0.075|$0.075|$0.0075|$0|
+
 |Mistral: Mistral Large 3 2512mistralai/mistral-large-2512|262,144|$0.5|$1.5|$0.05|$0|
+
+|Mistral: Mistral Large 3 2512 (batch)mistralai/mistral-large-2512:batch|262,144|$0.25|$0.75|$0.025|$0|
+
+|Mistral: Mistral Large 4mistralai/mistral-large-4-0|1,048,576|$1.36|$4.18|$0.14|$0|
 
 |Mistral: Mistral Medium 3mistralai/mistral-medium-3|131,072|$0.4|$2|$0.04|$0|
 
 |Mistral: Mistral Medium 3.1mistralai/mistral-medium-3.1|131,072|$0.4|$2|$0.04|$0|
 
+|Mistral: Mistral Medium 3.1 (batch)mistralai/mistral-medium-3.1:batch|131,072|$0.2|$1|$0.02|$0|
+
 |Mistral: Mistral Medium 3.5mistralai/mistral-medium-3-5|262,144|$1.5|$7.5|$0|$0|
 
-|Mistral: Mistral Nemomistralai/mistral-nemo|131,072|$0.019|$0.03|$0|$0|
+|Mistral: Mistral Medium 3.5 (batch)mistralai/mistral-medium-3-5:batch|262,144|$0.75|$3.75|$0|$0|
+
+|Mistral: Mistral Nemomistralai/mistral-nemo|131,072|$0.029|$0.03|$0|$0|
+
+|Mistral: Mistral Small 3.1 24Bmistralai/mistral-small-3.1-24b-instruct|128,000|$0.351|$0.555|$0|$0|
 
 |Mistral: Mistral Small 3.2 24Bmistralai/mistral-small-3.2-24b-instruct|128,000|$0.075|$0.2|$0|$0|
 
 |Mistral: Mistral Small 4mistralai/mistral-small-2603|262,144|$0.15|$0.6|$0.015|$0|
 
+|Mistral: Mistral Small 4 (batch)mistralai/mistral-small-2603:batch|262,144|$0.075|$0.3|$0.0075|$0|
+
 |Mistral: Mixtral 8x22B Instructmistralai/mixtral-8x22b-instruct|65,536|$2|$6|$0.2|$0|
 
 |Mistral: Sabamistralai/mistral-saba|32,768|$0.2|$0.6|$0.02|$0|
 
-|Mistral: Voxtral Small 24B 2507mistralai/voxtral-small-24b-2507|32,000|$0.1|$0.3|$0.01|$0|
-
-|MoonshotAI Kimi Latest~moonshotai/kimi-latest|1,048,576|$2.55|$12.75|$0.256|$0|
+|Mistral: Voxtral Small 24B 2507mistralai/voxtral-small-24b-2507|32,768|$0.1|$0.3|$0.01|$0|
 
 |MoonshotAI: Kimi K2 0711moonshotai/kimi-k2|131,072|$0.57|$2.3|$0|$0|
 
@@ -1647,45 +1965,55 @@ All models
 
 |MoonshotAI: Kimi K2.5moonshotai/kimi-k2.5|262,144|$0.41|$2.06|$0.07|$0|
 
-|MoonshotAI: Kimi K2.6moonshotai/kimi-k2.6|262,144|$0.95|$4|$0.16|$0|
+|MoonshotAI: Kimi K2.6moonshotai/kimi-k2.6|262,144|$0.65|$3.41|$0.15|$0|
 
-|MoonshotAI: Kimi K2.7 Codemoonshotai/kimi-k2.7-code|262,144|$0.66|$3.4|$0.18|$0|
+|MoonshotAI: Kimi K2.7 Codemoonshotai/kimi-k2.7-code|262,144|$0.6712|$3.35|$0.15|$0|
 
-|MoonshotAI: Kimi K2.7 Code (batch)moonshotai/kimi-k2.7-code:batch|262,144|$0.95|$4|$0.19|$0|
+|MoonshotAI: Kimi K3moonshotai/kimi-k3|1,048,576|$0.239|$10.8|$0.21|$0|
 
-|MoonshotAI: Kimi K3moonshotai/kimi-k3|1,048,576|$3|$15|$0.3|$0|
+|MoonshotAI: Kimi K3 (batch)moonshotai/kimi-k3:batch|1,048,576|$2.28|$11.4|$0.228|$0|
 
-|Nex AGI: Nex-N2-Mininex-agi/nex-n2-mini|262,144|$0.025|$0.1|$0.0025|$0|
+|MoonshotAI: Kimi K3.1 Promoonshotai/kimi-k3.1-pro|1,048,576|$2|$10|$0.2|$0|
 
-|Nex AGI: Nex-N2-Pronex-agi/nex-n2-pro|262,144|$0.25|$1|$0.025|$0|
+|MoonshotAI: Kimi Latest~moonshotai/kimi-latest|1,048,576|$0.19|$8.94|$0.19|$0|
 
-|NVIDIA: Nemotron 3 Nano 30B A3Bnvidia/nemotron-3-nano-30b-a3b|262,144|$0.05|$0.2|$0.025|$0|
+|Nex AGI: Nex-N2.5-Pronex-agi/nex-n2.5-pro|262,144|$0.075|$0.25|$0.015|$0|
+
+|NVIDIA: Nemotron 3 Nano 30B A3Bnvidia/nemotron-3-nano-30b-a3b|262,144|$0.06|$0.24|$0|$0|
 
 |NVIDIA: Nemotron 3 Nano Omni (free)nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free|256,000|$0|$0|$0|$0|
 
-|NVIDIA: Nemotron 3 Supernvidia/nemotron-3-super-120b-a12b|262,144|$0.085|$0.4|$0|$0|
+|NVIDIA: Nemotron 3 Supernvidia/nemotron-3-super-120b-a12b|262,144|$0.3|$2.4|$0.15|$0|
 
 |NVIDIA: Nemotron 3 Super (free)nvidia/nemotron-3-super-120b-a12b:free|262,144|$0|$0|$0|$0|
 
-|NVIDIA: Nemotron 3 Ultranvidia/nemotron-3-ultra-550b-a55b|512,288|$0.6|$3.6|$0.2|$0|
-
-|NVIDIA: Nemotron 3 Ultra (batch)nvidia/nemotron-3-ultra-550b-a55b:batch|512,288|$0.6|$3.6|$0.2|$0|
+|NVIDIA: Nemotron 3 Ultranvidia/nemotron-3-ultra-550b-a55b|202,800|$0.6|$2.4|$0.12|$0|
 
 |NVIDIA: Nemotron 3 Ultra (free)nvidia/nemotron-3-ultra-550b-a55b:free|1,000,000|$0|$0|$0|$0|
 
-|NVIDIA: Nemotron 3.5 Lightningnvidia/nemotron-3.5-lightning|262,144|$0.08|$0.2|$0.04|$0|
+|NVIDIA: Nemotron 3.5 Lightningnvidia/nemotron-3.5-lightning|262,144|$0.07|$0.2|$0.04|$0|
 
 |NVIDIA: Nemotron 3.5 Lightning (free)nvidia/nemotron-3.5-lightning:free|1,000,000|$0|$0|$0|$0|
 
-|OpenAI GPT Latest~openai/gpt-latest|1,050,000|$2|$10|$0.2|$2.5|
+|NVIDIA: Nemotron 3.5 Super VLnvidia/nemotron-3.5-super-vl|262,144|$0.15|$0.5|$0.02|$0|
 
-|OpenAI GPT Mini Latest~openai/gpt-mini-latest|400,000|$0.75|$4.5|$0.075|$0|
+|NVIDIA: Nemotron 3.5 Super VL (free)nvidia/nemotron-3.5-super-vl:free|1,000,000|$0|$0|$0|$0|
+
+|OpenAI: GPT Astra Latest~openai/gpt-astra-latest|1,050,000|$10|$50|$1|$12.5|
 
 |OpenAI: GPT Audioopenai/gpt-audio|128,000|$2.5|$10|$0|$0|
 
 |OpenAI: GPT Audio Miniopenai/gpt-audio-mini|128,000|$0.6|$2.4|$0|$0|
 
 |OpenAI: GPT Chat Latestopenai/gpt-chat-latest|400,000|$5|$30|$0.5|$0|
+
+|OpenAI: GPT Luna Latest~openai/gpt-luna-latest|1,050,000|$0.1|$0.5|$0.01|$0.125|
+
+|OpenAI: GPT Mini Latest~openai/gpt-mini-latest|400,000|$0.75|$4.5|$0.075|$0|
+
+|OpenAI: GPT Sol Latest~openai/gpt-sol-latest|1,050,000|$2|$10|$0.1|$2.5|
+
+|OpenAI: GPT Terra Latest~openai/gpt-terra-latest|1,050,000|$2|$12|$0.2|$2.5|
 
 |OpenAI: GPT-3.5 Turboopenai/gpt-3.5-turbo|16,385|$0.5|$1.5|$0|$0|
 
@@ -1700,8 +2028,6 @@ All models
 |OpenAI: GPT-4 Turboopenai/gpt-4-turbo|128,000|$10|$30|$0|$0|
 
 |OpenAI: GPT-4 Turbo (batch)openai/gpt-4-turbo:batch|128,000|$5|$15|$0|$0|
-
-|OpenAI: GPT-4 Turbo Previewopenai/gpt-4-turbo-preview|128,000|$10|$30|$0|$0|
 
 |OpenAI: GPT-4.1openai/gpt-4.1|1,047,576|$2|$8|$0.5|$0|
 
@@ -1734,8 +2060,6 @@ All models
 |OpenAI: GPT-5openai/gpt-5|400,000|$1.25|$10|$0.125|$0|
 
 |OpenAI: GPT-5 (batch)openai/gpt-5:batch|400,000|$0.625|$5|$0.0625|$0|
-
-|OpenAI: GPT-5 Codex (batch)openai/gpt-5-codex:batch|400,000|$0.625|$5|$0.0625|$0|
 
 |OpenAI: GPT-5 Miniopenai/gpt-5-mini|400,000|$0.25|$2|$0.025|$0|
 
@@ -1805,13 +2129,13 @@ All models
 
 |OpenAI: GPT-5.6 Luna Pro (batch)openai/gpt-5.6-luna-pro:batch|1,050,000|$0.1|$0.6|$0.01|$0|
 
-|OpenAI: GPT-5.6 Solopenai/gpt-5.6-sol|1,050,000|$2|$10|$0.2|$2.5|
+|OpenAI: GPT-5.6 Solopenai/gpt-5.6-sol|1,050,000|$4|$20|$0.4|$5|
 
-|OpenAI: GPT-5.6 Sol (batch)openai/gpt-5.6-sol:batch|1,050,000|$1|$5|$0.1|$1.25|
+|OpenAI: GPT-5.6 Sol (batch)openai/gpt-5.6-sol:batch|1,050,000|$2|$10|$0.2|$2.5|
 
-|OpenAI: GPT-5.6 Sol Proopenai/gpt-5.6-sol-pro|1,050,000|$2|$10|$0.2|$2.5|
+|OpenAI: GPT-5.6 Sol Proopenai/gpt-5.6-sol-pro|1,050,000|$4|$20|$0.4|$5|
 
-|OpenAI: GPT-5.6 Sol Pro (batch)openai/gpt-5.6-sol-pro:batch|1,050,000|$1|$5|$0.1|$1.25|
+|OpenAI: GPT-5.6 Sol Pro (batch)openai/gpt-5.6-sol-pro:batch|1,050,000|$2|$10|$0.2|$2.5|
 
 |OpenAI: GPT-5.6 Terraopenai/gpt-5.6-terra|1,050,000|$2|$12|$0.2|$2.5|
 
@@ -1821,15 +2145,49 @@ All models
 
 |OpenAI: GPT-5.6 Terra Pro (batch)openai/gpt-5.6-terra-pro:batch|1,050,000|$1|$6|$0.1|$0|
 
-|OpenAI: gpt-oss-120bopenai/gpt-oss-120b|131,072|$0.037|$0.17|$0|$0|
+|OpenAI: GPT-6 Astraopenai/gpt-6-astra|1,050,000|$10|$50|$1|$12.5|
 
-|OpenAI: gpt-oss-20bopenai/gpt-oss-20b|131,072|$0.03|$0.13|$0.03|$0|
+|OpenAI: GPT-6 Astra (batch)openai/gpt-6-astra:batch|1,050,000|$5|$25|$0.5|$6.25|
+
+|OpenAI: GPT-6 Astra Proopenai/gpt-6-astra-pro|1,050,000|$10|$50|$1|$12.5|
+
+|OpenAI: GPT-6 Astra Pro (batch)openai/gpt-6-astra-pro:batch|1,050,000|$5|$25|$0.5|$6.25|
+
+|OpenAI: GPT-6 Lunaopenai/gpt-6-luna|1,050,000|$0.1|$0.5|$0.01|$0.125|
+
+|OpenAI: GPT-6 Luna (batch)openai/gpt-6-luna:batch|1,050,000|$0.05|$0.25|$0.005|$0.0625|
+
+|OpenAI: GPT-6 Luna Proopenai/gpt-6-luna-pro|1,050,000|$0.1|$0.5|$0.01|$0.125|
+
+|OpenAI: GPT-6 Luna Pro (batch)openai/gpt-6-luna-pro:batch|1,050,000|$0.05|$0.25|$0.005|$0.0625|
+
+|OpenAI: GPT-6 Solopenai/gpt-6-sol|1,050,000|$2|$10|$0.2|$2.5|
+
+|OpenAI: GPT-6 Sol (batch)openai/gpt-6-sol:batch|1,050,000|$1|$5|$0.1|$1.25|
+
+|OpenAI: GPT-6 Sol Proopenai/gpt-6-sol-pro|1,050,000|$2|$10|$0.2|$2.5|
+
+|OpenAI: GPT-6 Sol Pro (batch)openai/gpt-6-sol-pro:batch|1,050,000|$1|$5|$0.1|$1.25|
+
+|OpenAI: GPT-6.1 Solopenai/gpt-6.1-sol|1,050,000|$2|$10|$0.1|$2.5|
+
+|OpenAI: GPT-6.1 Sol (batch)openai/gpt-6.1-sol:batch|1,050,000|$1|$5|$0.05|$1.25|
+
+|OpenAI: GPT-6.1 Sol Proopenai/gpt-6.1-sol-pro|1,050,000|$2|$10|$0.1|$2.5|
+
+|OpenAI: GPT-6.1 Sol Pro (batch)openai/gpt-6.1-sol-pro:batch|1,050,000|$1|$5|$0.05|$1.25|
+
+|OpenAI: gpt-oss-120bopenai/gpt-oss-120b|131,072|$0.15|$0.6|$0.075|$0|
+
+|OpenAI: gpt-oss-120b (batch)openai/gpt-oss-120b:batch|131,072|$0.0296|$0.136|$0|$0|
+
+|OpenAI: gpt-oss-20bopenai/gpt-oss-20b|131,072|$0.018|$0.09|$0.009|$0|
+
+|OpenAI: gpt-oss-20b (batch)openai/gpt-oss-20b:batch|131,072|$0.024|$0.112|$0|$0|
 
 |OpenAI: gpt-oss-safeguard-20bopenai/gpt-oss-safeguard-20b|131,072|$0.075|$0.3|$0.0375|$0|
 
 |OpenAI: o1openai/o1|200,000|$15|$60|$7.5|$0|
-
-|OpenAI: o1 (batch)openai/o1:batch|200,000|$7.5|$30|$3.75|$0|
 
 |OpenAI: o3openai/o3|200,000|$2|$8|$0.5|$0|
 
@@ -1841,11 +2199,7 @@ All models
 
 |OpenAI: o3 Mini Highopenai/o3-mini-high|200,000|$1.1|$4.4|$0.55|$0|
 
-|OpenAI: o3 Mini High (batch)openai/o3-mini-high:batch|200,000|$0.55|$2.2|$0.275|$0|
-
 |OpenAI: o3 Proopenai/o3-pro|200,000|$20|$80|$0|$0|
-
-|OpenAI: o3 Pro (batch)openai/o3-pro:batch|200,000|$10|$40|$0|$0|
 
 |OpenAI: o4 Miniopenai/o4-mini|200,000|$1.1|$4.4|$0.275|$0|
 
@@ -1853,9 +2207,17 @@ All models
 
 |OpenAI: o4 Mini Highopenai/o4-mini-high|200,000|$1.1|$4.4|$0.275|$0|
 
-|OpenAI: o4 Mini High (batch)openai/o4-mini-high:batch|200,000|$0.55|$2.2|$0.1375|$0|
-
 |OpenRouter: Fusionopenrouter/fusion|1,000,000|Varies|Varies|Varies|Varies|
+
+|Pareto 26.10unbiased/pareto-26.10|1,048,576|$0.8|$3.2|$0.03|$0|
+
+|Pareto 26.9unbiased/pareto-26.9|262,144|$2.5|$7.5|$0.25|$0|
+
+|Pareto Code Routeropenrouter/pareto-code|2,000,000|$0|$0|$0|$0|
+
+|Pareto Latest~unbiased/pareto-latest|1,048,576|$0.8|$3.2|$0.03|$0|
+
+|Perceptron: Perceptron Mk1.5perceptron/perceptron-mk1.5|36,864|$0.15|$1.5|$0|$0|
 
 |Poolside: Laguna S 2.1poolside/laguna-s-2.1|1,048,576|$0.09|$0.18|$0.009|$0|
 
@@ -1865,7 +2227,7 @@ All models
 
 |Poolside: Laguna XS 2.1 (free)poolside/laguna-xs-2.1:free|262,144|$0|$0|$0|$0|
 
-|Qwen: Qwen Plus 0728qwen/qwen-plus-2025-07-28|1,000,000|$0.26|$0.78|$0|$0|
+|PrismML: Ternary Bonsai 2 27Bprism-ml/ternary-bonsai-2-27b|262,144|$0.075|$0.5|$0.0375|$0|
 
 |Qwen: Qwen-Plusqwen/qwen-plus|1,000,000|$0.26|$0.78|$0.052|$0.325|
 
@@ -1873,21 +2235,15 @@ All models
 
 |Qwen: Qwen3 14Bqwen/qwen3-14b|40,960|$0.12|$0.24|$0|$0|
 
-|Qwen: Qwen3 235B A22Bqwen/qwen3-235b-a22b|131,072|$0.455|$1.82|$0|$0|
+|Qwen: Qwen3 235B A22B Instruct 2507qwen/qwen3-235b-a22b-2507|262,144|$0.09|$0.55|$0|$0|
 
-|Qwen: Qwen3 235B A22B Instruct 2507qwen/qwen3-235b-a22b-2507|262,144|$0.0875|$0.35|$0.0175|$0|
-
-|Qwen: Qwen3 235B A22B Thinking 2507qwen/qwen3-235b-a22b-thinking-2507|131,072|$0.23|$2.3|$0|$0|
+|Qwen: Qwen3 235B A22B Thinking 2507qwen/qwen3-235b-a22b-thinking-2507|128,000|$0.45|$3.5|$0|$0|
 
 |Qwen: Qwen3 30B A3Bqwen/qwen3-30b-a3b|40,960|$0.12|$0.5|$0|$0|
 
-|Qwen: Qwen3 30B A3B Instruct 2507qwen/qwen3-30b-a3b-instruct-2507|128,000|$0.04815|$0.19305|$0|$0|
-
-|Qwen: Qwen3 30B A3B Thinking 2507qwen/qwen3-30b-a3b-thinking-2507|81,920|$0.2|$2.4|$0|$0|
+|Qwen: Qwen3 30B A3B Instruct 2507qwen/qwen3-30b-a3b-instruct-2507|262,144|$0.09|$0.3|$0|$0|
 
 |Qwen: Qwen3 32Bqwen/qwen3-32b|40,960|$0.08|$0.28|$0|$0|
-
-|Qwen: Qwen3 8Bqwen/qwen3-8b|131,072|$0.117|$0.455|$0|$0|
 
 |Qwen: Qwen3 Coder 30B A3B Instructqwen/qwen3-coder-30b-a3b-instruct|262,144|$0.07|$0.28|$0|$0|
 
@@ -1897,53 +2253,39 @@ All models
 
 |Qwen: Qwen3 Coder Nextqwen/qwen3-coder-next|262,144|$0.12|$0.8|$0.07|$0|
 
-|Qwen: Qwen3 Coder Plusqwen/qwen3-coder-plus|1,000,000|$0.65|$3.25|$0.13|$0.8125|
+|Qwen: Qwen3 Next 80B A3B Instructqwen/qwen3-next-80b-a3b-instruct|262,144|$0.09|$1.1|$0|$0|
 
-|Qwen: Qwen3 Maxqwen/qwen3-max|262,144|$0.78|$3.9|$0.156|$0.975|
-
-|Qwen: Qwen3 Max Thinkingqwen/qwen3-max-thinking|262,144|$0.78|$3.9|$0|$0|
-
-|Qwen: Qwen3 Next 80B A3B Instructqwen/qwen3-next-80b-a3b-instruct|262,144|$0.1|$1.1|$0.07|$0|
-
-|Qwen: Qwen3 Next 80B A3B Thinkingqwen/qwen3-next-80b-a3b-thinking|131,072|$0.15|$1.2|$0|$0|
+|Qwen: Qwen3 Next 80B A3B Thinkingqwen/qwen3-next-80b-a3b-thinking|262,144|$0.15|$1.2|$0|$0|
 
 |Qwen: Qwen3 VL 235B A22B Instructqwen/qwen3-vl-235b-a22b-instruct|131,072|$0.21|$1.9|$0.1|$0|
 
-|Qwen: Qwen3 VL 235B A22B Thinkingqwen/qwen3-vl-235b-a22b-thinking|131,072|$0.4|$4|$0|$0|
+|Qwen: Qwen3 VL 30B A3B Instructqwen/qwen3-vl-30b-a3b-instruct|262,144|$0.15|$0.6|$0|$0|
 
-|Qwen: Qwen3 VL 30B A3B Instructqwen/qwen3-vl-30b-a3b-instruct|131,072|$0.13|$0.52|$0|$0|
+|Qwen: Qwen3 VL 30B A3B Thinkingqwen/qwen3-vl-30b-a3b-thinking|262,144|$0.29|$1|$0|$0|
 
-|Qwen: Qwen3 VL 30B A3B Thinkingqwen/qwen3-vl-30b-a3b-thinking|131,072|$0.2|$2.4|$0|$0|
+|Qwen: Qwen3 VL 8B Instructqwen/qwen3-vl-8b-instruct|262,144|$0.25|$0.75|$0.12|$0|
 
-|Qwen: Qwen3 VL 32B Instructqwen/qwen3-vl-32b-instruct|131,072|$0.104|$0.416|$0|$0|
-
-|Qwen: Qwen3 VL 8B Instructqwen/qwen3-vl-8b-instruct|131,072|$0.117|$0.455|$0|$0|
-
-|Qwen: Qwen3 VL 8B Thinkingqwen/qwen3-vl-8b-thinking|131,072|$0.18|$2.1|$0|$0|
-
-|Qwen: Qwen3.5 397B A17Bqwen/qwen3.5-397b-a17b|262,144|$0.39|$2.34|$0|$0|
+|Qwen: Qwen3.5 397B A17Bqwen/qwen3.5-397b-a17b|262,144|$0.5|$3.6|$0.3|$0|
 
 |Qwen: Qwen3.5 Plus 2026-02-15qwen/qwen3.5-plus-02-15|1,000,000|$0.26|$1.56|$0|$0|
 
 |Qwen: Qwen3.5 Plus 2026-04-20qwen/qwen3.5-plus-20260420|1,000,000|$0.3|$1.8|$0|$0.375|
 
-|Qwen: Qwen3.5-122B-A10Bqwen/qwen3.5-122b-a10b|262,144|$0.26|$2.08|$0|$0|
+|Qwen: Qwen3.5-122B-A10Bqwen/qwen3.5-122b-a10b|262,144|$0.4|$3.2|$0|$0|
 
-|Qwen: Qwen3.5-27Bqwen/qwen3.5-27b|262,144|$0.195|$1.56|$0|$0|
+|Qwen: Qwen3.5-27Bqwen/qwen3.5-27b|262,144|$0.27|$2.16|$0.27|$0|
 
-|Qwen: Qwen3.5-35B-A3Bqwen/qwen3.5-35b-a3b|262,144|$0.25|$1.25|$0.25|$0|
+|Qwen: Qwen3.5-35B-A3Bqwen/qwen3.5-35b-a3b|262,144|$0.14|$1|$0.05|$0|
 
-|Qwen: Qwen3.5-9Bqwen/qwen3.5-9b|262,144|$0.1|$0.15|$0|$0|
+|Qwen: Qwen3.5-9Bqwen/qwen3.5-9b|262,144|$0.17|$0.25|$0|$0|
 
 |Qwen: Qwen3.5-Flashqwen/qwen3.5-flash-02-23|1,000,000|$0.065|$0.26|$0|$0|
 
-|Qwen: Qwen3.6 27Bqwen/qwen3.6-27b|262,144|$0.32|$3.2|$0|$0|
+|Qwen: Qwen3.6 27Bqwen/qwen3.6-27b|262,144|$0.25|$2|$0.025|$0|
 
-|Qwen: Qwen3.6 35B A3Bqwen/qwen3.6-35b-a3b|262,144|$0.1|$0.9|$0.05|$0|
+|Qwen: Qwen3.6 35B A3Bqwen/qwen3.6-35b-a3b|262,144|$0.1|$0.95|$0.05|$0|
 
 |Qwen: Qwen3.6 Flashqwen/qwen3.6-flash|1,000,000|$0.1875|$1.125|$0|$0.234375|
-
-|Qwen: Qwen3.6 Max Previewqwen/qwen3.6-max-preview|262,144|$1.027|$6.162|$0|$1.28375|
 
 |Qwen: Qwen3.6 Plusqwen/qwen3.6-plus|1,000,000|$0.325|$1.95|$0|$0.40625|
 
@@ -1953,33 +2295,49 @@ All models
 
 |Qwen: Qwen3.7 Plusqwen/qwen3.7-plus|1,000,000|$0.32|$1.28|$0.064|$0.4|
 
-|Qwen: Qwen3.8 2.4T A95Bqwen/qwen3.8-2.4t-a95b|1,048,576|$2|$6|$0.25|$0|
+|Qwen: Qwen3.7 Plus (batch)qwen/qwen3.7-plus:batch|262,144|$0.23|$0.92|$0|$0|
 
-|Qwen: Qwen3.8 27Bqwen/qwen3.8-27b|1,000,000|$0.425|$2.55|$0.085|$0.53125|
+|Qwen: Qwen3.8 2.4T A95Bqwen/qwen3.8-2.4t-a95b|1,010,000|$2|$6|$0.25|$0|
 
-|Qwen: Qwen3.8 Flashqwen/qwen3.8-flash|1,000,000|$0.15|$0.47|$0.016|$0.2|
+|Qwen: Qwen3.8 27Bqwen/qwen3.8-27b|262,144|$0.2|$2.5|$0.09|$0|
 
-|Qwen: Qwen3.8 Maxqwen/qwen3.8-max|1,000,000|$2|$6|$0.25|$2.5|
+|Qwen: Qwen3.8 Flashqwen/qwen3.8-flash|1,000,000|$0.15|$0.47|$0.016|$0|
+
+|Qwen: Qwen3.8 Max (0902)qwen/qwen3.8-max-0902|1,000,000|$2|$6|$0.25|$0|
+
+|Qwen: Qwen3.8 Max Primeqwen/qwen3.8-max-prime|1,000,000|$4|$12|$0.5|$0|
+
+|Qwen: Qwen3.8 Omni Flashqwen/qwen3.8-omni-flash|1,000,000|$0.15|$0.47|$0.016|$0|
 
 |Qwen2.5 72B Instructqwen/qwen-2.5-72b-instruct|32,768|$0.36|$0.4|$0|$0|
+
+|Recursive: Flint (free)recursive/flint-v1.0:free|262,144|$0|$0|$0|$0|
+
+|Reflection: Beam 1.0 501B A23Breflection/beam-1.0-501b-a23b|1,048,576|$0.25|$1|$0.05|$0|
 
 |Reka Edgerekaai/reka-edge|16,384|$0.1|$0.1|$0|$0|
 
 |Relace: Relace Searchrelace/relace-search|256,000|$1|$3|$0|$0|
 
+|Sakana: Fugu Maxsakana/fugu-max|1,000,000|$2|$6|$0.25|$0|
+
 |Sakana: Fugu Ultrasakana/fugu-ultra|1,000,000|$5|$30|$0.5|$0|
 
-|Sakana: Sakana Namazusakana/sakana-namazu|262,144|$0.95|$4|$0.15|$0|
+|Sakana: Fugu Ultra v2sakana/fugu-ultra-v2|1,000,000|$5|$30|$0.5|$0|
 
-|Sao10K: Llama 3.1 Euryale 70B v2.2sao10k/l3.1-euryale-70b|131,072|$0.85|$0.85|$0|$0|
+|Sakana: Sakana Namazusakana/sakana-namazu|262,144|$0.95|$4|$0.15|$0|
 
 |SpaceXAI: Grok 4.20x-ai/grok-4.20|2,000,000|$1.25|$2.5|$0.2|$0|
 
 |SpaceXAI: Grok 4.3x-ai/grok-4.3|1,000,000|$1.25|$2.5|$0.2|$0|
 
+|SpaceXAI: Grok 4.3 (batch)x-ai/grok-4.3:batch|1,000,000|$1|$2|$0.16|$0|
+
 |SpaceXAI: Grok 4.5x-ai/grok-4.5|500,000|$2|$6|$0.3|$0|
 
 |SpaceXAI: Grok 4.6x-ai/grok-4.6|500,000|$2|$6|$0.5|$0|
+
+|SpaceXAI: Grok 4.7x-ai/grok-4.7|500,000|$2|$6|$0.5|$0|
 
 |SpaceXAI: Grok Build 0.1x-ai/grok-build-0.1|256,000|$1|$2|$0.2|$0|
 
@@ -1987,15 +2345,15 @@ All models
 
 |StepFun: Step 3.7 Flashstepfun/step-3.7-flash|256,000|$0.2|$1.15|$0.04|$0|
 
+|StepFun: Step 5 Previewstepfun/step-5-preview|1,000,000|$1|$2.7|$0.1|$0|
+
 |Tencent: Hy3tencent/hy3|262,144|$0.132|$0.528|$0.033|$0|
 
 |Tencent: Hy3 previewtencent/hy3-preview|262,144|$0.18|$0.6|$0.06|$0|
 
-|TheDrummer: UnslopNemo 12Bthedrummer/unslopnemo-12b|32,768|$0.4|$0.4|$0|$0|
+|Tencent: Hy4 previewtencent/hy4-preview|1,048,576|$0.834|$2.501|$0.042|$0|
 
-|Thinking Machines: Inklingthinkingmachines/inkling|524,288|$0.95|$4.05|$0.16|$0|
-
-|Thinking Machines: Inkling (batch)thinkingmachines/inkling:batch|524,288|$1|$4.05|$0.17|$0|
+|Thinking Machines: Inklingthinkingmachines/inkling|524,288|$1|$4.05|$0.17|$0|
 
 |Thinking Machines: Inkling (free)thinkingmachines/inkling:free|1,048,576|$0|$0|$0|$0|
 
@@ -2003,15 +2361,27 @@ All models
 
 |Thinking Machines: Inkling Small (free)thinkingmachines/inkling-small:free|1,048,576|$0|$0|$0|$0|
 
+|TypeSafe: Jev Routertypesafe/jev-router|1,000,000|$0|$0|$0|$0|
+
+|Upstage: Solar Mini 4upstage/solar-mini4|524,288|$0.05|$0.2|$0.005|$0|
+
 |Upstage: Solar Pro 3upstage/solar-pro-3|131,072|$0.15|$0.6|$0.015|$0|
 
-|Upstage: Solar Pro 4upstage/solar-pro4|524,288|$0.03|$0.12|$0.006|$0|
+|Upstage: Solar Pro 4upstage/solar-pro4|524,288|$0.15|$0.6|$0.03|$0|
 
 |xAI: Grok Latest~x-ai/grok-latest|500,000|$2|$6|$0.5|$0|
 
-|Xiaomi: MiMo-V2.5xiaomi/mimo-v2.5|1,048,576|$0.14|$0.28|$0.0028|$0|
+|Xiaomi: MiMo-V2.5xiaomi/mimo-v2.5|1,050,000|$0.119|$0.238|$0.00255|$0|
 
-|Xiaomi: MiMo-V2.5-Proxiaomi/mimo-v2.5-pro|1,048,576|$0.435|$0.87|$0.0036|$0|
+|Xiaomi: MiMo-V2.5-Proxiaomi/mimo-v2.5-pro|1,050,000|$0.3045|$0.609|$0.0028|$0|
+
+|Xiaomi: MiMo-V2.6-Flashxiaomi/mimo-v2.6-flash|1,048,576|$0.14|$0.28|$0.0028|$0|
+
+|Xiaomi: MiMo-V2.6-Proxiaomi/mimo-v2.6-pro|1,048,576|$0.435|$0.87|$0.0036|$0|
+
+|Xiaomi: MiMo-V2.6-Pro-UltraSpeedxiaomi/mimo-v2.6-pro-ultraspeed|1,048,576|$4.35|$8.7|$0.036|$0|
+
+|XingChen: Xing4.0 29B A4B (free)xingchen-agi/xing4.0-29b-a4b:free|262,144|$0|$0|$0|$0|
 
 |Z.ai: GLM 4.5z-ai/glm-4.5|131,072|$0.6|$2.2|$0.11|$0|
 
@@ -2019,33 +2389,41 @@ All models
 
 |Z.ai: GLM 4.5Vz-ai/glm-4.5v|65,536|$0.6|$1.8|$0.11|$0|
 
-|Z.ai: GLM 4.6z-ai/glm-4.6|198,000|$0.43|$1.75|$0.08|$0|
+|Z.ai: GLM 4.6z-ai/glm-4.6|204,800|$0.55|$2.2|$0.11|$0|
 
 |Z.ai: GLM 4.6Vz-ai/glm-4.6v|131,072|$0.3|$0.9|$0.055|$0|
 
-|Z.ai: GLM 4.7z-ai/glm-4.7|202,752|$0.4|$1.75|$0.08|$0|
+|Z.ai: GLM 4.7z-ai/glm-4.7|204,800|$0.54|$1.98|$0.099|$0|
 
-|Z.ai: GLM 4.7 Flashz-ai/glm-4.7-flash|202,752|$0.06|$0.4|$0.01|$0|
+|Z.ai: GLM 4.7 Flashz-ai/glm-4.7-flash|131,072|$0.0605|$0.4|$0|$0|
 
-|Z.ai: GLM 5z-ai/glm-5|198,000|$0.6|$1.9|$0.119|$0|
+|Z.ai: GLM 5z-ai/glm-5|202,752|$0.6|$1.9|$0.119|$0|
 
 |Z.ai: GLM 5 Turboz-ai/glm-5-turbo|202,752|$1.2|$4|$0.24|$0|
 
-|Z.ai: GLM 5.1z-ai/glm-5.1|202,752|$1.26|$3.96|$0.234|$0|
+|Z.ai: GLM 5.1z-ai/glm-5.1|202,752|$1.4|$4.4|$0.26|$0|
 
-|Z.ai: GLM 5.2z-ai/glm-5.2|1,048,576|$1.19|$3.74|$0.221|$0|
+|Z.ai: GLM 5.2z-ai/glm-5.2|1,048,576|$0.0341|$7|$0.033|$0|
 
-|Z.ai: GLM 5.2 (free)z-ai/glm-5.2:free|256,000|$0|$0|$0|$0|
+|Z.ai: GLM 5.3z-ai/glm-5.3|1,048,576|$0.079|$1.4|$0.078|$0|
 
-|Z.ai: GLM 5.3z-ai/glm-5.3|1,048,576|$1.4|$4.4|$0.26|$0|
+|Z.ai: GLM 5.3 (batch)z-ai/glm-5.3:batch|1,048,576|$0.45|$2|$0.1|$0|
 
-|Z.ai: GLM 5.3 Flashz-ai/glm-5.3-flash|1,048,576|$0.075|$0.25|$0.015|$0|
+|Z.ai: GLM 5.3 Flashz-ai/glm-5.3-flash|1,048,576|$0.0393|$0.0788|$0.03|$0|
+
+|Z.ai: GLM 5.3 Flash (batch)z-ai/glm-5.3-flash:batch|1,048,576|$0.05|$0.18|$0.01|$0|
+
+|Z.ai: GLM 5.3 FlashXz-ai/glm-5.3-flashx|1,048,576|$0.37|$1.25|$0.09|$0|
+
+|Z.ai: GLM 5.3 Primez-ai/glm-5.3-prime|1,000,000|$2.8|$8.8|$0.56|$0|
 
 |Z.ai: GLM 5V Turboz-ai/glm-5v-turbo|202,752|$1.2|$4|$0.24|$0|
 
-|Z.ai: GLM Latest~z-ai/glm-latest|1,048,576|$1.4|$4.4|$0.26|$0|
+|Z.ai: GLM Flash Latest~z-ai/glm-flash-latest|1,048,576|$0.0393|$0.0788|$0.03|$0|
 
-|qwen-token-plan(17 models)|
+|Z.ai: GLM Latest~z-ai/glm-latest|1,048,576|$0.075|$4.295|$0.075|$0|
+
+|qwen-token-plan(21 models)|
 
 |DeepSeek V3.2deepseek-v3.2|131,072|$0|$0|$0|$0|
 
@@ -2057,11 +2435,17 @@ All models
 
 |DeepSeek V4 Pro 0813deepseek-v4-pro-0813|1,000,000|$0|$0|$0|$0|
 
+|DeepSeek V4.1 Flashdeepseek-v4.1-flash|1,000,000|$0|$0|$0|$0|
+
+|DeepSeek V4.1 Flash 1017deepseek-v4.1-flash-1017|1,000,000|$0|$0|$0|$0|
+
 |GLM-5glm-5|202,752|$0|$0|$0|$0|
 
 |GLM-5.1glm-5.1|202,752|$0|$0|$0|$0|
 
 |GLM-5.2glm-5.2|1,000,000|$0|$0|$0|$0|
+
+|GLM-5.3glm-5.3|1,000,000|$0|$0|$0|$0|
 
 |Kimi K2.5kimi-k2.5|262,144|$0|$0|$0|$0|
 
@@ -2079,9 +2463,11 @@ All models
 
 |Qwen3.7 Plusqwen3.7-plus|1,000,000|$0|$0|$0|$0|
 
+|Qwen3.8 Flashqwen3.8-flash|1,000,000|$0|$0|$0|$0|
+
 |Qwen3.8 Maxqwen3.8-max|1,000,000|$0|$0|$0|$0|
 
-|qwen-token-plan-cn(17 models)|
+|qwen-token-plan-cn(21 models)|
 
 |DeepSeek V3.2deepseek-v3.2|131,072|$0|$0|$0|$0|
 
@@ -2093,11 +2479,17 @@ All models
 
 |DeepSeek V4 Pro 0813deepseek-v4-pro-0813|1,000,000|$0|$0|$0|$0|
 
+|DeepSeek V4.1 Flashdeepseek-v4.1-flash|1,000,000|$0|$0|$0|$0|
+
+|DeepSeek V4.1 Flash 1017deepseek-v4.1-flash-1017|1,000,000|$0|$0|$0|$0|
+
 |GLM-5glm-5|202,752|$0|$0|$0|$0|
 
 |GLM-5.1glm-5.1|202,752|$0|$0|$0|$0|
 
 |GLM-5.2glm-5.2|1,000,000|$0|$0|$0|$0|
+
+|GLM-5.3glm-5.3|1,000,000|$0|$0|$0|$0|
 
 |Kimi K2.5kimi-k2.5|262,144|$0|$0|$0|$0|
 
@@ -2115,9 +2507,11 @@ All models
 
 |Qwen3.7 Plusqwen3.7-plus|1,000,000|$0|$0|$0|$0|
 
+|Qwen3.8 Flashqwen3.8-flash|1,000,000|$0|$0|$0|$0|
+
 |Qwen3.8 Maxqwen3.8-max|1,000,000|$0|$0|$0|$0|
 
-|qwen-token-plan-individual(8 models)|
+|qwen-token-plan-individual(9 models)|
 
 |DeepSeek V4 Flash 0731deepseek-v4-flash-0731|1,000,000|$0|$0|$0|$0|
 
@@ -2133,91 +2527,189 @@ All models
 
 |Qwen3.7 Plusqwen3.7-plus|1,000,000|$0|$0|$0|$0|
 
+|Qwen3.8 Flashqwen3.8-flash|1,000,000|$0|$0|$0|$0|
+
 |Qwen3.8 Maxqwen3.8-max|1,000,000|$0|$0|$0|$0|
 
-|together(19 models)|
+|radius(32 models)|
 
-|DeepSeek V4 Flash 0731deepseek-ai/DeepSeek-V4-Flash-0731|1,000,000|$0.14|$0.28|$0.03|$0|
+|Balancedbalanced|1,048,576|$3|$15|$0.3|$0|
 
-|DeepSeek V4 Prodeepseek-ai/DeepSeek-V4-Pro|512,000|$1.74|$3.48|$0.2|$0|
+|Cheapcheap|1,000,000|$0.3|$1.2|$0.006|$0|
+
+|Claude Fable 5claude-fable-5|1,000,000|$10|$50|$1|$12.5|
+
+|Claude Fable 5.1claude-fable-5-1|1,000,000|$10|$50|$0.25|$12.5|
+
+|Claude Haiku 4.5claude-haiku-4-5|200,000|$1|$5|$0.1|$1.25|
+
+|Claude Haiku 5.5claude-haiku-5-5|1,000,000|$0.1|$0.5|$0.01|$0.125|
+
+|Claude Opus 4.5claude-opus-4-5|200,000|$5|$25|$0.5|$6.25|
+
+|Claude Opus 4.8claude-opus-4-8|1,000,000|$5|$25|$0.5|$6.25|
+
+|Claude Opus 5claude-opus-5|1,000,000|$5|$25|$0.5|$6.25|
+
+|Claude Opus 5.5claude-opus-5-5|1,000,000|$4|$20|$0.2|$5|
+
+|Claude Sonnet 4.5claude-sonnet-4-5|200,000|$3|$15|$0.3|$3.75|
+
+|Claude Sonnet 5claude-sonnet-5|1,000,000|$2|$10|$0.2|$2.5|
+
+|Claude Sonnet 5.5claude-sonnet-5-5|1,000,000|$2|$10|$0.2|$2.5|
+
+|DeepSeek V4.1 Flashdeepseek-v4.1-flash|1,000,000|$0.3|$1.2|$0.006|$0|
+
+|Flint (free, trains on data)recursive/flint|262,144|$0|$0|$0|$0|
+
+|GLM-5.3glm-5.3|1,000,000|$1.4|$4.4|$0.26|$0|
+
+|GLM-5.3 Flashglm-5.3-flash|1,000,000|$0.15|$0.5|$0.03|$0|
+
+|GPT 5.3 Codexgpt-5.3-codex|400,000|$1.75|$14|$0.175|$0|
+
+|GPT 5.4gpt-5.4|272,000|$2.5|$15|$0.25|$0|
+
+|GPT 5.4 Minigpt-5.4-mini|400,000|$0.75|$4.5|$0.075|$0|
+
+|GPT 5.5gpt-5.5|272,000|$5|$30|$0.5|$0|
+
+|GPT 5.6 Lunagpt-5.6-luna|272,000|$0.2|$1.2|$0.02|$0.25|
+
+|GPT 5.6 Solgpt-5.6-sol|272,000|$4|$20|$0.4|$5|
+
+|GPT 5.6 Terragpt-5.6-terra|272,000|$2|$12|$0.2|$2.5|
+
+|GPT 6 Astragpt-6-astra|272,000|$10|$50|$1|$12.5|
+
+|GPT 6 Lunagpt-6-luna|1,050,000|$0.1|$0.5|$0.01|$0.125|
+
+|GPT 6 Solgpt-6-sol|1,050,000|$2|$10|$0.2|$2.5|
+
+|GPT 6.1 Solgpt-6.1-sol|272,000|$2|$10|$0.1|$2.5|
+
+|Grok 4.7grok-4.7|500,000|$2|$6|$0.5|$0|
+
+|Kimi K3kimi-k3|1,048,576|$3|$15|$0.3|$0|
+
+|MiniMax M3.1 Flashminimax-m3.1-flash|1,000,000|$0.15|$0.6|$0.015|$0|
+
+|Preciseprecise|272,000|$4|$20|$0.4|$5|
+
+|together(15 models)|
+
+|Beam 1.0 501B A23Breflection/Beam-1.0-501B-A23B|1,048,576|$0.4|$1.2|$0.04|$0|
 
 |DeepSeek V4 Pro 0813deepseek-ai/DeepSeek-V4-Pro-0813|1,048,576|$1.32|$3.96|$0.13|$0|
 
-|Gemma 4 31B Instructgoogle/gemma-4-31B-it|262,144|$0.39|$0.97|$0|$0|
+|DeepSeek V4.1 Flashdeepseek-ai/DeepSeek-V4.1-Flash|1,048,576|$0.3|$1.2|$0.006|$0|
 
-|GLM-5.2zai-org/GLM-5.2|512,000|$1.4|$4.4|$0.26|$0|
+|GLM-5.2zai-org/GLM-5.2|1,048,575|$1.4|$4.4|$0.26|$0|
+
+|GLM-5.3zai-org/GLM-5.3|1,048,575|$1.4|$4.4|$0.26|$0|
+
+|GLM-5.3-Flashzai-org/GLM-5.3-Flash|1,048,575|$0.15|$0.5|$0.03|$0|
 
 |GPT OSS 120Bopenai/gpt-oss-120b|131,072|$0.15|$0.6|$0|$0|
 
-|GPT OSS 20Bopenai/gpt-oss-20b|131,072|$0.05|$0.2|$0|$0|
-
 |Inklingthinkingmachines/Inkling|524,288|$1|$4.05|$0.17|$0|
-
-|Kimi K2.6moonshotai/Kimi-K2.6|262,144|$1.2|$4.5|$0.2|$0|
-
-|Kimi K2.7 Codemoonshotai/Kimi-K2.7-Code|262,144|$0.95|$4|$0.19|$0|
 
 |Kimi K3moonshotai/Kimi-K3|1,048,576|$3|$15|$0.3|$0|
 
-|Llama 3.3 70Bmeta-llama/Llama-3.3-70B-Instruct-Turbo|131,072|$1.04|$1.04|$0|$0|
-
-|MiniMax-M2.7MiniMaxAI/MiniMax-M2.7|202,752|$0.3|$1.2|$0.06|$0|
-
 |MiniMax-M3MiniMaxAI/MiniMax-M3|524,288|$0.3|$1.2|$0.06|$0|
 
-|Nemotron 3 Ultra 550B A55Bnvidia/nemotron-3-ultra-550b-a55b|512,300|$0.6|$3.6|$0.2|$0|
+|Muse Spark Openmeta-models/Muse-Spark-Open-816B-A42B|1,048,576|$1.25|$4.25|$0.15|$0|
 
-|Qwen 2.5 7B Instruct TurboQwen/Qwen2.5-7B-Instruct-Turbo|32,768|$0.3|$0.3|$0|$0|
+|Nemotron 3.5 Super VL 120B A12Bnvidia/NVIDIA-Nemotron-3.5-Super-VL|262,144|$0.15|$0.5|$0.02|$0|
 
 |Qwen3.5 9BQwen/Qwen3.5-9B|262,144|$0.17|$0.25|$0|$0|
 
 |Qwen3.6 PlusQwen/Qwen3.6-Plus|1,000,000|$0.5|$3|$0|$0|
 
-|Qwen3.7 MaxQwen/Qwen3.7-Max|1,000,000|$1.25|$3.75|$0.125|$0|
+|Qwen3.7 MaxQwen/Qwen3.7-Max|1,000,000|$2.5|$7.5|$0.5|$0|
 
-|vercel-ai-gateway(222 models)|
+|vercel-ai-gateway(301 models)|
+
+|Apexcallstack/apex|262,144|$0.5|$3|$0.2|$0|
+
+|Arrow 2quiverai/arrow-2|131,072|$4|$20|$0.4|$5|
+
+|Arrow 2 Telosquiverai/arrow-2-telos|131,072|$6|$30|$0.6|$7.5|
+
+|Beam 1.0reflection/beam|1,048,576|$0|$0|$0|$0|
+
+|Beam 1.0 (Free)reflection/beam-free|1,048,576|$0|$0|$0|$0|
 
 |Bytedance Seed 1.8bytedance/seed-1.8|256,000|$0.25|$2|$0.05|$0|
 
-|Claude 3 Haikuanthropic/claude-3-haiku|200,000|$0.25|$1.25|$0.03|$0.3|
-
 |Claude Fable 5anthropic/claude-fable-5|1,000,000|$10|$50|$1|$12.5|
+
+|Claude Fable 5 (Batch)anthropic/claude-fable-5-batch|1,000,000|$5|$25|$0.5|$6.25|
+
+|Claude Fable 5.1anthropic/claude-fable-5.1|1,000,000|$10|$50|$0.25|$12.5|
+
+|Claude Fable 5.1 (Batch)anthropic/claude-fable-5.1-batch|1,000,000|$5|$25|$0.125|$6.25|
 
 |Claude Haiku 4.5anthropic/claude-haiku-4.5|200,000|$1|$5|$0.1|$1.25|
 
-|Claude Opus 4anthropic/claude-opus-4|200,000|$15|$75|$1.5|$18.75|
+|Claude Haiku 4.5 (Batch)anthropic/claude-haiku-4.5-batch|200,000|$0.5|$2.5|$0.05|$0.625|
+
+|Claude Haiku 5.5anthropic/claude-haiku-5.5|1,000,000|$0.1|$0.5|$0.01|$0.125|
+
+|Claude Haiku 5.5 (Batch)anthropic/claude-haiku-5.5-batch|1,000,000|$0.05|$0.25|$0.005|$0.0625|
 
 |Claude Opus 4.5anthropic/claude-opus-4.5|200,000|$5|$25|$0.5|$6.25|
 
+|Claude Opus 4.5 (Batch)anthropic/claude-opus-4.5-batch|200,000|$2.5|$12.5|$0.25|$3.125|
+
 |Claude Opus 4.6anthropic/claude-opus-4.6|1,000,000|$5|$25|$0.5|$6.25|
+
+|Claude Opus 4.6 (Batch)anthropic/claude-opus-4.6-batch|1,000,000|$2.5|$12.5|$0.25|$3.125|
 
 |Claude Opus 4.7anthropic/claude-opus-4.7|1,000,000|$5|$25|$0.5|$6.25|
 
+|Claude Opus 4.7 (Batch)anthropic/claude-opus-4.7-batch|1,000,000|$2.5|$12.5|$0.25|$3.125|
+
 |Claude Opus 4.8anthropic/claude-opus-4.8|1,000,000|$5|$25|$0.5|$6.25|
+
+|Claude Opus 4.8 (Batch)anthropic/claude-opus-4.8-batch|1,000,000|$2.5|$12.5|$0.25|$3.125|
 
 |Claude Opus 4.8 (Fast)anthropic/claude-opus-4.8-fast|1,000,000|$10|$50|$1|$12.5|
 
 |Claude Opus 5anthropic/claude-opus-5|1,000,000|$5|$25|$0.5|$6.25|
 
+|Claude Opus 5 (Batch)anthropic/claude-opus-5-batch|1,000,000|$2.5|$12.5|$0.25|$3.125|
+
 |Claude Opus 5 (Fast)anthropic/claude-opus-5-fast|1,000,000|$10|$50|$1|$12.5|
 
-|Claude Sonnet 4anthropic/claude-sonnet-4|1,000,000|$3|$15|$0.3|$3.75|
+|Claude Opus 5.5anthropic/claude-opus-5.5|1,000,000|$4|$20|$0.2|$5|
+
+|Claude Opus 5.5 (Batch)anthropic/claude-opus-5.5-batch|1,000,000|$2|$10|$0.1|$2.5|
+
+|Claude Opus 5.5 (Fast)anthropic/claude-opus-5.5-fast|1,000,000|$8|$40|$0.4|$10|
 
 |Claude Sonnet 4.5anthropic/claude-sonnet-4.5|1,000,000|$3|$15|$0.3|$3.75|
 
+|Claude Sonnet 4.5 (Batch)anthropic/claude-sonnet-4.5-batch|1,000,000|$1.5|$7.5|$0.15|$1.875|
+
 |Claude Sonnet 4.6anthropic/claude-sonnet-4.6|1,000,000|$3|$15|$0.3|$3.75|
+
+|Claude Sonnet 4.6 (Batch)anthropic/claude-sonnet-4.6-batch|1,000,000|$1.5|$7.5|$0.15|$1.875|
 
 |Claude Sonnet 5anthropic/claude-sonnet-5|1,000,000|$2|$10|$0.2|$2.5|
 
-|Command Acohere/command-a|256,000|$2.5|$10|$0|$0|
+|Claude Sonnet 5 (Batch)anthropic/claude-sonnet-5-batch|1,000,000|$1|$5|$0.1|$1.25|
 
-|DeepSeek V3 0324deepseek/deepseek-v3|163,840|$0.27|$1.12|$0.135|$0|
+|Claude Sonnet 5.5anthropic/claude-sonnet-5.5|1,000,000|$2|$10|$0.1|$2.5|
+
+|Claude Sonnet 5.5 (Batch)anthropic/claude-sonnet-5.5-batch|1,000,000|$1|$5|$0.05|$1.25|
+
+|Command Acohere/command-a|256,000|$2.5|$10|$0|$0|
 
 |DeepSeek V3.1deepseek/deepseek-v3.1|163,840|$0.25|$0.95|$0.13|$0|
 
-|DeepSeek V3.1 Terminusdeepseek/deepseek-v3.1-terminus|131,072|$0.27|$1|$0.135|$0|
-
-|DeepSeek V3.2deepseek/deepseek-v3.2|128,000|$0.28|$0.42|$0.028|$0|
+|DeepSeek V3.2deepseek/deepseek-v3.2|128,000|$0.62|$1.85|$0|$0|
 
 |DeepSeek V3.2 Thinkingdeepseek/deepseek-v3.2-thinking|128,000|$0.62|$1.85|$0|$0|
 
@@ -2225,39 +2717,73 @@ All models
 
 |DeepSeek V4 Flash 0731deepseek/deepseek-v4-flash-0731|1,000,000|$0.076|$0.153|$0.014|$0|
 
-|DeepSeek V4 Flash Vision Expdeepseek/deepseek-v4-flash-vision-exp|1,000,000|$0.22|$0.66|$0.007|$0|
+|DeepSeek V4 Flash Vision Expdeepseek/deepseek-v4-flash-vision-exp|1,048,576|$0.2156|$0.6468|$0.0068|$0|
 
-|DeepSeek V4 Prodeepseek/deepseek-v4-pro|1,048,600|$1.74|$3.48|$0.14|$0|
+|DeepSeek V4 Prodeepseek/deepseek-v4-pro|1,000,000|$0.66|$1.98|$0.022|$0|
 
 |DeepSeek V4 Pro 0813deepseek/deepseek-v4-pro-0813|1,000,000|$0.66|$1.98|$0.066|$0|
 
+|DeepSeek V4.1 Flashdeepseek/deepseek-v4.1-flash|1,048,576|$0.075|$0.3|$0.0015|$0|
+
+|DeepSeek V4.1 Flash 1017deepseek/deepseek-v4.1-flash-1017|1,048,576|$0.075|$0.3|$0.0015|$0|
+
+|DeepSeek V4.1 Flash 1017 Fastdeepseek/deepseek-v4.1-flash-1017-fast|1,048,576|$0.6|$2.4|$0.014|$0|
+
+|DeepSeek V4.1 Flash Fastdeepseek/deepseek-v4.1-flash-fast|1,048,576|$0.6|$2.4|$0.014|$0|
+
 |DeepSeek-R1deepseek/deepseek-r1|128,000|$1.35|$5.4|$0|$0|
 
-|Devstral 2mistral/devstral-2|256,000|$0.4|$2|$0|$0|
+|Ember-1fireworks/ember-1|1,048,576|$3|$15|$0.3|$0|
 
-|Devstral Small 2mistral/devstral-small-2|256,000|$0.1|$0.3|$0|$0|
+|Fugu Maxsakana/fugu-max|1,000,000|$2|$6|$0.25|$0|
 
 |Fugu Ultrasakana/fugu-ultra|1,000,000|$5|$30|$0.5|$0|
 
+|Fugu Ultra v2sakana/fugu-ultra-v2|1,000,000|$5|$30|$0.5|$0|
+
 |Gemini 2.5 Flashgoogle/gemini-2.5-flash|1,000,000|$0.3|$2.5|$0.03|$0|
+
+|Gemini 2.5 Flash (Batch)google/gemini-2.5-flash-batch|1,000,000|$0.15|$1.25|$0.03|$0|
 
 |Gemini 2.5 Flash Litegoogle/gemini-2.5-flash-lite|1,048,576|$0.1|$0.4|$0.01|$0|
 
+|Gemini 2.5 Flash Lite (Batch)google/gemini-2.5-flash-lite-batch|1,048,576|$0.05|$0.2|$0.01|$0|
+
 |Gemini 2.5 Progoogle/gemini-2.5-pro|1,048,576|$1.25|$10|$0.125|$0|
+
+|Gemini 2.5 Pro (Batch)google/gemini-2.5-pro-batch|1,048,576|$0.625|$5|$0.125|$0|
 
 |Gemini 3 Flashgoogle/gemini-3-flash|1,000,000|$0.5|$3|$0.05|$0|
 
+|Gemini 3 Flash (Batch)google/gemini-3-flash-batch|1,000,000|$0.25|$1.5|$0.05|$0|
+
 |Gemini 3.1 Flash Litegoogle/gemini-3.1-flash-lite|1,000,000|$0.25|$1.5|$0.03|$0|
+
+|Gemini 3.1 Flash Lite (Batch)google/gemini-3.1-flash-lite-batch|1,000,000|$0.125|$0.75|$0.015|$0|
 
 |Gemini 3.1 Pro Previewgoogle/gemini-3.1-pro-preview|1,000,000|$2|$12|$0.2|$0|
 
+|Gemini 3.1 Pro Preview (Batch)google/gemini-3.1-pro-preview-batch|1,000,000|$1|$6|$0.2|$0|
+
 |Gemini 3.5 Flashgoogle/gemini-3.5-flash|1,000,000|$1.5|$9|$0.15|$0|
+
+|Gemini 3.5 Flash (Batch)google/gemini-3.5-flash-batch|1,000,000|$0.75|$4.5|$0.075|$0|
 
 |Gemini 3.5 Flash Litegoogle/gemini-3.5-flash-lite|1,000,000|$0.3|$2.5|$0.03|$0|
 
+|Gemini 3.5 Flash Lite (Batch)google/gemini-3.5-flash-lite-batch|1,000,000|$0.15|$1.25|$0.015|$0|
+
 |Gemini 3.6 Flashgoogle/gemini-3.6-flash|1,000,000|$0.75|$3.75|$0.075|$0|
 
+|Gemini 3.6 Flash (Batch)google/gemini-3.6-flash-batch|1,000,000|$0.375|$1.875|$0.0375|$0|
+
 |Gemini 3.7 Flashgoogle/gemini-3.7-flash|1,000,000|$0.75|$3.75|$0.075|$0|
+
+|Gemini 3.7 Flash (Batch)google/gemini-3.7-flash-batch|1,000,000|$0.375|$1.875|$0.0375|$0|
+
+|Gemini 3.8 Flashgoogle/gemini-3.8-flash|1,000,000|$0.75|$3.75|$0.075|$0|
+
+|Gemini 4 Argongoogle/gemini-4-argon|1,000,000|$2|$10|$0.1|$0|
 
 |Gemma 4 31B ITgoogle/gemma-4-31b-it|262,144|$0.14|$0.4|$0|$0|
 
@@ -2269,7 +2795,7 @@ All models
 
 |GLM 4.6zai/glm-4.6|200,000|$0.6|$2.2|$0.11|$0|
 
-|GLM 4.7zai/glm-4.7|200,000|$0.6|$2.2|$0.12|$0|
+|GLM 4.7zai/glm-4.7|200,000|$0.6|$2.2|$0|$0|
 
 |GLM 4.7 Flashzai/glm-4.7-flash|200,000|$0.07|$0.4|$0|$0|
 
@@ -2283,13 +2809,19 @@ All models
 
 |GLM 5.2zai/glm-5.2|1,000,000|$0.8|$2.55|$0.16|$0|
 
-|GLM 5.2 Fastzai/glm-5.2-fast|1,000,000|$2.1|$6.6|$0.21|$0|
+|GLM 5.2 Fastzai/glm-5.2-fast|1,000,000|$2.8|$8.8|$0.56|$0|
 
-|GLM 5.3zai/glm-5.3|1,000,000|$1.4|$4.4|$0.26|$0|
+|GLM 5.3zai/glm-5.3|1,000,000|$1.2|$4|$0.2|$0|
+
+|GLM 5.3 Fastzai/glm-5.3-fast|1,048,576|$2.1|$6.6|$0.21|$0|
 
 |GLM 5.3 Flashzai/glm-5.3-flash|1,000,000|$0.15|$0.5|$0.03|$0|
 
+|GLM 5.3 FlashXzai/glm-5.3-flashx|1,000,000|$0.37|$1.25|$0.075|$0|
+
 |GLM 5V Turbozai/glm-5v-turbo|200,000|$1.2|$4|$0.24|$0|
+
+|Glyph Clusterstealth/glyph-cluster|256,000|$0|$0|$0|$0|
 
 |Google Gemma 4 26B A4Bgoogle/gemma-4-26b-a4b-it|262,144|$0.15|$0.6|$0.015|$0|
 
@@ -2305,6 +2837,8 @@ All models
 
 |GPT 5.2 openai/gpt-5.2-pro|400,000|$21|$168|$0|$0|
 
+|GPT 5.2 (Batch)openai/gpt-5.2-batch|400,000|$0.875|$7|$0.0875|$0|
+
 |GPT 5.2 (Fast)openai/gpt-5.2-fast|400,000|$3.5|$28|$0.35|$0|
 
 |GPT 5.2 Codexopenai/gpt-5.2-codex|400,000|$1.75|$14|$0.175|$0|
@@ -2315,85 +2849,131 @@ All models
 
 |GPT 5.4openai/gpt-5.4|1,050,000|$2.5|$15|$0.25|$0|
 
+|GPT 5.4 (Batch)openai/gpt-5.4-batch|1,050,000|$1.25|$7.5|$0.125|$0|
+
 |GPT 5.4 (Fast)openai/gpt-5.4-fast|1,050,000|$5|$30|$0.5|$0|
 
 |GPT 5.4 Miniopenai/gpt-5.4-mini|400,000|$0.75|$4.5|$0.075|$0|
+
+|GPT 5.4 Mini (Batch)openai/gpt-5.4-mini-batch|400,000|$0.375|$2.25|$0.0375|$0|
 
 |GPT 5.4 Mini (Fast)openai/gpt-5.4-mini-fast|400,000|$1.5|$9|$0.15|$0|
 
 |GPT 5.4 Nanoopenai/gpt-5.4-nano|400,000|$0.2|$1.25|$0.02|$0|
 
+|GPT 5.4 Nano (Batch)openai/gpt-5.4-nano-batch|400,000|$0.1|$0.625|$0.01|$0|
+
 |GPT 5.4 Proopenai/gpt-5.4-pro|1,050,000|$30|$180|$0|$0|
 
 |GPT 5.5openai/gpt-5.5|1,000,000|$5|$30|$0.5|$0|
+
+|GPT 5.5 (Batch)openai/gpt-5.5-batch|1,000,000|$2.5|$15|$0.25|$0|
 
 |GPT 5.5 (Fast)openai/gpt-5.5-fast|1,000,000|$12.5|$75|$1.25|$0|
 
 |GPT 5.5 Proopenai/gpt-5.5-pro|1,000,000|$30|$180|$0|$0|
 
+|GPT 5.5 Pro (Batch)openai/gpt-5.5-pro-batch|1,000,000|$15|$90|$0|$0|
+
 |GPT 5.6 Lunaopenai/gpt-5.6-luna|1,050,000|$0.2|$1.2|$0.02|$0.25|
 
-|GPT 5.6 Luna (Fast)openai/gpt-5.6-luna-fast|1,050,000|$0.4|$2.4|$0.04|$0.25|
+|GPT 5.6 Luna (Batch)openai/gpt-5.6-luna-batch|1,050,000|$0.1|$0.6|$0.01|$0.125|
 
-|GPT 5.6 Solopenai/gpt-5.6-sol|1,050,000|$2|$10|$0.2|$2.5|
+|GPT 5.6 Luna (Fast)openai/gpt-5.6-luna-fast|1,050,000|$0.4|$2.4|$0.04|$0.5|
 
-|GPT 5.6 Sol (Fast)openai/gpt-5.6-sol-fast|1,050,000|$4|$20|$0.4|$2.5|
+|GPT 5.6 Solopenai/gpt-5.6-sol|1,050,000|$4|$20|$0.4|$5|
+
+|GPT 5.6 Sol (Batch)openai/gpt-5.6-sol-batch|1,050,000|$2|$10|$0.2|$2.5|
+
+|GPT 5.6 Sol (Fast)openai/gpt-5.6-sol-fast|1,050,000|$8|$40|$0.8|$10|
 
 |GPT 5.6 Terraopenai/gpt-5.6-terra|1,050,000|$2|$12|$0.2|$2.5|
 
-|GPT 5.6 Terra (Fast)openai/gpt-5.6-terra-fast|1,050,000|$4|$24|$0.4|$2.5|
+|GPT 5.6 Terra (Batch)openai/gpt-5.6-terra-batch|1,050,000|$1|$6|$0.1|$1.25|
 
-|GPT OSS 120Bopenai/gpt-oss-120b|131,072|$0.1|$0.5|$0|$0|
+|GPT 5.6 Terra (Fast)openai/gpt-5.6-terra-fast|1,050,000|$4|$24|$0.4|$5|
 
-|GPT OSS 20Bopenai/gpt-oss-20b|131,072|$0.05|$0.2|$0|$0|
+|GPT OSS 120Bopenai/gpt-oss-120b|131,072|$0.1|$0.5|$0.1|$0|
+
+|GPT OSS 20Bopenai/gpt-oss-20b|131,072|$0.03|$0.14|$0|$0|
 
 |GPT OSS Safeguard 120Bopenai/gpt-oss-safeguard-120b|128,000|$0.15|$0.6|$0|$0|
 
 |GPT OSS Safeguard 20Bopenai/gpt-oss-safeguard-20b|128,000|$0.07|$0.2|$0|$0|
 
-|GPT-3.5 Turboopenai/gpt-3.5-turbo|16,385|$0.5|$1.5|$0|$0|
-
-|GPT-4 Turboopenai/gpt-4-turbo|128,000|$10|$30|$0|$0|
-
 |GPT-4.1openai/gpt-4.1|1,047,576|$2|$8|$0.5|$0|
+
+|GPT-4.1 (Batch)openai/gpt-4.1-batch|1,047,576|$1|$4|$0.25|$0|
 
 |GPT-4.1 (Fast)openai/gpt-4.1-fast|1,047,576|$3.5|$14|$0.875|$0|
 
 |GPT-4.1 miniopenai/gpt-4.1-mini|1,047,576|$0.4|$1.6|$0.1|$0|
 
+|GPT-4.1 mini (Batch)openai/gpt-4.1-mini-batch|1,047,576|$0.2|$0.8|$0.05|$0|
+
 |GPT-4.1 mini (Fast)openai/gpt-4.1-mini-fast|1,047,576|$0.7|$2.8|$0.175|$0|
 
-|GPT-4.1 nanoopenai/gpt-4.1-nano|1,047,576|$0.1|$0.4|$0.025|$0|
-
-|GPT-4.1 nano (Fast)openai/gpt-4.1-nano-fast|1,047,576|$0.2|$0.8|$0.05|$0|
+|GPT-4.1 nanoopenai/gpt-4.1-nano|1,047,576|$0.1|$0.4|$0.03|$0|
 
 |GPT-4oopenai/gpt-4o|128,000|$2.5|$10|$1.25|$0|
+
+|GPT-4o (Batch)openai/gpt-4o-batch|128,000|$1.25|$5|$0.625|$0|
 
 |GPT-4o (Fast)openai/gpt-4o-fast|128,000|$4.25|$17|$2.125|$0|
 
 |GPT-4o miniopenai/gpt-4o-mini|128,000|$0.15|$0.6|$0.075|$0|
 
+|GPT-4o mini (Batch)openai/gpt-4o-mini-batch|128,000|$0.075|$0.3|$0.0375|$0|
+
 |GPT-4o mini (Fast)openai/gpt-4o-mini-fast|128,000|$0.25|$1|$0.125|$0|
 
 |GPT-5openai/gpt-5|400,000|$1.25|$10|$0.125|$0|
+
+|GPT-5 (Batch)openai/gpt-5-batch|400,000|$0.625|$5|$0.0625|$0|
 
 |GPT-5 (Fast)openai/gpt-5-fast|400,000|$2.5|$20|$0.25|$0|
 
 |GPT-5 miniopenai/gpt-5-mini|400,000|$0.25|$2|$0.025|$0|
 
+|GPT-5 mini (Batch)openai/gpt-5-mini-batch|400,000|$0.125|$1|$0.0125|$0|
+
 |GPT-5 mini (Fast)openai/gpt-5-mini-fast|400,000|$0.45|$3.6|$0.045|$0|
 
 |GPT-5 nanoopenai/gpt-5-nano|400,000|$0.05|$0.4|$0.005|$0|
 
+|GPT-5 nano (Batch)openai/gpt-5-nano-batch|400,000|$0.025|$0.2|$0.0025|$0|
+
 |GPT-5 proopenai/gpt-5-pro|400,000|$15|$120|$0|$0|
+
+|GPT-5 pro (Batch)openai/gpt-5-pro-batch|400,000|$7.5|$60|$0|$0|
 
 |GPT-5-Codexopenai/gpt-5-codex|400,000|$1.25|$10|$0.13|$0|
 
 |GPT-5.1-Codexopenai/gpt-5.1-codex|400,000|$1.25|$10|$0.13|$0|
 
-|Grok 4.1 Fast Non-Reasoningspacexai/grok-4.1-fast-non-reasoning|1,000,000|$0.2|$0.5|$0.05|$0|
+|GPT-6 Astraopenai/gpt-6-astra|1,050,000|$10|$50|$1|$12.5|
 
-|Grok 4.1 Fast Reasoningspacexai/grok-4.1-fast-reasoning|1,000,000|$0.2|$0.5|$0.05|$0|
+|GPT-6 Astra (Batch)openai/gpt-6-astra-batch|1,050,000|$5|$25|$0.5|$6.25|
+
+|GPT-6 Astra (Fast)openai/gpt-6-astra-fast|1,050,000|$20|$100|$2|$25|
+
+|GPT-6 Lunaopenai/gpt-6-luna|1,050,000|$0.1|$0.5|$0.01|$0.125|
+
+|GPT-6 Luna (Batch)openai/gpt-6-luna-batch|1,050,000|$0.05|$0.25|$0.005|$0.0625|
+
+|GPT-6 Luna (Fast)openai/gpt-6-luna-fast|1,050,000|$0.2|$1|$0.02|$0.25|
+
+|GPT-6 Solopenai/gpt-6-sol|1,050,000|$2|$10|$0.2|$2.5|
+
+|GPT-6 Sol (Batch)openai/gpt-6-sol-batch|1,050,000|$1|$5|$0.1|$1.25|
+
+|GPT-6 Sol (Fast)openai/gpt-6-sol-fast|1,050,000|$4|$20|$0.4|$5|
+
+|GPT-6.1 Solopenai/gpt-6.1-sol|1,050,000|$2|$10|$0.1|$2.5|
+
+|GPT-6.1 Sol (Batch)openai/gpt-6.1-sol-batch|1,050,000|$1|$5|$0.05|$1.25|
+
+|GPT-6.1 Sol (Fast)openai/gpt-6.1-sol-fast|1,050,000|$4|$20|$0.2|$5|
 
 |Grok 4.20 Beta Non-Reasoningspacexai/grok-4.20-non-reasoning-beta|2,000,000|$1.25|$2.5|$0.2|$0|
 
@@ -2403,39 +2983,41 @@ All models
 
 |Grok 4.20 Multi-Agentspacexai/grok-4.20-multi-agent|2,000,000|$1.25|$2.5|$0.2|$0|
 
+|Grok 4.20 Multi-Agent (Batch)spacexai/grok-4.20-multi-agent-batch|2,000,000|$1|$2|$0.16|$0|
+
 |Grok 4.20 Non-Reasoningspacexai/grok-4.20-non-reasoning|2,000,000|$1.25|$2.5|$0.2|$0|
+
+|Grok 4.20 Non-Reasoning (Batch)spacexai/grok-4.20-non-reasoning-batch|2,000,000|$1|$2|$0.16|$0|
 
 |Grok 4.20 Reasoningspacexai/grok-4.20-reasoning|2,000,000|$1.25|$2.5|$0.2|$0|
 
+|Grok 4.20 Reasoning (Batch)spacexai/grok-4.20-reasoning-batch|2,000,000|$1|$2|$0.16|$0|
+
 |Grok 4.3spacexai/grok-4.3|1,000,000|$1.25|$2.5|$0.2|$0|
+
+|Grok 4.3 (Batch)spacexai/grok-4.3-batch|1,000,000|$1|$2|$0.16|$0|
 
 |Grok 4.5spacexai/grok-4.5|500,000|$2|$6|$0.3|$0|
 
 |Grok 4.6spacexai/grok-4.6|500,000|$2|$6|$0.5|$0|
 
+|Grok 4.7spacexai/grok-4.7|500,000|$2|$6|$0.5|$0|
+
 |Grok Build 0.1spacexai/grok-build-0.1|256,000|$1|$2|$0.2|$0|
 
-|Hy3tencent/hy3|256,000|$0.132|$0.528|$0.033|$0|
+|Grok Voice 3.0spacexai/grok-voice-3.0|4,096|$0|$0|$0|$0|
+
+|Hy3tencent/hy3|262,144|$0.14|$0.58|$0.035|$0|
 
 |Inklingthinkingmachines/inkling|256,000|$1|$4.05|$0.17|$0|
 
-|Inkling Smallthinkingmachines/inkling-small|1,000,000|$0.5|$1.2|$0.1|$0|
+|Inkling Smallthinkingmachines/inkling-small|1,000,000|$0.45|$1.2|$0.1|$0|
 
 |Interfaze Betainterfaze/interfaze-beta|1,000,000|$1.5|$3.5|$0|$0|
 
-|Kat Coder Air V2.5kwaipilot/kat-coder-air-v2.5|256,000|$0.15|$0.6|$0.03|$0|
-
-|Kat Coder Pro V2kwaipilot/kat-coder-pro-v2|256,000|$0.3|$1.2|$0.06|$0|
-
-|Kat Coder Pro V2.5kwaipilot/kat-coder-pro-v2.5|256,000|$0.74|$2.96|$0.15|$0|
-
-|KAT-Coder-Pro V1kwaipilot/kat-coder-pro-v1|256,000|$0.3|$1.2|$0.06|$0|
-
 |Kimi K2 Instructmoonshotai/kimi-k2|131,072|$0.57|$2.3|$0|$0|
 
-|Kimi K2 Thinkingmoonshotai/kimi-k2-thinking|216,144|$0.47|$2|$0.141|$0|
-
-|Kimi K2.5moonshotai/kimi-k2.5|262,114|$0.6|$3|$0.1|$0|
+|Kimi K2.5moonshotai/kimi-k2.5|256,000|$0.6|$3|$0|$0|
 
 |Kimi K2.6moonshotai/kimi-k2.6|262,000|$0.95|$4|$0.16|$0|
 
@@ -2447,11 +3029,25 @@ All models
 
 |Kimi K3 Fastmoonshotai/kimi-k3-fast|1,000,000|$4.5|$22.5|$0.45|$0|
 
-|Laguna S 2.1poolside/laguna-s-2.1|1,000,000|$0.1|$0.2|$0.01|$0|
+|Kimi K3.1 Promoonshotai/kimi-k3.1-pro|1,048,576|$2|$10|$0.2|$2|
+
+|Kimi K3.1 Pro Highspeedmoonshotai/kimi-k3.1-pro-highspeed|1,048,576|$4|$20|$0.2|$4|
+
+|Laguna S 2.1poolside/laguna-s-2.1|1,000,000|$0.09|$0.18|$0.009|$0|
 
 |Laguna S 2.1 Freepoolside/laguna-s-2.1-free|256,000|$0|$0|$0|$0|
 
-|Ling 3.0 Flashinclusionai/ling-3.0-flash|256,000|$0.06|$0.18|$0.012|$0|
+|LFM2.5-24B-A2Bliquid/lfm2.5-24b-a2b|128,000|$0.05|$0.7|$0.025|$0|
+
+|Ling 3.0 Flashinclusionai/ling-3.0-flash|256,000|$0.021|$0.063|$0.0042|$0|
+
+|Ling 3.0 Flash Fininclusionai/ling-3.0-flash-fin|256,000|$0.075|$0.22|$0.015|$0|
+
+|Ling 3.0 Flash Santeinclusionai/ling-3.0-flash-sante|256,000|$0.075|$0.22|$0.015|$0|
+
+|Ling 3.0 Flash VLinclusionai/ling-3.0-flash-vl|256,000|$0.075|$0.22|$0.015|$0|
+
+|Ling 3.1 Flashinclusionai/ling-3.1-flash|262,144|$0.3|$0.9|$0.06|$0|
 
 |Llama 3.1 70B Instructmeta/llama-3.1-70b|128,000|$0.72|$0.72|$0|$0|
 
@@ -2463,13 +3059,25 @@ All models
 
 |Llama 4 Scout 17B Instructmeta/llama-4-scout|128,000|$0.17|$0.66|$0|$0|
 
+|LongCat 2.5 Previewmeituan/longcat-2.5-preview|1,048,576|$0.3|$1.2|$0.006|$0|
+
 |Mercury 2inception/mercury-2|128,000|$0.25|$0.75|$0.025|$0|
+
+|Mercury 2.5inception/mercury-2.5|260,000|$0.04|$0.15|$0.004|$0|
+
+|Mercury 3inception/mercury-3|1,000,000|$0.1|$0.35|$0.01|$0|
 
 |Mercury Coder Small Betainception/mercury-coder-small|32,000|$0.25|$1|$0|$0|
 
-|MiMo M2.5xiaomi/mimo-v2.5|1,050,000|$0.14|$0.28|$0.0028|$0|
+|MiMo M2.5xiaomi/mimo-v2.5|1,050,000|$0.119|$0.238|$0.0025|$0|
 
-|MiMo V2.5 Proxiaomi/mimo-v2.5-pro|1,050,000|$0.435|$0.87|$0.0036|$0|
+|MiMo V2.5 Proxiaomi/mimo-v2.5-pro|1,050,000|$0.3045|$0.609|$0.0028|$0|
+
+|MiMo V2.6 Flashxiaomi/mimo-v2.6-flash|1,048,576|$0.14|$0.28|$0.0028|$0|
+
+|MiMo V2.6 Proxiaomi/mimo-v2.6-pro|1,048,576|$0.435|$0.87|$0.0036|$0|
+
+|MiMo V2.6 Pro UltraSpeedxiaomi/mimo-v2.6-pro-ultraspeed|1,048,576|$4.35|$8.7|$0.036|$0|
 
 |MiniMax M2minimax/minimax-m2|205,000|$0.3|$1.2|$0.03|$0.375|
 
@@ -2481,33 +3089,31 @@ All models
 
 |MiniMax M2.5 High Speedminimax/minimax-m2.5-highspeed|204,800|$0.6|$2.4|$0.03|$0.375|
 
-|Minimax M2.7minimax/minimax-m2.7|204,800|$0.3|$1.2|$0.06|$0.375|
-
-|Minimax M2.7 (Free)minimax/minimax-m2.7-free|196,608|$0|$0|$0|$0|
+|MiniMax M2.7minimax/minimax-m2.7|204,800|$0.3|$1.2|$0.06|$0.375|
 
 |MiniMax M2.7 High Speedminimax/minimax-m2.7-highspeed|204,800|$0.6|$2.4|$0.06|$0.375|
 
-|MiniMax M3minimax/minimax-m3|1,000,000|$0.3|$1.2|$0.06|$0|
+|MiniMax M3minimax/minimax-m3|512,000|$0.3|$1.2|$0.06|$0|
 
-|MiniMax M3 (Free)minimax/minimax-m3-free|1,048,576|$0|$0|$0|$0|
+|MiniMax-M3.1-Flashminimax/minimax-m3.1-flash|1,048,576|$0.15|$0.6|$0.015|$0|
 
-|Ministral 14Bmistral/ministral-14b|256,000|$0.2|$0.2|$0|$0|
+|Ministral 14Bmistral/ministral-14b|262,144|$0.2|$0.2|$0.02|$0|
 
-|Ministral 3Bmistral/ministral-3b|128,000|$0.1|$0.1|$0|$0|
+|Ministral 3Bmistral/ministral-3b|131,072|$0.1|$0.1|$0.01|$0|
 
-|Ministral 8Bmistral/ministral-8b|128,000|$0.15|$0.15|$0|$0|
+|Ministral 8Bmistral/ministral-8b|262,144|$0.15|$0.15|$0.015|$0|
 
-|Mistral Codestralmistral/codestral|128,000|$0.3|$0.9|$0|$0|
+|Mistral Codestralmistral/codestral|128,000|$0.3|$0.9|$0.03|$0|
 
-|Mistral Large 3mistral/mistral-large-3|256,000|$0.5|$1.5|$0|$0|
+|Mistral Large 3mistral/mistral-large-3|262,144|$0.5|$1.5|$0.05|$0|
 
-|Mistral Medium 3.1mistral/mistral-medium|128,000|$0.4|$2|$0|$0|
+|Mistral Large 4mistral/mistral-large-4|524,288|$1.36|$4.18|$0.14|$0|
 
-|Mistral Medium Latestmistral/mistral-medium-3.5|256,000|$1.5|$7.5|$0|$0|
+|Mistral Medium Latestmistral/mistral-medium-3.5|262,144|$1.5|$7.5|$0.15|$0|
 
-|Mistral Nemo 12Bmistral/mistral-nemo|128,000|$0.15|$0.15|$0|$0|
+|Mistral Nemo 12Bmistral/mistral-nemo|131,072|$0.029|$0.03|$0|$0|
 
-|Mistral Smallmistral/mistral-small|32,000|$0.1|$0.3|$0|$0|
+|Mistral Smallmistral/mistral-small|262,144|$0.15|$0.6|$0.015|$0|
 
 |Muse Glimmer 30Bmeta/muse-glimmer-30b|131,072|$0.35|$1.5|$0.04|$0|
 
@@ -2517,21 +3123,33 @@ All models
 
 |Muse Spark 1.2 Contributormeta/muse-spark-1.2-contributor|1,048,576|$0.1|$0.2|$0.002|$0|
 
-|Nemotron 3 Nano 30B A3Bnvidia/nemotron-3-nano-30b-a3b|262,144|$0.05|$0.24|$0|$0|
+|Muse Spark 1.3meta/muse-spark-1.3|1,048,576|$1.25|$4.25|$0.15|$0|
+
+|Muse Spark 1.3 Contributormeta/muse-spark-1.3-contributor|1,048,576|$0.1|$0.2|$0.002|$0|
+
+|Muse Spark Openmeta/muse-spark-open|1,048,576|$1.25|$4.25|$0.15|$0|
+
+|Muse Wondermeta/muse-wonder-1.0|1,048,576|$4|$20|$0.2|$0|
+
+|Nemotron 3 Nano 30B A3Bnvidia/nemotron-3-nano-30b-a3b|262,144|$0.05|$0.2|$0.025|$0|
 
 |Nemotron 3 Ultranvidia/nemotron-3-ultra-550b-a55b|1,000,000|$0.6|$2.4|$0.12|$0|
 
-|Nemotron 3.5 Lightning 30Bnvidia/nemotron-3.5-lightning|262,144|$0.05|$0.15|$0.05|$0|
+|Nemotron 3.5 Lightning 30Bnvidia/nemotron-3.5-lightning|262,144|$0.05|$0.2|$0.01|$0|
 
-|Nova 2 Liteamazon/nova-2-lite|1,000,000|$0.3|$2.5|$0.075|$0|
+|Nemotron 3.5 Lightning Freenvidia/nemotron-3.5-lightning-free|1,000,000|$0|$0|$0|$0|
 
-|Nova Liteamazon/nova-lite|300,000|$0.06|$0.24|$0|$0|
+|Nova 2 Liteamazon/nova-2-lite|1,000,000|$0.33|$2.75|$0.0825|$0|
 
-|Nova Microamazon/nova-micro|128,000|$0.035|$0.14|$0|$0|
+|Nova Liteamazon/nova-lite|300,000|$0.06|$0.24|$0.015|$0|
 
-|Nova Proamazon/nova-pro|300,000|$0.8|$3.2|$0|$0|
+|Nova Microamazon/nova-micro|128,000|$0.035|$0.14|$0.0087|$0|
+
+|Nova Proamazon/nova-pro|300,000|$0.8|$3.2|$0.2|$0|
 
 |NVIDIA Nemotron 3 Super 120B A12Bnvidia/nemotron-3-super-120b-a12b|256,000|$0.15|$0.65|$0|$0|
+
+|NVIDIA Nemotron 3.5 Super VLnvidia/nemotron-3.5-super-vl|1,048,576|$0.2|$0.5|$0.04|$0|
 
 |Nvidia Nemotron Nano 12B V2 VLnvidia/nemotron-nano-12b-v2-vl|131,072|$0.2|$0.6|$0|$0|
 
@@ -2549,25 +3167,19 @@ All models
 
 |o4-miniopenai/o4-mini|200,000|$1.1|$4.4|$0.275|$0|
 
-|o4-mini (Fast)openai/o4-mini-fast|200,000|$2|$8|$0.5|$0|
-
-|Pixtral 12B 2409mistral/pixtral-12b|128,000|$0.15|$0.15|$0|$0|
-
-|Qwen 3 32Balibaba/qwen-3-32b|128,000|$0.16|$0.64|$0|$0|
+|Qwen 3 32Balibaba/qwen-3-32b|128,000|$0.15|$0.6|$0|$0|
 
 |Qwen 3 Coder 30B A3B Instructalibaba/qwen3-coder-30b-a3b|262,144|$0.15|$0.6|$0|$0|
 
 |Qwen 3 Max Thinkingalibaba/qwen3-max-thinking|256,000|$1.2|$6|$0.24|$0|
 
-|Qwen 3.5 Flashalibaba/qwen3.5-flash|1,000,000|$0.1|$0.4|$0.001|$0.125|
+|Qwen 3.5 Flashalibaba/qwen3.5-flash|1,000,000|$0.1|$0.4|$0.01|$0.125|
 
 |Qwen 3.5 Plusalibaba/qwen3.5-plus|1,000,000|$0.4|$2.4|$0.04|$0.5|
 
 |Qwen 3.6 27Balibaba/qwen3.6-27b|256,000|$0.6|$3.6|$0|$0|
 
-|Qwen 3.6 Max Previewalibaba/qwen-3.6-max-preview|240,000|$1.3|$7.8|$0.26|$1.625|
-
-|Qwen 3.6 Plusalibaba/qwen3.6-plus|1,000,000|$0.5|$3|$0.1|$0.625|
+|Qwen 3.6 Plusalibaba/qwen3.6-plus|1,000,000|$0.5|$3|$0.05|$0.625|
 
 |Qwen 3.7 Flashalibaba/qwen3.7-flash|991,000|$0.03|$0.13|$0.006|$0.038|
 
@@ -2575,51 +3187,51 @@ All models
 
 |Qwen 3.7 Plusalibaba/qwen3.7-plus|1,000,000|$0.4|$1.6|$0.08|$0.5|
 
-|Qwen 3.8 Flashalibaba/qwen3.8-flash|991,000|$0.16|$0.47|$0.016|$0.2|
+|Qwen 3.8 Flashalibaba/qwen3.8-flash|991,000|$0.15|$0.47|$0.016|$0.2|
 
-|Qwen 3.8 Maxalibaba/qwen3.8-max|1,000,000|$2|$6|$0.25|$2.5|
+|Qwen 3.8 Maxalibaba/qwen3.8-max|262,144|$2|$6|$0.25|$0|
+
+|Qwen 3.8 Max Primealibaba/qwen3.8-max-prime|1,000,000|$4|$12|$0.5|$5|
+
+|Qwen 3.8 Omni Flashalibaba/qwen3.8-omni-flash|1,000,000|$0.15|$0.47|$0.016|$0|
 
 |Qwen3 235B A22Balibaba/qwen-3-235b|262,144|$0.22|$0.88|$0|$0|
 
-|Qwen3 Coder 480B A35B Instructalibaba/qwen3-coder|262,144|$1.5|$7.5|$0.3|$0|
+|Qwen3 Coder 480B A35B Instructalibaba/qwen3-coder|262,144|$0.22|$1.8|$0.022|$0|
 
 |Qwen3 Coder Nextalibaba/qwen3-coder-next|256,000|$0.5|$1.2|$0|$0|
 
-|Qwen3 Coder Plusalibaba/qwen3-coder-plus|1,000,000|$1|$5|$0.2|$0|
+|Qwen3 Next 80B A3B Instructalibaba/qwen3-next-80b-a3b-instruct|262,114|$0.15|$1.2|$0|$0|
 
-|Qwen3 Maxalibaba/qwen3-max|262,144|$1.2|$6|$0.24|$0|
+|Qwen3 Next 80B A3B Thinkingalibaba/qwen3-next-80b-a3b-thinking|262,144|$0.15|$1.2|$0|$0|
 
-|Qwen3 Max Previewalibaba/qwen3-max-preview|262,144|$1.2|$6|$0.24|$0|
-
-|Qwen3 Next 80B A3B Instructalibaba/qwen3-next-80b-a3b-instruct|131,072|$0.15|$1.2|$0|$0|
-
-|Qwen3 Next 80B A3B Thinkingalibaba/qwen3-next-80b-a3b-thinking|131,072|$0.15|$1.2|$0|$0|
-
-|Qwen3 VL 235B A22B Instructalibaba/qwen3-vl-235b-a22b-instruct|131,072|$0.4|$1.6|$0|$0|
-
-|Qwen3 VL 235B A22B Instructalibaba/qwen3-vl-instruct|131,072|$0.4|$1.6|$0|$0|
-
-|Qwen3 VL 235B A22B Thinkingalibaba/qwen3-235b-a22b-thinking|131,072|$0.4|$4|$0|$0|
-
-|Qwen3 VL 235B A22B Thinkingalibaba/qwen3-vl-thinking|131,072|$0.4|$4|$0|$0|
+|Qwen3 VL 235B A22B Instructalibaba/qwen3-vl-instruct|262,144|$0.2|$0.88|$0.11|$0|
 
 |Qwen3-14Balibaba/qwen-3-14b|40,960|$0.12|$0.24|$0|$0|
 
 |Qwen3-30B-A3Balibaba/qwen-3-30b|40,960|$0.12|$0.5|$0|$0|
 
-|Qwen3.8 2.4T A95Balibaba/qwen3.8-2.4t-a95b|262,144|$2|$6|$0.2|$0|
+|Qwen3.8 2.4T A95Balibaba/qwen3.8-2.4t-a95b|262,144|$2|$6|$0.25|$0|
 
-|Qwen3.8 27Balibaba/qwen3.8-27b|1,000,000|$0.55|$3.3|$0.11|$0|
+|Qwen3.8 27Balibaba/qwen3.8-27b|1,000,000|$0.5|$3|$0.1|$0.625|
+
+|Qwen3.8 Max 0902alibaba/qwen3.8-max-0902|991,000|$2|$6|$0.25|$2.5|
 
 |Sakana Namazusakana/namazu|256,000|$0.95|$4|$0.15|$0|
 
 |Seed 1.6bytedance/seed-1.6|256,000|$0.25|$2|$0.05|$0|
 
+|Seed 2.1 Turbobytedance/seed-2.1-turbo|262,144|$0.5|$2.5|$0.1|$0|
+
 |Step 3.7 Flashstepfun/step-3.7-flash|256,000|$0.2|$1.15|$0.04|$0|
 
-|StepFun 3.5 Flashstepfun/step-3.5-flash|262,114|$0.09|$0.3|$0.02|$0|
+|Step 5 Previewstepfun/step-5-preview|1,048,576|$1|$2.7|$0.1|$0|
 
-|Trinity Large Thinkingarcee-ai/trinity-large-thinking|262,100|$0.25|$0.9|$0|$0|
+|Tencent Hy4 Previewtencent/hy4-preview|1,024,000|$0.834|$2.501|$0.042|$0|
+
+|Toast 1mixedbread/toast-1|131,000|$0.3|$0.72|$0.036|$0|
+
+|Trinity Large Thinkingarcee-ai/trinity-large-thinking|262,100|$0.25|$0.8|$0.06|$0|
 
 |xai(4 models)|
 
@@ -2629,33 +3241,33 @@ All models
 
 |Grok 4.6grok-4.6|500,000|$2|$6|$0.5|$0|
 
-|Grok Build 0.1grok-build-0.1|256,000|$1|$2|$0.2|$0|
+|Grok 4.7grok-4.7|500,000|$2|$6|$0.5|$0|
 
 |xiaomi(3 models)|
 
-|MiMo-V2.5mimo-v2.5|1,048,576|$0.14|$0.28|$0.0028|$0|
+|MiMo-V2.6-Flashmimo-v2.6-flash|1,048,576|$0.14|$0.28|$0.0028|$0|
 
-|MiMo-V2.5-Promimo-v2.5-pro|1,048,576|$0.435|$0.87|$0.0036|$0|
+|MiMo-V2.6-Promimo-v2.6-pro|1,048,576|$0.435|$0.87|$0.0036|$0|
 
-|MiMo-V2.5-Pro-UltraSpeedmimo-v2.5-pro-ultraspeed|1,048,576|$1.305|$2.61|$0.0108|$0|
+|MiMo-V2.6-Pro-UltraSpeedmimo-v2.6-pro-ultraspeed|1,048,576|$4.35|$8.7|$0.036|$0|
 
 |xiaomi-token-plan-ams(2 models)|
 
-|MiMo-V2.5mimo-v2.5|1,048,576|$0|$0|$0|$0|
+|MiMo-V2.6-Flashmimo-v2.6-flash|1,048,576|$0|$0|$0|$0|
 
-|MiMo-V2.5-Promimo-v2.5-pro|1,048,576|$0|$0|$0|$0|
+|MiMo-V2.6-Promimo-v2.6-pro|1,048,576|$0|$0|$0|$0|
 
 |xiaomi-token-plan-cn(2 models)|
 
-|MiMo-V2.5mimo-v2.5|1,048,576|$0|$0|$0|$0|
+|MiMo-V2.6-Flashmimo-v2.6-flash|1,048,576|$0|$0|$0|$0|
 
-|MiMo-V2.5-Promimo-v2.5-pro|1,048,576|$0|$0|$0|$0|
+|MiMo-V2.6-Promimo-v2.6-pro|1,048,576|$0|$0|$0|$0|
 
 |xiaomi-token-plan-sgp(2 models)|
 
-|MiMo-V2.5mimo-v2.5|1,048,576|$0|$0|$0|$0|
+|MiMo-V2.6-Flashmimo-v2.6-flash|1,048,576|$0|$0|$0|$0|
 
-|MiMo-V2.5-Promimo-v2.5-pro|1,048,576|$0|$0|$0|$0|
+|MiMo-V2.6-Promimo-v2.6-pro|1,048,576|$0|$0|$0|$0|
 
 |zai(7 models)|
 
@@ -2671,29 +3283,17 @@ All models
 
 |GLM-5.3 Highspeedglm-5.3-highspeed|1,000,000|$0|$0|$0|$0|
 
-|GLM-5.3-Flashglm-5.3-flash|1,000,000|$0.075|$0.25|$0.015|$0|
+|GLM-5.3-Flashglm-5.3-flash|1,000,000|$0.15|$0.5|$0.03|$0|
 
-|zai-coding-cn(10 models)|
+|zai-coding-cn(4 models)|
 
-|GLM-4.6Vglm-4.6v|128,000|$0.3|$0.9|$0|$0|
-
-|GLM-4.7glm-4.7|204,800|$0.6|$2.2|$0.11|$0|
-
-|GLM-5-Turboglm-5-turbo|200,000|$1.2|$4|$0.24|$0|
-
-|GLM-5.1glm-5.1|200,000|$1.4|$4.4|$0.26|$0|
-
-|GLM-5.2glm-5.2|1,000,000|$1.4|$4.4|$0.26|$0|
-
-|GLM-5.2 Highspeedglm-5.2-highspeed|1,000,000|$0|$0|$0|$0|
+|GLM-4.6Vglm-4.6v|128,000|$0.3|$0.9|$0.05|$0|
 
 |GLM-5.3glm-5.3|1,000,000|$1.4|$4.4|$0.26|$0|
 
 |GLM-5.3 Highspeedglm-5.3-highspeed|1,000,000|$0|$0|$0|$0|
 
-|GLM-5.3-Flashglm-5.3-flash|1,000,000|$0.075|$0.25|$0.015|$0|
-
-|GLM-5V-Turboglm-5v-turbo|200,000|$1.2|$4|$0.24|$0|
+|GLM-5.3-Flashglm-5.3-flash|1,000,000|$0.15|$0.5|$0.03|$0|
 
 No models match this filter.
 

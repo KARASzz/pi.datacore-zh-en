@@ -1,7 +1,8 @@
+People of Pi: We've shipped Pi 1.0 with Pi Durable. Go make them yours.
 Copy SVGDownload SVGPress Kit
-HomeDocumentationNewsPackagesModels
+DocumentationChangelogModelsPackagesRadius
 
-Home→Documentation→News→Packages→Models→
+Documentation→Changelog→Models→Packages→Radius→
 
 GitHubnpmDiscordX
 
@@ -19,7 +20,7 @@ Install context-mode from npm and Pi will load the resources declared by the pac
  npm repohome report
 
 $ pi install npm:context-modeCopy
-Packagecontext-modeVersion1.0.169PublishedJun 29, 2026Downloads81.7K/mo · 18.7K/wkAuthormksgluLicenseElastic-2.0Typesextension, skillSize4.1 MBDependencies8 dependencies · 0 peersPi manifest JSON{
+Packagecontext-modeVersion1.0.169PublishedJun 29, 2026Downloads91.4K/mo · 13.8K/wkAuthormksgluLicenseElastic-2.0Typesextension, skillSize4.1 MBDependencies8 dependencies · 0 peersPi manifest JSON{
  "extensions": [
  "./build/adapters/pi/extension.js"
  ],
@@ -57,11 +58,17 @@ Session Continuity — Every file edit, git operation, task, error, and user dec
 - 
 Think in Code — The LLM should program the analysis, not compute it. Instead of reading 50 files into context to count functions, the agent writes a script that does the counting and console.log()s only the result. One script replaces ten tool calls and saves 100x context. This is a mandatory paradigm across all 17 supported clients, plus the OpenClaw gateway integration: stop treating the LLM as a data processor, treat it as a code generator.
 
-// Before: 47 × Read() = 700 KB. After: 1 × ctx_execute() = 3.6 KB.
+ 
+ 
+ 
+ 
+ // Before: 47 × Read() = 700 KB. After: 1 × ctx_execute() = 3.6 KB.
 ctx_execute("javascript", `
  const files = fs.readdirSync('src').filter(f => f.endsWith('.ts'));
  files.forEach(f => console.log(f + ': ' + fs.readFileSync('src/'+f,'utf8').split('\\n').length + ' lines'));
 `);
+
+ 
 
 - 
 No prose-style enforcement — context-mode keeps raw data out of context but never dictates how the model writes its final answer. Brevity, completeness, formatting — your model's call (or yours via your own CLAUDE.md / AGENTS.md). Aggressive brevity prompts have been shown to degrade coding/reasoning benchmarks (Moonshot AI on kimi-k2.5) — the routing block stays focused on where data goes, not on how the model talks.
@@ -74,14 +81,26 @@ Prerequisites: Claude Code v1.0.33+ (claude --version). If /plugin is not recogn
 
 Install:
 
-/plugin marketplace add mksglu/context-mode
+ 
+ 
+ 
+ 
+ /plugin marketplace add mksglu/context-mode
 /plugin install context-mode@context-mode
+
+ 
 
 Restart Claude Code (or run /reload-plugins).
 
 Verify:
 
-/context-mode:ctx-doctor
+ 
+ 
+ 
+ 
+ /context-mode:ctx-doctor
+
+ 
 
 All checks should show [x]. The doctor validates runtimes, hooks, FTS5, and plugin registration.
 
@@ -123,16 +142,28 @@ Note: Slash commands are a Claude Code plugin feature. On other platforms, type 
 
 Status line (optional): Claude Code's plugin manifest cannot declare a status line, so this is a one-time manual edit to ~/.claude/settings.json:
 
-{
+ 
+ 
+ 
+ 
+ {
  "statusLine": {
  "type": "command",
  "command": "context-mode statusline"
  }
 }
 
+ 
+
 After saving, restart Claude Code. The bar shows $ saved this session · $ saved across sessions · % efficient so you can see savings accumulate in real time. The wiring is path-free — context-mode statusline resolves through the bundled CLI regardless of where the plugin cache lives.
 
-claude mcp add context-mode -- npx -y context-mode
+ 
+ 
+ 
+ 
+ claude mcp add context-mode -- npx -y context-mode
+
+ 
 
 This gives you all 11 MCP tools without automatic routing. The model can still use them — it just won't be nudged to prefer them over raw Bash/Read/WebFetch. Good for trying it out before committing to the full plugin.
 
@@ -143,12 +174,22 @@ Install:
 - 
 Install context-mode globally:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Add the following to ~/.gemini/settings.json. This single file registers the MCP server and all four hooks:
 
-{
+ 
+ 
+ 
+ 
+ {
  "mcpServers": {
  "context-mode": {
  "command": "context-mode"
@@ -182,18 +223,32 @@ Add the following to ~/.gemini/settings.json. This single file registers the MCP
  }
 }
 
+ 
+
 - 
 Restart Gemini CLI.
 
 Verify:
 
-/mcp list
+ 
+ 
+ 
+ 
+ /mcp list
+
+ 
 
 You should see context-mode: ... - Connected.
 
 Routing: Automatic via SessionStart hook. Optionally copy routing instructions for full model awareness:
 
-cp node_modules/context-mode/configs/gemini-cli/GEMINI.md ./GEMINI.md
+ 
+ 
+ 
+ 
+ cp node_modules/context-mode/configs/gemini-cli/GEMINI.md ./GEMINI.md
+
+ 
 
 Why the BeforeTool matcher? It targets only tools that produce large output (run_shell_command, read_file, read_many_files, grep_search, search_file_content, web_fetch, activate_skill) plus context-mode's own tools (mcp__plugin_context-mode). This avoids unnecessary hook overhead on lightweight tools while intercepting every tool that could flood your context window.
 
@@ -206,12 +261,22 @@ Install:
 - 
 Install context-mode globally:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Create .vscode/mcp.json in your project root:
 
-{
+ 
+ 
+ 
+ 
+ {
  "servers": {
  "context-mode": {
  "command": "context-mode"
@@ -219,10 +284,16 @@ Create .vscode/mcp.json in your project root:
  }
 }
 
+ 
+
 - 
 Create .github/hooks/context-mode.json:
 
-{
+ 
+ 
+ 
+ 
+ {
  "hooks": {
  "PreToolUse": [
  { "type": "command", "command": "context-mode hook vscode-copilot pretooluse" }
@@ -236,6 +307,8 @@ Create .github/hooks/context-mode.json:
  }
 }
 
+ 
+
 - 
 Restart VS Code.
 
@@ -243,7 +316,13 @@ Verify: Open Copilot Chat and type ctx stats. Context-mode tools should appear a
 
 Routing: Automatic via SessionStart hook. Optionally copy routing instructions for full model awareness:
 
-cp node_modules/context-mode/configs/vscode-copilot/copilot-instructions.md .github/copilot-instructions.md
+ 
+ 
+ 
+ 
+ cp node_modules/context-mode/configs/vscode-copilot/copilot-instructions.md .github/copilot-instructions.md
+
+ 
 
 Full hook config including PreCompact: configs/vscode-copilot/hooks.json
 
@@ -254,7 +333,13 @@ Install:
 - 
 Install context-mode globally:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Add MCP server via Settings UI: Settings > Tools > AI Assistant > Model Context Protocol (MCP) > Add Server:
@@ -266,7 +351,11 @@ Add MCP server via Settings UI: Settings > Tools > AI Assistant > Model Context 
 - 
 Create .github/hooks/context-mode.json:
 
-{
+ 
+ 
+ 
+ 
+ {
  "hooks": {
  "PreToolUse": [
  { "type": "command", "command": "context-mode hook jetbrains-copilot pretooluse" }
@@ -280,6 +369,8 @@ Create .github/hooks/context-mode.json:
  }
 }
 
+ 
+
 - 
 Restart the JetBrains IDE.
 
@@ -287,7 +378,13 @@ Verify: Open Copilot Chat and type ctx stats. Context-mode tools should appear a
 
 Routing: Automatic via SessionStart hook. Optionally copy routing instructions for full model awareness:
 
-cp node_modules/context-mode/configs/jetbrains-copilot/copilot-instructions.md .github/copilot-instructions.md
+ 
+ 
+ 
+ 
+ cp node_modules/context-mode/configs/jetbrains-copilot/copilot-instructions.md .github/copilot-instructions.md
+
+ 
 
 Full hook config including PreCompact: configs/jetbrains-copilot/hooks.json
 
@@ -297,8 +394,14 @@ Prerequisites: Node.js >= 22.5 (or Bun), GitHub Copilot CLI (copilot) installed.
 
 Install — Option A (plugin, one command — recommended):
 
-npm install -g context-mode # the plugin's MCP server runs the global binary
+ 
+ 
+ 
+ 
+ npm install -g context-mode # the plugin's MCP server runs the global binary
 copilot plugin install mksglu/context-mode:configs/copilot-cli # registers MCP + hooks + routing skill
+
+ 
 
 The bundle's .mcp.json pins CONTEXT_MODE_PLATFORM=copilot-cli, so context-mode self-identifies as Copilot — ctx_upgrade and platform detection resolve copilot-cli even when Claude Code is co-installed (whose ~/.claude/ would otherwise win). No context-mode upgrade / agent call needed. To try it from a local clone before it lands on the default branch, point Copilot at the bundle directory: copilot --plugin-dir /path/to/context-mode/configs/copilot-cli.
 
@@ -307,17 +410,33 @@ Install — Option B (manual, no plugin):
 - 
 Install context-mode globally:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Register the MCP server with Copilot CLI's built-in command (writes ~/.copilot/mcp-config.json for you):
 
-copilot mcp add context-mode -- context-mode
+ 
+ 
+ 
+ 
+ copilot mcp add context-mode -- context-mode
+
+ 
 
 - 
 Configure hooks in ~/.copilot/hooks/context-mode.json (or $COPILOT_HOME/hooks/context-mode.json). The config uses flat { "type": "command", "command": "..." } entries; context-mode also writes a top-level "version": 1, but that field is optional — the Copilot CLI accepts hook configs that omit it (it is pinned only for self-documentation). Copilot CLI fires six events context-mode uses:
 
-{
+ 
+ 
+ 
+ 
+ {
  "version": 1,
  "hooks": {
  "preToolUse": [{ "type": "command", "command": "context-mode hook copilot-cli pretooluse" }],
@@ -328,6 +447,8 @@ Configure hooks in ~/.copilot/hooks/context-mode.json (or $COPILOT_HOME/hooks/co
  "agentStop": [{ "type": "command", "command": "context-mode hook copilot-cli stop" }]
  }
 }
+
+ 
 
 Or let context-mode write this hooks file for you: context-mode upgrade (run from a Copilot CLI context, or with CONTEXT_MODE_PLATFORM=copilot-cli). upgrade writes the hooks file only — register the MCP server with copilot mcp add in step 2.
 
@@ -356,16 +477,28 @@ Until then, use the local-folder path:
 
 Windows (PowerShell) — Cursor does not follow Windows symlinks/junctions, so use robocopy:
 
-git clone https://github.com/mksglu/context-mode.git
+ 
+ 
+ 
+ 
+ git clone https://github.com/mksglu/context-mode.git
 cd context-mode
 robocopy . "$env:USERPROFILE\.cursor\plugins\local\context-mode" /MIR `
  /XD node_modules .git build web tests scripts .vscode `
  /XF *.log .gitignore *.bundle.mjs.map
 
+ 
+
 macOS / Linux:
 
-git clone https://github.com/mksglu/context-mode.git
+ 
+ 
+ 
+ 
+ git clone https://github.com/mksglu/context-mode.git
 ln -s "$PWD/context-mode" ~/.cursor/plugins/local/context-mode
+
+ 
 
 Restart Cursor. The plugin appears in Settings → Plugins as "Context Mode (Local)". To pull updates, re-run the same robocopy / ln -s line.
 
@@ -376,12 +509,22 @@ Note: if .cursor/hooks.json already contains context-mode entries from a prior O
 - 
 Install context-mode globally:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Create .cursor/mcp.json in your project root (or ~/.cursor/mcp.json for global):
 
-{
+ 
+ 
+ 
+ 
+ {
  "mcpServers": {
  "context-mode": {
  "command": "context-mode"
@@ -389,10 +532,16 @@ Create .cursor/mcp.json in your project root (or ~/.cursor/mcp.json for global):
  }
 }
 
+ 
+
 - 
 Create .cursor/hooks.json (or ~/.cursor/hooks.json for global):
 
-{
+ 
+ 
+ 
+ 
+ {
  "version": 1,
  "hooks": {
  "preToolUse": [
@@ -414,13 +563,21 @@ Create .cursor/hooks.json (or ~/.cursor/hooks.json for global):
  }
 }
 
+ 
+
 The preToolUse matcher is optional — without it, the hook fires on all tools. The stop hook fires when the agent turn ends and can send a followup message to continue the loop. afterAgentResponse is also available (fire-and-forget, receives full response text).
 
 - 
 Copy the routing rules file. Cursor lacks a SessionStart hook, so the model needs a rules file for routing awareness:
 
-mkdir -p .cursor/rules
+ 
+ 
+ 
+ 
+ mkdir -p .cursor/rules
 cp node_modules/context-mode/configs/cursor/context-mode.mdc .cursor/rules/context-mode.mdc
+
+ 
 
 - 
 Restart Cursor or open a new agent session.
@@ -440,17 +597,29 @@ Install:
 - 
 Add to opencode.json in your project root (or ~/.config/opencode/opencode.json for global):
 
-{
+ 
+ 
+ 
+ 
+ {
  "$schema": "https://opencode.ai/config.json",
  "plugin": ["context-mode"]
 }
+
+ 
 
 The plugin entry registers all 11 ctx_* tools natively and enables hooks — OpenCode calls context-mode's TypeScript plugin in-process, so there is no redundant stdio MCP child per session.
 
 - 
 (Optional) Copy the routing rules file. The model needs an AGENTS.md file for routing awareness:
 
-cp node_modules/context-mode/configs/opencode/AGENTS.md AGENTS.md
+ 
+ 
+ 
+ 
+ cp node_modules/context-mode/configs/opencode/AGENTS.md AGENTS.md
+
+ 
 
 This tells the model which tools to use and which commands are blocked. Without it, hooks still enforce routing — but the model won't know why a command was denied.
 
@@ -474,17 +643,29 @@ Install:
 - 
 Add to kilo.json in your project root (or ~/.config/kilo/kilo.json for global):
 
-{
+ 
+ 
+ 
+ 
+ {
  "$schema": "https://app.kilo.ai/config.json",
  "plugin": ["context-mode"]
 }
+
+ 
 
 The plugin entry registers all 11 ctx_* tools natively and enables hooks — KiloCode calls context-mode's TypeScript plugin in-process, so there is no redundant stdio MCP child per session.
 
 - 
 (Optional) Copy the routing rules file. KiloCode shares the OpenCode plugin architecture, so the model needs an AGENTS.md file for routing awareness:
 
-cp node_modules/context-mode/configs/opencode/AGENTS.md AGENTS.md
+ 
+ 
+ 
+ 
+ cp node_modules/context-mode/configs/opencode/AGENTS.md AGENTS.md
+
+ 
 
 - 
 Restart KiloCode.
@@ -506,13 +687,25 @@ Install:
 - 
 Clone and install:
 
-git clone https://github.com/mksglu/context-mode.git
+ 
+ 
+ 
+ 
+ git clone https://github.com/mksglu/context-mode.git
 cd context-mode
 npm run install:openclaw
 
+ 
+
 The installer uses $OPENCLAW_STATE_DIR from your environment (default: /openclaw). To specify a custom path:
 
-npm run install:openclaw -- /path/to/openclaw-state
+ 
+ 
+ 
+ 
+ npm run install:openclaw -- /path/to/openclaw-state
+
+ 
 
 Common locations: Docker — /openclaw (the default). Local — ~/.openclaw or wherever you set OPENCLAW_STATE_DIR.
 
@@ -536,14 +729,26 @@ Install:
 - 
 Add the context-mode marketplace and install the plugin from Codex's plugin UI:
 
-codex plugin marketplace add mksglu/context-mode
+ 
+ 
+ 
+ 
+ codex plugin marketplace add mksglu/context-mode
+
+ 
 
 - 
 Enable plugin-provided hooks while the Codex feature is still gated:
 
-[features]
+ 
+ 
+ 
+ 
+ [features]
 plugin_hooks = true
 hooks = true
+
+ 
 
 Feature flag note: Current Codex builds expose hooks under [features].hooks
 (or codex --enable hooks). Prefer [features].hooks; [features].codex_hooks
@@ -554,7 +759,13 @@ Custom storage location: if Codex cannot write the adapter default storage direc
 CONTEXT_MODE_DIR to an absolute writable root in the environment that launches Codex. Sessions
 and stats use <root>/sessions; indexed content uses <root>/content.
 
-CONTEXT_MODE_DIR="$HOME/.codex-context-mode" codex
+ 
+ 
+ 
+ 
+ CONTEXT_MODE_DIR="$HOME/.codex-context-mode" codex
+
+ 
 
 - 
 Restart Codex CLI and verify MCP with ctx stats.
@@ -581,12 +792,22 @@ Manual fallback for Codex builds without plugin_hooks:
 - 
 Install context-mode globally:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Add to ~/.codex/config.toml:
 
-[features]
+ 
+ 
+ 
+ 
+ [features]
 hooks = true
 
 [mcp_servers.context-mode]
@@ -595,10 +816,16 @@ command = "context-mode"
 [mcp_servers.context-mode.env]
 CONTEXT_MODE_PLATFORM = "codex"
 
+ 
+
 - 
 Create $CODEX_HOME/hooks.json (or ~/.codex/hooks.json when CODEX_HOME is unset):
 
-{
+ 
+ 
+ 
+ 
+ {
  "hooks": {
  "PreToolUse": [{ "matcher": "local_shell|shell|shell_command|exec_command|Bash|Shell|apply_patch|Edit|Write|grep_files|ctx_execute|ctx_execute_file|ctx_batch_execute|ctx_fetch_and_index|ctx_search|ctx_index|mcp__", "hooks": [{ "type": "command", "command": "context-mode hook codex pretooluse" }] }],
  "PostToolUse": [{ "hooks": [{ "type": "command", "command": "context-mode hook codex posttooluse" }] }],
@@ -609,6 +836,8 @@ Create $CODEX_HOME/hooks.json (or ~/.codex/hooks.json when CODEX_HOME is unset):
  }
 }
 
+ 
+
 PreToolUse enforces deny/block routing today and is prepared for input rewrites once Codex supports them. PostToolUse captures session events. PreCompact builds the resume snapshot before compaction. SessionStart restores state after compaction. UserPromptSubmit captures user decisions and corrections. Stop records turn-end state.
 
 Note: Codex PreToolUse routing currently supports deny rules only (blocks dangerous commands). It still needs upstream updatedInput support before context-mode can rewrite tool input; track openai/codex#18491. Context injection (additionalContext) is not supported in Codex PreToolUse — it works via PostToolUse and SessionStart instead. This is handled automatically.
@@ -618,8 +847,14 @@ PreCompact support is runtime-gated: it is present in Codex CLI 0.130.0, while t
 - 
 Copy routing instructions (recommended even with hooks for full routing awareness):
 
-CM_ROOT="$(npm root -g)/context-mode"
+ 
+ 
+ 
+ 
+ CM_ROOT="$(npm root -g)/context-mode"
 cp "$CM_ROOT/configs/codex/AGENTS.md" ./AGENTS.md
+
+ 
 
 For global use: CM_ROOT="$(npm root -g)/context-mode"; cp "$CM_ROOT/configs/codex/AGENTS.md" ~/.codex/AGENTS.md. Global applies to all projects. If both exist, Codex CLI merges them.
 
@@ -635,12 +870,22 @@ Prerequisites: Node.js >= 22.5 (or Bun), Kimi Code CLI installed.
 - 
 Install context-mode:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Add context-mode as an MCP server. Add to ~/.kimi-code/mcp.json:
 
-{
+ 
+ 
+ 
+ 
+ {
  "mcpServers": {
  "context-mode": {
  "command": "context-mode",
@@ -649,10 +894,16 @@ Add context-mode as an MCP server. Add to ~/.kimi-code/mcp.json:
  }
 }
 
+ 
+
 - 
 Add hooks to ~/.kimi-code/config.toml:
 
-[[hooks]]
+ 
+ 
+ 
+ 
+ [[hooks]]
 event = "PreToolUse"
 matcher = "Bash|Shell|Read|Edit|Write|WebFetch|Agent|ctx_execute|ctx_execute_file|ctx_batch_execute|ctx_fetch_and_index|ctx_search|ctx_index|mcp__"
 command = "context-mode hook kimi pretooluse"
@@ -683,6 +934,8 @@ event = "Stop"
 command = "context-mode hook kimi stop"
 timeout = 30
 
+ 
+
 - 
 Restart Kimi Code CLI and verify MCP with ctx stats.
 
@@ -691,11 +944,23 @@ Note: Kimi Code uses the same JSON stdin/stdout wire protocol as Codex, but acce
 - 
 (Optional) Copy the routing instructions file for your project:
 
-cp "$(npm root -g)/context-mode/configs/codex/AGENTS.md" ./AGENTS.md
+ 
+ 
+ 
+ 
+ cp "$(npm root -g)/context-mode/configs/codex/AGENTS.md" ./AGENTS.md
+
+ 
 
 Or for global use:
 
-CM_ROOT="$(npm root -g)/context-mode"; cp "$CM_ROOT/configs/codex/AGENTS.md" ~/.kimi-code/AGENTS.md
+ 
+ 
+ 
+ 
+ CM_ROOT="$(npm root -g)/context-mode"; cp "$CM_ROOT/configs/codex/AGENTS.md" ~/.kimi-code/AGENTS.md
+
+ 
 
 Full documentation: docs/adapters/kimi-code.md
 
@@ -704,12 +969,22 @@ Prerequisites: Node.js >= 22.5 (or Bun), Qwen Code installed (npm install -g @qw
 - 
 Install context-mode:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Add context-mode as an MCP server. Add to ~/.qwen/settings.json:
 
-{
+ 
+ 
+ 
+ 
+ {
  "mcpServers": {
  "context-mode": {
  "command": "context-mode",
@@ -718,10 +993,16 @@ Add context-mode as an MCP server. Add to ~/.qwen/settings.json:
  }
 }
 
+ 
+
 - 
 Add hooks for routing enforcement and session tracking. Add to ~/.qwen/settings.json:
 
-{
+ 
+ 
+ 
+ 
+ {
  "hooks": {
  "PreToolUse": [{ "matcher": "run_shell_command|read_file|read_many_files|grep_search|web_fetch|agent|mcp__plugin_context-mode_context-mode__ctx_execute|mcp__plugin_context-mode_context-mode__ctx_execute_file|mcp__plugin_context-mode_context-mode__ctx_batch_execute|mcp__(?!.*context-mode)", "hooks": [{ "type": "command", "command": "context-mode hook qwen-code pretooluse" }] }],
  "PostToolUse": [{ "matcher": "", "hooks": [{ "type": "command", "command": "context-mode hook qwen-code posttooluse" }] }],
@@ -731,10 +1012,18 @@ Add hooks for routing enforcement and session tracking. Add to ~/.qwen/settings.
  }
 }
 
+ 
+
 - 
 Copy routing instructions (recommended for full routing awareness):
 
-cp node_modules/context-mode/configs/qwen-code/QWEN.md ./QWEN.md
+ 
+ 
+ 
+ 
+ cp node_modules/context-mode/configs/qwen-code/QWEN.md ./QWEN.md
+
+ 
 
 For global use: cp node_modules/context-mode/configs/qwen-code/QWEN.md ~/.qwen/QWEN.md
 
@@ -754,12 +1043,22 @@ Install:
 - 
 Install context-mode globally:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Add to ~/.gemini/antigravity/mcp_config.json:
 
-{
+ 
+ 
+ 
+ 
+ {
  "mcpServers": {
  "context-mode": {
  "command": "context-mode"
@@ -767,10 +1066,18 @@ Add to ~/.gemini/antigravity/mcp_config.json:
  }
 }
 
+ 
+
 - 
 Copy routing instructions (Antigravity has no hook support):
 
-cp node_modules/context-mode/configs/antigravity/GEMINI.md ./GEMINI.md
+ 
+ 
+ 
+ 
+ cp node_modules/context-mode/configs/antigravity/GEMINI.md ./GEMINI.md
+
+ 
 
 - 
 Restart Antigravity.
@@ -787,14 +1094,26 @@ Prerequisites: Node.js >= 22.5 (or Bun), Antigravity CLI (agy) ≥ 1.0.7 (agy up
 
 Install:
 
-npm install -g context-mode # the plugin's MCP server + hooks run the global binary
+ 
+ 
+ 
+ 
+ npm install -g context-mode # the plugin's MCP server + hooks run the global binary
 agy plugin install https://github.com/mksglu/context-mode/tree/main/configs/antigravity-cli # registers MCP + rule + skill + hooks
+
+ 
 
 Restart agy.
 
 MCP-only (no plugin, no hooks): if you only want the ctx_* tools, skip the plugin and add context-mode to agy's global MCP profile ~/.gemini/config/mcp_config.json (distinct from the Antigravity IDE's ~/.gemini/antigravity/ path), then restart agy:
 
-{ "mcpServers": { "context-mode": { "command": "context-mode" } } }
+ 
+ 
+ 
+ 
+ { "mcpServers": { "context-mode": { "command": "context-mode" } } }
+
+ 
 
 Verify: type ctx stats in an agy session, or run any prompt from Try It and check the savings. context-mode doctor confirms MCP + hook registration. Remove with agy plugin uninstall context-mode.
 
@@ -807,12 +1126,22 @@ Install:
 - 
 Install context-mode globally:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Add to .kiro/settings/mcp.json in your project (or ~/.kiro/settings/mcp.json for global):
 
-{
+ 
+ 
+ 
+ 
+ {
  "mcpServers": {
  "context-mode": {
  "command": "context-mode"
@@ -820,10 +1149,16 @@ Add to .kiro/settings/mcp.json in your project (or ~/.kiro/settings/mcp.json for
  }
 }
 
+ 
+
 - 
 Create .kiro/hooks/context-mode.json:
 
-{
+ 
+ 
+ 
+ 
+ {
  "name": "context-mode",
  "description": "Context-mode hooks for context window protection",
  "hooks": {
@@ -836,10 +1171,18 @@ Create .kiro/hooks/context-mode.json:
  }
 }
 
+ 
+
 - 
 Copy routing instructions. Kiro's agentSpawn (SessionStart) is not yet implemented, so the model needs a routing file at session start:
 
-cp node_modules/context-mode/configs/kiro/KIRO.md ./KIRO.md
+ 
+ 
+ 
+ 
+ cp node_modules/context-mode/configs/kiro/KIRO.md ./KIRO.md
+
+ 
 
 - 
 Restart Kiro.
@@ -857,12 +1200,22 @@ Install:
 - 
 Install context-mode globally:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Add to ~/.config/zed/settings.json (Windows: %APPDATA%\Zed\settings.json):
 
-{
+ 
+ 
+ 
+ 
+ {
  "context_servers": {
  "context-mode": {
  "command": "context-mode",
@@ -872,12 +1225,20 @@ Add to ~/.config/zed/settings.json (Windows: %APPDATA%\Zed\settings.json):
  }
 }
 
+ 
+
 Note: Zed uses "context_servers" instead of "mcpServers". args and env are optional for context-mode, but are shown here to match Zed's custom MCP server shape.
 
 - 
 Copy routing instructions (Zed has no hook support):
 
-cp node_modules/context-mode/configs/zed/AGENTS.md ./AGENTS.md
+ 
+ 
+ 
+ 
+ cp node_modules/context-mode/configs/zed/AGENTS.md ./AGENTS.md
+
+ 
 
 - 
 Restart Zed (or save settings.json — Zed auto-restarts context servers on config change).
@@ -893,29 +1254,53 @@ Install:
 - 
 Install context-mode globally:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Install the package into Pi:
 
-pi install npm:context-mode
+ 
+ 
+ 
+ 
+ pi install npm:context-mode
+
+ 
 
 Alternative — add it manually to ~/.pi/agent/settings.json (or .pi/settings.json for project-level):
 
-{
+ 
+ 
+ 
+ 
+ {
  "packages": ["npm:context-mode"]
 }
+
+ 
 
 - 
 Add to ~/.pi/agent/mcp.json (or .pi/mcp.json for project-level):
 
-{
+ 
+ 
+ 
+ 
+ {
  "mcpServers": {
  "context-mode": {
  "command": "context-mode"
  }
  }
 }
+
+ 
 
 - 
 Restart Pi.
@@ -931,7 +1316,13 @@ Install — plugin path (recommended):
 - 
 Run the OMP plugin install:
 
-omp plugin install context-mode
+ 
+ 
+ 
+ 
+ omp plugin install context-mode
+
+ 
 
 - 
 Restart OMP.
@@ -939,8 +1330,14 @@ Restart OMP.
 - 
 Verify:
 
-omp plugin list
+ 
+ 
+ 
+ 
+ omp plugin list
 omp plugin doctor
+
+ 
 
 Both should show context-mode as enabled.
 
@@ -950,8 +1347,14 @@ Install — manual plugin path (if omp plugin install is unavailable):
 
 OMP loads anything listed under ~/.omp/plugins/package.json dependencies whose own package.json carries an omp (or pi) field. New plugins default to enabled — the lock file at ~/.omp/plugins/omp-plugins.lock.json is only consulted when a plugin needs to be explicitly disabled (loader skips runtimeState && !runtimeState.enabled per extensibility/plugins/loader.ts:89-94). So the manual install is two commands:
 
-cd ~/.omp/plugins
+ 
+ 
+ 
+ 
+ cd ~/.omp/plugins
 bun add context-mode # or: npm install context-mode
+
+ 
 
 Then restart OMP. No lock file edit, no version pin — version is read from the freshly-installed package each time the loader runs (see loader.ts:87 manifest.version = pluginPkg.version).
 
@@ -960,12 +1363,22 @@ Install — MCP-only path (no plugin):
 - 
 Install context-mode globally:
 
-npm install -g context-mode
+ 
+ 
+ 
+ 
+ npm install -g context-mode
+
+ 
 
 - 
 Add to ~/.omp/agent/mcp.json (user scope) or <project>/.omp/mcp.json (project scope):
 
-{
+ 
+ 
+ 
+ 
+ {
  "mcpServers": {
  "context-mode": {
  "command": "context-mode"
@@ -973,10 +1386,18 @@ Add to ~/.omp/agent/mcp.json (user scope) or <project>/.omp/mcp.json (project sc
  }
 }
 
+ 
+
 - 
 Copy routing instructions:
 
-cp node_modules/context-mode/configs/omp/SYSTEM.md ~/.omp/agent/SYSTEM.md
+ 
+ 
+ 
+ 
+ cp node_modules/context-mode/configs/omp/SYSTEM.md ~/.omp/agent/SYSTEM.md
+
+ 
 
 Project-scoped alternative: cp ... .omp/SYSTEM.md. OMP also auto-discovers any AGENTS.md in the project tree.
 
@@ -1001,22 +1422,40 @@ Windows / missing binding self-heal: if better_sqlite3.node ends up missing afte
 
 CentOS 8 / RHEL 8 (glibc 2.28):
 
-dnf install -y gcc-toolset-10-gcc gcc-toolset-10-gcc-c++ make python3 python3-setuptools
+ 
+ 
+ 
+ 
+ dnf install -y gcc-toolset-10-gcc gcc-toolset-10-gcc-c++ make python3 python3-setuptools
 scl enable gcc-toolset-10 'npm install -g context-mode'
+
+ 
 
 CentOS 7 / RHEL 7 (glibc 2.17):
 
-yum install -y centos-release-scl
+ 
+ 
+ 
+ 
+ yum install -y centos-release-scl
 yum install -y devtoolset-10-gcc devtoolset-10-gcc-c++ make python3
 pip3 install setuptools
 scl enable devtoolset-10 'npm install -g context-mode'
+
+ 
 
 Alpine Linux:
 
 Alpine prebuilt binaries (musl) are available in better-sqlite3 v12.8.0+. With the ^12.6.2 dependency range, npm install resolves to the latest 12.x and works without build tools on Alpine. If you pin an older version:
 
-apk add build-base python3 py3-setuptools
+ 
+ 
+ 
+ 
+ apk add build-base python3 py3-setuptools
 npm install -g context-mode
+
+ 
 
 ## Tools
 
@@ -1457,7 +1896,11 @@ Large user-pasted data references (>1 KB)|
 Low (P4)|
 UserPromptSubmit|
 
-PreCompact fires
+ 
+ 
+ 
+ 
+ PreCompact fires
  → Read all session events from SQLite
  → Build priority-tiered XML snapshot (≤2 KB)
  → Store snapshot in session_resume table
@@ -1468,6 +1911,8 @@ SessionStart fires (source: "compact")
  → Build Session Guide with 15 categories
  → Inject <session_knowledge> directive into context
  → Model continues from last user prompt with full working state
+
+ 
 
 The snapshot is built in priority tiers — if the 2 KB budget is tight, lower-priority events (intent, MCP tool counts) are dropped first while critical state (active files, tasks, rules, decisions) is always preserved.
 
@@ -1921,7 +2366,11 @@ See docs/platform-support.md for the full capability comparison.
 
 Inside any AI session — just type the command. The LLM calls the MCP tool automatically:
 
-ctx stats → context savings, call counts, session report
+ 
+ 
+ 
+ 
+ ctx stats → context savings, call counts, session report
 ctx doctor → diagnose runtimes, hooks, FTS5, versions
 ctx index → index a local file or directory for later search
 ctx search → search previously indexed content
@@ -1929,14 +2378,22 @@ ctx upgrade → update from GitHub, rebuild, reconfigure hooks
 ctx purge → permanently delete all indexed content from the knowledge base
 ctx insight → opens the hosted Insight dashboard in your browser
 
+ 
+
 From your terminal — run directly without an AI session:
 
-context-mode doctor
+ 
+ 
+ 
+ 
+ context-mode doctor
 context-mode index . --source project:my-app
 context-mode search "authentication middleware" --source project:my-app
 context-mode upgrade
 context-mode insight # opens the hosted Insight dashboard in browser
 bash scripts/ctx-debug.sh # full diagnostic report for bug reports
+
+ 
 
 The debug script collects OS info, runtime versions, better-sqlite3 status, adapter detection, config files (redacted), hook validation, FTS5/SQLite test, executor test, process check, session databases, and environment variables into a single pasteable markdown report.
 
@@ -2008,37 +2465,73 @@ These prompts work out of the box. Run /context-mode:ctx-stats after each to see
 
 Deep repo research — 5 calls, 62 KB context (raw: 986 KB, 94% saved)
 
-Research https://github.com/modelcontextprotocol/servers — architecture, tech stack,
+ 
+ 
+ 
+ 
+ Research https://github.com/modelcontextprotocol/servers — architecture, tech stack,
 top contributors, open issues, and recent activity. Then run /context-mode:ctx-stats.
+
+ 
 
 Git history analysis — 1 call, 5.6 KB context
 
-Clone https://github.com/facebook/react and analyze the last 500 commits:
+ 
+ 
+ 
+ 
+ Clone https://github.com/facebook/react and analyze the last 500 commits:
 top contributors, commit frequency by month, and most changed files.
 Then run /context-mode:ctx-stats.
 
+ 
+
 Web scraping — 1 call, 3.2 KB context
 
-Fetch the Hacker News front page, extract all posts with titles, scores,
+ 
+ 
+ 
+ 
+ Fetch the Hacker News front page, extract all posts with titles, scores,
 and domains. Group by domain. Then run /context-mode:ctx-stats.
+
+ 
 
 Large JSON API — 7.5 MB raw → 0.9 KB context (99% saved)
 
-Create a local server that returns a 7.5 MB JSON with 20,000 records and a secret
+ 
+ 
+ 
+ 
+ Create a local server that returns a 7.5 MB JSON with 20,000 records and a secret
 hidden at index 13000. Fetch the endpoint, find the hidden record, and show me
 exactly what's in it. Then run /context-mode:ctx-stats.
 
+ 
+
 Documentation search — 2 calls, 1.8 KB context
 
-Fetch the React useEffect docs, index them, and find the cleanup pattern
+ 
+ 
+ 
+ 
+ Fetch the React useEffect docs, index them, and find the cleanup pattern
 with code examples. Then run /context-mode:ctx-stats.
+
+ 
 
 Session continuity — compaction recovery with full state
 
-Start a multi-step task: "Create a REST API with Express — add routes, tests,
+ 
+ 
+ 
+ 
+ Start a multi-step task: "Create a REST API with Express — add routes, tests,
 and error handling." After 20+ tool calls, type: ctx stats to see the session
 event count. When context compacts, the model continues from your last prompt
 with tasks, files, and decisions intact — no re-prompting needed.
+
+ 
 
 ## Privacy & Architecture
 
@@ -2054,7 +2547,11 @@ Context Mode enforces the same permission rules you already use — but extends 
 
 Zero setup required. If you haven't configured any permissions, nothing changes. This only activates when you add rules.
 
-{
+ 
+ 
+ 
+ 
+ {
  "permissions": {
  "deny": [
  "Bash(sudo *)",
@@ -2068,6 +2565,8 @@ Zero setup required. If you haven't configured any permissions, nothing changes.
  ]
  }
 }
+
+ 
 
 Add this to your project's .claude/settings.json (or ~/.claude/settings.json for global rules). All platforms read security policies from Claude Code's settings format — even on Gemini CLI, VS Code Copilot, and OpenCode. Codex CLI security enforcement requires the Codex hooks in $CODEX_HOME/hooks.json or ~/.codex/hooks.json to be configured.
 
@@ -2083,11 +2582,17 @@ ctx_execute_file is confined to the project root. A path that resolves outside t
 
 The guard is on by default and requires no configuration. To intentionally process a file outside the project (e.g. a shared log under /var/log), opt that path back in with the same permissions.allow rule you already use for the host Read tool — there is no context-mode-specific env flag:
 
-{
+ 
+ 
+ 
+ 
+ {
  "permissions": {
  "allow": ["Read(/var/log/**)"]
  }
 }
+
+ 
 
 context-mode honors that allow rule (read from your .claude/settings.json / ~/.claude/settings.json) exactly as Claude Code does, so an out-of-project grant lives in one place and stays meaningful.
 
@@ -2107,7 +2612,13 @@ ctx_fetch_and_index blocks dangerous URL targets by default:
 
 For hosted/CI environments where you want to block private targets too, set:
 
-export CTX_FETCH_STRICT=1
+ 
+ 
+ 
+ 
+ export CTX_FETCH_STRICT=1
+
+ 
 
 That blocks loopback + RFC1918 + ULA in addition to the always-blocked ranges. Useful when context-mode runs as a shared service, not on a developer's own machine.
 
@@ -2141,8 +2652,14 @@ Cadence (in tool calls) at which the PreToolUse hook re-injects the "wrap large 
 
 See CONTRIBUTING.md for the development workflow and TDD guidelines.
 
-git clone https://github.com/mksglu/context-mode.git
+ 
+ 
+ 
+ 
+ git clone https://github.com/mksglu/context-mode.git
 cd context-mode && npm install && npm test
+
+ 
 
 ## License
 

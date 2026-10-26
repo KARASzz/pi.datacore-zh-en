@@ -1,7 +1,8 @@
+People of Pi: We've shipped Pi 1.0 with Pi Durable. Go make them yours.
 Copy SVGDownload SVGPress Kit
-HomeDocumentationNewsPackagesModels
+DocumentationChangelogModelsPackagesRadius
 
-Home→Documentation→News→Packages→Models→
+Documentation→Changelog→Models→Packages→Radius→
 
 GitHubnpmDiscordX
 
@@ -19,7 +20,7 @@ Install pi-powerline-footer from npm and Pi will load the resources declared by 
  npm repohome report
 
 $ pi install npm:pi-powerline-footerCopy
-Packagepi-powerline-footerVersion0.16.0PublishedAug 25, 2026Downloads28.8K/mo · 7,773/wkAuthornicopremeLicenseMITTypesextensionSize444.7 KBDependencies0 dependencies · 3 peersPi manifest JSON{
+Packagepi-powerline-footerVersion0.21.0PublishedOct 23, 2026Downloads82.5K/mo · 7,602/wkAuthornicopremeLicenseMITTypesextensionSize488.6 KBDependencies0 dependencies · 3 peersPi manifest JSON{
  "extensions": [
  "./index.ts"
  ]
@@ -39,19 +40,21 @@ Customizes the default pi editor with a powerline-style status bar, welcome over
 
 Editor stash — Press Alt+S to save your editor content and clear the editor, type a quick prompt, then press Alt+S again with an empty editor to restore the stash. Toggles between stash, pop, and update-existing-stash. A stash indicator appears in the powerline bar while text is stashed.
 
+Delayed send — Optionally hold each prompt for a few seconds before it is sent, so you can press Esc to pull it back into the editor without spending tokens. Off by default; see Delayed send.
+
 Powerline Queue — Messages typed during compaction are held by Powerline and delivered after successful compaction instead of disappearing into Pi's native queue. /queue provides a file-backed queue for aliases, retries, clears, and manual delivery. Active queued and blocked counts appear in the queue segment only when there is something to show.
 
 Working Vibes — AI-generated themed loading messages. Set /vibe star trek and your "Working..." becomes "Running diagnostics..." or "Engaging warp drive...". Supports any theme: pirate, zen, noir, cowboy, etc.
 
-Welcome overlay — Branded splash screen shown as centered overlay on startup. Shows gradient logo, model info, keyboard tips, loaded AGENTS.md/extensions/skills/templates counts, an approximate initial system-prompt token count, and recent sessions. Auto-dismisses after 30 seconds or on any key press. Set powerline.welcome to false to disable it while keeping the footer enabled.
+Welcome overlay — Branded splash screen shown as centered overlay on startup. Shows gradient logo, model info, keyboard tips, detected AGENTS.md files, effective loaded skills and prompt templates, an approximate initial system-prompt token count, and recent sessions. Auto-dismisses after 30 seconds or on any key press. Set powerline.welcome to false to disable it while keeping the footer enabled.
 
-Rounded box design — Status renders directly in the editor's top border, not as a separate footer.
+Powerline placement — The primary Powerline row can be shown above or below the editor.
 
 Native Pi layout — Pi owns fixed input, feed scrolling, selection, and terminal behavior; this extension supplies powerline widgets and the custom bash/stash/editor integrations.
 
 Live thinking level indicator — Shows current thinking level (think:off, think:med, etc.) with per-level colors. High, xhigh, and max levels use a rainbow effect inspired by Claude Code's ultrathink.
 
-Smart defaults — Nerd Font auto-detection for iTerm, WezTerm, Kitty, Ghostty, and Alacritty with ASCII fallbacks. Colors matched to oh-my-pi's dark theme.
+Smart defaults — Nerd Font auto-detection for iTerm, WezTerm, Kitty, Ghostty, Alacritty, and Kaku with ASCII fallbacks. Colors matched to oh-my-pi's dark theme.
 
 Git integration — Async status fetching with 1s cache TTL. Automatically invalidates on file writes/edits. Shows branch, staged (+), unstaged (*), and untracked (?) counts.
 
@@ -65,7 +68,13 @@ Shell ghost suggestions — Optional bash-mode completions can show inline ghost
 
 ## Installation
 
-pi install npm:pi-powerline-footer
+ 
+ 
+ 
+ 
+ pi install npm:pi-powerline-footer
+
+ 
 
 Restart pi to activate.
 
@@ -77,7 +86,7 @@ Use /cd <path> to continue the current conversation from another working directo
 
 Powerline Queue commands:
 
-- /compact <text> — compact now and queue <text> as the next prompt after successful compaction
+- /compact <text> — compact now and queue <text> as the next prompt after successful compaction by default
 
 - /queue — open the queued-prompt picker
 
@@ -91,6 +100,24 @@ Powerline Queue commands:
 
 Queued data is stored under the Pi agent directory in powerline-footer/inbox.jsonl and powerline-footer/projects.json. inbox.jsonl is a stable read surface for orchestrators and helper agents; each line is a queue item with id, text, createdAt, updatedAt, source, target, intent, status, and optional error. Writes should still go through Powerline commands or the store so locking and atomic writes are preserved.
 
+Set powerline.queue.compactPromptMode to "native" if you want /compact <text> to pass <text> through to Pi as custom compaction instructions instead of using Powerline's post-compaction queue shorthand:
+
+ 
+ 
+ 
+ 
+ {
+ "powerline": {
+ "queue": {
+ "compactPromptMode": "native"
+ }
+ }
+}
+
+ 
+
+In "native" mode, messages you send while a compaction is running also go to Pi's own queue, which sends them when compaction ends, including when it fails. The default mode is "queue", which holds them in Powerline's post-compaction queue as before.
+
 - /powerline placement below — move the primary powerline row below the editor
 
 - /powerline placement above — restore the default placement
@@ -99,7 +126,11 @@ Queued data is stored under the Pi agent directory in powerline-footer/inbox.jso
 
 You can also set it in the agent settings file (~/.pi/agent/settings.json by default, or under PI_CODING_AGENT_DIR) or project-local .pi/settings.json:
 
-{
+ 
+ 
+ 
+ 
+ {
  "showLastPrompt": true,
  "powerline": {
  "preset": "default",
@@ -107,6 +138,8 @@ You can also set it in the agent settings file (~/.pi/agent/settings.json by def
  "welcome": true
  }
 }
+
+ 
 
 |
 Preset|
@@ -161,7 +194,11 @@ You can promote any extension status key into its own dedicated powerline item. 
 
 - Configure powerline.customItems to place those keys on the left, right, or secondary row.
 
-{
+ 
+ 
+ 
+ 
+ {
  "powerline": {
  "preset": "default",
  "customItems": [
@@ -181,6 +218,8 @@ You can promote any extension status key into its own dedicated powerline item. 
  ]
  }
 }
+
+ 
 
 customItems fields:
 
@@ -206,12 +245,18 @@ If you still prefer the older string preset config shape, "powerline": "default"
 
 Set powerline.disabledSegments to hide built-in or configured custom segments from the active preset:
 
-{
+ 
+ 
+ 
+ 
+ {
  "powerline": {
  "preset": "default",
  "disabledSegments": ["cost", "extension_statuses", "custom:ci"]
  }
 }
+
+ 
 
 Built-in names are listed under Segments below. Custom items use custom:<id>. Unknown names are ignored with a startup warning.
 
@@ -219,7 +264,11 @@ Built-in names are listed under Segments below. Custom items use custom:<id>. Un
 
 Use powerline.layout to override segment order and grouping while keeping the selected preset’s colors and segment options. Set powerline.separator when you want a separator style independent of the preset:
 
-{
+ 
+ 
+ 
+ 
+ {
  "powerline": {
  "preset": "default",
  "separator": "chevron",
@@ -234,15 +283,53 @@ Use powerline.layout to override segment order and grouping while keeping the se
  }
 }
 
+ 
+
 A present left, right, or secondary array replaces that preset group exactly; an empty array clears it. Omitted groups keep the preset entries and automatically append custom items by their configured position. Explicitly listing a segment moves it out of omitted preset groups, and explicitly placed custom items are not auto-appended elsewhere. disabledSegments is applied after layout. separator accepts any style listed below; omit it to keep the preset’s separator.
 
 Responsive behavior is unchanged: these groups control ordering and overflow priority, not permanently pinned terminal rows. right means “later primary segments,” not right-edge alignment. On wide terminals secondary entries can fit in the top bar; on narrow terminals primary overflow moves into the secondary line. Some segments are hidden when they have no value, so thinking appears only when the active session/model reports a non-off thinking level. Unknown entries are ignored with a startup warning. The old fixed custom preset has been removed; combine any preset with layout instead.
+
+Set powerline.padding to an integer from 0 to 8 to control the outer spaces on each edge of every primary and secondary bar row (including wrapped rows). The default is 1, preserving the existing layout; malformed or out-of-range values fall back to 1. Use 0 for a flush-left bar:
+
+ 
+ 
+ 
+ 
+ {
+ "powerline": {
+ "padding": 0
+ }
+}
+
+ 
+
+Padding does not change segment-internal spacing, separators, or editor, transcript, and queue-preview spacing. String preset shorthand keeps the default padding of 1.
+
+By default, segments that don't fit on the secondary line are dropped. Set "secondaryOverflow": "wrap" in powerline to continue them on extra lines below instead. A single segment wider than the terminal is still hidden. The default is "drop".
+
+Pi's working, compaction, summarization, and retry indicators appear in the editor's top border by default. Set "workingIndicatorPlacement": "above-powerline" to show them on Pi's separate status row above the Powerline bar and editor instead. Working Vibes messages follow the same placement. The default is "editor-border".
+
+ 
+ 
+ 
+ 
+ {
+ "powerline": {
+ "workingIndicatorPlacement": "above-powerline"
+ }
+}
+
+ 
 
 ### Demo settings
 
 For a compact current footer setup:
 
-{
+ 
+ 
+ 
+ 
+ {
  "powerline": {
  "preset": "default",
  "path": { "mode": "basename" },
@@ -250,6 +337,8 @@ For a compact current footer setup:
  "cost": { "subscriptionDisplay": "subscription", "currency": "USD" }
  }
 }
+
+ 
 
 Use "model": { "display": "qualified" } when two providers expose models with the same display name.
 
@@ -297,12 +386,18 @@ Effect|
 "tokens"|
 "percent" shows the cache hit rate cacheRead / (input + cacheRead) instead of the raw token count; "both" shows raw tokens plus the hit rate, e.g. cache in: 12k (80%)|
 
-{
+ 
+ 
+ 
+ 
+ {
  "powerline": {
  "context": { "format": "percent" },
  "cache_read": { "format": "both" }
  }
 }
+
+ 
 
 ## Bash mode
 
@@ -336,7 +431,11 @@ The managed shell is persistent for the current pi session. Command output appea
 
 In ~/.pi/agent/settings.json (or under PI_CODING_AGENT_DIR when that environment variable is set):
 
-{
+ 
+ 
+ 
+ 
+ {
  "bashMode": {
  "toggleShortcut": "ctrl+shift+b",
  "completions": false,
@@ -345,9 +444,51 @@ In ~/.pi/agent/settings.json (or under PI_CODING_AGENT_DIR when that environment
  }
 }
 
+ 
+
+## Delayed send
+
+Set sendDelayMs under powerline to hold prompts and steering messages for that many milliseconds before Pi receives them:
+
+ 
+ 
+ 
+ 
+ {
+ "powerline": {
+ "sendDelayMs": 4000
+ }
+}
+
+ 
+
+While a prompt is waiting, a countdown line appears under the editor. Press Esc to put the prompt back in the editor, or press Enter on an empty editor to send it right away. If you started typing a new draft during the countdown, Esc puts the held prompt above it. Slash commands, ! shell commands, bash mode, and Alt+Enter follow-ups while the agent is working are not delayed. The default is 0, which sends immediately.
+
+## Auto follow-up
+
+When the agent is working, Enter sends your message as steering and Alt+Enter queues it as a follow-up. Set autoFollowUp under powerline to let TypeSafe's Jev make that call for plain Enter:
+
+ 
+ 
+ 
+ 
+ {
+ "powerline": {
+ "autoFollowUp": true
+ }
+}
+
+ 
+
+Pi also needs TYPESAFE_API_KEY in its environment. Each message you send while the agent is busy goes to Jev with the request the agent is working on and a snippet of its latest reply. Jev answers in about 100–400ms. Corrections and extra details for the current task ("Actually, preserve the public API") still steer. Separate requests ("What is the weather in Lisbon?") move to the follow-up queue and appear under Follow-up: in Pi's pending list.
+
+A message leaves the steer path only when Jev is confident it can wait. Unsure answers, timeouts, and API errors keep it as steering and show a warning. Alt+Enter, slash commands, and prompts sent while the agent is idle never call Jev. The default is false.
+
 ## Editor Stash
 
 Use Alt+S / Option+S as a quick stash toggle while drafting. It keeps one active stash and clears the editor when stashing. Powerline listens for unambiguous Alt/Meta-S escape encodings by default. If your old terminal setup only emits the printable German sharp-S character for Option+S and you still want that to trigger stash, set "stashSharpSShortcut": true under powerline.
+
+Ctrl+S also toggles the stash while the editor has focus. Inside Pi's selectors it keeps its usual meaning, such as saving a default or toggling session sort.
 
 |
 Editor|
@@ -376,7 +517,7 @@ Show "Nothing to stash"|
 
 Stashes are restored only by explicit user action. Agent runs do not restore stashed text automatically.
 
-The stash indicator appears in the powerline bar (on presets with extension_statuses). Active stash is still session-local and resets on session switch / disable, but stash history is persisted to the agent dir at powerline-footer/stash-history.json so it survives restarts. By default the agent dir is ~/.pi/agent; set PI_CODING_AGENT_DIR to move global powerline settings, stash history, sessions, vibes, skills, commands, and extension discovery with Pi.
+The stash indicator appears in the powerline bar (on presets with extension_statuses). Active stash is session-local: it survives /reload of the same session, but resets on quit, session switch, or disable. Stash history is separate and persists to the agent dir at powerline-footer/stash-history.json so it survives restarts. By default the agent dir is ~/.pi/agent; set PI_CODING_AGENT_DIR to move global powerline settings, stash history, sessions, vibes, skills, commands, and extension discovery with Pi.
 
 ### Stash history
 
@@ -412,11 +553,17 @@ Run /reply to choose a previous user or assistant message and insert it as a Mar
 
 The shortcut is opt-in and disabled by default. Enable it in the agent settings file with powerlineShortcuts.reply, for example:
 
-{
+ 
+ 
+ 
+ 
+ {
  "powerlineShortcuts": {
  "reply": "ctrl+shift+r"
  }
 }
+
+ 
 
 Set reply to null to disable it. Quotes are loaded only when the command or configured shortcut is used.
 
@@ -428,7 +575,11 @@ Copy/cut actions do not modify stash state or stash history. Dragging files, fol
 
 You can override shortcut keys in the agent settings file:
 
-{
+ 
+ 
+ 
+ 
+ {
  "powerlineShortcuts": {
  "stashHistory": "ctrl+alt+h",
  "copyEditor": "ctrl+alt+c",
@@ -440,6 +591,8 @@ You can override shortcut keys in the agent settings file:
  }
 }
 
+ 
+
 After changing bindings, run /reload. Invalid bindings fall back to safe defaults. Reserved key conflicts like Alt+S or duplicate conflicts fall back to that action's default when it is free, otherwise they disable the action. Set a binding to null or "" to disable that action. cmd and command are accepted aliases for Pi's super modifier for the documented Command navigation keys.
 
 ### Editor autocomplete composition
@@ -450,7 +603,11 @@ Powerline wraps Pi's autocomplete provider so bash mode can add shell-aware sugg
 
 Transform boring "Working..." messages into themed phrases that match your style:
 
-/vibe star trek → "Running diagnostics...", "Engaging warp drive..."
+ 
+ 
+ 
+ 
+ /vibe star trek → "Running diagnostics...", "Engaging warp drive..."
 /vibe pirate → "Hoisting the sails...", "Charting course..."
 /vibe zen → "Breathing deeply...", "Finding balance..."
 /vibe noir → "Following the trail...", "Checking the angles..."
@@ -458,25 +615,34 @@ Transform boring "Working..." messages into themed phrases that match your style
 /vibe off → Disables (back to "Working...")
 /vibe model → Shows current model
 /vibe model openai/gpt-4o-mini → Use a different model
+/vibe model auto → Follow the session's active model
 /vibe mode → Shows current mode (generate or file)
 /vibe mode file → Switch to file-based mode (instant, no API calls)
 /vibe mode generate → Switch to on-demand generation (contextual)
 /vibe generate mafia 200 → Pre-generate 200 vibes and save to file
 
+ 
+
 ### Configuration
 
 In the agent settings file:
 
-{
+ 
+ 
+ 
+ 
+ {
  "workingVibe": "star trek", // Theme phrase
  "powerline": { "workingVibes": { "color": "rainbow" } }, // Optional: Pi theme color, hex, or "rainbow"
  "workingVibeMode": "generate", // "generate" (on-demand) or "file" (pre-generated)
- "workingVibeModel": "openai-codex/gpt-5.4-mini", // Optional: model to use (default)
+ "workingVibeModel": "openai-codex/gpt-5.6-luna:low", // Optional: model to use (default); "auto" follows the session's active model
  "workingVibeFallback": "Working", // Optional: fallback message
  "workingVibeRefreshInterval": 30, // Optional: seconds between refreshes (default 30)
  "workingVibePrompt": "Generate a {theme} loading message for: {task}", // Optional: custom prompt template
  "workingVibeMaxLength": 65 // Optional: max message length (default 65)
 }
+
+ 
 
 Set powerline.workingVibes.color to a Pi theme color such as accent or warning, a hex color such as #89d281, or rainbow to style each working-vibe message. Omit it to keep Pi's default muted message color.
 
@@ -502,9 +668,15 @@ Not contextual|
 
 File mode setup:
 
-/vibe generate mafia 200 # Generate 200 vibes, save to the agent dir
+ 
+ 
+ 
+ 
+ /vibe generate mafia 200 # Generate 200 vibes, save to the agent dir
 /vibe mode file # Switch to file mode
 /vibe mafia # Now uses the file
+
+ 
 
 How file mode works:
 
@@ -580,6 +752,8 @@ max|
 think:max|
 rainbow|
 
+The rainbow is the default for high, xhigh, and max. Override it per level with thinkingHigh, thinkingXhigh, and thinkingMax in theme.json; see Theming.
+
 ## Path Display
 
 The path segment supports three modes:
@@ -610,23 +784,49 @@ Configure via preset options: path: { mode: "full" }
 
 By default the git segment polls both branch and dirty state. If background git status --porcelain calls interfere with your workflow, use branch-only polling:
 
-{
+ 
+ 
+ 
+ 
+ {
  "powerline": {
  "git": { "polling": "branch" }
  }
 }
 
+ 
+
 Use "off" to disable extension-owned git polling entirely and only show the branch reported by Pi when available.
+
+Set git.statusTtlMs to refresh the dirty counts less often. The default is 1000 (milliseconds). Edits, writes, and bash commands made by the agent still refresh the counts right away; changes made outside Pi show up after at most the interval. This helps in large repositories, where each git status call is slow.
+
+ 
+ 
+ 
+ 
+ {
+ "powerline": {
+ "git": { "statusTtlMs": 10000 }
+ }
+}
+
+ 
 
 ## Git host icon
 
 Set git.hostIcon to replace the branch icon with the origin remote's host logo:
 
-{
+ 
+ 
+ 
+ 
+ {
  "powerline": {
  "git": { "hostIcon": true }
  }
 }
+
+ 
 
 The origin remote is detected (SSH or HTTPS) and mapped to an icon: GitHub (), GitLab (), Bitbucket (), or a generic git logo () for any other remote (self-hosted, Gitea, Codeberg, …). Repositories without an origin remote keep the plain branch icon (), as do ASCII (non–Nerd Font) setups. The remote is read once and cached, so this adds no per-render cost. Default is false (branch icon unchanged).
 
@@ -695,6 +895,21 @@ thinkingMedium|
 Thinking level (medium)|
 
 |
+thinkingHigh|
+rainbow|
+Thinking level (high)|
+
+|
+thinkingXhigh|
+rainbow|
+Thinking level (xhigh)|
+
+|
+thinkingMax|
+rainbow|
+Thinking level (max)|
+
+|
 context|
 dim|
 Context usage|
@@ -723,7 +938,11 @@ Token counts|
 
 Create extensions/powerline-footer/theme.json in the agent dir (~/.pi/agent by default, or PI_CODING_AGENT_DIR when set):
 
-{
+ 
+ 
+ 
+ 
+ {
  "colors": {
  "model": "accent",
  "shellMode": "accent",
@@ -740,11 +959,15 @@ Create extensions/powerline-footer/theme.json in the agent dir (~/.pi/agent by d
  }
 }
 
+ 
+
 Colors can be:
 
 - Theme color names: accent, muted, dim, text, success, warning, error, border, borderAccent, borderMuted
 
 - Hex colors: #ff5500, #d787af
+
+- rainbow: the multi-color gradient used for the high, xhigh, and max thinking levels by default
 
 Icons can be any string, including "" when you want to suppress a specific glyph entirely.
 
